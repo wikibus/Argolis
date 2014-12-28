@@ -1,3 +1,5 @@
+using NullGuard;
+
 namespace Hydra
 {
     /// <summary>

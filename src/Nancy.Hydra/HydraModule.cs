@@ -1,21 +1,20 @@
-﻿namespace Nancy.Hydra
+﻿using Hydra;
+
+namespace Nancy.Hydra
 {
     /// <summary>
     /// Server Hydra API documentation
     /// </summary>
-    public class HydraModule : NancyModule
+    public abstract class HydraModule : NancyModule
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="HydraModule"/> class.
         /// </summary>
-        public HydraModule() : base("doc")
+        protected HydraModule() : base("doc")
         {
             Get["/"] = route => CreateApiDocumentation();
         }
 
-        private ApiDocumentation CreateApiDocumentation()
-        {
-            return new WikibusApi();
-        }
+        protected abstract ApiDocumentation CreateApiDocumentation();
     }
 }
