@@ -15,6 +15,9 @@ namespace Nancy.Hydra
             Get["/"] = route => CreateApiDocumentation();
         }
 
+        /// <summary>
+        /// Creates the API documentation.
+        /// </summary>
         protected abstract ApiDocumentation CreateApiDocumentation();
     }
 }

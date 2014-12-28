@@ -1,4 +1,5 @@
 ﻿using System;
+using Nancy.Bootstrapper;
 
 namespace Nancy.Hydra
 {

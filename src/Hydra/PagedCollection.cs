@@ -1,4 +1,6 @@
 using System;
+using JsonLD.Entities;
+using Newtonsoft.Json;
 using NullGuard;
 
 namespace Hydra

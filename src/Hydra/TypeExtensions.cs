@@ -32,6 +32,8 @@ namespace Hydra
                     return "api:";
                 case "wikibus.nancy":
                     return "http://wikibus.org/api#";
+                case "wikibus.sources":
+                    return "http://wikibus.org/ontology#";
             }
 
             throw new ArgumentException(string.Format("Unknown namespace {0}", ns));
