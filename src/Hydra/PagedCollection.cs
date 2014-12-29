@@ -10,7 +10,7 @@ namespace Hydra
     /// </summary>
     /// <typeparam name="T">collection element type</typeparam>
     [Class("http://www.w3.org/ns/hydra/core#PagedCollection")]
-    [NullGuard(ValidationFlags.ReturnValues)]
+    [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
     public class PagedCollection<T>
     {
         /// <summary>

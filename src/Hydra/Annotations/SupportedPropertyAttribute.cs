@@ -7,7 +7,6 @@ namespace Hydra.Annotations
     /// Marks a Hydra supported property
     /// </summary>
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
-    [NullGuard(ValidationFlags.ReturnValues)]
     public class SupportedPropertyAttribute : Attribute
     {
         /// <summary>
@@ -27,6 +26,6 @@ namespace Hydra.Annotations
         /// <summary>
         /// Gets or sets the range.
         /// </summary>
-        public string Range { get; set; }
+        public string Range { [return: AllowNull] get; set; }
     }
 }

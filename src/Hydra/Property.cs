@@ -8,7 +8,7 @@ namespace Hydra
     /// <summary>
     /// A Hydra property
     /// </summary>
-    [NullGuard(ValidationFlags.ReturnValues)]
+    [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
     public class Property
     {
         /// <summary>

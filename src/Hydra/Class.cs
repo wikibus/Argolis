@@ -7,7 +7,6 @@ namespace Hydra
     /// <summary>
     /// A Hydra class
     /// </summary>
-    [NullGuard(ValidationFlags.ReturnValues)]
     public class Class
     {
         /// <summary>
@@ -29,12 +28,12 @@ namespace Hydra
         /// Gets or sets the supported operations.
         /// </summary>
         [JsonProperty("supportedOperation")]
-        public IEnumerable<Operation> SupportedOperations { get; set; }
+        public IEnumerable<Operation> SupportedOperations { [return: AllowNull] get; set; }
 
         /// <summary>
         /// Gets or sets the supported properties.
         /// </summary>
         [JsonProperty("supportedProperty")]
-        public IEnumerable<Property> SupportedProperties { get; set; }
+        public IEnumerable<Property> SupportedProperties { [return: AllowNull] get; set; }
     }
 }

@@ -46,7 +46,7 @@ namespace Hydra
 
             var hydraProperty = new Property();
 
-            hydraProperty.Predicate = attribute.Predicate;
+            hydraProperty.Predicate = attribute.GetPredicate();
             hydraProperty.Range = attribute.Range;
             if (getOperation != null)
             {
