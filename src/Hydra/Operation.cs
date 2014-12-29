@@ -24,11 +24,13 @@ namespace Hydra
         /// <summary>
         /// Gets or sets the returned type.
         /// </summary>
-        public string Returns { [return: AllowNull] get; set; }
+        [AllowNull] 
+        public string Returns { get; set; }
 
         /// <summary>
         /// Gets or sets the expected type.
         /// </summary>
-        public string Expects { [return: AllowNull] get; set; }
+        [AllowNull] 
+        public string Expects { get; set; }
     }
 }
