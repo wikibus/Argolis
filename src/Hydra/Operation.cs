@@ -10,14 +10,14 @@ namespace Hydra
         /// <summary>
         /// Initializes a new instance of the <see cref="Operation"/> class.
         /// </summary>
-        /// <param name="method">The method.</param>
+        /// <param name="method">The HTTP method.</param>
         public Operation(string method)
         {
             Method = method;
         }
 
         /// <summary>
-        /// Gets or sets the HTTP method.
+        /// Gets the HTTP method.
         /// </summary>
         public string Method { get; private set; }
 

@@ -46,13 +46,12 @@ namespace Hydra
 
             var hydraProperty = new Property();
 
-            hydraProperty.Predicate = attribute.GetPredicate();
+            hydraProperty.Predicate = attribute.Predicate;
             hydraProperty.Range = attribute.Range;
             if (getOperation != null)
             {
-                hydraProperty.SupportedOperations.Add(new Operation
+                hydraProperty.SupportedOperations.Add(new Operation("GET")
                   {
-                      Method = "GET",
                       Returns = attribute.Range ?? getOperation.Range
                   });
             }
