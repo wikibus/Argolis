@@ -10,9 +10,17 @@ namespace Nancy.Hydra
         /// <summary>
         /// Initializes a new instance of the <see cref="HydraModule"/> class.
         /// </summary>
-        protected HydraModule() : base("doc")
+        protected HydraModule()
         {
-            Get["/"] = route => CreateApiDocumentation();
+            Get[Path] = route => CreateApiDocumentation();
+        }
+
+        /// <summary>
+        /// Gets the API Documentation path.
+        /// </summary>
+        protected virtual string Path
+        {
+            get { return "doc"; }
         }
 
         /// <summary>
