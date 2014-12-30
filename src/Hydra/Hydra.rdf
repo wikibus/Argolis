@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:vann="http://purl.org/vocab/vann/"
+   xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+   xmlns:hydra="http://www.w3.org/ns/hydra/core#"
+>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#statusCode">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>The HTTP status code</rdfs:comment>
+    <rdfs:label>status code</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#StatusCodeDescription"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#writeonly">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>write-only</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#SupportedProperty"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>True if the property is write-only, false otherwise.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#lastPage">
+    <rdfs:range rdf:resource="http://www.w3.org/ns/hydra/core#PagedCollection"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:comment>The last page of an interlinked set of PagedCollections</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#PagedCollection"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Link"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>last page</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core">
+    <cc:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
+    <cc:attributionURL rdf:resource="http://www.hydra-cg.com/"/>
+    <cc:attributionName>Hydra W3C Community Group</cc:attributionName>
+    <dc:description>The Hydra Core Vocabulary is a lightweight vocabulary to create hypermedia-driven Web APIs. By specifying a number of concepts commonly used in Web APIs it enables the creation of generic API clients.</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <dc:publisher>Hydra W3C Community Group</dc:publisher>
+    <vann:preferredNamespacePrefix>hydra</vann:preferredNamespacePrefix>
+    <rdfs:comment>A lightweight vocabulary for hypermedia-driven Web APIs</rdfs:comment>
+    <rdfs:label>The Hydra Core Vocabulary</rdfs:label>
+    <dc:rights>Copyright © 2012-2014 the Contributors to the Hydra Core Vocabulary Specification</dc:rights>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#ApiDocumentation">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/hydra/core#Resource"/>
+    <rdfs:comment>The Hydra API documentation class</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:label>ApiDocumentation</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#mapping">
+    <rdfs:range rdf:resource="http://www.w3.org/ns/hydra/core#IriTemplateMapping"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#IriTemplate"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:comment>A variable-to-property mapping of the IRI template.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>mapping</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#description">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:comment>A description.</rdfs:comment>
+    <rdfs:label>description</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#Collection">
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/hydra/core#Resource"/>
+    <rdfs:comment>A collection holding references to a number of related resources.</rdfs:comment>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:label>Collection</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#returns">
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Link"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#Operation"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>returns</rdfs:label>
+    <rdfs:comment>The information returned by the Web API on success</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#itemsPerPage">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:label>items per page</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#PagedCollection"/>
+    <rdfs:comment>The maximum number of items referenced by each single PagedCollection in a set of interlinked PagedCollections.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#freetextQuery">
+    <rdfs:label>freetext query</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:comment>A property representing a freetext query.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#property">
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>property</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>A property</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#operation">
+    <rdfs:comment>An operation supported by the Hydra resource</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:label>operation</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#Resource"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/hydra/core#Operation"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Link"/>
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#search">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>A IRI template that can be used to query a collection</rdfs:comment>
+    <rdfs:label>search</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/hydra/core#IriTemplate"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#TemplatedLink"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#PagedCollection">
+    <rdfs:comment>A PagedCollection is a subclass of Collection with the only difference that its members are sorted and only a subset of all members are returned in a single PagedCollection. To get the other members, the nextPage/previousPage properties have to be used.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/hydra/core#Collection"/>
+    <rdfs:label>PagedCollection</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#firstPage">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#PagedCollection"/>
+    <rdfs:comment>The first page of an interlinked set of PagedCollections</rdfs:comment>
+    <rdfs:label>first page</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/hydra/core#PagedCollection"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Link"/>
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#readonly">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#SupportedProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>True if the property is read-only, false otherwise.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:label>ready-only</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#TemplatedLink">
+    <rdfs:label>Templated Link</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/hydra/core#Resource"/>
+    <rdfs:comment>A templated link.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#entrypoint">
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Link"/>
+    <rdfs:label>entrypoint</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#ApiDocumentation"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:comment>A link to main entry point of the Web API</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/hydra/core#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#IriTemplate">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/hydra/core#Resource"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <rdfs:label>IRI Template</rdfs:label>
+    <rdfs:comment>The class of IRI templates.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#method">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#Operation"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:label>method</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>The HTTP method.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#Resource">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Hydra Resource</rdfs:label>
+    <rdfs:comment>The class of dereferenceable resources.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#template">
+    <rdfs:comment>An IRI template as defined by RFC6570.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:label>template</rdfs:label>
+    <rdfs:seeAlso rdf:resource="http://tools.ietf.org/html/rfc6570"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#IriTemplate"/>
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#Class">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/hydra/core#Resource"/>
+    <rdfs:label>Hydra Class</rdfs:label>
+    <rdfs:comment>The class of Hydra classes. Hydra classes and their instances are dereferenceable resources.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Resource"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#required">
+    <rdfs:label>required</rdfs:label>
+    <rdfs:comment>True if the property is required, false otherwise.</rdfs:comment>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#nextPage">
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Link"/>
+    <rdfs:comment>The page following the current instance in an interlinked set of PagedCollections</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#PagedCollection"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/hydra/core#PagedCollection"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:label>next page</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#supportedOperation">
+    <rdfs:range rdf:resource="http://www.w3.org/ns/hydra/core#Operation"/>
+    <rdfs:label>supported operation</rdfs:label>
+    <rdfs:comment>An operation supported by instances of the specific Hydra class or the target of the Hydra link</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Link"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#previousPage">
+    <rdfs:range rdf:resource="http://www.w3.org/ns/hydra/core#PagedCollection"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Link"/>
+    <rdfs:label>previous page</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:comment>The page preceding the current instance in an interlinked set of PagedCollections</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#PagedCollection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#supportedProperty">
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Link"/>
+    <rdfs:label>supported properties</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <rdfs:comment>The properties known to be supported by a Hydra class</rdfs:comment>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/hydra/core#SupportedProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#supportedClass">
+    <rdfs:range rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:comment>A class known to be supported by the Web API</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Link"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#ApiDocumentation"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>supported classes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#member">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:label>member</rdfs:label>
+    <rdfs:comment>A member of the collection</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#Collection"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Link"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/hydra/core#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#Operation">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <rdfs:comment>An operation.</rdfs:comment>
+    <rdfs:label>Operation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/hydra/core#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#Link">
+    <rdfs:label>Link</rdfs:label>
+    <rdfs:comment>The class of properties representing links.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/hydra/core#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#title">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>A title, often used along with a description.</rdfs:comment>
+    <rdfs:label>title</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#expects">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#Operation"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Link"/>
+    <rdfs:label>expects</rdfs:label>
+    <rdfs:comment>The information expected by the Web API.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#StatusCodeDescription">
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Status code description</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/hydra/core#Resource"/>
+    <rdfs:comment>Additional information about a status code that might be returned.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#SupportedProperty">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Supported Property</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/hydra/core#Resource"/>
+    <rdfs:comment>A property known to be supported by a Hydra class.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#Error">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/hydra/core#StatusCodeDescription"/>
+    <rdfs:comment>A runtime error, used to report information beyond the returned status code.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <rdfs:label>Error</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#DeleteResourceOperation">
+    <rdfs:label>DeleteResourceOperation</rdfs:label>
+    <rdfs:comment>A DeleteResourceOperation is a HTTP operation that deletes a resource.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/hydra/core#Operation"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#variable">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>variable</rdfs:label>
+    <rdfs:comment>An IRI template variable</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#IriTemplateMapping"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#totalItems">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>total items</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/hydra/core#Collection"/>
+    <rdfs:comment>The total number of items referenced by a collection or a set of interlinked PagedCollections.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#statusCodes">
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Link"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/hydra/core#StatusCodeDescription"/>
+    <rdfs:label>status codes</rdfs:label>
+    <rdfs:comment>Additional information about status codes that might be returned by the Web API</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#CreateResourceOperation">
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>CreateResourceOperation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/hydra/core#Operation"/>
+    <rdfs:comment>A CreateResourceOperation is a HTTP operation which expects an input of the type specified by hydra:expects and creates a resource of the type specified by hydra:returns.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#IriTemplateMapping">
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <rdfs:comment>A mapping from an IRI template variable to a property.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/hydra/core#Resource"/>
+    <rdfs:label>IriTemplateMapping</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#ReplaceResourceOperation">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>A ReplaceResourceOperation is a HTTP operation which overwrites a resource. It expects data of the type specified in hydra:expects and results in a resource of the type specified by hydra:returns.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Class"/>
+    <rdfs:label>ReplaceResourceOperation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/hydra/core#Operation"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/hydra/core#apiDocumentation">
+    <vs:term_status>testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Link"/>
+    <rdfs:label>apiDocumentation</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/hydra/core"/>
+    <rdfs:comment>A link to the API documentation</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/hydra/core#ApiDocumentation"/>
+  </rdf:Description>
+</rdf:RDF>
