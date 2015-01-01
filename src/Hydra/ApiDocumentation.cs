@@ -31,5 +31,11 @@ namespace Hydra
         {
             get { yield break; }
         }
+
+        [JsonProperty]
+        private string Type
+        {
+            get { return Hydra.ApiDocumentation; }
+        }
     }
 }

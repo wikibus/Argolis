@@ -9,7 +9,6 @@ namespace Hydra
     /// Hydra paged collection
     /// </summary>
     /// <typeparam name="T">collection element type</typeparam>
-    [Class(Hydra.PagedCollection)]
     [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
     public class PagedCollection<T>
     {
@@ -94,6 +93,12 @@ namespace Hydra
         /// </summary>
         [JsonProperty("member")]
         public T[] Members { get; set; }
+
+        [JsonProperty]
+        private string Type
+        {
+            get { return Hydra.PagedCollection; }
+        }
 
         private bool IsLastPage
         {
