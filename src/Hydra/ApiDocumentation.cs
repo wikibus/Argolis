@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Hydra
 {
@@ -37,6 +38,17 @@ namespace Hydra
         private string Type
         {
             get { return Hydra.ApiDocumentation; }
+        }
+
+        /// <summary>
+        /// Gets the local @context for API documentation.
+        /// </summary>
+        protected abstract JToken GetLocalContext();
+
+        [UsedImplicitly]
+        private static JToken GetContext(ApiDocumentation doc)
+        {
+            return new JArray(Hydra.Context, doc.GetLocalContext());
         }
     }
 }
