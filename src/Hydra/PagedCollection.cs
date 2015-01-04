@@ -1,7 +1,6 @@
 using System;
 using System.Reflection;
 using JetBrains.Annotations;
-using JsonLD.Entities;
 using JsonLD.Entities.Context;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
