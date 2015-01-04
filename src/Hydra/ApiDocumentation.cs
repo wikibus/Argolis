@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace Hydra
@@ -32,7 +33,7 @@ namespace Hydra
             get { yield break; }
         }
 
-        [JsonProperty]
+        [JsonProperty, UsedImplicitly]
         private string Type
         {
             get { return Hydra.ApiDocumentation; }

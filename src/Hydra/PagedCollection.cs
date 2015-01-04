@@ -1,6 +1,10 @@
 using System;
+using System.Reflection;
+using JetBrains.Annotations;
 using JsonLD.Entities;
+using JsonLD.Entities.Context;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NullGuard;
 
 namespace Hydra
@@ -94,7 +98,26 @@ namespace Hydra
         [JsonProperty("member")]
         public T[] Members { get; set; }
 
-        [JsonProperty]
+        [UsedImplicitly]
+        private static JToken Context
+        {
+            get
+            {
+                var collectionContext = new JObject(
+                    "hydra".IsPrefixOf(Hydra.BaseUri),
+                    "xsd".IsPrefixOf("http://www.w3.org/2001/XMLSchema#"),
+                    "member".IsProperty(Hydra.BaseUri + "member").Container().Set(),
+                    "totalItems".IsProperty(Hydra.totalItems).Type().Is("xsd:integer"),
+                    "nextPage".IsProperty(Hydra.BaseUri + "nextPage").Type().Id(),
+                    "previousPage".IsProperty(Hydra.BaseUri + "previousPage").Type().Id());
+
+                var memberContext = typeof(T).GetProperty("Context", BindingFlags.Static | BindingFlags.NonPublic).GetValue(null, null);
+
+                return new JArray(Hydra.Context, collectionContext, memberContext);
+            }
+        }
+
+        [JsonProperty, UsedImplicitly]
         private string Type
         {
             get { return Hydra.PagedCollection; }

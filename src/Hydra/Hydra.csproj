@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Annotations\SupportedOperationAttribute.cs" />
     <Compile Include="Annotations\SupportedPropertyAttribute.cs" />
+    <Compile Include="HydraVocabulary.cs" />
     <Compile Include="Hydra.cs">
       <DependentUpon>Hydra.tt</DependentUpon>
       <AutoGen>True</AutoGen>
