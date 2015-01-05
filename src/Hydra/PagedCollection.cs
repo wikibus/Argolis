@@ -13,13 +13,8 @@ namespace Hydra
     /// </summary>
     /// <typeparam name="T">collection element type</typeparam>
     [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
-    public class PagedCollection<T>
+    public class PagedCollection<T> : Collection<T>
     {
-        /// <summary>
-        /// Gets or sets the identifier.
-        /// </summary>
-        public Uri Id { get; set; }
-
         /// <summary>
         /// Gets or sets the total items.
         /// </summary>
@@ -90,12 +85,6 @@ namespace Hydra
                 return GetUriForPage(LastPageIndex);
             }
         }
-
-        /// <summary>
-        /// Gets or sets the members.
-        /// </summary>
-        [JsonProperty("member")]
-        public T[] Members { get; set; }
 
         [UsedImplicitly]
         private static JToken Context

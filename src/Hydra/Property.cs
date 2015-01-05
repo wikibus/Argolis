@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 using NullGuard;
 
@@ -16,7 +15,7 @@ namespace Hydra
         /// </summary>
         public Property()
         {
-            SupportedOperations = new Collection<Operation>();
+            SupportedOperations = new System.Collections.ObjectModel.Collection<Operation>();
         }
 
         /// <summary>
