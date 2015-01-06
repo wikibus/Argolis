@@ -118,7 +118,15 @@ namespace Hydra
 
         private int LastPageIndex
         {
-            get { return (int)Math.Ceiling((decimal)TotalItems / ItemsPerPage); }
+            get
+            {
+                if (TotalItems == 0 || ItemsPerPage == 0)
+                {
+                    return 0;
+                }
+
+                return (int)Math.Ceiling((decimal)TotalItems / ItemsPerPage);
+            }
         }
 
         private Uri GetUriForPage(int i)
