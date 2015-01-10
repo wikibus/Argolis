@@ -41,14 +41,18 @@ namespace Hydra
         }
 
         /// <summary>
-        /// Gets the local @context for API documentation.
+        /// Gets the context.
         /// </summary>
-        protected abstract JToken GetLocalContext();
-
+        /// <param name="doc">The document.</param>
         [UsedImplicitly]
-        private static JToken GetContext(ApiDocumentation doc)
+        protected static JToken GetContext(ApiDocumentation doc)
         {
             return new JArray(Hydra.Context, doc.GetLocalContext());
         }
+
+        /// <summary>
+        /// Gets the local @context for API documentation.
+        /// </summary>
+        protected abstract JToken GetLocalContext();
     }
 }
