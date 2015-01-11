@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using NullGuard;
 
@@ -21,26 +22,17 @@ namespace Hydra
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Property"/> is required.
         /// </summary>
-        /// <value>
-        ///   <c>true</c> if required; otherwise, <c>false</c>.
-        /// </value>
         public bool Required { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether [read only].
         /// </summary>
-        /// <value>
-        ///   <c>true</c> if [read only]; otherwise, <c>false</c>.
-        /// </value>
         [JsonProperty("readonly")]
         public bool ReadOnly { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether [write only].
         /// </summary>
-        /// <value>
-        ///   <c>true</c> if [write only]; otherwise, <c>false</c>.
-        /// </value>
         [JsonProperty("writeonly")]
         public bool WriteOnly { get; set; }
 
@@ -60,5 +52,11 @@ namespace Hydra
         /// Gets or sets the range.
         /// </summary>
         public string Range { get; set; }
+
+        [JsonProperty, UsedImplicitly]
+        private string Type
+        {
+            get { return Hydra.SupportedProperty; }
+        }
     }
 }

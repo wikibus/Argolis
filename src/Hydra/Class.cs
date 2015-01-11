@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using NullGuard;
 
@@ -12,17 +13,16 @@ namespace Hydra
         /// <summary>
         /// Initializes a new instance of the <see cref="Class"/> class.
         /// </summary>
-        /// <param name="type">The class URI.</param>
-        public Class(string type)
+        /// <param name="typeId">The class URI.</param>
+        public Class(string typeId)
         {
-            Type = type;
+            Id = typeId;
         }
 
         /// <summary>
-        /// Gets the class URI.
+        /// Gets or sets the Class' identifier.
         /// </summary>
-        [JsonProperty("@type")]
-        public string Type { get; private set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets the supported operations.
@@ -35,5 +35,11 @@ namespace Hydra
         /// </summary>
         [JsonProperty("supportedProperty")]
         public IEnumerable<Property> SupportedProperties { [return: AllowNull] get; set; }
+
+        [JsonProperty, UsedImplicitly]
+        private string Type
+        {
+            get { return Hydra.Class; }
+        }
     }
 }

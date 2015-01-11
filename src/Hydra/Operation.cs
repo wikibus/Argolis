@@ -1,3 +1,5 @@
+using JetBrains.Annotations;
+using Newtonsoft.Json;
 using NullGuard;
 
 namespace Hydra
@@ -32,5 +34,11 @@ namespace Hydra
         /// </summary>
         [AllowNull]
         public string Expects { get; set; }
+
+        [JsonProperty, UsedImplicitly]
+        private string Type
+        {
+            get { return Hydra.Operation; }
+        }
     }
 }
