@@ -26,6 +26,15 @@ namespace Hydra
         [JsonProperty("member")]
         public T[] Members { get; set; }
 
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
+        [JsonProperty, UsedImplicitly]
+        protected virtual string Type
+        {
+            get { return Hydra.Collection; }
+        }
+
         [UsedImplicitly]
         private static JToken Context
         {
@@ -39,12 +48,6 @@ namespace Hydra
 
                 return new JArray(Hydra.Context, collectionContext, memberContext);
             }
-        }
-
-        [JsonProperty, UsedImplicitly]
-        private string Type
-        {
-            get { return Hydra.Collection; }
         }
     }
 }

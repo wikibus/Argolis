@@ -86,6 +86,15 @@ namespace Hydra
             }
         }
 
+        /// <summary>
+        /// Gets the type.
+        /// </summary>
+        [JsonProperty, UsedImplicitly]
+        protected override string Type
+        {
+            get { return Hydra.PagedCollection; }
+        }
+
         [UsedImplicitly]
         private static JToken Context
         {
@@ -103,12 +112,6 @@ namespace Hydra
 
                 return new JArray(Hydra.Context, collectionContext, memberContext);
             }
-        }
-
-        [JsonProperty, UsedImplicitly]
-        private string Type
-        {
-            get { return Hydra.PagedCollection; }
         }
 
         private bool IsLastPage
