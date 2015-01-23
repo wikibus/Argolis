@@ -63,9 +63,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\paket-files\www.w3.org\ns\hydra\context.jsonld\context.jsonld">
+    <EmbeddedResource Include="..\paket-files\www.w3.org\ns\hydra\context.jsonld\context.jsonld">
       <Link>context.jsonld</Link>
-    </None>
+    </EmbeddedResource>
     <None Include="Hydra.rdf" />
     <None Include="Hydra.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
