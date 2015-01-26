@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using JsonLD.Entities;
+using Newtonsoft.Json.Linq;
 
 namespace Hydra
 {
@@ -10,6 +11,6 @@ namespace Hydra
         /// <summary>
         /// URL of default Hydra JSON-LD @context
         /// </summary>
-        public static readonly JObject Context = JObject.Parse(Resourcer.Resource.AsString("context.jsonld"));
+        public static readonly JToken Context = JObject.Parse(Resourcer.Resource.AsString("context.jsonld"))[JsonLdKeywords.Context];
     }
 }
