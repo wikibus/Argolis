@@ -90,13 +90,16 @@ namespace Hydra
         /// Gets the type.
         /// </summary>
         [JsonProperty, UsedImplicitly]
-        protected override string Type
+        public override string Type
         {
             get { return Hydra.PagedCollection; }
         }
 
+        /// <summary>
+        /// Gets the context.
+        /// </summary>
         [UsedImplicitly]
-        private static JToken Context
+        protected static JToken Context
         {
             get
             {

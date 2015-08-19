@@ -30,7 +30,7 @@ namespace Hydra
         /// Gets the type.
         /// </summary>
         [JsonProperty, UsedImplicitly]
-        protected virtual string Type
+        public virtual string Type
         {
             get { return Hydra.Collection; }
         }
