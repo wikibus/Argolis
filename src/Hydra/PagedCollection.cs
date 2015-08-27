@@ -87,6 +87,22 @@ namespace Hydra
         }
 
         /// <summary>
+        /// Gets the first page URI.
+        /// </summary>
+        public Uri FirstPage
+        {
+            get
+            {
+                if (TotalItems == 0)
+                {
+                    return null;
+                }
+
+                return GetUriForPage(1);
+            }
+        }
+
+        /// <summary>
         /// Gets the type.
         /// </summary>
         [JsonProperty, UsedImplicitly]
