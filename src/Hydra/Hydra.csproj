@@ -63,7 +63,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\paket-files\www.w3.org\ns\hydra\context.jsonld\context.jsonld">
+    <EmbeddedResource Include="..\paket-files\www.w3.org\context.jsonld">
       <Link>context.jsonld</Link>
     </EmbeddedResource>
     <None Include="Hydra.rdf" />
