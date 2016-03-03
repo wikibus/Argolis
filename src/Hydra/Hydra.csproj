@@ -41,6 +41,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Content Include="app.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Annotations\SupportedOperationAttribute.cs" />
@@ -122,7 +123,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
       <ItemGroup>
         <Reference Include="JsonLD">
-          <HintPath>..\..\packages\json-ld.net\lib\net40\JsonLD.dll</HintPath>
+          <HintPath>..\..\packages\json-ld.net\lib\net40-Client\JsonLD.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -161,10 +162,10 @@
     </When>
   </Choose>
   <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5'">
       <ItemGroup>
         <Reference Include="Resourcer">
-          <HintPath>..\..\packages\Resourcer.Fody\Lib\portable-net4+sl4+wp7+win8+MonoAndroid16+MonoTouch40\Resourcer.dll</HintPath>
+          <HintPath>..\..\packages\Resourcer.Fody\Lib\portable-net45+netcore45+wpa81+wp8\Resourcer.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
