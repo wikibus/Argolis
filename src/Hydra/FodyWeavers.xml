@@ -2,4 +2,5 @@
 <Weavers>
   <NullGuard IncludeDebugAssert="false" />
   <Resourcer />
+  <JetBrainsAnnotations />
 </Weavers>
