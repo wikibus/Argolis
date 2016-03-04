@@ -20,7 +20,18 @@ namespace Nancy.Hydra
 
         private static Action<NancyContext> AppendHydraHeader(Uri apiDocUri)
         {
-            return context => context.Response.Headers.Add("Link", string.Format(HydraHeaderFormat, apiDocUri));
+            return context =>
+            {
+                if (context.Response.Headers.ContainsKey("Link"))
+                {
+                    string current = context.Response.Headers["Link"];
+                    context.Response.WithHeader("Link", current + ", " + string.Format(HydraHeaderFormat, apiDocUri));
+                }
+                else
+                {
+                    context.Response.WithHeader("Link", string.Format(HydraHeaderFormat, apiDocUri));
+                }
+            };
         }
     }
 }
