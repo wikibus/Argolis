@@ -5,7 +5,7 @@ using Hydra.Resources;
 using TunnelVisionLabs.Net;
 using Xunit;
 
-namespace Lernean.Hydra.Tests
+namespace Lernaean.Hydra.Tests
 {
     public class PartialCollectionViewTests
     {

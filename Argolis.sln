@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lernean.Hydra", "src\Lernean.Hydra\Lernean.Hydra.csproj", "{F8B427F1-AEEB-481B-8D51-A53AF4EF0813}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lernaean.Hydra", "src\Lernaean.Hydra\Lernaean.Hydra.csproj", "{F8B427F1-AEEB-481B-8D51-A53AF4EF0813}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{00FB3ED0-0262-47E3-BC69-FC73C41746FA}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,9 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		src\Settings.StyleCop = src\Settings.StyleCop
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lernean.Hydra.Nancy", "src\Lernean.Hydra.Nancy\Lernean.Hydra.Nancy.csproj", "{CBCAC4DC-129D-4F36-96D5-19B14F18CF18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lernaean.Hydra.Nancy", "src\Lernaean.Hydra.Nancy\Lernaean.Hydra.Nancy.csproj", "{CBCAC4DC-129D-4F36-96D5-19B14F18CF18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lernean.Hydra.Tests", "src\Lernean.Hydra.Tests\Lernean.Hydra.Tests.csproj", "{1167173B-16E1-4A0E-80D6-60A3E600E955}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lernaean.Hydra.Tests", "src\Lernaean.Hydra.Tests\Lernaean.Hydra.Tests.csproj", "{1167173B-16E1-4A0E-80D6-60A3E600E955}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 using Resourcer;
 using Xunit;
 
-namespace Lernean.Hydra.Tests.Serialization
+namespace Lernaean.Hydra.Tests.Serialization
 {
     public class CollectionSerializationTests
     {
