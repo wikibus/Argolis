@@ -22,7 +22,6 @@ namespace Lernaean.Hydra.Tests.Serialization
         public void Should_serialize_collection_of_ints_without_a_view()
         {
             // given
-            var expected = JObject.Parse(Resource.AsString("Expected.CollectionWithoutViews.jsonld"));
             var collection = new Collection<int>
             {
                 Id = new Uri("http://example.org/collection"),
@@ -31,10 +30,12 @@ namespace Lernaean.Hydra.Tests.Serialization
             };
 
             // when
-            var jsonLd = _serializer.Serialize(collection);
+            dynamic jsonLd = _serializer.Serialize(collection);
 
             // then
-            JToken.DeepEquals(jsonLd, expected).Should().BeTrue();
+            Assert.Equal(((JArray)jsonLd.member).Count, 5);
+            Assert.Equal((int)jsonLd.totalItems, 5);
+            Assert.Equal((string)jsonLd["@id"], "http://example.org/collection");
         }
     }
 }

@@ -50,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="paket.references" />
-    <EmbeddedResource Include="Serialization\Expected\CollectionWithoutViews.jsonld" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lernaean.Hydra\Lernaean.Hydra.csproj">
