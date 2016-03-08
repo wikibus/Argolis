@@ -1,7 +1,8 @@
 ﻿using System;
+using Nancy;
 using Nancy.Bootstrapper;
 
-namespace Nancy.Hydra
+namespace Hydra.Nancy
 {
     /// <summary>
     /// Wires Hydra with the application

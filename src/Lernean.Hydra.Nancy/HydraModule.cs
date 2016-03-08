@@ -1,6 +1,6 @@
-﻿using Hydra;
+﻿using Nancy;
 
-namespace Nancy.Hydra
+namespace Hydra.Nancy
 {
     /// <summary>
     /// Server Hydra API documentation
