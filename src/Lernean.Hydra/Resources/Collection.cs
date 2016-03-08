@@ -15,6 +15,12 @@ namespace Hydra.Resources
     [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
     public class Collection<T> : IResourceWithViews
     {
+        public Collection()
+        {
+            Views = new IView[0];
+            Members = new T[0];
+        }
+
         /// <summary>
         /// Gets or sets the identifier.
         /// </summary>
