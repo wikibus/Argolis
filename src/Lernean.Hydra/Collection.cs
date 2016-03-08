@@ -23,9 +23,10 @@ namespace Hydra
         /// <summary>
         /// Gets or sets the members.
         /// </summary>
-        [JsonProperty("member")]
+        [JsonProperty(Hydra.member)]
         public T[] Members { get; set; }
-
+        
+        [JsonProperty(Hydra.view)]
         public IView[] Views { get; set; }
 
         /// <summary>
@@ -40,21 +41,7 @@ namespace Hydra
         /// <summary>
         /// Gets or sets the total items.
         /// </summary>
+        [JsonProperty(Hydra.totalItems)]
         public long TotalItems { get; set; }
-
-        [UsedImplicitly]
-        private static JToken Context
-        {
-            get
-            {
-                var collectionContext = new JObject(
-                    "hydra".IsPrefixOf(Hydra.BaseUri),
-                    "member".IsProperty(Hydra.BaseUri + "member").Container().Set());
-
-                var memberContext = typeof(T).GetProperty("Context", BindingFlags.Static | BindingFlags.NonPublic).GetValue(null, null);
-
-                return new JArray(Hydra.Context, collectionContext, memberContext);
-            }
-        }
     }
 }

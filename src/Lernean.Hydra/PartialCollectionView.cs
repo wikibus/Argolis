@@ -19,21 +19,25 @@ namespace Hydra
         /// <summary>
         /// Gets the next page URI.
         /// </summary>
+        [JsonProperty(Hydra.next)]
         public Uri Next { get; set; }
 
         /// <summary>
         /// Gets the last page URI.
         /// </summary>
+        [JsonProperty(Hydra.previous)]
         public Uri Previous { get; set; }
 
         /// <summary>
         /// Gets the last page URI.
         /// </summary>
+        [JsonProperty(Hydra.last)]
         public Uri Last { get; set; }
 
         /// <summary>
         /// Gets the first page URI.
         /// </summary>
+        [JsonProperty(Hydra.first)]
         public Uri First { get; set; }
 
         /// <summary>

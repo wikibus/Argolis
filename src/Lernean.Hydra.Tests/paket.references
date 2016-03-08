@@ -3,3 +3,5 @@ GitVersionTask
 xunit
 fluentassertions
 TunnelVisionLabs.Net.UriTemplate
+Resourcer.Fody
+JsonLd.Entities
