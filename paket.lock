@@ -7,6 +7,7 @@ NUGET
   specs:
     FluentAssertions (4.2.2)
     Fody (1.29.4)
+    gitlink (2.2.0)
     GitVersionTask (3.4.1)
     JetBrainsAnnotations.Fody (1.0.4)
       Fody (>= 1.29.2)
