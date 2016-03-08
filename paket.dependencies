@@ -1,0 +1,14 @@
+source https://www.nuget.org/api/v2
+
+framework: net40, net45
+content: none
+redirects: on
+copy_local: true
+
+nuget GitVersionTask
+nuget JetBrainsAnnotations.Fody
+nuget JsonLd.Entities
+nuget Nancy
+nuget NullGuard.Fody
+nuget Resourcer.Fody
+nuget StyleCopPlus.MSBuild
