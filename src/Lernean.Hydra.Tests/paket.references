@@ -1,6 +1,5 @@
 NullGuard.Fody
-JsonLd.Entities
-JetBrainsAnnotations.Fody
-Resourcer.Fody
 GitVersionTask
+xunit
+fluentassertions
 TunnelVisionLabs.Net.UriTemplate

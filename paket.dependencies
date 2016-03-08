@@ -12,6 +12,9 @@ nuget Nancy
 nuget NullGuard.Fody
 nuget Resourcer.Fody
 nuget StyleCopPlus.MSBuild
+nuget xunit
+nuget fluentassertions
+nuget TunnelVisionLabs.Net.UriTemplate prerelease
 
 git https://gist.github.com/5d9c6983004c1c9ec91f.git
 

@@ -13,7 +13,7 @@ namespace Hydra
     /// </summary>
     /// <typeparam name="T">collection element type</typeparam>
     [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
-    public class Collection<T>
+    public class Collection<T> : IResourceWithViews
     {
         /// <summary>
         /// Gets or sets the identifier.
@@ -26,6 +26,8 @@ namespace Hydra
         [JsonProperty("member")]
         public T[] Members { get; set; }
 
+        public IView[] Views { get; set; }
+
         /// <summary>
         /// Gets the type.
         /// </summary>
@@ -34,6 +36,11 @@ namespace Hydra
         {
             get { return Hydra.Collection; }
         }
+
+        /// <summary>
+        /// Gets or sets the total items.
+        /// </summary>
+        public long TotalItems { get; set; }
 
         [UsedImplicitly]
         private static JToken Context

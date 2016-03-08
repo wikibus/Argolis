@@ -5,6 +5,7 @@ FRAMEWORK: NET40, NET45
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
+    FluentAssertions (4.2.2)
     Fody (1.29.4)
     GitVersionTask (3.4.1)
     JetBrainsAnnotations.Fody (1.0.4)
@@ -22,6 +23,19 @@ NUGET
     StyleCop.MSBuild (4.7.50)
     StyleCopPlus.MSBuild (4.7.49.5)
       StyleCop.MSBuild (>= 4.7.49.0)
+    TunnelVisionLabs.Net.UriTemplate (1.0.0-beta004)
+    xunit (2.1.0)
+      xunit.assert (2.1.0)
+      xunit.core (2.1.0)
+    xunit.abstractions (2.0.0) - framework: net45
+    xunit.assert (2.1.0)
+    xunit.core (2.1.0)
+      xunit.extensibility.core (2.1.0) - framework: net45
+      xunit.extensibility.execution (2.1.0) - framework: net45
+    xunit.extensibility.core (2.1.0) - framework: net45
+      xunit.abstractions (2.0.0)
+    xunit.extensibility.execution (2.1.0) - framework: net45
+      xunit.extensibility.core (2.1.0) - framework: net45
 GIT
   remote: https://gist.github.com/5d9c6983004c1c9ec91f.git
   specs:
