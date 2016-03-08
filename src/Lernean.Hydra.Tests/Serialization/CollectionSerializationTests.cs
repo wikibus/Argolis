@@ -1,6 +1,7 @@
 ﻿using System;
 using FluentAssertions;
 using Hydra;
+using Hydra.Resources;
 using JsonLD.Entities;
 using Newtonsoft.Json.Linq;
 using Resourcer;

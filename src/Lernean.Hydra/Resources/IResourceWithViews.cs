@@ -1,4 +1,4 @@
-namespace Hydra
+namespace Hydra.Resources
 {
     public interface IResourceWithViews
     {

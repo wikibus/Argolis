@@ -49,22 +49,22 @@
     </Compile>
     <Compile Include="Annotations\SupportedOperationAttribute.cs" />
     <Compile Include="Annotations\SupportedPropertyAttribute.cs" />
-    <Compile Include="Collection.cs" />
+    <Compile Include="Resources\Collection.cs" />
     <Compile Include="HydraVocabulary.cs" />
     <Compile Include="Hydra.cs">
       <DependentUpon>Hydra.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="IResourceWithViews.cs" />
-    <Compile Include="TemplatedPartialCollectionView.cs" />
+    <Compile Include="Resources\IResourceWithViews.cs" />
+    <Compile Include="Resources\TemplatedPartialCollectionView.cs" />
     <Compile Include="TypeExtensions.cs" />
-    <Compile Include="ApiDocumentation.cs" />
-    <Compile Include="Class.cs" />
-    <Compile Include="Operation.cs" />
-    <Compile Include="PartialCollectionView.cs" />
+    <Compile Include="Core\ApiDocumentation.cs" />
+    <Compile Include="Core\Class.cs" />
+    <Compile Include="Core\Operation.cs" />
+    <Compile Include="Resources\PartialCollectionView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Property.cs" />
+    <Compile Include="Core\Property.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml">

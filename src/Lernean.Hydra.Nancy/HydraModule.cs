@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using Hydra.Core;
+using Nancy;
 
 namespace Hydra.Nancy
 {

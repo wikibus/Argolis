@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using NullGuard;
 using TunnelVisionLabs.Net;
 
-namespace Hydra
+namespace Hydra.Resources
 {
     [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
     public class TemplatedPartialCollectionView : PartialCollectionView

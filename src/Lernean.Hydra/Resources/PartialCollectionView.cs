@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using Newtonsoft.Json;
 using NullGuard;
 
-namespace Hydra
+namespace Hydra.Resources
 {
     /// <summary>
     /// Hydra parial collection view

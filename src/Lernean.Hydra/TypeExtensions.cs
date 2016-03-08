@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using Hydra.Annotations;
+using Hydra.Core;
 
 namespace Hydra
 {

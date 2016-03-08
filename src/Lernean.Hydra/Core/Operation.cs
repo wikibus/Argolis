@@ -2,7 +2,7 @@ using JetBrains.Annotations;
 using Newtonsoft.Json;
 using NullGuard;
 
-namespace Hydra
+namespace Hydra.Core
 {
     /// <summary>
     /// A Hydra operation

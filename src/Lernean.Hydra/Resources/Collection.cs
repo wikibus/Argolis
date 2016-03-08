@@ -1,12 +1,9 @@
 using System;
-using System.Reflection;
 using JetBrains.Annotations;
-using JsonLD.Entities.Context;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using NullGuard;
 
-namespace Hydra
+namespace Hydra.Resources
 {
     /// <summary>
     /// Hydra collection

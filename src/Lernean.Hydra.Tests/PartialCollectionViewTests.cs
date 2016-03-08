@@ -1,6 +1,7 @@
 ﻿using System;
 using FluentAssertions;
 using Hydra;
+using Hydra.Resources;
 using TunnelVisionLabs.Net;
 using Xunit;
 

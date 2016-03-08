@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Hydra
+namespace Hydra.Core
 {
     /// <summary>
     /// Base class for Hydra API documentation
