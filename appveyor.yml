@@ -1,0 +1,15 @@
+install:
+  - choco install gitversion.portable -pre -y
+  
+before_build:  
+  - .paket\paket.bootstrapper.exe
+  - .paket\paket.exe restore
+  - ps: gitversion /l console /output buildserver
+
+configuration: Release
+
+after_build:
+  - .paket\paket.exe pack output nugets include-referenced-projects version %GitVersion_NuGetVersion%
+  
+artifacts:
+  - path: 'nugets\*.nupkg'

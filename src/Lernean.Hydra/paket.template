@@ -1,3 +1,4 @@
 type project
+id Argolis
 excludeddependencies
   GitVersionTask
