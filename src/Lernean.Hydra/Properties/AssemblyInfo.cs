@@ -1,10 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-// General Information about an assembly is controlled through the following
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-[assembly: AssemblyTitle("Hydra")]
-[assembly: AssemblyDescription("Base Hydra library")]
+[assembly: AssemblyTitle("Core Hydra hypermedia library for .NET")]
+[assembly: AssemblyDescription("Core library for Hydra, the hypermedia API description language")]
 
 [assembly: Guid("b9cfe648-af87-4df3-adc2-04b550bfa1bb")]
