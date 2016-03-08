@@ -22,7 +22,14 @@ NUGET
     StyleCop.MSBuild (4.7.50)
     StyleCopPlus.MSBuild (4.7.49.5)
       StyleCop.MSBuild (>= 4.7.49.0)
+GIT
+  remote: https://gist.github.com/5d9c6983004c1c9ec91f.git
+  specs:
+     (2a5f0785c2686635f1b8ab21af1751d276d02727)
 HTTP
   remote: http://www.w3.org
   specs:
     context.jsonld (/ns/hydra/context.jsonld)
+  remote: http://rdf-translator.appspot.com
+  specs:
+    hydra.rdf (/convert/json-ld/xml/https%3A%2F%2Fraw.githubusercontent.com%2FHydraCG%2FSpecifications%2Fmaster%2Fspec%2Flatest%2Fcore%2Fcore.jsonld)

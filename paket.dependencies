@@ -13,4 +13,7 @@ nuget NullGuard.Fody
 nuget Resourcer.Fody
 nuget StyleCopPlus.MSBuild
 
+git https://gist.github.com/5d9c6983004c1c9ec91f.git
+
 http http://www.w3.org/ns/hydra/context.jsonld
+http http://rdf-translator.appspot.com/convert/json-ld/xml/https%3A%2F%2Fraw.githubusercontent.com%2FHydraCG%2FSpecifications%2Fmaster%2Fspec%2Flatest%2Fcore%2Fcore.jsonld hydra.rdf

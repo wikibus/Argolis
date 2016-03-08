@@ -9,7 +9,7 @@ namespace Hydra.Nancy
     /// </summary>
     public static class PipelinesExtensions
     {
-        private const string HydraHeaderFormat = "<{0}>; rel=\"http://www.w3.org/ns/hydra/core#apiDocumentation\"";
+        private const string HydraHeaderFormat = "<{0}>; rel=\"" + Hydra.apiDocumentation + "\"";
 
         /// <summary>
         /// Wires Hydra documentation with Nancy pipeline
