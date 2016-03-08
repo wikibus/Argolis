@@ -22,3 +22,7 @@ NUGET
     StyleCop.MSBuild (4.7.50)
     StyleCopPlus.MSBuild (4.7.49.5)
       StyleCop.MSBuild (>= 4.7.49.0)
+HTTP
+  remote: http://www.w3.org
+  specs:
+    context.jsonld (/ns/hydra/context.jsonld)

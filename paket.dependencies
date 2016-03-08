@@ -12,3 +12,5 @@ nuget Nancy
 nuget NullGuard.Fody
 nuget Resourcer.Fody
 nuget StyleCopPlus.MSBuild
+
+http http://www.w3.org/ns/hydra/context.jsonld
