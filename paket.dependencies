@@ -15,6 +15,7 @@ nuget StyleCopPlus.MSBuild
 nuget xunit
 nuget fluentassertions
 nuget TunnelVisionLabs.Net.UriTemplate prerelease
+nuget GitLink
 
 git https://gist.github.com/5d9c6983004c1c9ec91f.git
 
