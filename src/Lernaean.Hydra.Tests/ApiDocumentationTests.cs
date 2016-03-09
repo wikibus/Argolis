@@ -25,7 +25,7 @@ namespace Lernaean.Hydra.Tests
                 configurator.Module<TestModule>();
                 configurator.Module<HydraApiDocumentationModule>();
                 configurator.Dependency<IHydraDocumentationSettings>(new TestSettings());
-                configurator.Dependency<IApiDocumentationProvider>(new NullProvider());
+                configurator.Dependency<IApiDocumentationFactory>(new NullFactory());
                 configurator.ApplicationStartupTask<HydraDocumentationStartup>();
             }, 
             context => context.HostName("hydra.guru"));
@@ -82,7 +82,7 @@ namespace Lernaean.Hydra.Tests
             }
         }
 
-        private class NullProvider : IApiDocumentationProvider
+        private class NullFactory : IApiDocumentationFactory
         {
             public ApiDocumentation CreateApiDocumentation()
             {

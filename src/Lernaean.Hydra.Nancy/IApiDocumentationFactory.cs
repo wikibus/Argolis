@@ -5,7 +5,7 @@ namespace Hydra.Nancy
     /// <summary>
     /// Implementing class should return
     /// </summary>
-    public interface IApiDocumentationProvider
+    public interface IApiDocumentationFactory
     {
         /// <summary>
         /// Creates the API documentation.
