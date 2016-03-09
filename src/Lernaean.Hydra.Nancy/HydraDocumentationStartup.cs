@@ -32,9 +32,8 @@ namespace Hydra.Nancy
         {
             return context =>
             {
-                var apiDocUri = context.Request.Url.SiteBase + context.Request.Url.BasePath + documentationPath;
-
-                context.Response.AppendLinkHeader(apiDocUri, Hydra.apiDocumentation);
+                string apiDocPath = context.Request.GetApiDocumentationUri(documentationPath);
+                context.Response.AppendLinkHeader(apiDocPath, Hydra.apiDocumentation);
             };
         }
     }

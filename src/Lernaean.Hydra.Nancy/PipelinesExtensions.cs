@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using System;
+using Nancy;
 using Nancy.Routing;
 
 namespace Hydra.Nancy
@@ -6,7 +7,7 @@ namespace Hydra.Nancy
     /// <summary>
     /// Wires Hydra with the application
     /// </summary>
-    public static class ResponseExtensions
+    public static class RequestResponseExtensions
     {
         private const string LinkHeaderFormat = "<{0}>; rel=\"{1}\"";
 
@@ -31,6 +32,28 @@ namespace Hydra.Nancy
             {
                 response.WithHeader(linkHeader, headerValue);
             }
+        }
+
+        /// <summary>
+        /// Gets the API documentation URI.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="documentationPath">The documentation path.</param>
+        /// <returns>absolute URI string</returns>
+        public static string GetApiDocumentationUri(this Request request, string documentationPath)
+        {
+            var uriBuilder = new UriBuilder(request.Url.SiteBase)
+            {
+                Path = request.Url.BasePath + documentationPath
+            };
+
+            string apiDocPath = uriBuilder.Uri.ToString();
+            if (uriBuilder.Port == 80)
+            {
+                apiDocPath = uriBuilder.Uri.GetComponents(UriComponents.AbsoluteUri & ~UriComponents.Port, UriFormat.UriEscaped);
+            }
+
+            return apiDocPath;
         }
     }
 }

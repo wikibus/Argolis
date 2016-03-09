@@ -10,9 +10,16 @@ namespace Hydra.Nancy
         /// <summary>
         /// Initializes a new instance of the <see cref="HydraApiDocumentationModule"/> class.
         /// </summary>
-        protected HydraApiDocumentationModule(IHydraDocumentationSettings settings, IApiDocumentationProvider apiDocumentationProvider)
+        public HydraApiDocumentationModule(IHydraDocumentationSettings settings, IApiDocumentationProvider apiDocumentationProvider)
         {
-            Get[settings.DocumentationPath] = route => apiDocumentationProvider.CreateApiDocumentation();
+            Get[settings.DocumentationPath] = route =>
+            {
+                var apiDocumentation = apiDocumentationProvider.CreateApiDocumentation();
+
+                apiDocumentation.Id = Request.GetApiDocumentationUri(settings.DocumentationPath);
+
+                return apiDocumentation;
+            };
         }
     }
 }

@@ -21,6 +21,11 @@ namespace Hydra.Core
         }
 
         /// <summary>
+        /// Gets or sets the API documentation identifier
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
         /// Gets the entrypoint Uri.
         /// </summary>
         public Uri Entrypoint { get; private set; }
