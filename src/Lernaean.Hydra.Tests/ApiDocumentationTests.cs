@@ -1,0 +1,73 @@
+﻿using System;
+using FluentAssertions;
+using Hydra.Core;
+using Hydra.Nancy;
+using Nancy;
+using Nancy.Testing;
+using Xunit;
+
+namespace Lernaean.Hydra.Tests
+{
+    public class ApiDocumentationTests
+    {
+        private readonly Browser _browser;
+
+        public ApiDocumentationTests()
+        {
+            _browser = new Browser(configurator =>
+            {
+                configurator.Module<TestModule>();
+                configurator.Dependency<IHydraDocumentationSettings>(new TestSettings());
+                configurator.Dependency<IApiDocumentationProvider>(new NullProvider());
+                configurator.ApplicationStartupTask<HydraDocumentationStartup>();
+            });
+        }
+
+        [Fact]
+        public void Should_append_api_doc_header_to_GET_query()
+        {
+            // when
+            var response = _browser.Post("test");
+
+            // then
+            response.Headers.Should().ContainKey("Link");
+            response.Headers["Link"].Should().Be("<http://uber/documentation/path>; rel=\"" + global::Hydra.Hydra.apiDocumentation + "\"");
+        }
+
+        [Fact]
+        public void Should_append_api_doc_header_to_POST_query()
+        {
+            // when
+            var response = _browser.Get("test");
+
+            // then
+            response.Headers.Should().ContainKey("Link");
+            response.Headers["Link"].Should().Be("<http://uber/documentation/path>; rel=\"" + global::Hydra.Hydra.apiDocumentation + "\"");
+        }
+
+        private class TestModule : NancyModule
+        {
+            public TestModule()
+            {
+                Get["test"] = _ => "GET test";
+                Post["test"] = _ => "POST test";
+            }
+        }
+
+        private class TestSettings : IHydraDocumentationSettings
+        {
+            public string DocumentationPath
+            {
+                get { return "uber/documentation/path"; }
+            }
+        }
+
+        private class NullProvider : IApiDocumentationProvider
+        {
+            public ApiDocumentation CreateApiDocumentation()
+            {
+                return null;
+            }
+        }
+    }
+}

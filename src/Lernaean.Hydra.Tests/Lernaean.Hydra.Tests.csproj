@@ -44,6 +44,7 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="ApiDocumentationTests.cs" />
     <Compile Include="PartialCollectionViewTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\CollectionSerializationTests.cs" />
@@ -52,6 +53,10 @@
     <None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Lernaean.Hydra.Nancy\Lernaean.Hydra.Nancy.csproj">
+      <Project>{CBCAC4DC-129D-4F36-96D5-19B14F18CF18}</Project>
+      <Name>Lernaean.Hydra.Nancy</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Lernaean.Hydra\Lernaean.Hydra.csproj">
       <Project>{F8B427F1-AEEB-481B-8D51-A53AF4EF0813}</Project>
       <Name>Lernaean.Hydra</Name>
@@ -70,6 +75,17 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
+      <ItemGroup>
+        <Reference Include="CsQuery">
+          <HintPath>..\..\packages\CsQuery\lib\net40\CsQuery.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.0'">
       <ItemGroup>
@@ -130,6 +146,28 @@
       <ItemGroup>
         <Reference Include="JsonLD">
           <HintPath>..\..\packages\json-ld.net\lib\net40-Client\JsonLD.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
+      <ItemGroup>
+        <Reference Include="Nancy">
+          <HintPath>..\..\packages\Nancy\lib\net40\Nancy.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
+      <ItemGroup>
+        <Reference Include="Nancy.Testing">
+          <HintPath>..\..\packages\Nancy.Testing\lib\net40\Nancy.Testing.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>

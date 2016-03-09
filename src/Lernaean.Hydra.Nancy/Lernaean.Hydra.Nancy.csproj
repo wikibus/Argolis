@@ -47,7 +47,7 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="HydraModule.cs" />
+    <Compile Include="HydraApiDocumentationModule.cs" />
     <Compile Include="PipelinesExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

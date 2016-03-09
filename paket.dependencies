@@ -9,6 +9,7 @@ nuget GitVersionTask
 nuget JetBrainsAnnotations.Fody
 nuget JsonLd.Entities
 nuget Nancy
+nuget Nancy.Testing
 nuget NullGuard.Fody
 nuget Resourcer.Fody
 nuget StyleCopPlus.MSBuild
