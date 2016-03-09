@@ -15,6 +15,9 @@ namespace Hydra.Resources
     [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
     public class Collection<T> : IResourceWithViews
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Collection{T}"/> class
+        /// </summary>
         public Collection()
         {
             Views = new IView[0];
@@ -32,8 +35,16 @@ namespace Hydra.Resources
         [JsonProperty("member")]
         public T[] Members { get; set; }
 
+        /// <summary>
+        /// Gets or sets the views
+        /// </summary>
         [JsonProperty("view")]
         public IView[] Views { get; set; }
+
+        /// <summary>
+        /// Gets or sets the total items.
+        /// </summary>
+        public long TotalItems { get; set; }
 
         /// <summary>
         /// Gets the type.
@@ -65,10 +76,5 @@ namespace Hydra.Resources
                 return new JArray(Hydra.Context, collectionContext);
             }
         }
-
-        /// <summary>
-        /// Gets or sets the total items.
-        /// </summary>
-        public long TotalItems { get; set; }
     }
 }

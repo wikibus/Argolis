@@ -2,3 +2,4 @@ Nancy
 NullGuard.Fody
 JetBrainsAnnotations.Fody
 GitVersionTask
+StyleCopPlus.MSBuild

@@ -1,6 +1,4 @@
-﻿using System;
-using Nancy;
-using Nancy.Bootstrapper;
+﻿using Nancy;
 using Nancy.Routing;
 
 namespace Hydra.Nancy
@@ -8,69 +6,31 @@ namespace Hydra.Nancy
     /// <summary>
     /// Wires Hydra with the application
     /// </summary>
-    public static class PipelinesExtensions
+    public static class ResponseExtensions
     {
-        private const string HydraHeaderFormat = "<{0}>; rel=\"" + Hydra.apiDocumentation + "\"";
+        private const string LinkHeaderFormat = "<{0}>; rel=\"{1}\"";
 
         /// <summary>
-        /// Wires Hydra documentation with Nancy pipeline
+        /// Appends a Link header to the response.
         /// </summary>
-        public static void UseHydra(this IPipelines pipelines, string documentationPath)
+        /// <param name="response">The response.</param>
+        /// <param name="uri">The link URI.</param>
+        /// <param name="relation">The link relation.</param>
+        /// <remarks>See https://tools.ietf.org/html/rfc5988</remarks>
+        public static void AppendLinkHeader(this Response response, string uri, string relation)
         {
-            pipelines.AfterRequest.AddItemToEndOfPipeline(AppendHydraHeader(documentationPath));
-        }
+            const string linkHeader = "Link";
+            var headerValue = string.Format(LinkHeaderFormat, uri, relation);
 
-        private static Action<NancyContext> AppendHydraHeader(string documentationPath)
-        {
-            return context =>
+            if (response.Headers.ContainsKey(linkHeader))
             {
-                var apiDocUri = new Uri(context.Request.Url.SiteBase + context.Request.Url.BasePath + documentationPath);
-
-                if (context.Response.Headers.ContainsKey("Link"))
-                {
-                    string current = context.Response.Headers["Link"];
-                    context.Response.WithHeader("Link", current + ", " + string.Format(HydraHeaderFormat, apiDocUri));
-                }
-                else
-                {
-                    context.Response.WithHeader("Link", string.Format(HydraHeaderFormat, apiDocUri));
-                }
-            };
-        }
-    }
-
-    public class HydraDocumentationStartup : IApplicationStartup
-    {
-        private const string HydraHeaderFormat = "<{0}>; rel=\"" + Hydra.apiDocumentation + "\"";
-
-        public HydraDocumentationStartup(IHydraDocumentationSettings settings)
-        {
-            DocumentationPath = settings.DocumentationPath;
-        }
-
-        public void Initialize(IPipelines pipelines)
-        {
-            pipelines.AfterRequest.AddItemToEndOfPipeline(AppendHydraHeader(DocumentationPath));
-        }
-
-        public string DocumentationPath { get; }
-
-        private static Action<NancyContext> AppendHydraHeader(string documentationPath)
-        {
-            return context =>
+                string current = response.Headers[linkHeader];
+                response.WithHeader(linkHeader, current + ", " + headerValue);
+            }
+            else
             {
-                var apiDocUri = new Uri(context.Request.Url.SiteBase + context.Request.Url.BasePath + documentationPath);
-
-                if (context.Response.Headers.ContainsKey("Link"))
-                {
-                    string current = context.Response.Headers["Link"];
-                    context.Response.WithHeader("Link", current + ", " + string.Format(HydraHeaderFormat, apiDocUri));
-                }
-                else
-                {
-                    context.Response.WithHeader("Link", string.Format(HydraHeaderFormat, apiDocUri));
-                }
-            };
+                response.WithHeader(linkHeader, headerValue);
+            }
         }
     }
 }

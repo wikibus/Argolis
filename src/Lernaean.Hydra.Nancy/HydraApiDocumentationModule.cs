@@ -1,5 +1,4 @@
-﻿using Hydra.Core;
-using Nancy;
+﻿using Nancy;
 
 namespace Hydra.Nancy
 {
@@ -15,15 +14,5 @@ namespace Hydra.Nancy
         {
             Get[settings.DocumentationPath] = route => apiDocumentationProvider.CreateApiDocumentation();
         }
-    }
-
-    public interface IApiDocumentationProvider
-    {
-        ApiDocumentation CreateApiDocumentation();
-    }
-
-    public interface IHydraDocumentationSettings
-    {
-        string DocumentationPath { get; }
     }
 }

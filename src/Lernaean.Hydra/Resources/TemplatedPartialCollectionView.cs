@@ -5,6 +5,9 @@ using TunnelVisionLabs.Net;
 
 namespace Hydra.Resources
 {
+    /// <summary>
+    /// A hydra:PartialCollectionView constructed from a URI Template
+    /// </summary>
     [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
     public class TemplatedPartialCollectionView : PartialCollectionView
     {
@@ -12,6 +15,17 @@ namespace Hydra.Resources
         private readonly string _pageVariable;
         private readonly int _totalPages;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TemplatedPartialCollectionView"/> class
+        /// </summary>
+        /// <param name="template">the URI Template</param>
+        /// <param name="pageVariable">the page variable</param>
+        /// <param name="totalItems">total items in collection</param>
+        /// <param name="page">
+        /// current page index
+        /// <remarks>1-based</remarks>
+        /// </param>
+        /// <param name="pageSize">page size, used to calculate last page index</param>
         public TemplatedPartialCollectionView(UriTemplate template, string pageVariable, long totalItems, int page, int pageSize)
         {
             _template = template;

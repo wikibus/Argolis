@@ -6,7 +6,7 @@ using NullGuard;
 namespace Hydra.Resources
 {
     /// <summary>
-    /// Hydra parial collection view
+    /// Hydra partial collection view
     /// </summary>
     [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
     public class PartialCollectionView : IView
@@ -17,27 +17,27 @@ namespace Hydra.Resources
         public Uri Id { get; set; }
 
         /// <summary>
-        /// Gets the next page URI.
+        /// Gets or sets the next page URI.
         /// </summary>
         public Uri Next { get; set; }
 
         /// <summary>
-        /// Gets the last page URI.
+        /// Gets or sets the last page URI.
         /// </summary>
         public Uri Previous { get; set; }
 
         /// <summary>
-        /// Gets the last page URI.
+        /// Gets or sets the last page URI.
         /// </summary>
         public Uri Last { get; set; }
 
         /// <summary>
-        /// Gets the first page URI.
+        /// Gets or sets the first page URI.
         /// </summary>
         public Uri First { get; set; }
 
         /// <summary>
-        /// Gets the type.
+        /// Gets the RDF type.
         /// </summary>
         [JsonProperty, UsedImplicitly]
         public string Type
