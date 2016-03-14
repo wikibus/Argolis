@@ -1,4 +1,5 @@
 source https://www.nuget.org/api/v2
+source https://ci.appveyor.com/nuget/jsonld-entities-aavhsnxi7xjp
 
 framework: net40, net45
 content: none

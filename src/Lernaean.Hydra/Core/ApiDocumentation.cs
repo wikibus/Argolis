@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using JsonLD.Entities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -9,6 +10,7 @@ namespace Hydra.Core
     /// <summary>
     /// Base class for Hydra API documentation
     /// </summary>
+    [SerializeCompacted]
     public abstract class ApiDocumentation
     {
         /// <summary>
