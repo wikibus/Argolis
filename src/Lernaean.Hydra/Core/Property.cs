@@ -25,16 +25,14 @@ namespace Hydra.Core
         public bool Required { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether [read only].
+        /// Gets or sets a value indicating whether property can be read.
         /// </summary>
-        [JsonProperty("readonly")]
-        public bool ReadOnly { get; set; }
+        public bool Readable { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether [write only].
+        /// Gets or sets a value indicating whether property can be written.
         /// </summary>
-        [JsonProperty("writeonly")]
-        public bool WriteOnly { get; set; }
+        public bool Writeable { get; set; }
 
         /// <summary>
         /// Gets the supported operations.
@@ -47,11 +45,6 @@ namespace Hydra.Core
         /// </summary>
         [JsonProperty("property")]
         public string Predicate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the range.
-        /// </summary>
-        public string Range { get; set; }
 
         [JsonProperty, UsedImplicitly]
         private string Type
