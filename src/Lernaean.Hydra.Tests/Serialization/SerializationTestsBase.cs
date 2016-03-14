@@ -13,6 +13,11 @@ namespace Lernaean.Hydra.Tests.Serialization
             _serializer = new EntitySerializer();
         }
 
+        public IEntitySerializer Serializer
+        {
+            get { return _serializer; }
+        }
+
         protected JObject Serialize(object obj)
         {
             var jObject = _serializer.Serialize(obj);

@@ -1,5 +1,4 @@
 ﻿using Hydra.Core;
-using Newtonsoft.Json.Linq;
 using Xunit;
 using Vocab = Hydra.Hydra;
 
