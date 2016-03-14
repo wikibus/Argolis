@@ -21,18 +21,21 @@ namespace Hydra.Core
         /// <summary>
         /// Gets the HTTP method.
         /// </summary>
+        [JsonProperty(Hydra.method)]
         public string Method { get; private set; }
 
         /// <summary>
         /// Gets or sets the returned type.
         /// </summary>
         [AllowNull]
+        [JsonProperty(Hydra.returns)]
         public string Returns { get; set; }
 
         /// <summary>
         /// Gets or sets the expected type.
         /// </summary>
         [AllowNull]
+        [JsonProperty(Hydra.expects)]
         public string Expects { get; set; }
 
         [JsonProperty, UsedImplicitly]

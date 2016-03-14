@@ -4,19 +4,13 @@ using Hydra;
 using Hydra.Resources;
 using JsonLD.Entities;
 using Newtonsoft.Json.Linq;
-using Resourcer;
 using Xunit;
+using Vocab = Hydra.Hydra;
 
 namespace Lernaean.Hydra.Tests.Serialization
 {
-    public class CollectionSerializationTests
+    public class CollectionSerializationTests : SerializationTestsBase
     {
-        private readonly IEntitySerializer _serializer;
-
-        public CollectionSerializationTests()
-        {
-            _serializer = new EntitySerializer();
-        }
 
         [Fact]
         public void Should_serialize_collection_of_ints_without_a_view()
@@ -30,11 +24,11 @@ namespace Lernaean.Hydra.Tests.Serialization
             };
 
             // when
-            dynamic jsonLd = _serializer.Serialize(collection);
+            dynamic jsonLd = Serialize(collection);
 
             // then
-            Assert.Equal(((JArray)jsonLd.member).Count, 5);
-            Assert.Equal((int)jsonLd.totalItems, 5);
+            Assert.Equal(((JArray)jsonLd[Vocab.member]).Count, 5);
+            Assert.Equal((int)jsonLd[Vocab.totalItems], 5);
             Assert.Equal((string)jsonLd["@id"], "http://example.org/collection");
         }
     }

@@ -11,14 +11,14 @@ using Xunit;
 
 namespace Lernaean.Hydra.Tests
 {
-    public class ApiDocumentationTests
+    public class ServingApiDocumentationTests
     {
         private const string ExpectedApiDocPath = "http://hydra.guru/uber/documentation/path";
         private const string ExpectedLinkHeader = "<" + ExpectedApiDocPath + ">; rel=\"" + global::Hydra.Hydra.apiDocumentation + "\"";
 
         private readonly Browser _browser;
 
-        public ApiDocumentationTests()
+        public ServingApiDocumentationTests()
         {
             _browser = new Browser(configurator =>
             {

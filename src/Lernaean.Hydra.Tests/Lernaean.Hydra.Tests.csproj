@@ -44,7 +44,9 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="ApiDocumentationTests.cs" />
+    <Compile Include="Serialization\ClassSerializationTests.cs" />
+    <Compile Include="Serialization\SerializationTestsBase.cs" />
+    <Compile Include="ServingApiDocumentationTests.cs" />
     <Compile Include="PartialCollectionViewTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\CollectionSerializationTests.cs" />

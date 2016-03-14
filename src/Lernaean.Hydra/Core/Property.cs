@@ -22,28 +22,31 @@ namespace Hydra.Core
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Property"/> is required.
         /// </summary>
+        [JsonProperty(Hydra.required)]
         public bool Required { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether property can be read.
         /// </summary>
+        [JsonProperty(Hydra.readable)]
         public bool Readable { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether property can be written.
         /// </summary>
+        [JsonProperty(Hydra.writeable)]
         public bool Writeable { get; set; }
 
         /// <summary>
         /// Gets the supported operations.
         /// </summary>
-        [JsonProperty("supportedOperation")]
+        [JsonProperty(Hydra.supportedOperation)]
         public ICollection<Operation> SupportedOperations { get; private set; }
 
         /// <summary>
         /// Gets or sets the property.
         /// </summary>
-        [JsonProperty("property")]
+        [JsonProperty(Hydra.property)]
         public string Predicate { get; set; }
 
         [JsonProperty, UsedImplicitly]

@@ -28,12 +28,13 @@ namespace Hydra.Core
         /// <summary>
         /// Gets the entrypoint Uri.
         /// </summary>
+        [JsonProperty(Hydra.entrypoint)]
         public Uri Entrypoint { get; private set; }
 
         /// <summary>
         /// Gets the supported classes.
         /// </summary>
-        [JsonProperty("supportedClass")]
+        [JsonProperty(Hydra.supportedClass)]
         public virtual IEnumerable<Class> SupportedClasses
         {
             get { yield break; }

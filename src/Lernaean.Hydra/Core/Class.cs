@@ -27,14 +27,20 @@ namespace Hydra.Core
         /// <summary>
         /// Gets or sets the supported operations.
         /// </summary>
-        [JsonProperty("supportedOperation")]
+        [JsonProperty(Hydra.supportedOperation)]
         public IEnumerable<Operation> SupportedOperations { [return: AllowNull] get; set; }
 
         /// <summary>
         /// Gets or sets the supported properties.
         /// </summary>
-        [JsonProperty("supportedProperty")]
+        [JsonProperty(Hydra.supportedProperty)]
         public IEnumerable<Property> SupportedProperties { [return: AllowNull] get; set; }
+
+        /// <summary>
+        /// Gets or sets the title.
+        /// </summary>
+        [JsonProperty(Hydra.title)]
+        public string Title { [return: AllowNull] get; set; }
 
         [JsonProperty, UsedImplicitly]
         private string Type
