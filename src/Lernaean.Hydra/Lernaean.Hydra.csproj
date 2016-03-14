@@ -77,7 +77,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\..\paket-files\www.w3.org\context.jsonld">
+    <EmbeddedResource Include="..\..\paket-files\raw.githubusercontent.com\core.jsonld">
       <Link>context.jsonld</Link>
     </EmbeddedResource>
     <None Include="Hydra.rdf" />

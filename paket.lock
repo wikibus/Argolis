@@ -46,9 +46,9 @@ GIT
   specs:
      (2a5f0785c2686635f1b8ab21af1751d276d02727)
 HTTP
-  remote: http://www.w3.org
+  remote: https://raw.githubusercontent.com
   specs:
-    context.jsonld (/ns/hydra/context.jsonld)
+    core.jsonld (/HydraCG/Specifications/master/spec/latest/core/core.jsonld)
   remote: http://rdf-translator.appspot.com
   specs:
     hydra.rdf (/convert/json-ld/xml/https%3A%2F%2Fraw.githubusercontent.com%2FHydraCG%2FSpecifications%2Fmaster%2Fspec%2Flatest%2Fcore%2Fcore.jsonld)
