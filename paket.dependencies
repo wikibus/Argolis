@@ -7,7 +7,7 @@ copy_local: true
 
 nuget GitVersionTask
 nuget JetBrainsAnnotations.Fody
-nuget JsonLd.Entities
+nuget JsonLd.Entities prerelease
 nuget Nancy
 nuget Nancy.Testing
 nuget NullGuard.Fody
