@@ -2,6 +2,8 @@ type project
 id Argolis.Nancy
 excludeddependencies
   GitVersionTask
+dependencies
+  Nancy.Rdf
 iconUrl
   https://raw.githubusercontent.com/HydraCG/hydra-cg.com/master/img/logo.png
 tags
