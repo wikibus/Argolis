@@ -41,11 +41,10 @@ NUGET
       xunit.abstractions (2.0.0)
     xunit.extensibility.execution (2.1.0) - framework: net45
       xunit.extensibility.core (2.1.0) - framework: net45
-GIT
-  remote: https://gist.github.com/5d9c6983004c1c9ec91f.git
-  specs:
-     (2a5f0785c2686635f1b8ab21af1751d276d02727)
 HTTP
+  remote: https://gist.githubusercontent.com
+  specs:
+    vocabulary.tt (/tpluscode/5d9c6983004c1c9ec91f/raw/2a5f0785c2686635f1b8ab21af1751d276d02727/vocabulary.tt)
   remote: https://raw.githubusercontent.com
   specs:
     core.jsonld (/HydraCG/Specifications/master/spec/latest/core/core.jsonld)

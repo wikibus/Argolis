@@ -18,7 +18,7 @@ nuget fluentassertions
 nuget TunnelVisionLabs.Net.UriTemplate prerelease
 nuget GitLink
 
-git https://gist.github.com/5d9c6983004c1c9ec91f.git
+http https://gist.githubusercontent.com/tpluscode/5d9c6983004c1c9ec91f/raw/2a5f0785c2686635f1b8ab21af1751d276d02727/vocabulary.tt
 
 http https://raw.githubusercontent.com/HydraCG/Specifications/master/spec/latest/core/core.jsonld
 http http://rdf-translator.appspot.com/convert/json-ld/xml/https%3A%2F%2Fraw.githubusercontent.com%2FHydraCG%2FSpecifications%2Fmaster%2Fspec%2Flatest%2Fcore%2Fcore.jsonld hydra.rdf
