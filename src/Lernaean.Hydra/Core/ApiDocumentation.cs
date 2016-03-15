@@ -4,6 +4,7 @@ using JetBrains.Annotations;
 using JsonLD.Entities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using NullGuard;
 
 namespace Hydra.Core
 {
@@ -31,7 +32,7 @@ namespace Hydra.Core
         /// Gets the entrypoint Uri.
         /// </summary>
         [JsonProperty(Hydra.entrypoint)]
-        public Uri Entrypoint { get; private set; }
+        public IriRef Entrypoint { get; private set; }
 
         /// <summary>
         /// Gets the supported classes.
@@ -55,12 +56,23 @@ namespace Hydra.Core
         [UsedImplicitly]
         protected static JToken GetContext(ApiDocumentation doc)
         {
-            return new JArray(Hydra.Context, doc.GetLocalContext());
+            var localContext = doc.GetLocalContext();
+            if (localContext != null)
+            {
+                return new JArray(Hydra.Context, localContext);
+            }
+
+            return Hydra.Context;
         }
 
         /// <summary>
         /// Gets the local @context for API documentation.
         /// </summary>
-        protected abstract JToken GetLocalContext();
+        /// <returns>null if local context should be ignored</returns>
+        [return: AllowNull]
+        protected virtual JToken GetLocalContext()
+        {
+            return null;
+        }
     }
 }

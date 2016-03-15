@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Hydra.Core;
-using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace Lernaean.Hydra.Tests.Serialization
@@ -18,7 +17,7 @@ namespace Lernaean.Hydra.Tests.Serialization
             dynamic jsonld = Serializer.Serialize(doc);
 
             // then
-            Assert.Equal("http://example.api/prop", jsonld.supportedClass[0].supportedProperty[0].property);
+            Assert.Equal("http://example.api/prop", jsonld.supportedClass.supportedProperty.property.ToString());
         }
 
         public class TestApiDocumentation : ApiDocumentation
@@ -26,11 +25,6 @@ namespace Lernaean.Hydra.Tests.Serialization
             public TestApiDocumentation() : base(new Uri("http://example.test"))
             {
                 Id = "http://documentation.uri/";
-            }
-
-            protected override JToken GetLocalContext()
-            {
-                return new JObject();
             }
 
             public override IEnumerable<Class> SupportedClasses
@@ -42,7 +36,7 @@ namespace Lernaean.Hydra.Tests.Serialization
                     {
                         new Operation("POST")
                         {
-                            Returns = "http://example.api/ReturnType"
+                            Returns = new Uri("http://example.api/ReturnType")
                         }
                     };
 
@@ -50,7 +44,7 @@ namespace Lernaean.Hydra.Tests.Serialization
                     {
                         new Property
                         {
-                            Predicate = "http://example.api/prop"
+                            Predicate = new Uri("http://example.api/prop")
                         }
                     };
 

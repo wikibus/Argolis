@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using JsonLD.Entities;
 using Newtonsoft.Json;
 using NullGuard;
 
@@ -47,7 +49,7 @@ namespace Hydra.Core
         /// Gets or sets the property.
         /// </summary>
         [JsonProperty(Hydra.property)]
-        public string Predicate { get; set; }
+        public IriRef Predicate { get; set; }
 
         [JsonProperty, UsedImplicitly]
         private string Type

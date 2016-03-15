@@ -1,4 +1,6 @@
+using System;
 using JetBrains.Annotations;
+using JsonLD.Entities;
 using Newtonsoft.Json;
 using NullGuard;
 
@@ -29,14 +31,14 @@ namespace Hydra.Core
         /// </summary>
         [AllowNull]
         [JsonProperty(Hydra.returns)]
-        public string Returns { get; set; }
+        public IriRef Returns { get; set; }
 
         /// <summary>
         /// Gets or sets the expected type.
         /// </summary>
         [AllowNull]
         [JsonProperty(Hydra.expects)]
-        public string Expects { get; set; }
+        public IriRef Expects { get; set; }
 
         [JsonProperty, UsedImplicitly]
         private string Type

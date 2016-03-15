@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Hydra.Annotations;
 using Hydra.Core;
+using JsonLD.Entities;
 
 namespace Hydra
 {
@@ -47,12 +48,12 @@ namespace Hydra
 
             var hydraProperty = new Property();
 
-            hydraProperty.Predicate = attribute.Predicate;
+            hydraProperty.Predicate = (IriRef)attribute.Predicate;
             if (getOperation != null)
             {
                 hydraProperty.SupportedOperations.Add(new Operation("GET")
                   {
-                      Returns = attribute.Range ?? getOperation.Range
+                      Returns = (IriRef)(attribute.Range ?? getOperation.Range)
                   });
             }
 

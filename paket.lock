@@ -41,7 +41,7 @@ NUGET
       xunit.extensibility.core (2.1.0) - framework: net45
   remote: https://ci.appveyor.com/nuget/jsonld-entities-aavhsnxi7xjp
   specs:
-    JsonLD.Entities (0.3.1-pre0020)
+    JsonLD.Entities (0.3.1-pre0023)
       json-ld.net
 HTTP
   remote: https://gist.githubusercontent.com
