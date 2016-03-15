@@ -2,6 +2,8 @@ type project
 id Argolis
 excludeddependencies
   GitVersionTask
+dependencies
+  JsonLd.Entities >= LOCKEDVERSION
 iconUrl
   https://raw.githubusercontent.com/HydraCG/hydra-cg.com/master/img/logo.png
 tags
