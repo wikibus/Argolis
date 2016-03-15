@@ -21,6 +21,7 @@ NUGET
     Newtonsoft.Json (8.0.2)
     NullGuard.Fody (1.4.6)
       Fody (>= 1.29.2)
+    Rdf.Vocabularies (1.0.0)
     Resourcer.Fody (1.4.1)
       Fody (>= 1.29.2)
     StyleCop.MSBuild (4.7.50)
