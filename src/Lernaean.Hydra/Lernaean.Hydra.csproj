@@ -52,6 +52,7 @@
     </Compile>
     <Compile Include="Annotations\SupportedOperationAttribute.cs" />
     <Compile Include="Annotations\SupportedPropertyAttribute.cs" />
+    <Compile Include="Core\Resource.cs" />
     <Compile Include="Resources\Collection.cs" />
     <Compile Include="HydraVocabulary.cs" />
     <Compile Include="Hydra.cs">

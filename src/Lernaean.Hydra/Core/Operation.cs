@@ -1,15 +1,16 @@
-using System;
 using JetBrains.Annotations;
 using JsonLD.Entities;
 using Newtonsoft.Json;
 using NullGuard;
+using Vocab;
 
 namespace Hydra.Core
 {
     /// <summary>
     /// A Hydra operation
     /// </summary>
-    public class Operation
+    [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
+    public class Operation : Resource
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Operation"/> class.
@@ -18,7 +19,14 @@ namespace Hydra.Core
         public Operation(string method)
         {
             Method = method;
+            Expects = (IriRef)Owl.Nothing;
+            Returns = (IriRef)Owl.Nothing;
         }
+
+        /// <summary>
+        /// Gets or sets the Operation's identifier.
+        /// </summary>
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets the HTTP method.

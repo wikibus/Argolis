@@ -8,7 +8,8 @@ namespace Hydra.Core
     /// <summary>
     /// A Hydra class
     /// </summary>
-    public class Class
+    [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
+    public class Class : Resource
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Class"/> class.
@@ -35,12 +36,6 @@ namespace Hydra.Core
         /// </summary>
         [JsonProperty(Hydra.supportedProperty)]
         public IEnumerable<Property> SupportedProperties { [return: AllowNull] get; set; }
-
-        /// <summary>
-        /// Gets or sets the title.
-        /// </summary>
-        [JsonProperty(Hydra.title)]
-        public string Title { [return: AllowNull] get; set; }
 
         [JsonProperty, UsedImplicitly]
         private string Type

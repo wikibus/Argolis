@@ -1,11 +1,7 @@
 ﻿using System;
-using FluentAssertions;
-using Hydra;
 using Hydra.Resources;
-using JsonLD.Entities;
 using Newtonsoft.Json.Linq;
 using Xunit;
-using Vocab = Hydra.Hydra;
 
 namespace Lernaean.Hydra.Tests.Serialization
 {
@@ -27,8 +23,8 @@ namespace Lernaean.Hydra.Tests.Serialization
             dynamic jsonLd = Serialize(collection);
 
             // then
-            Assert.Equal(((JArray)jsonLd[Vocab.member]).Count, 5);
-            Assert.Equal((int)jsonLd[Vocab.totalItems], 5);
+            Assert.Equal(((JArray)jsonLd[global::Hydra.Hydra.member]).Count, 5);
+            Assert.Equal((int)jsonLd[global::Hydra.Hydra.totalItems], 5);
             Assert.Equal((string)jsonLd["@id"], "http://example.org/collection");
         }
     }

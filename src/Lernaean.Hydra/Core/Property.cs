@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using JsonLD.Entities;
@@ -11,7 +10,7 @@ namespace Hydra.Core
     /// A Hydra property
     /// </summary>
     [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
-    public class Property
+    public class Property : Resource
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Property"/> class.
