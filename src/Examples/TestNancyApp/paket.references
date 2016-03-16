@@ -1,0 +1,5 @@
+Microsoft.CodeDom.Providers.DotNetCompilerPlatform
+Microsoft.Net.Compilers
+Nancy.Owin
+Microsoft.Owin.Host.SystemWeb
+Microsoft.Owin.Hosting

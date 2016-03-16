@@ -20,7 +20,7 @@ namespace Lernaean.Hydra.Tests.Serialization
             Assert.Equal("http://example.api/prop", jsonld.supportedClass.supportedProperty.property.ToString());
         }
 
-        public class TestApiDocumentation : ApiDocumentation
+        public class TestApiDocumentation : global::Hydra.Core.ApiDocumentation
         {
             public TestApiDocumentation() : base(new Uri("http://example.test"))
             {

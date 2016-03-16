@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using FluentAssertions;
 using Hydra.Core;
+using Hydra.DocumentationDiscovery;
 using Hydra.Nancy;
 using Nancy;
 using Nancy.Responses.Negotiation;
@@ -80,17 +82,25 @@ namespace Lernaean.Hydra.Tests
             {
                 get { return "uber/documentation/path"; }
             }
+
+            public IEnumerable<ISupportedClassSource> Sources
+            {
+                get
+                {
+                    yield break;
+                }
+            }
         }
 
         private class NullFactory : IApiDocumentationFactory
         {
-            public ApiDocumentation CreateApiDocumentation()
+            public global::Hydra.Core.ApiDocumentation CreateApiDocumentation()
             {
                 return new TestApiDocumentation(new Uri("http://example.com/start"));
             }
         }
 
-        private class TestApiDocumentation : ApiDocumentation
+        private class TestApiDocumentation : global::Hydra.Core.ApiDocumentation
         {
             public TestApiDocumentation(Uri entrypoint) : base(entrypoint)
             {

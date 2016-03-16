@@ -69,7 +69,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Lernaean.Hydra\Lernaean.Hydra.csproj">
       <Project>{F8B427F1-AEEB-481B-8D51-A53AF4EF0813}</Project>
-      <Name>Hydra</Name>
+      <Name>Lernaean.Hydra</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

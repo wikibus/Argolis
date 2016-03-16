@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using Hydra.Core;
+using Hydra.DocumentationDiscovery;
+
 namespace Hydra.Nancy
 {
     /// <summary>
@@ -9,5 +14,11 @@ namespace Hydra.Nancy
         /// Gets the API Documentation path.
         /// </summary>
         string DocumentationPath { get; }
+
+        /// <summary>
+        /// Gets the sources, which will discover <see cref="Type"/>s to document
+        /// in the <see cref="ApiDocumentation"/>.
+        /// </summary>
+        IEnumerable<ISupportedClassSource> Sources { get; }
     }
 }

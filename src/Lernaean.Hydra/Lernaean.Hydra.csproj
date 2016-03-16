@@ -50,9 +50,12 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Annotations\SupportedClassAttribute.cs" />
     <Compile Include="Annotations\SupportedOperationAttribute.cs" />
     <Compile Include="Annotations\SupportedPropertyAttribute.cs" />
+    <Compile Include="DocumentationDiscovery\AssemblySupportedClassSource.cs" />
     <Compile Include="Core\Resource.cs" />
+    <Compile Include="DocumentationDiscovery\ISupportedClassSource.cs" />
     <Compile Include="Resources\Collection.cs" />
     <Compile Include="HydraVocabulary.cs" />
     <Compile Include="Hydra.cs">

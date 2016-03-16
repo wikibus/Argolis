@@ -9,7 +9,12 @@ copy_local: true
 nuget GitVersionTask
 nuget JetBrainsAnnotations.Fody
 nuget JsonLd.Entities prerelease
+nuget Microsoft.CodeDom.Providers.DotNetCompilerPlatform 1.0.0 framework: >= net452
+nuget Microsoft.Net.Compilers 1.0.0 framework: >= net452
+nuget Microsoft.Owin.Host.SystemWeb
+nuget Microsoft.Owin.Hosting
 nuget Nancy
+nuget Nancy.Owin
 nuget Nancy.Testing
 nuget NullGuard.Fody
 nuget Resourcer.Fody

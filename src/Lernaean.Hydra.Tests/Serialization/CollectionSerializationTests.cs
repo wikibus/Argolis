@@ -7,7 +7,6 @@ namespace Lernaean.Hydra.Tests.Serialization
 {
     public class CollectionSerializationTests : SerializationTestsBase
     {
-
         [Fact]
         public void Should_serialize_collection_of_ints_without_a_view()
         {
