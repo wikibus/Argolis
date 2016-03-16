@@ -1,7 +1,7 @@
 namespace Hydra.Resources
 {
     /// <summary>
-    /// Represents a resource, which 
+    /// Represents a resource, which can be "viewed" in different perspectives
     /// </summary>
     public interface IResourceWithViews
     {

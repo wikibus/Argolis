@@ -2,7 +2,7 @@
 
 namespace TestHydraApi
 {
-    [SupportedClass]
+    [SupportedClass("http://example.api/o#Issue")]
     public class Issue
     {
         public string Id { get; set; }

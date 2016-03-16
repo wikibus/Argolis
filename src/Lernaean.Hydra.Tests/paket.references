@@ -7,3 +7,5 @@ Resourcer.Fody
 JsonLd.Entities
 Nancy.Testing
 Rdf.Vocabularies
+dotnetrdf
+json-ld.net
