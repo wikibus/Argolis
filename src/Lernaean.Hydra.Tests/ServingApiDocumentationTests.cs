@@ -4,11 +4,11 @@ using FluentAssertions;
 using Hydra.Core;
 using Hydra.DocumentationDiscovery;
 using Hydra.Nancy;
+using JsonLD.Entities;
 using Nancy;
 using Nancy.Responses.Negotiation;
 using Nancy.Testing;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace Lernaean.Hydra.Tests
@@ -27,7 +27,6 @@ namespace Lernaean.Hydra.Tests
                 configurator.Module<TestModule>();
                 configurator.Module<HydraApiDocumentationModule>();
                 configurator.Dependency<IHydraDocumentationSettings>(new TestSettings());
-                configurator.Dependency<IApiDocumentationFactory>(new NullFactory());
                 configurator.ApplicationStartupTask<HydraDocumentationStartup>();
             }, 
             context => context.HostName("hydra.guru"));
@@ -62,7 +61,8 @@ namespace Lernaean.Hydra.Tests
             var response = _browser.Get("/uber/documentation/path", context => context.Accept(new MediaRange("application/json")));
 
             // then
-            dynamic apiDoc = JsonConvert.DeserializeObject(response.Body.AsString());
+            var asString = response.Body.AsString();
+            dynamic apiDoc = JsonConvert.DeserializeObject(asString);
 
             ((string)apiDoc.id).Should().Be(ExpectedApiDocPath);
         }
@@ -90,26 +90,8 @@ namespace Lernaean.Hydra.Tests
                     yield break;
                 }
             }
-        }
 
-        private class NullFactory : IApiDocumentationFactory
-        {
-            public global::Hydra.Core.ApiDocumentation CreateApiDocumentation()
-            {
-                return new TestApiDocumentation(new Uri("http://example.com/start"));
-            }
-        }
-
-        private class TestApiDocumentation : global::Hydra.Core.ApiDocumentation
-        {
-            public TestApiDocumentation(Uri entrypoint) : base(entrypoint)
-            {
-            }
-
-            protected override JToken GetLocalContext()
-            {
-                return global::Hydra.Hydra.Context;
-            }
+            public IriRef EntryPoint { get; }
         }
     }
 }

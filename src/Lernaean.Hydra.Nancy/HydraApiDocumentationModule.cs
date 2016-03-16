@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using Hydra.Core;
+using Nancy;
 
 namespace Hydra.Nancy
 {
@@ -10,11 +11,11 @@ namespace Hydra.Nancy
         /// <summary>
         /// Initializes a new instance of the <see cref="HydraApiDocumentationModule"/> class.
         /// </summary>
-        public HydraApiDocumentationModule(IHydraDocumentationSettings settings, IApiDocumentationFactory apiDocumentationFactory)
+        public HydraApiDocumentationModule(IHydraDocumentationSettings settings)
         {
             Get[settings.DocumentationPath] = route =>
             {
-                var apiDocumentation = apiDocumentationFactory.CreateApiDocumentation();
+                var apiDocumentation = new ApiDocumentation(settings.EntryPoint);
 
                 apiDocumentation.Id = Request.GetApiDocumentationUri(settings.DocumentationPath);
 

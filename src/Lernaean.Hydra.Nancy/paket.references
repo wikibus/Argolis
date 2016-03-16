@@ -3,3 +3,4 @@ NullGuard.Fody
 JetBrainsAnnotations.Fody
 GitVersionTask
 StyleCopPlus.MSBuild
+JsonLD.Entities

@@ -25,31 +25,29 @@ namespace Lernaean.Hydra.Tests.Serialization
             public TestApiDocumentation() : base(new Uri("http://example.test"))
             {
                 Id = "http://documentation.uri/";
+                SupportedClasses = GetSupportedClasses();
             }
 
-            public override IEnumerable<Class> SupportedClasses
+            public IEnumerable<Class> GetSupportedClasses()
             {
-                get
+                var @class = new Class("http://example.test/class");
+                @class.SupportedOperations = new List<Operation>
                 {
-                    var @class = new Class("http://example.test/class");
-                    @class.SupportedOperations = new List<Operation>
+                    new Operation("POST")
                     {
-                        new Operation("POST")
-                        {
-                            Returns = new Uri("http://example.api/ReturnType")
-                        }
-                    };
+                        Returns = new Uri("http://example.api/ReturnType")
+                    }
+                };
 
-                    @class.SupportedProperties = new List<Property>
+                @class.SupportedProperties = new List<Property>
+                {
+                    new Property
                     {
-                        new Property
-                        {
-                            Predicate = new Uri("http://example.api/prop")
-                        }
-                    };
+                        Predicate = new Uri("http://example.api/prop")
+                    }
+                };
 
-                    yield return @class;
-                }
+                yield return @class;
             }
         }
     }
