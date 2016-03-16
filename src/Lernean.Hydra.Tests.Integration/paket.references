@@ -1,0 +1,8 @@
+GitVersionTask
+xunit
+fluentassertions
+Nancy.Testing
+Rdf.Vocabularies
+dotnetrdf
+json-ld.net
+nancy.rdf

@@ -1,3 +1,5 @@
 Nancy.Owin
 Microsoft.Owin.Host.SystemWeb
 Microsoft.Owin.Hosting
+JsonLD.Entities
+nancy.rdf

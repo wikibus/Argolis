@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHydraApi", "src\Example
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNancyApp", "src\Examples\TestNancyApp\TestNancyApp.csproj", "{1D2E686F-381D-4700-B062-67AC029C0DAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lernean.Hydra.Tests.Integration", "src\Lernean.Hydra.Tests.Integration\Lernean.Hydra.Tests.Integration.csproj", "{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{1D2E686F-381D-4700-B062-67AC029C0DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D2E686F-381D-4700-B062-67AC029C0DAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D2E686F-381D-4700-B062-67AC029C0DAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

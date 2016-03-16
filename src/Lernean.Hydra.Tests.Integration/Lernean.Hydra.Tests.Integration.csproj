@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1167173B-16E1-4A0E-80D6-60A3E600E955}</ProjectGuid>
+    <ProjectGuid>{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lernaean.Hydra.Tests</RootNamespace>
-    <AssemblyName>Lernaean.Hydra.Tests</AssemblyName>
+    <RootNamespace>Lernean.Hydra.Tests.Integration</RootNamespace>
+    <AssemblyName>Lernean.Hydra.Tests.Integration</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -42,44 +42,26 @@
     <Content Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\CommonAssemblyInfo.cs">
-      <Link>Properties\CommonAssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="ApiDocumentation\AssemblySupportedClassSourceTests.cs" />
-    <Compile Include="TestExtension.cs" />
-    <Compile Include="Serialization\ApiDocumentationSerializationTests.cs" />
-    <Compile Include="Serialization\ClassSerializationTests.cs" />
-    <Compile Include="Serialization\SerializationTestsBase.cs" />
-    <Compile Include="ServingApiDocumentationTests.cs" />
-    <Compile Include="PartialCollectionViewTests.cs" />
+    <Compile Include="IntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serialization\CollectionSerializationTests.cs" />
+    <Compile Include="TestExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Examples\TestHydraApi\TestHydraApi.csproj">
-      <Project>{378ae219-5cef-41ed-839a-1e8343754056}</Project>
-      <Name>TestHydraApi</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Examples\TestNancyApp\TestNancyApp.csproj">
-      <Project>{1D2E686F-381D-4700-B062-67AC029C0DAF}</Project>
+      <Project>{1d2e686f-381d-4700-b062-67ac029c0daf}</Project>
       <Name>TestNancyApp</Name>
     </ProjectReference>
     <ProjectReference Include="..\Lernaean.Hydra.Nancy\Lernaean.Hydra.Nancy.csproj">
-      <Project>{CBCAC4DC-129D-4F36-96D5-19B14F18CF18}</Project>
+      <Project>{cbcac4dc-129d-4f36-96d5-19b14f18cf18}</Project>
       <Name>Lernaean.Hydra.Nancy</Name>
     </ProjectReference>
     <ProjectReference Include="..\Lernaean.Hydra\Lernaean.Hydra.csproj">
-      <Project>{F8B427F1-AEEB-481B-8D51-A53AF4EF0813}</Project>
+      <Project>{f8b427f1-aeeb-481b-8d51-a53af4ef0813}</Project>
       <Name>Lernaean.Hydra</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="FodyWeavers.xml">
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -139,13 +121,6 @@
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
-      <PropertyGroup>
-        <__paket__Fody_targets>portable-net+sl+win+wpa+wp\Fody</__paket__Fody_targets>
-      </PropertyGroup>
     </When>
   </Choose>
   <Choose>
@@ -211,6 +186,17 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
       <ItemGroup>
+        <Reference Include="Nancy.Rdf">
+          <HintPath>..\..\packages\Nancy.Rdf\lib\net40\Nancy.Rdf.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
+      <ItemGroup>
         <Reference Include="Nancy.Testing">
           <HintPath>..\..\packages\Nancy.Testing\lib\net40\Nancy.Testing.dll</HintPath>
           <Private>True</Private>
@@ -242,41 +228,8 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
       <ItemGroup>
-        <Reference Include="NullGuard">
-          <HintPath>..\..\packages\NullGuard.Fody\Lib\portable-net4+sl5+wpa81+wp8+win8+MonoAndroid16+MonoTouch40\NullGuard.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
-      <ItemGroup>
         <Reference Include="Rdf.Vocabularies">
           <HintPath>..\..\packages\Rdf.Vocabularies\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Rdf.Vocabularies.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5'">
-      <ItemGroup>
-        <Reference Include="Resourcer">
-          <HintPath>..\..\packages\Resourcer.Fody\Lib\portable-net45+netcore45+wpa81+wp8\Resourcer.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
-      <ItemGroup>
-        <Reference Include="TunnelVisionLabs.Net.UriTemplate">
-          <HintPath>..\..\packages\TunnelVisionLabs.Net.UriTemplate\lib\net20\TunnelVisionLabs.Net.UriTemplate.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -338,6 +291,5 @@
       </ItemGroup>
     </When>
   </Choose>
-  <Import Project="..\..\packages\Fody\build\$(__paket__Fody_targets).targets" Condition="Exists('..\..\packages\Fody\build\$(__paket__Fody_targets).targets')" Label="Paket" />
   <Import Project="..\..$(__paket__GitVersionTask_targets).targets" Condition="Exists('..\..$(__paket__GitVersionTask_targets).targets')" Label="Paket" />
 </Project>

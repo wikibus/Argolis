@@ -1,15 +1,12 @@
 ﻿using System;
-using FluentAssertions;
-using Hydra.Nancy;
+using Nancy;
 using Nancy.Testing;
-using TestNancyApp;
 using VDS.RDF.Query.Builder;
-using VDS.RDF.Query.Expressions;
 using Vocab;
 using Xunit;
 using HCore = Hydra.Hydra;
 
-namespace Lernaean.Hydra.Tests
+namespace Lernean.Hydra.Tests.Integration
 {
     public class IntegrationTests
     {
@@ -17,21 +14,14 @@ namespace Lernaean.Hydra.Tests
 
         public IntegrationTests()
         {
-            _browser = new Browser(configurator =>
-            {
-                configurator.Assembly("TestNancyApp");
-                configurator.Assembly("Lernaean.Hydra");
-                configurator.Assembly("Lernaean.Hydra.Nancy");
-                configurator.Dependency<IHydraDocumentationSettings>(typeof (HydraDocumentationSettings));
-            },
-            context => context.HostName("hydra.guru"));
+            _browser = new Browser(new DefaultNancyBootstrapper(), context => context.HostName("hydra.guru"));
         }
 
         [Fact]
         public void Should_include_supported_class_in_documentation_response()
         {
             // when
-            var response = _browser.Get("doc", context =>
+            var response = _browser.Get("api", context =>
             {
                 context.Accept("text/turtle");
             });

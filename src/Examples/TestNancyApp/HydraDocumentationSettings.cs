@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Hydra.DocumentationDiscovery;
 using Hydra.Nancy;
+using JsonLD.Entities;
 using TestHydraApi;
 
 namespace TestNancyApp
@@ -18,6 +19,11 @@ namespace TestNancyApp
             {
                 yield return new AssemblySupportedClassSource(typeof(Issue).Assembly);
             }
+        }
+
+        public IriRef EntryPoint
+        {
+            get { return (IriRef)"http://localhost:61186/entrypoint"; }
         }
     }
 }

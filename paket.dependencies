@@ -1,4 +1,5 @@
 source https://www.nuget.org/api/v2
+source https://ci.appveyor.com/nuget/nancy-rdf-kh5o73kjrn37
 source https://ci.appveyor.com/nuget/jsonld-entities-aavhsnxi7xjp
 
 framework: net40, net45
@@ -24,6 +25,7 @@ nuget GitLink
 nuget Rdf.Vocabularies
 nuget dotnetrdf
 nuget json-ld.net
+nuget nancy.rdf
 
 http https://gist.githubusercontent.com/tpluscode/5d9c6983004c1c9ec91f/raw/2a5f0785c2686635f1b8ab21af1751d276d02727/vocabulary.tt
 
