@@ -8,7 +8,7 @@ namespace Hydra.DocumentationDiscovery
     /// Contract for finding types, which will be included in
     /// <see cref="ApiDocumentation"/>
     /// </summary>
-    public interface ISupportedClassSource
+    public interface IDocumentedTypeSelector
     {
         /// <summary>
         /// Finds types to include in <see cref="ApiDocumentation" />.

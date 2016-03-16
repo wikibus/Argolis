@@ -53,9 +53,11 @@
     <Compile Include="Annotations\SupportedClassAttribute.cs" />
     <Compile Include="Annotations\SupportedOperationAttribute.cs" />
     <Compile Include="Annotations\SupportedPropertyAttribute.cs" />
-    <Compile Include="DocumentationDiscovery\AssemblySupportedClassSource.cs" />
+    <Compile Include="DocumentationDiscovery\AssemblyDocumentedTypeSelector.cs" />
     <Compile Include="Core\Resource.cs" />
-    <Compile Include="DocumentationDiscovery\ISupportedClassSource.cs" />
+    <Compile Include="DocumentationDiscovery\DefaultSupportedClassFactory.cs" />
+    <Compile Include="DocumentationDiscovery\ISupportedClassFactory.cs" />
+    <Compile Include="DocumentationDiscovery\IDocumentedTypeSelector.cs" />
     <Compile Include="Resources\Collection.cs" />
     <Compile Include="HydraVocabulary.cs" />
     <Compile Include="Hydra.cs">

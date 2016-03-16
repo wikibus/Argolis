@@ -13,11 +13,11 @@ namespace TestNancyApp
             get { return "api"; }
         }
 
-        public IEnumerable<ISupportedClassSource> Sources
+        public IEnumerable<IDocumentedTypeSelector> Sources
         {
             get
             {
-                yield return new AssemblySupportedClassSource(typeof(Issue).Assembly);
+                yield return new AssemblyDocumentedTypeSelector(typeof(Issue).Assembly);
             }
         }
 

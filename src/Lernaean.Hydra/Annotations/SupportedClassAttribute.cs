@@ -9,7 +9,7 @@ namespace Hydra.Annotations
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Struct)]
     public class SupportedClassAttribute : Attribute
     {
-        private Uri _rdfClassId;
+        private readonly Uri _rdfClassId;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SupportedClassAttribute" /> class.
@@ -18,6 +18,14 @@ namespace Hydra.Annotations
         public SupportedClassAttribute(string rdfClassId)
         {
             _rdfClassId = new Uri(rdfClassId, UriKind.Absolute);
+        }
+
+        /// <summary>
+        /// Gets the RDF class.
+        /// </summary>
+        public Uri RdfClass
+        {
+            get { return _rdfClassId; }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FakeItEasy;
 using FluentAssertions;
 using Hydra.Core;
 using Hydra.DocumentationDiscovery;
@@ -27,6 +28,7 @@ namespace Lernaean.Hydra.Tests
                 configurator.Module<TestModule>();
                 configurator.Module<HydraApiDocumentationModule>();
                 configurator.Dependency<IHydraDocumentationSettings>(new TestSettings());
+                configurator.Dependency(A.Fake<ISupportedClassFactory>());
                 configurator.ApplicationStartupTask<HydraDocumentationStartup>();
             }, 
             context => context.HostName("hydra.guru"));
@@ -83,7 +85,7 @@ namespace Lernaean.Hydra.Tests
                 get { return "uber/documentation/path"; }
             }
 
-            public IEnumerable<ISupportedClassSource> Sources
+            public IEnumerable<IDocumentedTypeSelector> Sources
             {
                 get
                 {

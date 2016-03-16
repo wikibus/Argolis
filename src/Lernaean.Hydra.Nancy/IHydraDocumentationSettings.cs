@@ -20,7 +20,7 @@ namespace Hydra.Nancy
         /// Gets the sources, which will discover <see cref="Type"/>s to document
         /// in the <see cref="ApiDocumentation"/>.
         /// </summary>
-        IEnumerable<ISupportedClassSource> Sources { get; }
+        IEnumerable<IDocumentedTypeSelector> Sources { get; }
 
         /// <summary>
         /// Gets the entry point URI.

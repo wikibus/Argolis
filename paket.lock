@@ -10,6 +10,7 @@ NUGET
       HtmlAgilityPack (>= 1.4.9)
       Newtonsoft.Json (>= 6.0.8)
       VDS.Common (1.6.0)
+    FakeItEasy (1.25.3)
     FluentAssertions (4.2.2)
     Fody (1.29.4)
     gitlink (2.2.0)

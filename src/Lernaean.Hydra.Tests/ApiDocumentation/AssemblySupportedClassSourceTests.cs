@@ -7,11 +7,11 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
 {
     public class AssemblySupportedClassSourceTests
     {
-        private readonly AssemblySupportedClassSource _source;
+        private readonly AssemblyDocumentedTypeSelector _source;
 
         public AssemblySupportedClassSourceTests()
         {
-            _source = new AssemblySupportedClassSource(typeof(Issue).Assembly);
+            _source = new AssemblyDocumentedTypeSelector(typeof(Issue).Assembly);
         }
 
         [Fact]
