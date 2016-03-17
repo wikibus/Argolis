@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Hydra.Core;
-using JsonLD.Entities;
 
 namespace Hydra.DocumentationDiscovery
 {
@@ -13,14 +12,17 @@ namespace Hydra.DocumentationDiscovery
     public class DefaultSupportedPropertyFactory : ISupportedPropertyFactory
     {
         private readonly IEnumerable<IPropertyTypeMapping> _propertyTypeMappings;
+        private readonly ISupportedPropertyMetaProvider _metaProvider;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultSupportedPropertyFactory"/> class.
         /// </summary>
-        /// <param name="propertyTypeMappings">The property type mappings.</param>
-        public DefaultSupportedPropertyFactory(IEnumerable<IPropertyTypeMapping> propertyTypeMappings)
+        public DefaultSupportedPropertyFactory(
+            IEnumerable<IPropertyTypeMapping> propertyTypeMappings,
+            ISupportedPropertyMetaProvider metaProvider)
         {
             _propertyTypeMappings = propertyTypeMappings;
+            _metaProvider = metaProvider;
         }
 
         /// <summary>
@@ -30,8 +32,13 @@ namespace Hydra.DocumentationDiscovery
         public SupportedProperty Create(PropertyInfo prop)
         {
             Uri mappedType = _propertyTypeMappings.Select(mapping => mapping.MapType(prop)).FirstOrDefault(mapType => mapType != null);
+            var meta = _metaProvider.GetMeta(prop);
 
-            var property = new SupportedProperty();
+            var property = new SupportedProperty
+            {
+                Label = meta.Title
+            };
+
             if (mappedType != null)
             {
                 property.Predicate = mappedType;

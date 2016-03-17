@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
 using System.Reflection;
 using FakeItEasy;
 using FluentAssertions;
@@ -19,10 +18,12 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         public DefaultSupportedPropertyFactoryTests()
         {
             _propertyType = A.Fake<IPropertyTypeMapping>();
-            _factory = new DefaultSupportedPropertyFactory(new []
-            {
-                _propertyType
-            });
+            _factory = new DefaultSupportedPropertyFactory(
+                new[]
+                {
+                    _propertyType
+                },
+                A.Fake<ISupportedPropertyMetaProvider>());
         }
 
         [Fact]
@@ -33,15 +34,10 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             A.CallTo(() => _propertyType.MapType(A<PropertyInfo>._)).Returns(mappedPredicate);
 
             // when
-            var property = _factory.Create(GetProp<Issue>(issue => issue.Id));
+            var property = _factory.Create(this.GetProp<Issue>(issue => issue.Id));
 
             // then
             property.Predicate.Should().Be((IriRef)mappedPredicate);
-        }
-
-        private PropertyInfo GetProp<T>(Expression<Func<T, object>> propertySelector)
-        {
-            return (PropertyInfo) ((MemberExpression) propertySelector.Body).Member;
         }
     }
 }

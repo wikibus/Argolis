@@ -1,4 +1,5 @@
 ﻿using Hydra.DocumentationDiscovery;
+using Hydra.SupportedProperties;
 using Nancy.Bootstrapper;
 
 namespace Hydra.Nancy
@@ -16,6 +17,8 @@ namespace Hydra.Nancy
             RegisterWithDefault<IRdfTypeProviderPolicy>(typeof(AttributeRdfTypeProviderPolicy));
             RegisterWithDefault<ISupportedPropertySelectionPolicy>(typeof(AllPublicPropertiesSelectionPolicy));
             RegisterWithDefault<ISupportedPropertyFactory>(typeof(DefaultSupportedPropertyFactory));
+            RegisterWithDefault<ISupportedPropertyMetaProvider>(typeof(DefaultSupportedPropertyMetaProvider));
+            RegisterWithUserThenDefault<IPropertyTypeMapping>(new[] { typeof(PrimitiveTypeMappers) });
         }
     }
 }

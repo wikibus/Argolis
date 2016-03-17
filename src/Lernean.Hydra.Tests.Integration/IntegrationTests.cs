@@ -38,7 +38,7 @@ namespace Lernean.Hydra.Tests.Integration
 
         [Theory]
         [InlineData("Title", Xsd.@string)]
-        [InlineData("LikesCount", Xsd.integer)]
+        [InlineData("LikesCount", Xsd.@int)]
         [InlineData("DateCreated", Xsd.dateTime)]
         [InlineData("IsResolved", Xsd.boolean)]
         public void Should_map_default_predicates_for_property_types(string title, string predicate)
@@ -55,7 +55,7 @@ namespace Lernean.Hydra.Tests.Integration
                 .Where(tpb => tpb.Subject("class").PredicateUri(new Uri(HCore.supportedProperty)).Object("prop"))
                 .Where(tpb => tpb.Subject("prop").PredicateUri(new Uri(HCore.title)).Object("title"))
                 .Where(tpb => tpb.Subject("prop").PredicateUri(new Uri(HCore.property)).Object(new Uri(predicate)))
-                .Filter(exb => exb.Variable("title") == title)
+                .Filter(exb => exb.Str(exb.Variable("title")) == title)
                 .BuildQuery();
             documentation.Should().MatchAsk(query);
         }

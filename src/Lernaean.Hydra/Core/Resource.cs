@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using NullGuard;
-using Vocab;
 
 namespace Hydra.Core
 {
@@ -13,13 +12,13 @@ namespace Hydra.Core
         /// <summary>
         /// Gets or sets the label.
         /// </summary>
-        [JsonProperty(Rdfs.label)]
+        [JsonProperty(Hydra.title)]
         public string Label { [return: AllowNull] get; set; }
 
         /// <summary>
         /// Gets or sets the description.
         /// </summary>
-        [JsonProperty(Rdfs.comment)]
+        [JsonProperty(Hydra.description)]
         public string Description { [return: AllowNull] get; set; }
     }
 }
