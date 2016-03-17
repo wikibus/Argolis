@@ -10,18 +10,18 @@ namespace Hydra.Core
     /// A Hydra property
     /// </summary>
     [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
-    public class Property : Resource
+    public class SupportedProperty : Resource
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Property"/> class.
+        /// Initializes a new instance of the <see cref="SupportedProperty"/> class.
         /// </summary>
-        public Property()
+        public SupportedProperty()
         {
             SupportedOperations = new System.Collections.ObjectModel.Collection<Operation>();
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="Property"/> is required.
+        /// Gets or sets a value indicating whether this <see cref="SupportedProperty"/> is required.
         /// </summary>
         [JsonProperty(Hydra.required)]
         public bool Required { get; set; }

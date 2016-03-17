@@ -39,9 +39,9 @@ namespace Lernaean.Hydra.Tests.Serialization
                     }
                 };
 
-                @class.SupportedProperties = new List<Property>
+                @class.SupportedProperties = new List<SupportedProperty>
                 {
-                    new Property
+                    new SupportedProperty
                     {
                         Predicate = new Uri("http://example.api/prop")
                     }

@@ -47,6 +47,7 @@
     </Compile>
     <Compile Include="ApiDocumentation\ApiDocumentationFactoryTests.cs" />
     <Compile Include="ApiDocumentation\AssemblySupportedClassSourceTests.cs" />
+    <Compile Include="ApiDocumentation\DefaultSupportedPropertyFactoryTests.cs" />
     <Compile Include="TestExtension.cs" />
     <Compile Include="Serialization\ApiDocumentationSerializationTests.cs" />
     <Compile Include="Serialization\ClassSerializationTests.cs" />

@@ -21,6 +21,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             _factory = new ApiDocumentationFactory(
                 _hydraDocumentationSettings,
                 A.Fake<IRdfTypeProviderPolicy>(),
+                A.Fake<ISupportedPropertySelectionPolicy>(),
                 A.Fake<ISupportedPropertyFactory>());
         }
 

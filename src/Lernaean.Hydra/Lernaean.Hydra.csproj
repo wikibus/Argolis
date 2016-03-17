@@ -53,14 +53,17 @@
     <Compile Include="Annotations\SupportedClassAttribute.cs" />
     <Compile Include="Annotations\SupportedOperationAttribute.cs" />
     <Compile Include="Annotations\SupportedPropertyAttribute.cs" />
+    <Compile Include="DocumentationDiscovery\AllPublicPropertiesSelectionPolicy.cs" />
     <Compile Include="DocumentationDiscovery\ApiDocumentationFactory.cs" />
     <Compile Include="DocumentationDiscovery\AssemblyAnnotatedTypeSelector.cs" />
     <Compile Include="Core\Resource.cs" />
     <Compile Include="DocumentationDiscovery\AttributeRdfTypeProviderPolicy.cs" />
     <Compile Include="DocumentationDiscovery\DefaultSupportedPropertyFactory.cs" />
+    <Compile Include="DocumentationDiscovery\IPropertyTypeMapping.cs" />
     <Compile Include="DocumentationDiscovery\IRdfTypeProviderPolicy.cs" />
     <Compile Include="DocumentationDiscovery\IDocumentedTypeSelector.cs" />
     <Compile Include="DocumentationDiscovery\ISupportedPropertyFactory.cs" />
+    <Compile Include="DocumentationDiscovery\ISupportedPropertySelectionPolicy.cs" />
     <Compile Include="IHydraDocumentationSettings.cs" />
     <Compile Include="Resources\Collection.cs" />
     <Compile Include="HydraVocabulary.cs" />
@@ -79,7 +82,7 @@
     <Compile Include="Core\Operation.cs" />
     <Compile Include="Resources\PartialCollectionView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Core\Property.cs" />
+    <Compile Include="Core\SupportedProperty.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml">

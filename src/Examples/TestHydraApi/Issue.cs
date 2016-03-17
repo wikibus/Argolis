@@ -1,4 +1,5 @@
-﻿using Hydra.Annotations;
+﻿using System;
+using Hydra.Annotations;
 
 namespace TestHydraApi
 {
@@ -10,5 +11,11 @@ namespace TestHydraApi
         public string Title { get; set; }
 
         public string Content { get; set; }
+
+        public int LikesCount { get; set; }
+
+        public DateTime DateCreated { get; set; }
+
+        public bool IsResolved { get; set; }
     }
 }

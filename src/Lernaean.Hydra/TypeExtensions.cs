@@ -41,12 +41,12 @@ namespace Hydra
             throw new ArgumentException(string.Format("Unknown namespace {0}", ns));
         }
 
-        private static Property CreateProperty(PropertyInfo property)
+        private static SupportedProperty CreateProperty(PropertyInfo property)
         {
             var attribute = property.GetAttribute<SupportedPropertyAttribute>();
             var getOperation = property.GetAttribute<AllowGetAttribute>();
 
-            var hydraProperty = new Property();
+            var hydraProperty = new SupportedProperty();
 
             hydraProperty.Predicate = (IriRef)attribute.Predicate;
             if (getOperation != null)

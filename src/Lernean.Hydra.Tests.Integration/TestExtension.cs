@@ -16,6 +16,9 @@ namespace Lernean.Hydra.Tests.Integration
         public static IGraph AsRdf(this BrowserResponseBodyWrapper body)
         {
             IGraph graph = new Graph();
+            graph.NamespaceMap.AddNamespace("hydra", new Uri(global::Hydra.Hydra.BaseUri));
+            graph.NamespaceMap.AddNamespace("ex", new Uri("http://example.api/o#"));
+
             using (var reader = new StreamReader(body.AsStream()))
             {
                 new VDS.RDF.Parsing.TurtleParser().Load(graph, reader);

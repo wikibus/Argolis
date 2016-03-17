@@ -52,6 +52,7 @@
     </Compile>
     <Compile Include="HydraApiDocumentationModule.cs" />
     <Compile Include="HydraDocumentationStartup.cs" />
+    <Compile Include="HydraRegistrations.cs" />
     <Compile Include="PipelinesExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

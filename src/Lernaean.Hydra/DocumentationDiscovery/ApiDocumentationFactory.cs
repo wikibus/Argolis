@@ -11,6 +11,7 @@ namespace Hydra.DocumentationDiscovery
     {
         private readonly IHydraDocumentationSettings _settings;
         private readonly IRdfTypeProviderPolicy _rdfClassProvider;
+        private readonly ISupportedPropertySelectionPolicy _propSelector;
         private readonly ISupportedPropertyFactory _propFactory;
 
         /// <summary>
@@ -19,10 +20,12 @@ namespace Hydra.DocumentationDiscovery
         public ApiDocumentationFactory(
             IHydraDocumentationSettings settings,
             IRdfTypeProviderPolicy rdfClassProvider,
+            ISupportedPropertySelectionPolicy propSelector,
             ISupportedPropertyFactory propFactory)
         {
             _settings = settings;
             _rdfClassProvider = rdfClassProvider;
+            _propSelector = propSelector;
             _propFactory = propFactory;
         }
 
@@ -35,7 +38,7 @@ namespace Hydra.DocumentationDiscovery
 
             var classes = from type in _settings.Sources.SelectMany(source => source.FindTypes()).Distinct()
                           let classId = _rdfClassProvider.Create(type)
-                          let supportedProperties = type.GetProperties().Select(_propFactory.Create)
+                          let supportedProperties = type.GetProperties().Where(_propSelector.ShouldIncludeProperty).Select(_propFactory.Create)
                           select new Class(classId.ToString())
                           {
                               SupportedProperties = supportedProperties

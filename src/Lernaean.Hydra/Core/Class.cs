@@ -17,7 +17,7 @@ namespace Hydra.Core
         {
             Id = typeId;
             SupportedOperations = new Operation[0];
-            SupportedProperties = new Property[0];
+            SupportedProperties = new SupportedProperty[0];
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Hydra.Core
         /// Gets or sets the supported properties.
         /// </summary>
         [JsonProperty(Hydra.supportedProperty)]
-        public IEnumerable<Property> SupportedProperties { get; set; }
+        public IEnumerable<SupportedProperty> SupportedProperties { get; set; }
 
         [JsonProperty, UsedImplicitly]
         private string Type

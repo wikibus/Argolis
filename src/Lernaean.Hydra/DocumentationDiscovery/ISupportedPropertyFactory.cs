@@ -9,8 +9,8 @@ namespace Hydra.DocumentationDiscovery
     public interface ISupportedPropertyFactory
     {
         /// <summary>
-        /// Creates a hydra <see cref="Property"/> from a type's property.
+        /// Creates a hydra <see cref="SupportedProperty"/> from a type's property.
         /// </summary>
-        Property Create(PropertyInfo prop);
+        SupportedProperty Create(PropertyInfo prop);
     }
 }
