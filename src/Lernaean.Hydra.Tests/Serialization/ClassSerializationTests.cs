@@ -16,7 +16,7 @@ namespace Lernaean.Hydra.Tests.Serialization
             dynamic jsonLd = Serialize(collection);
 
             // then
-            Assert.Equal("Some class", jsonLd[Rdfs.label].ToString());
+            Assert.Equal("Some class", jsonLd[global::Hydra.Hydra.title].ToString());
         }
     }
 }

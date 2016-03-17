@@ -1,4 +1,5 @@
 ﻿using Hydra.Core;
+using NullGuard;
 
 namespace Hydra.DocumentationDiscovery
 {
@@ -10,6 +11,6 @@ namespace Hydra.DocumentationDiscovery
         /// <summary>
         /// Gets or sets the title.
         /// </summary>
-        public string Title { get; set; }
+        public string Title { [return: AllowNull] get; set; }
     }
 }

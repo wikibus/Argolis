@@ -18,7 +18,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         public void Should_get_title_equal_to_property_name()
         {
             // when
-            var meta = _metaProvider.GetMeta(this.GetProp<Issue>(issue => issue.DateCreated));
+            var meta = _metaProvider.GetMeta(typeof(Issue).GetProperty("DateCreated"));
 
             // then
             meta.Title.Should().Be("DateCreated");

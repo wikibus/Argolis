@@ -34,7 +34,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             A.CallTo(() => _propertyType.MapType(A<PropertyInfo>._)).Returns(mappedPredicate);
 
             // when
-            var property = _factory.Create(this.GetProp<Issue>(issue => issue.Id));
+            var property = _factory.Create(typeof(Issue).GetProperty("Id"));
 
             // then
             property.Predicate.Should().Be((IriRef)mappedPredicate);
