@@ -1,10 +1,5 @@
-﻿using System.Collections.Generic;
-using Hydra;
-using JsonLD.Entities;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Nancy;
-using Nancy.Bootstrapper;
-using Nancy.Rdf;
 using Nancy.TinyIoc;
 using Owin;
 using TestNancyApp;
@@ -24,7 +19,7 @@ namespace TestNancyApp
         {
             protected override void ConfigureApplicationContainer(TinyIoCContainer container)
             {
-                container.Register(typeof(IHydraDocumentationSettings), typeof(HydraDocumentationSettings)).AsSingleton();
+                // don't call base to disable automatic registration
             }
         }
     }

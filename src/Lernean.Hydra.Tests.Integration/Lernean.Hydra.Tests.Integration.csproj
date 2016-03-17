@@ -186,8 +186,8 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
       <ItemGroup>
-        <Reference Include="Nancy.RDF">
-          <HintPath>..\..\packages\Nancy.RDF\lib\net40\Nancy.RDF.dll</HintPath>
+        <Reference Include="Nancy.Rdf">
+          <HintPath>..\..\packages\Nancy.Rdf\lib\net40\Nancy.Rdf.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>

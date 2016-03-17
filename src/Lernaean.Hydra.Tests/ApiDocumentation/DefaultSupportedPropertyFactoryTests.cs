@@ -6,7 +6,7 @@ using FluentAssertions;
 using Hydra.DocumentationDiscovery;
 using JsonLD.Entities;
 using TestHydraApi;
-using wikibus.common.Vocabularies;
+using Vocab;
 using Xunit;
 
 namespace Lernaean.Hydra.Tests.ApiDocumentation

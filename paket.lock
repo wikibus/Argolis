@@ -65,9 +65,10 @@ NUGET
       json-ld.net
   remote: https://ci.appveyor.com/nuget/nancy-rdf-kh5o73kjrn37
   specs:
-    Nancy.RDF (0.1.14.0)
-      JsonLD.Entities
-      Nancy (>= 0.23)
+    Nancy.Rdf (0.2.0-pre0049)
+      dotNetRDF
+      JsonLD.Entities (>= 0.3.1-pre0017)
+      Nancy
 HTTP
   remote: https://gist.githubusercontent.com
   specs:
