@@ -45,6 +45,7 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="ApiDocumentation\ApiDocumentationFactoryTests.cs" />
     <Compile Include="ApiDocumentation\AssemblySupportedClassSourceTests.cs" />
     <Compile Include="TestExtension.cs" />
     <Compile Include="Serialization\ApiDocumentationSerializationTests.cs" />

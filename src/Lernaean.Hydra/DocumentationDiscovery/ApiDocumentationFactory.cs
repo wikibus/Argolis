@@ -33,8 +33,7 @@ namespace Hydra.DocumentationDiscovery
         {
             var apiDocumentation = new ApiDocumentation(_settings.EntryPoint);
 
-            var classes = from source in _settings.Sources
-                          from type in source.FindTypes()
+            var classes = from type in _settings.Sources.SelectMany(source => source.FindTypes()).Distinct()
                           let classId = _rdfClassProvider.Create(type)
                           let supportedProperties = type.GetProperties().Select(_propFactory.Create)
                           select new Class(classId.ToString())
