@@ -123,37 +123,6 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
       <ItemGroup>
-        <Reference Include="dotNetRDF">
-          <HintPath>..\..\..\packages\dotNetRDF\lib\net40\dotNetRDF.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.0'">
-      <ItemGroup>
-        <Reference Include="HtmlAgilityPack">
-          <HintPath>..\..\..\packages\HtmlAgilityPack\lib\Net40\HtmlAgilityPack.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5'">
-      <ItemGroup>
-        <Reference Include="HtmlAgilityPack">
-          <HintPath>..\..\..\packages\HtmlAgilityPack\lib\Net45\HtmlAgilityPack.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
-      <ItemGroup>
         <Reference Include="JsonLD.Entities">
           <HintPath>..\..\..\packages\JsonLD.Entities\lib\net40\JsonLD.Entities.dll</HintPath>
           <Private>True</Private>
@@ -231,8 +200,8 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
       <ItemGroup>
-        <Reference Include="Nancy.Rdf">
-          <HintPath>..\..\..\packages\Nancy.Rdf\lib\net40\Nancy.Rdf.dll</HintPath>
+        <Reference Include="Nancy.RDF">
+          <HintPath>..\..\..\packages\Nancy.RDF\lib\net40\Nancy.RDF.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -264,17 +233,6 @@
       <ItemGroup>
         <Reference Include="Owin">
           <HintPath>..\..\..\packages\Owin\lib\net40\Owin.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
-      <ItemGroup>
-        <Reference Include="VDS.Common">
-          <HintPath>..\..\..\packages\VDS.Common\lib\net40-client\VDS.Common.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>

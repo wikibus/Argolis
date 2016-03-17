@@ -3,7 +3,6 @@ using Nancy;
 using Nancy.Testing;
 using VDS.RDF.Query.Builder;
 using Vocab;
-using wikibus.common.Vocabularies;
 using Xunit;
 using HCore = Hydra.Hydra;
 

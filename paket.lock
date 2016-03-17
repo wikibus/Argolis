@@ -39,7 +39,7 @@ NUGET
     NullGuard.Fody (1.4.6)
       Fody (>= 1.29.2)
     Owin (1.0)
-    Rdf.Vocabularies (1.0.1)
+    Rdf.Vocabularies (1.1.0)
     Resourcer.Fody (1.4.1)
       Fody (>= 1.29.2)
     StyleCop.MSBuild (4.7.50)
@@ -65,10 +65,9 @@ NUGET
       json-ld.net
   remote: https://ci.appveyor.com/nuget/nancy-rdf-kh5o73kjrn37
   specs:
-    Nancy.Rdf (0.2.0-pre0043)
-      dotNetRDF
-      JsonLD.Entities (>= 0.3.1-pre0017)
-      Nancy
+    Nancy.RDF (0.1.14.0)
+      JsonLD.Entities
+      Nancy (>= 0.23)
 HTTP
   remote: https://gist.githubusercontent.com
   specs:
