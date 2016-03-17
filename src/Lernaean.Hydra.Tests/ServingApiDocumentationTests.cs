@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FakeItEasy;
 using FluentAssertions;
-using Hydra.Core;
+using Hydra;
 using Hydra.DocumentationDiscovery;
 using Hydra.Nancy;
 using JsonLD.Entities;
@@ -28,7 +27,8 @@ namespace Lernaean.Hydra.Tests
                 configurator.Module<TestModule>();
                 configurator.Module<HydraApiDocumentationModule>();
                 configurator.Dependency<IHydraDocumentationSettings>(new TestSettings());
-                configurator.Dependency(A.Fake<ISupportedClassFactory>());
+                configurator.Dependency(A.Fake<IRdfTypeProviderPolicy>());
+                configurator.Dependency(A.Fake<ISupportedPropertyFactory>());
                 configurator.ApplicationStartupTask<HydraDocumentationStartup>();
             }, 
             context => context.HostName("hydra.guru"));

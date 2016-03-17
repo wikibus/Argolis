@@ -4,7 +4,7 @@ using Hydra.Core;
 using Hydra.DocumentationDiscovery;
 using JsonLD.Entities;
 
-namespace Hydra.Nancy
+namespace Hydra
 {
     /// <summary>
     /// Settings for serving hydra API Documentation

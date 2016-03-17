@@ -10,15 +10,15 @@ namespace Hydra.DocumentationDiscovery
     /// Finds types in assembly marked with <see cref="SupportedClassAttribute"/>
     /// </summary>
     /// <seealso cref="IDocumentedTypeSelector" />
-    public class AssemblyDocumentedTypeSelector : IDocumentedTypeSelector
+    public class AssemblyAnnotatedTypeSelector : IDocumentedTypeSelector
     {
         private readonly Assembly _assembly;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AssemblyDocumentedTypeSelector"/> class.
+        /// Initializes a new instance of the <see cref="AssemblyAnnotatedTypeSelector"/> class.
         /// </summary>
         /// <param name="assembly">The assembly.</param>
-        public AssemblyDocumentedTypeSelector(Assembly assembly)
+        public AssemblyAnnotatedTypeSelector(Assembly assembly)
         {
             _assembly = assembly;
         }

@@ -1,14 +1,12 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
-using NullGuard;
 
 namespace Hydra.Core
 {
     /// <summary>
     /// A Hydra class
     /// </summary>
-    [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
     public class Class : Resource
     {
         /// <summary>
@@ -18,6 +16,8 @@ namespace Hydra.Core
         public Class(string typeId)
         {
             Id = typeId;
+            SupportedOperations = new Operation[0];
+            SupportedProperties = new Property[0];
         }
 
         /// <summary>
@@ -29,13 +29,13 @@ namespace Hydra.Core
         /// Gets or sets the supported operations.
         /// </summary>
         [JsonProperty(Hydra.supportedOperation)]
-        public IEnumerable<Operation> SupportedOperations { [return: AllowNull] get; set; }
+        public IEnumerable<Operation> SupportedOperations { get; set; }
 
         /// <summary>
         /// Gets or sets the supported properties.
         /// </summary>
         [JsonProperty(Hydra.supportedProperty)]
-        public IEnumerable<Property> SupportedProperties { [return: AllowNull] get; set; }
+        public IEnumerable<Property> SupportedProperties { get; set; }
 
         [JsonProperty, UsedImplicitly]
         private string Type

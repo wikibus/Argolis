@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Hydra;
 using Hydra.DocumentationDiscovery;
 using Hydra.Nancy;
 using JsonLD.Entities;
@@ -17,7 +18,7 @@ namespace TestNancyApp
         {
             get
             {
-                yield return new AssemblyDocumentedTypeSelector(typeof(Issue).Assembly);
+                yield return new AssemblyAnnotatedTypeSelector(typeof(Issue).Assembly);
             }
         }
 

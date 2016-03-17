@@ -6,12 +6,12 @@ namespace Hydra.DocumentationDiscovery
     /// <summary>
     /// Contract for creating supported hydra:<see cref="Class"/>
     /// </summary>
-    public interface ISupportedClassFactory
+    public interface IRdfTypeProviderPolicy
     {
         /// <summary>
         /// Creates a hydra:Class from <see cref="Type"/>
         /// </summary>
         /// <param name="documentedType">Type to document.</param>
-        Class Create(Type documentedType);
+        Uri Create(Type documentedType);
     }
 }
