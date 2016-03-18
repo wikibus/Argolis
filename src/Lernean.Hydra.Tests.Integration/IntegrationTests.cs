@@ -87,6 +87,30 @@ namespace Lernean.Hydra.Tests.Integration
         }
 
         [Fact]
+        public void Should_map_predicate_range_for_unknown_type_to_Thing()
+        {
+            // given
+            var expectedRange = new Uri(Rdfs.Resource);
+
+            // when
+            var response = _browser.Get("api", context =>
+            {
+                context.Accept("text/turtle");
+            });
+            var documentation = response.Body.AsRdf();
+
+            // then
+            var query = QueryBuilder.Ask()
+                .Where(tpb => tpb.Subject("class").PredicateUri(new Uri(HCore.supportedProperty)).Object("prop"))
+                .Where(tpb => tpb.Subject("prop").PredicateUri(new Uri(HCore.title)).Object("title"))
+                .Where(tpb => tpb.Subject("prop").PredicateUri(new Uri(HCore.property)).Object("pred"))
+                .Where(tpb => tpb.Subject("pred").PredicateUri(new Uri(Rdfs.range)).Object(expectedRange))
+                .Filter(exb => exb.Str(exb.Variable("title")) == "UndocumentedClassProperty")
+                .BuildQuery();
+            documentation.Should().MatchAsk(query);
+        }
+
+        [Fact]
         public void Should_fill_class_description_from_DescriptionAttribute()
         {
             // given

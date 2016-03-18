@@ -25,5 +25,7 @@ namespace TestHydraApi
         public bool IsResolved { get; set; }
 
         public User Submitter { get; set; }
+
+        public UndocumentedClass UndocumentedClassProperty { get; set; }
     }
 }

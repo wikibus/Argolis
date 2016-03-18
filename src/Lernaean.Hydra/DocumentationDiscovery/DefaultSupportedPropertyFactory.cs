@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Hydra.Core;
+using JsonLD.Entities;
+using Vocab;
 
 namespace Hydra.DocumentationDiscovery
 {
@@ -37,13 +39,12 @@ namespace Hydra.DocumentationDiscovery
             var property = new SupportedProperty
             {
                 Title = meta.Title,
-                Description = meta.Description
+                Description = meta.Description,
+                Property =
+                {
+                    Range = mappedType ?? (IriRef)Rdfs.Resource
+                }
             };
-
-            if (mappedType != null)
-            {
-                property.Property.Range = mappedType;
-            }
 
             return property;
         }

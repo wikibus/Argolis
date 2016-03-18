@@ -23,6 +23,7 @@ namespace Hydra.Nancy
             {
                 typeof(XsdDatatypesMapper),
                 typeof(XsdDatatypesNullablesMapper),
+                typeof(SupportedClassRangeMapper),
             });
         }
     }
