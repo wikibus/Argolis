@@ -1,9 +1,12 @@
 type project
 id Argolis.Nancy
+include-pdbs true
 excludeddependencies
+  JsonLd.Entities
   GitVersionTask
+  Nancy
 dependencies
-  Nancy.Rdf
+  Nancy.Rdf >= LOCKEDVERSION
 iconUrl
   https://raw.githubusercontent.com/HydraCG/hydra-cg.com/master/img/logo.png
 tags

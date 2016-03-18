@@ -1,10 +1,12 @@
 type project
 id Argolis
+include-pdbs true
 excludeddependencies
   GitVersionTask
 dependencies
   JsonLd.Entities >= LOCKEDVERSION
   Rdf.Vocabularies >= LOCKEDVERSION
+  TunnelVisionLabs.Net.UriTemplate >= LOCKEDVERSION
 iconUrl
   https://raw.githubusercontent.com/HydraCG/hydra-cg.com/master/img/logo.png
 tags
