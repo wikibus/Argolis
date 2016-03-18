@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using Hydra.DocumentationDiscovery;
+using NullGuard;
 using Vocab;
 
 namespace Hydra.SupportedProperties
@@ -37,6 +38,7 @@ namespace Hydra.SupportedProperties
         /// <summary>
         /// Maps a <see cref="PropertyInfo.PropertyType" /> to predefined XSD data types.
         /// </summary>
+        [return: AllowNull]
         public Uri MapType(PropertyInfo property)
         {
             if (Types.ContainsKey(property.PropertyType) == false)
