@@ -1,5 +1,5 @@
-﻿using Hydra.Core;
-using Vocab;
+﻿using System;
+using Hydra.Core;
 using Xunit;
 
 namespace Lernaean.Hydra.Tests.Serialization
@@ -10,7 +10,7 @@ namespace Lernaean.Hydra.Tests.Serialization
         public void Should_serialize_hydraClass_title()
         {
             // given
-            var collection = new Class("http://example.api/Class") { Title = "Some class" };
+            var collection = new Class(new Uri("http://example.api/Class")) { Title = "Some class" };
 
             // when
             dynamic jsonLd = Serialize(collection);

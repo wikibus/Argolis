@@ -48,10 +48,12 @@ namespace Lernean.Hydra.Tests.Integration
 
             public void MatchAsk(SparqlQuery query)
             {
+                const string failFormat = "Actual triples were:{0}{0}{1}{0}The query was: {0}{0}{2}";
+
                 var queryProcessor = new LeviathanQueryProcessor(new InMemoryDataset(_graph));
                 var processQuery = (SparqlResultSet) queryProcessor.ProcessQuery(query);
 
-                processQuery.Result.Should().BeTrue("Actual triples were:{0}{0}{1}", Environment.NewLine, SerializeGraph());
+                processQuery.Result.Should().BeTrue(failFormat, Environment.NewLine, SerializeGraph(), query);
             }
 
             private object SerializeGraph()

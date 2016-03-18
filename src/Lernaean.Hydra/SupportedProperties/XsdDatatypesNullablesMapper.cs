@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using Hydra.DocumentationDiscovery;
 using NullGuard;
@@ -8,10 +9,10 @@ namespace Hydra.SupportedProperties
     /// <summary>
     /// Maps underlying type of <see cref="Nullable{T}"/> properties to RDF type.
     /// </summary>
-    public class XsdDatatypesNullablesMapper : XsdDatatypesMapper, IPropertyTypeMapping
+    public class XsdDatatypesNullablesMapper : XsdDatatypesMapper, IPropertyRangeMapper
     {
         [return: AllowNull]
-        Uri IPropertyTypeMapping.MapType(PropertyInfo property)
+        Uri IPropertyRangeMapper.MapType(PropertyInfo property, IReadOnlyDictionary<Type, Uri> classIds)
         {
             if (property.PropertyType.IsConstructedGenericType)
             {
@@ -19,7 +20,7 @@ namespace Hydra.SupportedProperties
 
                 if (genericTypeDefinition == typeof(Nullable<>))
                 {
-                    return GetMappedClassUri(property.PropertyType.GenericTypeArguments[0]);
+                    return GetMappedXsdTypeUri(property.PropertyType.GenericTypeArguments[0]);
                 }
             }
 

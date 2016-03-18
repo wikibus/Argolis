@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
@@ -13,7 +14,7 @@ namespace Hydra.Core
         /// Initializes a new instance of the <see cref="Class"/> class.
         /// </summary>
         /// <param name="typeId">The class URI.</param>
-        public Class(string typeId)
+        public Class(Uri typeId)
         {
             Id = typeId;
             SupportedOperations = new Operation[0];
@@ -23,7 +24,7 @@ namespace Hydra.Core
         /// <summary>
         /// Gets or sets the Class' identifier.
         /// </summary>
-        public string Id { get; set; }
+        public Uri Id { get; set; }
 
         /// <summary>
         /// Gets or sets the supported operations.

@@ -10,7 +10,7 @@ namespace Hydra.SupportedProperties
     /// <summary>
     /// Maps a <see cref="PropertyInfo.PropertyType" /> to predefined XSD data types.
     /// </summary>
-    public class XsdDatatypesMapper : IPropertyTypeMapping
+    public class XsdDatatypesMapper : IPropertyRangeMapper
     {
         private static readonly IDictionary<Type, Uri> Types;
 
@@ -39,15 +39,15 @@ namespace Hydra.SupportedProperties
         /// Maps a <see cref="PropertyInfo.PropertyType" /> to predefined XSD data types.
         /// </summary>
         [return: AllowNull]
-        public Uri MapType(PropertyInfo property)
+        public Uri MapType(PropertyInfo property, IReadOnlyDictionary<Type, Uri> classIds)
         {
-            return GetMappedClassUri(property.PropertyType);
+            return GetMappedXsdTypeUri(property.PropertyType);
         }
 
         /// <summary>
         /// Gets the mapped class URI or null.
         /// </summary>
-        protected Uri GetMappedClassUri(Type propertyType)
+        protected Uri GetMappedXsdTypeUri(Type propertyType)
         {
             if (Types.ContainsKey(propertyType) == false)
             {

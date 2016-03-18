@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Hydra.Core;
 
 namespace Hydra.DocumentationDiscovery
@@ -39,20 +41,39 @@ namespace Hydra.DocumentationDiscovery
         {
             var apiDocumentation = new ApiDocumentation(_settings.EntryPoint);
 
-            var classes = from type in _settings.Sources.SelectMany(source => source.FindTypes()).Distinct()
-                          let classId = _rdfClassProvider.Create(type)
-                          let supportedProperties = type.GetProperties().Where(_propSelector.ShouldIncludeProperty).Select(_propFactory.Create)
-                          let classMeta = _classMetaProvider.GetMeta(type)
-                          select new Class(classId.ToString())
-                          {
-                              SupportedProperties = supportedProperties,
-                              Title = classMeta.Title,
-                              Description = classMeta.Description
-                          };
+            var classes = DiscoverSupportedClasses();
+            var classIds = classes.ToDictionary(c => c.Key, c => c.Value.Id);
 
-            apiDocumentation.SupportedClasses = classes.ToList();
+            foreach (var supportedClass in classes)
+            {
+                var supportedProperties =
+                    supportedClass.Key.GetProperties()
+                        .Where(_propSelector.ShouldIncludeProperty)
+                        .Select(sp => _propFactory.Create(sp, classIds));
+
+                supportedClass.Value.SupportedProperties = supportedProperties;
+            }
+
+            apiDocumentation.SupportedClasses = classes.Values;
 
             return apiDocumentation;
+        }
+
+        private Dictionary<Type, Class> DiscoverSupportedClasses()
+        {
+            return (from type in _settings.Sources.SelectMany(source => source.FindTypes()).Distinct()
+                let classId = _rdfClassProvider.Create(type)
+                let classMeta = _classMetaProvider.GetMeta(type)
+                select new
+                {
+                    type,
+                    @class = new Class(classId)
+                    {
+                        Title = classMeta.Title,
+                        Description = classMeta.Description
+                    }
+                })
+                .ToDictionary(t => t.type, t => t.@class);
         }
     }
 }

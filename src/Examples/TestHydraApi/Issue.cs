@@ -23,5 +23,7 @@ namespace TestHydraApi
         public DateTime? DateDeleted { get; set; }
 
         public bool IsResolved { get; set; }
+
+        public User Submitter { get; set; }
     }
 }

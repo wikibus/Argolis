@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using FakeItEasy;
 using FluentAssertions;
@@ -13,11 +14,11 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
     public class DefaultSupportedPropertyFactoryTests
     {
         private readonly DefaultSupportedPropertyFactory _factory;
-        private readonly IPropertyTypeMapping _propertyType;
+        private readonly IPropertyRangeMapper _propertyType;
 
         public DefaultSupportedPropertyFactoryTests()
         {
-            _propertyType = A.Fake<IPropertyTypeMapping>();
+            _propertyType = A.Fake<IPropertyRangeMapper>();
             _factory = new DefaultSupportedPropertyFactory(
                 new[]
                 {
@@ -31,10 +32,10 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         {
             // given
             var mappedPredicate = new Uri(Xsd.@string);
-            A.CallTo(() => _propertyType.MapType(A<PropertyInfo>._)).Returns(mappedPredicate);
+            A.CallTo(() => _propertyType.MapType(A<PropertyInfo>._, A<IReadOnlyDictionary<Type, Uri>>._)).Returns(mappedPredicate);
 
             // when
-            var property = _factory.Create(typeof(Issue).GetProperty("Id"));
+            var property = _factory.Create(typeof(Issue).GetProperty("Id"), new Dictionary<Type, Uri>());
 
             // then
             property.Property.Range.Should().Be((IriRef)mappedPredicate);

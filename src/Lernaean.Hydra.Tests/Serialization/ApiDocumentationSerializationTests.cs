@@ -30,7 +30,7 @@ namespace Lernaean.Hydra.Tests.Serialization
 
             public IEnumerable<Class> GetSupportedClasses()
             {
-                var @class = new Class("http://example.test/class");
+                var @class = new Class(new Uri("http://example.test/class"));
                 @class.SupportedOperations = new List<Operation>
                 {
                     new Operation("POST")

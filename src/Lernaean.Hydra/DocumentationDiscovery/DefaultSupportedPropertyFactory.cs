@@ -11,14 +11,14 @@ namespace Hydra.DocumentationDiscovery
     /// </summary>
     public class DefaultSupportedPropertyFactory : ISupportedPropertyFactory
     {
-        private readonly IEnumerable<IPropertyTypeMapping> _propertyTypeMappings;
+        private readonly IEnumerable<IPropertyRangeMapper> _propertyTypeMappings;
         private readonly ISupportedPropertyMetaProvider _metaProvider;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultSupportedPropertyFactory"/> class.
         /// </summary>
         public DefaultSupportedPropertyFactory(
-            IEnumerable<IPropertyTypeMapping> propertyTypeMappings,
+            IEnumerable<IPropertyRangeMapper> propertyTypeMappings,
             ISupportedPropertyMetaProvider metaProvider)
         {
             _propertyTypeMappings = propertyTypeMappings;
@@ -29,9 +29,9 @@ namespace Hydra.DocumentationDiscovery
         /// Creates a hydra <see cref="SupportedProperty" /> from a type's property
         /// using sensible defaults.
         /// </summary>
-        public SupportedProperty Create(PropertyInfo prop)
+        public SupportedProperty Create(PropertyInfo prop, IReadOnlyDictionary<Type, Uri> classIds)
         {
-            Uri mappedType = _propertyTypeMappings.Select(mapping => mapping.MapType(prop)).FirstOrDefault(mapType => mapType != null);
+            Uri mappedType = _propertyTypeMappings.Select(mapping => mapping.MapType(prop, classIds)).FirstOrDefault(mapType => mapType != null);
             var meta = _metaProvider.GetMeta(prop);
 
             var property = new SupportedProperty

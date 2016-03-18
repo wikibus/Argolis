@@ -42,7 +42,7 @@ namespace Lernean.Hydra.Tests.Integration
         [InlineData("DateCreated", Xsd.dateTime)]
         [InlineData("DateDeleted", Xsd.dateTime)]
         [InlineData("IsResolved", Xsd.boolean)]
-        public void Should_map_default_predicates_for_property_types(string title, string predicate)
+        public void Should_map_default_predicate_ranges_for_primitive_property_types(string title, string predicate)
         {
             // when
             var response = _browser.Get("api", context =>
@@ -58,6 +58,30 @@ namespace Lernean.Hydra.Tests.Integration
                 .Where(tpb => tpb.Subject("prop").PredicateUri(new Uri(HCore.property)).Object("pred"))
                 .Where(tpb => tpb.Subject("pred").PredicateUri(new Uri(Rdfs.range)).Object(new Uri(predicate)))
                 .Filter(exb => exb.Str(exb.Variable("title")) == title)
+                .BuildQuery();
+            documentation.Should().MatchAsk(query);
+        }
+
+        [Fact]
+        public void Should_map_predicate_range_for_property_with_supported_property_type()
+        {
+            // given
+            const string expectedRange = "http://example.api/o#User";
+
+            // when
+            var response = _browser.Get("api", context =>
+            {
+                context.Accept("text/turtle");
+            });
+            var documentation = response.Body.AsRdf();
+
+            // then
+            var query = QueryBuilder.Ask()
+                .Where(tpb => tpb.Subject("class").PredicateUri(new Uri(HCore.supportedProperty)).Object("prop"))
+                .Where(tpb => tpb.Subject("prop").PredicateUri(new Uri(HCore.title)).Object("title"))
+                .Where(tpb => tpb.Subject("prop").PredicateUri(new Uri(HCore.property)).Object("pred"))
+                .Where(tpb => tpb.Subject("pred").PredicateUri(new Uri(Rdfs.range)).Object(new Uri(expectedRange)))
+                .Filter(exb => exb.Str(exb.Variable("title")) == "Submitter")
                 .BuildQuery();
             documentation.Should().MatchAsk(query);
         }
