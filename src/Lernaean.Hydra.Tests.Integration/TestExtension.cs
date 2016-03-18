@@ -9,7 +9,7 @@ using VDS.RDF.Query.Datasets;
 using VDS.RDF.Writing;
 using StringWriter = System.IO.StringWriter;
 
-namespace Lernean.Hydra.Tests.Integration
+namespace Lernaean.Hydra.Tests.Integration
 {
     public static class TestExtension
     {
