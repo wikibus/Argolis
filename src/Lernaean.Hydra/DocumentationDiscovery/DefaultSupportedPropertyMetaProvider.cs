@@ -15,12 +15,21 @@ namespace Hydra.DocumentationDiscovery
         public SupportedPropertyMeta GetMeta(PropertyInfo property)
         {
             var isReadonly = property.SetMethod.IsPrivate || HasReadonlyAttribute(property);
+            var description = GetDescription(property);
 
             return new SupportedPropertyMeta
             {
                 Title = property.Name,
+                Description = description,
                 Writeable = isReadonly == false
             };
+        }
+
+        private static string GetDescription(PropertyInfo property)
+        {
+            var readOnlyAttribute = property.GetCustomAttribute<DescriptionAttribute>();
+
+            return readOnlyAttribute != null ? readOnlyAttribute.Description : null;
         }
 
         private static bool HasReadonlyAttribute(PropertyInfo property)

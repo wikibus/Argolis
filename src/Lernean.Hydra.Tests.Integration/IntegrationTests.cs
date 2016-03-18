@@ -59,5 +59,27 @@ namespace Lernean.Hydra.Tests.Integration
                 .BuildQuery();
             documentation.Should().MatchAsk(query);
         }
+
+        [Fact]
+        public void Should_fill_class_description_from_DescriptionAttribute()
+        {
+            // given
+            string expectedDescription = "The number of people who liked this issue";
+
+            // when
+            var response = _browser.Get("api", context =>
+            {
+                context.Accept("text/turtle");
+            });
+            var documentation = response.Body.AsRdf();
+
+            // then
+            var query = QueryBuilder.Ask()
+                .Where(tpb => tpb.Subject("class").PredicateUri(new Uri(HCore.supportedProperty)).Object("prop"))
+                .Where(tpb => tpb.Subject("prop").PredicateUri(new Uri(HCore.description)).Object("description"))
+                .Filter(exb => exb.Variable("description") == expectedDescription)
+                .BuildQuery();
+            documentation.Should().MatchAsk(query);
+        }
     }
 }

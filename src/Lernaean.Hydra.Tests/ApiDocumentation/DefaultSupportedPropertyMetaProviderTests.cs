@@ -53,5 +53,15 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             // then
             meta.Writeable.Should().BeFalse();
         }
+
+        [Fact]
+        public void Should_user_DescriptionAttribute_to_set_description()
+        {
+            // when
+            var meta = _metaProvider.GetMeta(typeof(Issue).GetProperty("LikesCount"));
+
+            // then
+            meta.Description.Should().Be("The number of people who liked this issue");
+        }
     }
 }

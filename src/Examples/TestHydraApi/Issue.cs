@@ -12,7 +12,8 @@ namespace TestHydraApi
         public string Title { get; set; }
 
         public string Content { get; set; }
-
+        
+        [Description("The number of people who liked this issue")]
         public int LikesCount { get; private set; }
 
         [ReadOnly(true)]
