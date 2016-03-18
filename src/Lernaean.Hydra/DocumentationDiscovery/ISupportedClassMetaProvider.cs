@@ -14,6 +14,6 @@ namespace Hydra.DocumentationDiscovery
         /// <returns>
         /// An object containing the title, description, etc.
         /// </returns>
-        SupportedClassMeta GetMeta(Type property);
+        SupportedClassMeta GetMeta(Type type);
     }
 }

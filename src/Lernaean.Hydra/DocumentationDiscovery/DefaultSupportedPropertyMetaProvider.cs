@@ -8,6 +8,8 @@ namespace Hydra.DocumentationDiscovery
     /// </summary>
     public class DefaultSupportedPropertyMetaProvider : ISupportedPropertyMetaProvider
     {
+        private const string DefaultDescription = "The {0} property";
+
         /// <summary>
         /// Gets the <see cref="SupportedPropertyMeta"/> based on property features
         /// and common attributes.
@@ -15,7 +17,7 @@ namespace Hydra.DocumentationDiscovery
         public virtual SupportedPropertyMeta GetMeta(PropertyInfo property)
         {
             var isReadonly = property.SetMethod.IsPrivate || HasReadonlyAttribute(property);
-            var description = property.GetDescription();
+            var description = property.GetDescription() ?? string.Format(DefaultDescription, property.Name);
 
             return new SupportedPropertyMeta
             {

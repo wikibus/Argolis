@@ -18,6 +18,7 @@ namespace Hydra.Nancy
             RegisterWithDefault<ISupportedPropertySelectionPolicy>(typeof(AllPublicPropertiesSelectionPolicy));
             RegisterWithDefault<ISupportedPropertyFactory>(typeof(DefaultSupportedPropertyFactory));
             RegisterWithDefault<ISupportedPropertyMetaProvider>(typeof(DefaultSupportedPropertyMetaProvider));
+            RegisterWithDefault<ISupportedClassMetaProvider>(typeof(DefaultSupportedClassMetaProvider));
             RegisterWithUserThenDefault<IPropertyTypeMapping>(new[] { typeof(PrimitiveTypeMappers) });
         }
     }

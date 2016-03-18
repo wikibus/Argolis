@@ -63,5 +63,15 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             // then
             meta.Description.Should().Be("The number of people who liked this issue");
         }
+
+        [Fact]
+        public void Should_provide_some_default_description()
+        {
+            // when
+            var meta = _metaProvider.GetMeta(typeof(Issue).GetProperty("DateCreated"));
+
+            // then
+            meta.Description.Should().NotBeNullOrWhiteSpace();
+        }
     }
 }
