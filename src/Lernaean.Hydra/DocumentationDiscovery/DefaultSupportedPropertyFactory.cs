@@ -42,7 +42,7 @@ namespace Hydra.DocumentationDiscovery
                 Description = meta.Description,
                 Property =
                 {
-                    Range = mappedType ?? (IriRef)Rdfs.Resource
+                    Range = mappedType ?? (IriRef)Hydra.Resource
                 }
             };
 

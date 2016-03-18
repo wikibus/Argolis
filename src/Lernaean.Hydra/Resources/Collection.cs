@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using Hydra.Annotations;
 using JetBrains.Annotations;
 using JsonLD.Entities.Context;
 using Newtonsoft.Json;
@@ -13,6 +14,7 @@ namespace Hydra.Resources
     /// </summary>
     /// <typeparam name="T">collection element type</typeparam>
     [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
+    [SupportedClass(Hydra.Collection)]
     public class Collection<T> : IResourceWithViews
     {
         /// <summary>

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using FakeItEasy;
+﻿using FakeItEasy;
 using FluentAssertions;
 using Hydra;
 using Hydra.DocumentationDiscovery;
@@ -84,14 +83,6 @@ namespace Lernaean.Hydra.Tests
             public string DocumentationPath
             {
                 get { return "uber/documentation/path"; }
-            }
-
-            public IEnumerable<IDocumentedTypeSelector> Sources
-            {
-                get
-                {
-                    yield break;
-                }
             }
 
             public IriRef EntryPoint { get; }

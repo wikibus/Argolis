@@ -19,6 +19,10 @@ namespace Hydra.Nancy
             RegisterWithDefault<ISupportedPropertyFactory>(typeof(DefaultSupportedPropertyFactory));
             RegisterWithDefault<ISupportedPropertyMetaProvider>(typeof(DefaultSupportedPropertyMetaProvider));
             RegisterWithDefault<ISupportedClassMetaProvider>(typeof(DefaultSupportedClassMetaProvider));
+            RegisterWithUserThenDefault<IDocumentedTypeSelector>(new[]
+            {
+                typeof(HydraBuiltInTypesSelector)
+            });
             RegisterWithUserThenDefault<IPropertyRangeMapper>(new[]
             {
                 typeof(XsdDatatypesMapper),

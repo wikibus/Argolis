@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-using Hydra;
-using Hydra.DocumentationDiscovery;
-using Hydra.Nancy;
+﻿using Hydra;
 using JsonLD.Entities;
-using TestHydraApi;
 
 namespace TestNancyApp
 {
@@ -12,14 +8,6 @@ namespace TestNancyApp
         public string DocumentationPath
         {
             get { return "api"; }
-        }
-
-        public IEnumerable<IDocumentedTypeSelector> Sources
-        {
-            get
-            {
-                yield return new AssemblyAnnotatedTypeSelector(typeof(Issue).Assembly);
-            }
         }
 
         public IriRef EntryPoint

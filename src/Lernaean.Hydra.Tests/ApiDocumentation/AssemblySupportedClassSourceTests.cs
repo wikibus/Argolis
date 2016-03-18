@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Collections.Generic;
+using System.Reflection;
+using FluentAssertions;
 using Hydra.DocumentationDiscovery;
 using TestHydraApi;
 using Xunit;
@@ -11,7 +13,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
 
         public AssemblySupportedClassSourceTests()
         {
-            _source = new AssemblyAnnotatedTypeSelector(typeof(Issue).Assembly);
+            _source = new TestAssemblyAnnotatedTypeSelector();
         }
 
         [Fact]
@@ -21,7 +23,15 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             var supportedClasses = _source.FindTypes();
 
             // then
-            supportedClasses.Should().NotContain(typeof (UndocumentedClass));
+            supportedClasses.Should().NotContain(typeof(UndocumentedClass));
+        }
+
+        private class TestAssemblyAnnotatedTypeSelector : AssemblyAnnotatedTypeSelector
+        {
+            protected override IEnumerable<Assembly> Assemblies
+            {
+                get { yield return typeof (Issue).Assembly; }
+            }
         }
     }
 }

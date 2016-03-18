@@ -17,12 +17,6 @@ namespace Hydra
         string DocumentationPath { get; }
 
         /// <summary>
-        /// Gets the sources, which will discover <see cref="Type"/>s to document
-        /// in the <see cref="ApiDocumentation"/>.
-        /// </summary>
-        IEnumerable<IDocumentedTypeSelector> Sources { get; }
-
-        /// <summary>
         /// Gets the entry point URI.
         /// </summary>
         IriRef EntryPoint { get; }

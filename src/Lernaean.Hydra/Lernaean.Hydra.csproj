@@ -54,10 +54,10 @@
     <Compile Include="Annotations\SupportedOperationAttribute.cs" />
     <Compile Include="Annotations\SupportedPropertyAttribute.cs" />
     <Compile Include="Core\Property.cs" />
+    <Compile Include="Core\Resource.cs" />
     <Compile Include="DocumentationDiscovery\AllPublicPropertiesSelectionPolicy.cs" />
     <Compile Include="DocumentationDiscovery\ApiDocumentationFactory.cs" />
     <Compile Include="DocumentationDiscovery\AssemblyAnnotatedTypeSelector.cs" />
-    <Compile Include="Core\Resource.cs" />
     <Compile Include="DocumentationDiscovery\AttributeRdfTypeProviderPolicy.cs" />
     <Compile Include="DocumentationDiscovery\ReflectionExtensions.cs" />
     <Compile Include="DocumentationDiscovery\DefaultSupportedClassMetaProvider.cs" />
@@ -82,6 +82,7 @@
     </Compile>
     <Compile Include="Resources\IResourceWithViews.cs" />
     <Compile Include="Resources\IView.cs" />
+    <Compile Include="Resources\Resource.cs" />
     <Compile Include="Resources\TemplatedPartialCollectionView.cs" />
     <Compile Include="Resources\ViewTemplate.cs" />
     <Compile Include="SupportedProperties\SupportedClassRangeMapper.cs" />

@@ -14,11 +14,19 @@ namespace Hydra.DocumentationDiscovery
         /// </summary>
         public virtual SupportedClassMeta GetMeta(Type type)
         {
+            var title = type.IsGenericType ? GetCleanGenericName(type) : type.Name;
+            var description = type.GetDescription() ?? string.Format(DefaultDescription, title);
+
             return new SupportedClassMeta
             {
-                Title = type.Name,
-                Description = type.GetDescription() ?? string.Format(DefaultDescription, type.Name)
+                Title = title,
+                Description = description
             };
+        }
+
+        private static string GetCleanGenericName(Type type)
+        {
+            return type.Name.Substring(0, type.Name.IndexOf('`'));
         }
     }
 }

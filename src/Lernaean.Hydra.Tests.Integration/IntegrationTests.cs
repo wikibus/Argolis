@@ -1,12 +1,13 @@
 ﻿using System;
 using Nancy;
 using Nancy.Testing;
+using VDS.RDF;
 using VDS.RDF.Query.Builder;
 using Vocab;
 using Xunit;
 using HCore = Hydra.Hydra;
 
-namespace Lernean.Hydra.Tests.Integration
+namespace Lernaean.Hydra.Tests.Integration
 {
     public class IntegrationTests
     {
@@ -21,11 +22,7 @@ namespace Lernean.Hydra.Tests.Integration
         public void Should_include_supported_class_in_documentation_response()
         {
             // when
-            var response = _browser.Get("api", context =>
-            {
-                context.Accept("text/turtle");
-            });
-            var documentation = response.Body.AsRdf();
+            var documentation = GetDocumentationGraph();
 
             // then
             var query = QueryBuilder.Ask()
@@ -45,11 +42,7 @@ namespace Lernean.Hydra.Tests.Integration
         public void Should_map_default_predicate_ranges_for_primitive_property_types(string title, string predicate)
         {
             // when
-            var response = _browser.Get("api", context =>
-            {
-                context.Accept("text/turtle");
-            });
-            var documentation = response.Body.AsRdf();
+            var documentation = GetDocumentationGraph();
 
             // then
             var query = QueryBuilder.Ask()
@@ -69,11 +62,7 @@ namespace Lernean.Hydra.Tests.Integration
             const string expectedRange = "http://example.api/o#User";
 
             // when
-            var response = _browser.Get("api", context =>
-            {
-                context.Accept("text/turtle");
-            });
-            var documentation = response.Body.AsRdf();
+            var documentation = GetDocumentationGraph();
 
             // then
             var query = QueryBuilder.Ask()
@@ -90,14 +79,10 @@ namespace Lernean.Hydra.Tests.Integration
         public void Should_map_predicate_range_for_unknown_type_to_Thing()
         {
             // given
-            var expectedRange = new Uri(Rdfs.Resource);
+            var expectedRange = new Uri(HCore.Resource);
 
             // when
-            var response = _browser.Get("api", context =>
-            {
-                context.Accept("text/turtle");
-            });
-            var documentation = response.Body.AsRdf();
+            var documentation = GetDocumentationGraph();
 
             // then
             var query = QueryBuilder.Ask()
@@ -117,11 +102,7 @@ namespace Lernean.Hydra.Tests.Integration
             string expectedDescription = "The number of people who liked this issue";
 
             // when
-            var response = _browser.Get("api", context =>
-            {
-                context.Accept("text/turtle");
-            });
-            var documentation = response.Body.AsRdf();
+            var documentation = GetDocumentationGraph();
 
             // then
             var query = QueryBuilder.Ask()
@@ -139,11 +120,7 @@ namespace Lernean.Hydra.Tests.Integration
             string expectedDescription = "An issue reported by our users";
 
             // when
-            var response = _browser.Get("api", context =>
-            {
-                context.Accept("text/turtle");
-            });
-            var documentation = response.Body.AsRdf();
+            var documentation = GetDocumentationGraph();
 
             // then
             var query = QueryBuilder.Ask()
@@ -151,6 +128,27 @@ namespace Lernean.Hydra.Tests.Integration
                 .Filter(exb => exb.Variable("description") == expectedDescription)
                 .BuildQuery();
             documentation.Should().MatchAsk(query);
+        }
+
+        [Theory]
+        [InlineData(HCore.Collection)]
+        [InlineData(HCore.Resource)]
+        public void Should_include_hydra_base_types_as_supported_classes(string expectedType)
+        {
+            // when
+            var documentation = GetDocumentationGraph();
+
+            // then
+            var query = QueryBuilder.Ask()
+                .Where(tpb => tpb.Subject("doc").PredicateUri(new Uri(HCore.supportedClass)).Object(new Uri(expectedType)))
+                .BuildQuery();
+            documentation.Should().MatchAsk(query);
+        }
+
+        private IGraph GetDocumentationGraph()
+        {
+            var response = _browser.Get("api", context => { context.Accept("text/turtle"); });
+            return response.Body.AsRdf();
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Hydra.DocumentationDiscovery
     public class ApiDocumentationFactory
     {
         private readonly IHydraDocumentationSettings _settings;
+        private readonly IEnumerable<IDocumentedTypeSelector> _sources;
         private readonly IRdfTypeProviderPolicy _rdfClassProvider;
         private readonly ISupportedPropertySelectionPolicy _propSelector;
         private readonly ISupportedPropertyFactory _propFactory;
@@ -22,12 +23,14 @@ namespace Hydra.DocumentationDiscovery
         /// </summary>
         public ApiDocumentationFactory(
             IHydraDocumentationSettings settings,
+            IEnumerable<IDocumentedTypeSelector> sources,
             IRdfTypeProviderPolicy rdfClassProvider,
             ISupportedPropertySelectionPolicy propSelector,
             ISupportedPropertyFactory propFactory,
             ISupportedClassMetaProvider classMetaProvider)
         {
             _settings = settings;
+            _sources = sources;
             _rdfClassProvider = rdfClassProvider;
             _propSelector = propSelector;
             _propFactory = propFactory;
@@ -61,7 +64,7 @@ namespace Hydra.DocumentationDiscovery
 
         private Dictionary<Type, Class> DiscoverSupportedClasses()
         {
-            return (from type in _settings.Sources.SelectMany(source => source.FindTypes()).Distinct()
+            return (from type in _sources.SelectMany(source => source.FindTypes()).Distinct()
                 let classId = _rdfClassProvider.Create(type)
                 let classMeta = _classMetaProvider.GetMeta(type)
                 select new
