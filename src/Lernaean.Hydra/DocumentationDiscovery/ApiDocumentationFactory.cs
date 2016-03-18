@@ -46,6 +46,7 @@ namespace Hydra.DocumentationDiscovery
                           select new Class(classId.ToString())
                           {
                               SupportedProperties = supportedProperties,
+                              Title = classMeta.Title,
                               Description = classMeta.Description
                           };
 

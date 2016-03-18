@@ -13,5 +13,10 @@ namespace Hydra.DocumentationDiscovery
         /// Gets or sets the description of a supported class.
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the class' title.
+        /// </summary>
+        public string Title { get; set; }
     }
 }

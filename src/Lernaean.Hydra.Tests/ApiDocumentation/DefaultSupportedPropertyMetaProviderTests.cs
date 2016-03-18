@@ -73,5 +73,15 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             // then
             meta.Description.Should().NotBeNullOrWhiteSpace();
         }
+
+        [Fact]
+        public void Should_provide_some_default_title()
+        {
+            // when
+            var meta = _metaProvider.GetMeta(typeof(Issue).GetProperty("DateCreated"));
+
+            // then
+            meta.Title.Should().NotBeNullOrWhiteSpace();
+        }
     }
 }

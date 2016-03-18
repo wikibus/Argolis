@@ -16,6 +16,7 @@ namespace Hydra.DocumentationDiscovery
         {
             return new SupportedClassMeta
             {
+                Title = type.Name,
                 Description = type.GetDescription() ?? string.Format(DefaultDescription, type.Name)
             };
         }

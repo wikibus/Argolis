@@ -13,7 +13,7 @@ namespace Hydra.Core
         /// Gets or sets the label.
         /// </summary>
         [JsonProperty(Hydra.title)]
-        public string Label { [return: AllowNull] get; set; }
+        public string Title { [return: AllowNull] get; set; }
 
         /// <summary>
         /// Gets or sets the description.

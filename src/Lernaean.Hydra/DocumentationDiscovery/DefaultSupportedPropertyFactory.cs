@@ -36,7 +36,7 @@ namespace Hydra.DocumentationDiscovery
 
             var property = new SupportedProperty
             {
-                Label = meta.Title,
+                Title = meta.Title,
                 Description = meta.Description
             };
 
