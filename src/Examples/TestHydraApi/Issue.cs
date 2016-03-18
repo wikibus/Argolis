@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Hydra.Annotations;
 
 namespace TestHydraApi
@@ -12,8 +13,9 @@ namespace TestHydraApi
 
         public string Content { get; set; }
 
-        public int LikesCount { get; set; }
+        public int LikesCount { get; private set; }
 
+        [ReadOnly(true)]
         public DateTime DateCreated { get; set; }
 
         public bool IsResolved { get; set; }

@@ -23,5 +23,35 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             // then
             meta.Title.Should().Be("DateCreated");
         }
+
+        [Fact]
+        public void Should_set_writeable_to_true_by_default()
+        {
+            // when
+            var meta = _metaProvider.GetMeta(typeof(Issue).GetProperty("Title"));
+
+            // then
+            meta.Writeable.Should().BeTrue();
+        }
+
+        [Fact]
+        public void Should_set_writeable_to_false_if_attribute_is_present()
+        {
+            // when
+            var meta = _metaProvider.GetMeta(typeof(Issue).GetProperty("DateCreated"));
+
+            // then
+            meta.Writeable.Should().BeFalse();
+        }
+
+        [Fact]
+        public void Should_set_writeable_to_false_if_property_is_readonly()
+        {
+            // when
+            var meta = _metaProvider.GetMeta(typeof(Issue).GetProperty("LikesCount"));
+
+            // then
+            meta.Writeable.Should().BeFalse();
+        }
     }
 }

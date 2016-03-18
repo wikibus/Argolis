@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.ComponentModel;
+using System.Reflection;
 
 namespace Hydra.DocumentationDiscovery
 {
@@ -13,10 +14,20 @@ namespace Hydra.DocumentationDiscovery
         /// </summary>
         public SupportedPropertyMeta GetMeta(PropertyInfo property)
         {
+            var isReadonly = property.SetMethod.IsPrivate || HasReadonlyAttribute(property);
+
             return new SupportedPropertyMeta
             {
-                Title = property.Name
+                Title = property.Name,
+                Writeable = isReadonly == false
             };
+        }
+
+        private static bool HasReadonlyAttribute(PropertyInfo property)
+        {
+            var readOnlyAttribute = property.GetCustomAttribute<ReadOnlyAttribute>();
+
+            return readOnlyAttribute != null && readOnlyAttribute.IsReadOnly;
         }
     }
 }
