@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using Hydra.DocumentationDiscovery;
+using NullGuard;
 
 namespace Hydra.SupportedProperties
 {
@@ -9,6 +10,7 @@ namespace Hydra.SupportedProperties
     /// </summary>
     public class XsdDatatypesNullablesMapper : XsdDatatypesMapper, IPropertyTypeMapping
     {
+        [return: AllowNull]
         Uri IPropertyTypeMapping.MapType(PropertyInfo property)
         {
             if (property.PropertyType.IsConstructedGenericType)
