@@ -7,8 +7,8 @@
     <ProjectGuid>{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lernean.Hydra.Tests.Integration</RootNamespace>
-    <AssemblyName>Lernean.Hydra.Tests.Integration</AssemblyName>
+    <RootNamespace>Lernaean.Hydra.Tests.Integration</RootNamespace>
+    <AssemblyName>Lernaean.Hydra.Tests.Integration</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

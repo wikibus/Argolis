@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHydraApi", "src\Example
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNancyApp", "src\Examples\TestNancyApp\TestNancyApp.csproj", "{1D2E686F-381D-4700-B062-67AC029C0DAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lernean.Hydra.Tests.Integration", "src\Lernean.Hydra.Tests.Integration\Lernean.Hydra.Tests.Integration.csproj", "{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lernaean.Hydra.Tests.Integration", "src\Lernaean.Hydra.Tests.Integration\Lernaean.Hydra.Tests.Integration.csproj", "{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
