@@ -81,5 +81,26 @@ namespace Lernean.Hydra.Tests.Integration
                 .BuildQuery();
             documentation.Should().MatchAsk(query);
         }
+
+        [Fact]
+        public void Should_fill_property_description_from_DescriptionAttribute()
+        {
+            // given
+            string expectedDescription = "An issue reported by our users";
+
+            // when
+            var response = _browser.Get("api", context =>
+            {
+                context.Accept("text/turtle");
+            });
+            var documentation = response.Body.AsRdf();
+
+            // then
+            var query = QueryBuilder.Ask()
+                .Where(tpb => tpb.Subject(new Uri("http://example.api/o#Issue")).PredicateUri(new Uri(HCore.description)).Object("description"))
+                .Filter(exb => exb.Variable("description") == expectedDescription)
+                .BuildQuery();
+            documentation.Should().MatchAsk(query);
+        }
     }
 }

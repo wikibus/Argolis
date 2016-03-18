@@ -22,7 +22,8 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
                 _hydraDocumentationSettings,
                 A.Fake<IRdfTypeProviderPolicy>(),
                 A.Fake<ISupportedPropertySelectionPolicy>(),
-                A.Fake<ISupportedPropertyFactory>());
+                A.Fake<ISupportedPropertyFactory>(),
+                A.Fake<ISupportedClassMetaProvider>());
         }
 
         [Fact]

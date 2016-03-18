@@ -29,6 +29,7 @@ namespace Lernaean.Hydra.Tests
                 configurator.Dependency<IHydraDocumentationSettings>(new TestSettings());
                 configurator.Dependency(A.Fake<IRdfTypeProviderPolicy>());
                 configurator.Dependency(A.Fake<ISupportedPropertyFactory>());
+                configurator.Dependency(A.Fake<ISupportedClassMetaProvider>());
                 configurator.ApplicationStartupTask<HydraDocumentationStartup>();
             }, 
             context => context.HostName("hydra.guru"));

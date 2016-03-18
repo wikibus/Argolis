@@ -13,6 +13,7 @@ namespace Hydra.DocumentationDiscovery
         private readonly IRdfTypeProviderPolicy _rdfClassProvider;
         private readonly ISupportedPropertySelectionPolicy _propSelector;
         private readonly ISupportedPropertyFactory _propFactory;
+        private readonly ISupportedClassMetaProvider _classMetaProvider;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiDocumentationFactory"/> class.
@@ -21,12 +22,14 @@ namespace Hydra.DocumentationDiscovery
             IHydraDocumentationSettings settings,
             IRdfTypeProviderPolicy rdfClassProvider,
             ISupportedPropertySelectionPolicy propSelector,
-            ISupportedPropertyFactory propFactory)
+            ISupportedPropertyFactory propFactory,
+            ISupportedClassMetaProvider classMetaProvider)
         {
             _settings = settings;
             _rdfClassProvider = rdfClassProvider;
             _propSelector = propSelector;
             _propFactory = propFactory;
+            _classMetaProvider = classMetaProvider;
         }
 
         /// <summary>
@@ -39,9 +42,11 @@ namespace Hydra.DocumentationDiscovery
             var classes = from type in _settings.Sources.SelectMany(source => source.FindTypes()).Distinct()
                           let classId = _rdfClassProvider.Create(type)
                           let supportedProperties = type.GetProperties().Where(_propSelector.ShouldIncludeProperty).Select(_propFactory.Create)
+                          let classMeta = _classMetaProvider.GetMeta(type)
                           select new Class(classId.ToString())
                           {
-                              SupportedProperties = supportedProperties
+                              SupportedProperties = supportedProperties,
+                              Description = classMeta.Description
                           };
 
             apiDocumentation.SupportedClasses = classes.ToList();

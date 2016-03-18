@@ -12,10 +12,10 @@ namespace Hydra.DocumentationDiscovery
         /// Gets the <see cref="SupportedPropertyMeta"/> based on property features
         /// and common attributes.
         /// </summary>
-        public SupportedPropertyMeta GetMeta(PropertyInfo property)
+        public virtual SupportedPropertyMeta GetMeta(PropertyInfo property)
         {
             var isReadonly = property.SetMethod.IsPrivate || HasReadonlyAttribute(property);
-            var description = GetDescription(property);
+            var description = property.GetDescription();
 
             return new SupportedPropertyMeta
             {
@@ -23,13 +23,6 @@ namespace Hydra.DocumentationDiscovery
                 Description = description,
                 Writeable = isReadonly == false
             };
-        }
-
-        private static string GetDescription(PropertyInfo property)
-        {
-            var readOnlyAttribute = property.GetCustomAttribute<DescriptionAttribute>();
-
-            return readOnlyAttribute != null ? readOnlyAttribute.Description : null;
         }
 
         private static bool HasReadonlyAttribute(PropertyInfo property)
