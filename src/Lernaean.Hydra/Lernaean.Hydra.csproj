@@ -53,6 +53,7 @@
     <Compile Include="Annotations\SupportedClassAttribute.cs" />
     <Compile Include="Annotations\SupportedOperationAttribute.cs" />
     <Compile Include="Annotations\SupportedPropertyAttribute.cs" />
+    <Compile Include="Core\Property.cs" />
     <Compile Include="DocumentationDiscovery\AllPublicPropertiesSelectionPolicy.cs" />
     <Compile Include="DocumentationDiscovery\ApiDocumentationFactory.cs" />
     <Compile Include="DocumentationDiscovery\AssemblyAnnotatedTypeSelector.cs" />
@@ -85,7 +86,6 @@
     <Compile Include="Resources\ViewTemplate.cs" />
     <Compile Include="SupportedProperties\XsdDatatypesMapper.cs" />
     <Compile Include="SupportedProperties\XsdDatatypesNullablesMapper.cs" />
-    <Compile Include="TypeExtensions.cs" />
     <Compile Include="Core\ApiDocumentation.cs" />
     <Compile Include="Core\Class.cs" />
     <Compile Include="Core\Operation.cs" />

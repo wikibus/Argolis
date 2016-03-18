@@ -55,7 +55,8 @@ namespace Lernean.Hydra.Tests.Integration
             var query = QueryBuilder.Ask()
                 .Where(tpb => tpb.Subject("class").PredicateUri(new Uri(HCore.supportedProperty)).Object("prop"))
                 .Where(tpb => tpb.Subject("prop").PredicateUri(new Uri(HCore.title)).Object("title"))
-                .Where(tpb => tpb.Subject("prop").PredicateUri(new Uri(HCore.property)).Object(new Uri(predicate)))
+                .Where(tpb => tpb.Subject("prop").PredicateUri(new Uri(HCore.property)).Object("pred"))
+                .Where(tpb => tpb.Subject("pred").PredicateUri(new Uri(Rdfs.range)).Object(new Uri(predicate)))
                 .Filter(exb => exb.Str(exb.Variable("title")) == title)
                 .BuildQuery();
             documentation.Should().MatchAsk(query);

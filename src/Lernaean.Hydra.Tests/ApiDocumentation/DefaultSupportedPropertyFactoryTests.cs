@@ -37,7 +37,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             var property = _factory.Create(typeof(Issue).GetProperty("Id"));
 
             // then
-            property.Predicate.Should().Be((IriRef)mappedPredicate);
+            property.Property.Range.Should().Be((IriRef)mappedPredicate);
         }
     }
 }

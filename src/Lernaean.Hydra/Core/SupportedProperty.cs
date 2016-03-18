@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
-using JsonLD.Entities;
 using Newtonsoft.Json;
 using NullGuard;
 
@@ -18,6 +17,7 @@ namespace Hydra.Core
         public SupportedProperty()
         {
             SupportedOperations = new System.Collections.ObjectModel.Collection<Operation>();
+            Property = new Property();
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Hydra.Core
         /// Gets or sets the property.
         /// </summary>
         [JsonProperty(Hydra.property)]
-        public IriRef Predicate { get; set; }
+        public Property Property { get; set; }
 
         [JsonProperty, UsedImplicitly]
         private string Type

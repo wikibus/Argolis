@@ -42,7 +42,7 @@ namespace Hydra.DocumentationDiscovery
 
             if (mappedType != null)
             {
-                property.Predicate = mappedType;
+                property.Property.Range = mappedType;
             }
 
             return property;

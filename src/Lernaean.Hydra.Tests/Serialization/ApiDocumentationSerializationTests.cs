@@ -17,7 +17,7 @@ namespace Lernaean.Hydra.Tests.Serialization
             dynamic jsonld = Serializer.Serialize(doc);
 
             // then
-            Assert.Equal("http://example.api/prop", jsonld.supportedClass.supportedProperty.property.ToString());
+            Assert.Equal("http://example.api/prop", jsonld.supportedClass.supportedProperty["hydra:property"].range.ToString());
         }
 
         public class TestApiDocumentation : global::Hydra.Core.ApiDocumentation
@@ -43,7 +43,7 @@ namespace Lernaean.Hydra.Tests.Serialization
                 {
                     new SupportedProperty
                     {
-                        Predicate = new Uri("http://example.api/prop")
+                        Property = new Property { Range = new Uri("http://example.api/prop") }
                     }
                 };
 
