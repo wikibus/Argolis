@@ -10,11 +10,11 @@ namespace Hydra.SupportedProperties
     /// <summary>
     /// Maps a <see cref="PropertyInfo.PropertyType" /> to predefined XSD data types.
     /// </summary>
-    public class PrimitiveTypeMappers : IPropertyTypeMapping
+    public class XsdDatatypesMapper : IPropertyTypeMapping
     {
         private static readonly IDictionary<Type, Uri> Types;
 
-        static PrimitiveTypeMappers()
+        static XsdDatatypesMapper()
         {
             Types = new Dictionary<Type, Uri>
             {
@@ -41,12 +41,20 @@ namespace Hydra.SupportedProperties
         [return: AllowNull]
         public Uri MapType(PropertyInfo property)
         {
-            if (Types.ContainsKey(property.PropertyType) == false)
+            return GetMappedClassUri(property.PropertyType);
+        }
+
+        /// <summary>
+        /// Gets the mapped class URI or null.
+        /// </summary>
+        protected Uri GetMappedClassUri(Type propertyType)
+        {
+            if (Types.ContainsKey(propertyType) == false)
             {
                 return null;
             }
 
-            return Types[property.PropertyType];
+            return Types[propertyType];
         }
     }
 }

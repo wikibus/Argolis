@@ -40,6 +40,7 @@ namespace Lernean.Hydra.Tests.Integration
         [InlineData("Title", Xsd.@string)]
         [InlineData("LikesCount", Xsd.@int)]
         [InlineData("DateCreated", Xsd.dateTime)]
+        [InlineData("DateDeleted", Xsd.dateTime)]
         [InlineData("IsResolved", Xsd.boolean)]
         public void Should_map_default_predicates_for_property_types(string title, string predicate)
         {

@@ -83,7 +83,8 @@
     <Compile Include="Resources\IView.cs" />
     <Compile Include="Resources\TemplatedPartialCollectionView.cs" />
     <Compile Include="Resources\ViewTemplate.cs" />
-    <Compile Include="SupportedProperties\PrimitiveTypeMappers.cs" />
+    <Compile Include="SupportedProperties\XsdDatatypesMapper.cs" />
+    <Compile Include="SupportedProperties\XsdDatatypesNullablesMapper.cs" />
     <Compile Include="TypeExtensions.cs" />
     <Compile Include="Core\ApiDocumentation.cs" />
     <Compile Include="Core\Class.cs" />

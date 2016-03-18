@@ -20,6 +20,8 @@ namespace TestHydraApi
         [ReadOnly(true)]
         public DateTime DateCreated { get; set; }
 
+        public DateTime? DateDeleted { get; set; }
+
         public bool IsResolved { get; set; }
     }
 }
