@@ -17,7 +17,7 @@ namespace Hydra.Discovery.SupportedProperties
         /// </summary>
         public virtual SupportedPropertyMeta GetMeta(PropertyInfo property)
         {
-            var isReadonly = property.SetMethod != null && (property.SetMethod.IsPrivate || HasReadonlyAttribute(property));
+            var isReadonly = property.SetMethod == null || property.SetMethod.IsPrivate || HasReadonlyAttribute(property);
             var description = property.GetDescription() ?? string.Format(DefaultDescription, property.Name);
 
             return new SupportedPropertyMeta

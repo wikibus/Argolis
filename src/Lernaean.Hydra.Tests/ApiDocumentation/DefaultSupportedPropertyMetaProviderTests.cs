@@ -55,6 +55,16 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         }
 
         [Fact]
+        public void Should_set_writeable_to_false_if_property_has_no_setter()
+        {
+            // when
+            var meta = _metaProvider.GetMeta(typeof(UndocumentedClass).GetProperty("NoSetter"));
+
+            // then
+            meta.Writeable.Should().BeFalse();
+        }
+
+        [Fact]
         public void Should_user_DescriptionAttribute_to_set_description()
         {
             // when
