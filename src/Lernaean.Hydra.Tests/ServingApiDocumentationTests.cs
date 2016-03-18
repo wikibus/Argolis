@@ -1,4 +1,5 @@
-﻿using FakeItEasy;
+﻿using System;
+using FakeItEasy;
 using FluentAssertions;
 using Hydra;
 using Hydra.DocumentationDiscovery;
@@ -21,12 +22,16 @@ namespace Lernaean.Hydra.Tests
 
         public ServingApiDocumentationTests()
         {
+            var rdfTypeProviderPolicy = A.Fake<IRdfTypeProviderPolicy>();
+            A.CallTo(() => rdfTypeProviderPolicy.Create(A<Type>._))
+                .ReturnsLazily(call => new Uri("http://example.com/class"));
+
             _browser = new Browser(configurator =>
             {
                 configurator.Module<TestModule>();
                 configurator.Module<HydraApiDocumentationModule>();
                 configurator.Dependency<IHydraDocumentationSettings>(new TestSettings());
-                configurator.Dependency(A.Fake<IRdfTypeProviderPolicy>());
+                configurator.Dependency(rdfTypeProviderPolicy);
                 configurator.Dependency(A.Fake<ISupportedPropertyFactory>());
                 configurator.Dependency(A.Fake<ISupportedClassMetaProvider>());
                 configurator.ApplicationStartupTask<HydraDocumentationStartup>();
@@ -54,19 +59,6 @@ namespace Lernaean.Hydra.Tests
             // then
             response.Headers.Should().ContainKey("Link");
             response.Headers["Link"].Should().Be(ExpectedLinkHeader);
-        }
-
-        [Fact]
-        public void Should_serve_API_doc_with_correct_Id()
-        {
-            // when
-            var response = _browser.Get("/uber/documentation/path", context => context.Accept(new MediaRange("application/json")));
-
-            // then
-            var asString = response.Body.AsString();
-            dynamic apiDoc = JsonConvert.DeserializeObject(asString);
-
-            ((string)apiDoc.id).Should().Be(ExpectedApiDocPath);
         }
 
         private class TestModule : NancyModule

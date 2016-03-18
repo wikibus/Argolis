@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using Hydra.Annotations;
+using JsonLD.Entities;
 
 namespace Hydra.DocumentationDiscovery
 {

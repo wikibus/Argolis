@@ -1,6 +1,9 @@
 ﻿using System;
+using FluentAssertions;
 using Nancy;
+using Nancy.Responses.Negotiation;
 using Nancy.Testing;
+using Newtonsoft.Json;
 using VDS.RDF;
 using VDS.RDF.Query.Builder;
 using Vocab;
@@ -11,6 +14,7 @@ namespace Lernaean.Hydra.Tests.Integration
 {
     public class IntegrationTests
     {
+        private const string ExpectedApiDocPath = "http://hydra.guru/api";
         private readonly Browser _browser;
 
         public IntegrationTests()
@@ -143,6 +147,19 @@ namespace Lernaean.Hydra.Tests.Integration
                 .Where(tpb => tpb.Subject("doc").PredicateUri(new Uri(HCore.supportedClass)).Object(new Uri(expectedType)))
                 .BuildQuery();
             documentation.Should().MatchAsk(query);
+        }
+
+        [Fact]
+        public void Should_serve_API_doc_with_correct_Id()
+        {
+            // when
+            var response = _browser.Get("api", context => context.Accept(new MediaRange("application/json")));
+
+            // then
+            var asString = response.Body.AsString();
+            dynamic apiDoc = JsonConvert.DeserializeObject(asString);
+
+            ((string)apiDoc.id).Should().Be(ExpectedApiDocPath);
         }
 
         private IGraph GetDocumentationGraph()
