@@ -1,7 +1,8 @@
 ﻿using System.Reflection;
 using Hydra.Core;
+using Hydra.Discovery.SupportedProperties;
 
-namespace Hydra.DocumentationDiscovery
+namespace Hydra.Discovery.SupportedClasses
 {
     /// <summary>
     /// Contract for returning basic information about a <see cref="SupportedProperty"/>

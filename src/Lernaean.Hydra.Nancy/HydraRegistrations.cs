@@ -1,5 +1,5 @@
-﻿using Hydra.DocumentationDiscovery;
-using Hydra.SupportedProperties;
+﻿using Hydra.Discovery.SupportedClasses;
+using Hydra.Discovery.SupportedProperties;
 using Nancy.Bootstrapper;
 
 namespace Hydra.Nancy

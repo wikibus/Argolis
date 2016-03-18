@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Reflection;
-using Hydra.DocumentationDiscovery;
+using Hydra.Discovery.SupportedClasses;
 using TestHydraApi;
 
 namespace TestNancyApp

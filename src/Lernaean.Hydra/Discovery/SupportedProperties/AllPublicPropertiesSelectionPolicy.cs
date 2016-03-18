@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
+using Hydra.Discovery.SupportedClasses;
 
-namespace Hydra.DocumentationDiscovery
+namespace Hydra.Discovery.SupportedProperties
 {
     /// <summary>
     /// Selects all public properties except Id

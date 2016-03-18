@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Hydra.DocumentationDiscovery
+namespace Hydra.Discovery.SupportedProperties
 {
     /// <summary>
     /// Contract for mapping property type to RDF type identifier

@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Hydra.DocumentationDiscovery;
+using Hydra.Discovery.SupportedClasses;
 using Hydra.Resources;
 
 namespace Hydra.Nancy

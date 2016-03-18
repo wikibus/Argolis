@@ -1,7 +1,7 @@
 ﻿using Hydra.Core;
 using NullGuard;
 
-namespace Hydra.DocumentationDiscovery
+namespace Hydra.Discovery.SupportedProperties
 {
     /// <summary>
     /// Basic information about a <see cref="SupportedProperty" />

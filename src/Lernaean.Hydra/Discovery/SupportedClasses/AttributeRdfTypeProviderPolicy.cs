@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Reflection;
 using Hydra.Annotations;
-using JsonLD.Entities;
 
-namespace Hydra.DocumentationDiscovery
+namespace Hydra.Discovery.SupportedClasses
 {
     /// <summary>
     /// Default implementation of <see cref="IRdfTypeProviderPolicy"/>

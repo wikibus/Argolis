@@ -2,7 +2,7 @@
 using FakeItEasy;
 using FluentAssertions;
 using Hydra;
-using Hydra.DocumentationDiscovery;
+using Hydra.Discovery.SupportedClasses;
 using Hydra.Nancy;
 using JsonLD.Entities;
 using Nancy;

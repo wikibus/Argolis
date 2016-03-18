@@ -1,7 +1,7 @@
 ﻿using Hydra.Core;
 using NullGuard;
 
-namespace Hydra.DocumentationDiscovery
+namespace Hydra.Discovery.SupportedClasses
 {
     /// <summary>
     /// Basic information about a Supported <see cref="Class" />

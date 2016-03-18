@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Hydra.Core;
+using Hydra.Discovery.SupportedClasses;
 
-namespace Hydra.DocumentationDiscovery
+namespace Hydra.Discovery
 {
     /// <summary>
     /// Discovers Types and converts them into Supported Classes to

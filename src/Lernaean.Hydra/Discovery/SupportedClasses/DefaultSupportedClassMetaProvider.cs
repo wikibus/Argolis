@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Hydra.DocumentationDiscovery
+namespace Hydra.Discovery.SupportedClasses
 {
     /// <summary>
     /// Default implementation of <see cref="ISupportedClassMetaProvider"/>

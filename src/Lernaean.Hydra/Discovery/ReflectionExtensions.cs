@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
 
-namespace Hydra.DocumentationDiscovery
+namespace Hydra.Discovery
 {
     /// <summary>
     /// Helpers for reading stuff from reflection

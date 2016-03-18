@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
+using Hydra.Discovery.SupportedClasses;
 
-namespace Hydra.DocumentationDiscovery
+namespace Hydra.Discovery.SupportedProperties
 {
     /// <summary>
     /// Default implementation of <see cref="ISupportedPropertyMetaProvider"/>

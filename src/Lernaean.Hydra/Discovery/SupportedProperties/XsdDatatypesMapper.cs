@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Hydra.DocumentationDiscovery;
 using NullGuard;
 using Vocab;
 
-namespace Hydra.SupportedProperties
+namespace Hydra.Discovery.SupportedProperties
 {
     /// <summary>
     /// Maps a <see cref="PropertyInfo.PropertyType" /> to predefined XSD data types.

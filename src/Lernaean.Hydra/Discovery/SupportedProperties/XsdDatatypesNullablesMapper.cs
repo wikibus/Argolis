@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Hydra.DocumentationDiscovery;
 using NullGuard;
 
-namespace Hydra.SupportedProperties
+namespace Hydra.Discovery.SupportedProperties
 {
     /// <summary>
     /// Maps underlying type of <see cref="Nullable{T}"/> properties to RDF type.

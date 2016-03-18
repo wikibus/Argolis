@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Hydra.Core;
+using Hydra.Discovery.SupportedClasses;
 using JsonLD.Entities;
-using Vocab;
 
-namespace Hydra.DocumentationDiscovery
+namespace Hydra.Discovery.SupportedProperties
 {
     /// <summary>
     /// Default implementation of <see cref="ISupportedPropertyFactory"/>

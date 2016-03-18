@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Hydra.DocumentationDiscovery;
 using NullGuard;
 
-namespace Hydra.SupportedProperties
+namespace Hydra.Discovery.SupportedProperties
 {
     /// <summary>
     /// Looks up property's range in discovered supported classes

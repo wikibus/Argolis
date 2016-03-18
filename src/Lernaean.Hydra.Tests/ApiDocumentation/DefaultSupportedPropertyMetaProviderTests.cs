@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Hydra.DocumentationDiscovery;
+using Hydra.Discovery.SupportedProperties;
 using TestHydraApi;
 using Xunit;
 

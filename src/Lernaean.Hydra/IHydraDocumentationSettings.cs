@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Hydra.Core;
-using Hydra.DocumentationDiscovery;
 using JsonLD.Entities;
 
 namespace Hydra

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using Hydra.Core;
-using Hydra.DocumentationDiscovery;
+using Hydra.Discovery;
 using Nancy;
 
 namespace Hydra.Nancy

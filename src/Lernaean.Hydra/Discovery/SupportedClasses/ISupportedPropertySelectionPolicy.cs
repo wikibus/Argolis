@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Hydra.DocumentationDiscovery
+namespace Hydra.Discovery.SupportedClasses
 {
     /// <summary>
     /// Contract for selecting properties to be included as Supported Properties

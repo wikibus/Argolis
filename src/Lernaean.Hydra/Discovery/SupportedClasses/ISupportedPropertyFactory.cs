@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Hydra.Core;
 
-namespace Hydra.DocumentationDiscovery
+namespace Hydra.Discovery.SupportedClasses
 {
     /// <summary>
     /// Contract for classes 

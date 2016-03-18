@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using FakeItEasy;
 using FluentAssertions;
 using Hydra;
-using Hydra.DocumentationDiscovery;
+using Hydra.Discovery;
+using Hydra.Discovery.SupportedClasses;
 using TestHydraApi;
 using Xunit;
 

@@ -5,7 +5,7 @@ using System.Reflection;
 using Hydra.Annotations;
 using Hydra.Core;
 
-namespace Hydra.DocumentationDiscovery
+namespace Hydra.Discovery.SupportedClasses
 {
     /// <summary>
     /// Finds types marked with <see cref="SupportedClassAttribute"/>

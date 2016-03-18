@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using FluentAssertions;
-using Hydra.DocumentationDiscovery;
+using Hydra.Discovery.SupportedClasses;
 using TestHydraApi;
 using Xunit;
 

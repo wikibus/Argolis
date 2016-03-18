@@ -1,7 +1,7 @@
 ﻿using System;
 using Hydra.Core;
 
-namespace Hydra.DocumentationDiscovery
+namespace Hydra.Discovery.SupportedClasses
 {
     /// <summary>
     /// Contract for returning basic information about a Supported <see cref="Class"/>
