@@ -1,14 +1,13 @@
 using System;
-using System.Collections.Generic;
 using System.Reflection;
 
 namespace Hydra.Discovery.SupportedProperties
 {
     /// <summary>
-    /// Contract for calculating supported property identifier, where not
-    /// supplied explicitly
+    /// Contract for retrieving the property identifier
+    /// of a supported property predicate
     /// </summary>
-    public interface IPropertyIdFallbackStrategy
+    public interface IPropertyPredicateIdPolicy
     {
         /// <summary>
         /// Gets the property identifier.

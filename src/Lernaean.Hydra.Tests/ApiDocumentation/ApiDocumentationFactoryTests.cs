@@ -5,6 +5,7 @@ using FluentAssertions;
 using Hydra;
 using Hydra.Discovery;
 using Hydra.Discovery.SupportedClasses;
+using Hydra.Discovery.SupportedProperties;
 using TestHydraApi;
 using Xunit;
 

@@ -9,11 +9,11 @@ namespace Hydra.Discovery.SupportedProperties
     /// <summary>
     /// Maps a <see cref="PropertyInfo.PropertyType" /> to predefined XSD data types.
     /// </summary>
-    public class XsdDatatypesMapper : IPropertyRangeMapper
+    public class XsdDatatypesMappingPolicy : IPropertyRangeMappingPolicy
     {
         private static readonly IDictionary<Type, Uri> Types;
 
-        static XsdDatatypesMapper()
+        static XsdDatatypesMappingPolicy()
         {
             Types = new Dictionary<Type, Uri>
             {

@@ -15,18 +15,18 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
     public class DefaultSupportedPropertyFactoryTests
     {
         private readonly DefaultSupportedPropertyFactory _factory;
-        private readonly IPropertyRangeMapper _propertyType;
+        private readonly IPropertyRangeMappingPolicy _propertyType;
 
         public DefaultSupportedPropertyFactoryTests()
         {
-            _propertyType = A.Fake<IPropertyRangeMapper>();
+            _propertyType = A.Fake<IPropertyRangeMappingPolicy>();
             _factory = new DefaultSupportedPropertyFactory(
                 new[]
                 {
                     _propertyType
                 },
                 A.Fake<ISupportedPropertyMetaProvider>(),
-                A.Fake<IPropertyIdFallbackStrategy>());
+                A.Fake<IPropertyPredicateIdPolicy>());
         }
 
         [Fact]

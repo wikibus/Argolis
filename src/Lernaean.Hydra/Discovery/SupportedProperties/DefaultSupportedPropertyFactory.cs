@@ -13,21 +13,21 @@ namespace Hydra.Discovery.SupportedProperties
     /// </summary>
     public class DefaultSupportedPropertyFactory : ISupportedPropertyFactory
     {
-        private readonly IEnumerable<IPropertyRangeMapper> _propertyTypeMappings;
+        private readonly IEnumerable<IPropertyRangeMappingPolicy> _propertyTypeMappings;
         private readonly ISupportedPropertyMetaProvider _metaProvider;
-        private readonly IPropertyIdFallbackStrategy _fallbackPropertyId;
+        private readonly IPropertyPredicateIdPolicy _fallbackPropertyPredicateId;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultSupportedPropertyFactory"/> class.
         /// </summary>
         public DefaultSupportedPropertyFactory(
-            IEnumerable<IPropertyRangeMapper> propertyTypeMappings,
+            IEnumerable<IPropertyRangeMappingPolicy> propertyTypeMappings,
             ISupportedPropertyMetaProvider metaProvider,
-            IPropertyIdFallbackStrategy fallbackPropertyId)
+            IPropertyPredicateIdPolicy fallbackPropertyPredicateId)
         {
             _propertyTypeMappings = propertyTypeMappings;
             _metaProvider = metaProvider;
-            _fallbackPropertyId = fallbackPropertyId;
+            _fallbackPropertyPredicateId = fallbackPropertyPredicateId;
         }
 
         /// <summary>
@@ -36,9 +36,12 @@ namespace Hydra.Discovery.SupportedProperties
         /// </summary>
         public virtual SupportedProperty Create(PropertyInfo prop, IReadOnlyDictionary<Type, Uri> classIds)
         {
-            Uri mappedType = _propertyTypeMappings.Select(mapping => mapping.MapType(prop, classIds)).FirstOrDefault(mapType => mapType != null);
+            Uri mappedType = (from mapping in _propertyTypeMappings
+                              let mapType = mapping.MapType(prop, classIds)
+                              where mapType != null
+                              select mapType).FirstOrDefault();
             var meta = _metaProvider.GetMeta(prop);
-            string propertyId = _fallbackPropertyId.GetPropertyId(prop, meta.Title, classIds[prop.DeclaringType]);
+            string propertyId = _fallbackPropertyPredicateId.GetPropertyId(prop, meta.Title, classIds[prop.DeclaringType]);
 
             var property = new SupportedProperty
             {

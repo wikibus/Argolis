@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using FluentAssertions;
 using Hydra.Discovery.SupportedProperties;
 using TestHydraApi;
+using Vocab;
 using Xunit;
 
 namespace Lernaean.Hydra.Tests.ApiDocumentation
 {
     public class ConcatenatedClassIdAndPropertyNameTests
     {
-        private readonly ConcatenatedClassIdAndPropertyName _policy;
+        private readonly DefaultPropertyIdPolicy _policy;
 
         public ConcatenatedClassIdAndPropertyNameTests()
         {
-            _policy = new ConcatenatedClassIdAndPropertyName();
+            _policy = new DefaultPropertyIdPolicy();
         }
 
         [Theory]

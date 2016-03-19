@@ -8,7 +8,7 @@ namespace Hydra.Discovery.SupportedProperties
     /// <summary>
     /// Looks up property's range in discovered supported classes
     /// </summary>
-    public class SupportedClassRangeMapper : IPropertyRangeMapper
+    public class SupportedClassRangeMappingPolicy : IPropertyRangeMappingPolicy
     {
         /// <inheritdoc />
         [return: AllowNull]

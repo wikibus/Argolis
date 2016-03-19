@@ -8,10 +8,10 @@ namespace Hydra.Discovery.SupportedProperties
     /// <summary>
     /// Maps underlying type of <see cref="Nullable{T}"/> properties to RDF type.
     /// </summary>
-    public class XsdDatatypesNullablesMapper : XsdDatatypesMapper, IPropertyRangeMapper
+    public class XsdDatatypesNullablesMappingPolicy : XsdDatatypesMappingPolicy, IPropertyRangeMappingPolicy
     {
         [return: AllowNull]
-        Uri IPropertyRangeMapper.MapType(PropertyInfo property, IReadOnlyDictionary<Type, Uri> classIds)
+        Uri IPropertyRangeMappingPolicy.MapType(PropertyInfo property, IReadOnlyDictionary<Type, Uri> classIds)
         {
             if (property.PropertyType.IsConstructedGenericType)
             {

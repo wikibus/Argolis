@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Hydra.Core;
 using Hydra.Discovery.SupportedClasses;
+using Hydra.Discovery.SupportedProperties;
 
 namespace Hydra.Discovery
 {

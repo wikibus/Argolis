@@ -19,16 +19,16 @@ namespace Hydra.Nancy
             RegisterWithDefault<ISupportedPropertyFactory>(typeof(DefaultSupportedPropertyFactory));
             RegisterWithDefault<ISupportedPropertyMetaProvider>(typeof(DefaultSupportedPropertyMetaProvider));
             RegisterWithDefault<ISupportedClassMetaProvider>(typeof(DefaultSupportedClassMetaProvider));
-            RegisterWithDefault<IPropertyIdFallbackStrategy>(typeof(ConcatenatedClassIdAndPropertyName));
+            RegisterWithDefault<IPropertyPredicateIdPolicy>(typeof(DefaultPropertyIdPolicy));
             RegisterWithUserThenDefault<IDocumentedTypeSelector>(new[]
             {
                 typeof(HydraBuiltInTypesSelector)
             });
-            RegisterWithUserThenDefault<IPropertyRangeMapper>(new[]
+            RegisterWithUserThenDefault<IPropertyRangeMappingPolicy>(new[]
             {
-                typeof(XsdDatatypesMapper),
-                typeof(XsdDatatypesNullablesMapper),
-                typeof(SupportedClassRangeMapper),
+                typeof(XsdDatatypesMappingPolicy),
+                typeof(XsdDatatypesNullablesMappingPolicy),
+                typeof(SupportedClassRangeMappingPolicy),
             });
         }
     }

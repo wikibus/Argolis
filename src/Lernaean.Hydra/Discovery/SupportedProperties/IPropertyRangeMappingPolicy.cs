@@ -7,7 +7,7 @@ namespace Hydra.Discovery.SupportedProperties
     /// <summary>
     /// Contract for mapping property type to RDF type identifier
     /// </summary>
-    public interface IPropertyRangeMapper
+    public interface IPropertyRangeMappingPolicy
     {
         /// <summary>
         /// Maps a <see cref="PropertyInfo.PropertyType"/> to RDF type.
