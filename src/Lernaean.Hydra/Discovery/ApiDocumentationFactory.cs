@@ -56,7 +56,7 @@ namespace Hydra.Discovery
                         .Where(_propSelector.ShouldIncludeProperty)
                         .Select(sp => _propFactory.Create(sp, classIds));
 
-                supportedClass.Value.SupportedProperties = supportedProperties;
+                supportedClass.Value.SupportedProperties = supportedProperties.ToList();
             }
 
             apiDocumentation.SupportedClasses = classes.Values;
