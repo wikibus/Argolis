@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin;
+﻿using System;
+using Microsoft.Owin;
 using Nancy;
 using Nancy.TinyIoc;
 using Owin;

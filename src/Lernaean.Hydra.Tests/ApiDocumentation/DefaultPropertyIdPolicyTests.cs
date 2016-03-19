@@ -8,11 +8,11 @@ using Xunit;
 
 namespace Lernaean.Hydra.Tests.ApiDocumentation
 {
-    public class ConcatenatedClassIdAndPropertyNameTests
+    public class DefaultPropertyIdPolicyTests
     {
         private readonly DefaultPropertyIdPolicy _policy;
 
-        public ConcatenatedClassIdAndPropertyNameTests()
+        public DefaultPropertyIdPolicyTests()
         {
             _policy = new DefaultPropertyIdPolicy();
         }
@@ -30,6 +30,19 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
 
             // then
             propertyId.Should().Be(expectedPropertyId);
+        } 
+
+        [Fact]
+        public void Should_use_actual_and_not_decalring_class()
+        {
+            // given
+            Uri issueClassId = new Uri("http://example.org/ontolgy#Issue");
+
+            // when
+            var propertyId = _policy.GetPropertyId(typeof(Issue).GetProperty("DateCreated"), "dateCreated", issueClassId);
+
+            // then
+            propertyId.Should().Be("http://example.org/ontolgy#Issue/dateCreated");
         } 
 
         [Fact]

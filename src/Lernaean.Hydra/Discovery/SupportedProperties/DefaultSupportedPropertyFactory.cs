@@ -41,7 +41,7 @@ namespace Hydra.Discovery.SupportedProperties
                               where mapType != null
                               select mapType).FirstOrDefault();
             var meta = _metaProvider.GetMeta(prop);
-            string propertyId = _fallbackPropertyPredicateId.GetPropertyId(prop, meta.Title, classIds[prop.DeclaringType]);
+            string propertyId = _fallbackPropertyPredicateId.GetPropertyId(prop, meta.Title, classIds[prop.ReflectedType]);
 
             var property = new SupportedProperty
             {
