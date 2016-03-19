@@ -29,6 +29,19 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
 
             // then
             propertyId.Should().Be(expectedPropertyId);
+        } 
+
+        [Fact]
+        public void Should_use_value_set_to_JsonProperty_attribute()
+        {
+            // given
+            var classId = new Uri("http://example.org/ontolgy/User");
+
+            // when
+            var propertyId = _policy.GetPropertyId(typeof(User).GetProperty("Name"), "name", classId);
+
+            // then
+            propertyId.Should().Be(Foaf.givenName);
         }   
     }
 }
