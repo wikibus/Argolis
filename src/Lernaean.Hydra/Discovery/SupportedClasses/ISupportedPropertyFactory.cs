@@ -6,7 +6,7 @@ using Hydra.Core;
 namespace Hydra.Discovery.SupportedClasses
 {
     /// <summary>
-    /// Contract for classes 
+    /// Contract for creating supported properties
     /// </summary>
     public interface ISupportedPropertyFactory
     {

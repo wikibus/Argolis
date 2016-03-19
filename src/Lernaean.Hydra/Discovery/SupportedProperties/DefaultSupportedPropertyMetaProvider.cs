@@ -23,8 +23,8 @@ namespace Hydra.Discovery.SupportedProperties
             var isReadonly = property.SetMethod == null || property.SetMethod.IsPrivate || HasReadonlyAttribute(property);
             var title = _propertyNames.GetResolvedPropertyName(property.Name);
             var description = property.GetDescription() ?? string.Format(DefaultDescription, title);
-            var isWriteOnly = property.GetMethod == null || 
-                              property.GetMethod.IsPrivate || 
+            var isWriteOnly = property.GetMethod == null ||
+                              property.GetMethod.IsPrivate ||
                               property.GetCustomAttribute<WriteOnlyAttribute>() != null;
 
             return new SupportedPropertyMeta
