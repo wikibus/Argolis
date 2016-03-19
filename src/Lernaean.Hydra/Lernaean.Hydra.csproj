@@ -53,6 +53,7 @@
     <Compile Include="Annotations\SupportedClassAttribute.cs" />
     <Compile Include="Annotations\SupportedOperationAttribute.cs" />
     <Compile Include="Annotations\SupportedPropertyAttribute.cs" />
+    <Compile Include="Annotations\WriteOnlyAttribute.cs" />
     <Compile Include="Core\Property.cs" />
     <Compile Include="Core\Resource.cs" />
     <Compile Include="Discovery\SupportedProperties\AllPublicPropertiesSelectionPolicy.cs" />

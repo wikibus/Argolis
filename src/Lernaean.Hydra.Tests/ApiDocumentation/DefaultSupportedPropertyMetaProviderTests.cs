@@ -35,6 +35,16 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         }
 
         [Fact]
+        public void Should_set_readable_to_true_by_default()
+        {
+            // when
+            var meta = _metaProvider.GetMeta(typeof(Issue).GetProperty("Title"));
+
+            // then
+            meta.Readable.Should().BeTrue();
+        }
+
+        [Fact]
         public void Should_set_writeable_to_false_if_attribute_is_present()
         {
             // when
@@ -62,6 +72,26 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
 
             // then
             meta.Writeable.Should().BeFalse();
+        }
+
+        [Fact]
+        public void Should_set_readable_to_false_if_property_has_no_getter()
+        {
+            // when
+            var meta = _metaProvider.GetMeta(typeof(UndocumentedClass).GetProperty("NoGetter"));
+
+            // then
+            meta.Readable.Should().BeFalse();
+        }
+
+        [Fact]
+        public void Should_set_readable_to_false_if_property_is_marked_with_attribute()
+        {
+            // when
+            var meta = _metaProvider.GetMeta(typeof(UndocumentedClass).GetProperty("WriteOnly"));
+
+            // then
+            meta.Readable.Should().BeFalse();
         }
 
         [Fact]

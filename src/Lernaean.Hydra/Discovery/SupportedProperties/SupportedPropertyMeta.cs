@@ -20,6 +20,11 @@ namespace Hydra.Discovery.SupportedProperties
         public bool Writeable { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="SupportedProperty"/> can be read.
+        /// </summary>
+        public bool Readable { get; set; }
+
+        /// <summary>
         /// Gets or sets a description of a <see cref="SupportedProperty"/>.
         /// </summary>
         public string Description { get; set; }

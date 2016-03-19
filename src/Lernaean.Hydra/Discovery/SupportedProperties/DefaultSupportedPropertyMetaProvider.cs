@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
+using Hydra.Annotations;
 using Hydra.Discovery.SupportedClasses;
 using Newtonsoft.Json.Serialization;
 
@@ -22,12 +23,16 @@ namespace Hydra.Discovery.SupportedProperties
             var isReadonly = property.SetMethod == null || property.SetMethod.IsPrivate || HasReadonlyAttribute(property);
             var title = _propertyNames.GetResolvedPropertyName(property.Name);
             var description = property.GetDescription() ?? string.Format(DefaultDescription, title);
+            var isWriteOnly = property.GetMethod == null || 
+                              property.GetMethod.IsPrivate || 
+                              property.GetCustomAttribute<WriteOnlyAttribute>() != null;
 
             return new SupportedPropertyMeta
             {
                 Title = title,
                 Description = description,
-                Writeable = isReadonly == false
+                Writeable = isReadonly == false,
+                Readable = isWriteOnly == false
             };
         }
 

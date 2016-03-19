@@ -1,3 +1,5 @@
+using Hydra.Annotations;
+
 namespace TestHydraApi
 {
     /// <summary>
@@ -15,5 +17,10 @@ namespace TestHydraApi
         {
             get { return "some test"; }
         }
+
+        public string NoGetter { set {} }
+
+        [WriteOnly]
+        public string WriteOnly { get; set; }
     }
 }
