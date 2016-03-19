@@ -63,6 +63,7 @@
     <Compile Include="Discovery\ReflectionExtensions.cs" />
     <Compile Include="Discovery\SupportedClasses\DefaultSupportedClassMetaProvider.cs" />
     <Compile Include="Discovery\SupportedProperties\DefaultPropertyIdPolicy.cs" />
+    <Compile Include="Discovery\SupportedProperties\DefaultPropertyRangeRetrievalPolicy.cs" />
     <Compile Include="Discovery\SupportedProperties\DefaultSupportedPropertyFactory.cs" />
     <Compile Include="Discovery\SupportedProperties\DefaultSupportedPropertyMetaProvider.cs" />
     <Compile Include="Discovery\SupportedProperties\IPropertyPredicateIdPolicy.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Discovery\SupportedClasses\ISupportedPropertyFactory.cs" />
     <Compile Include="Discovery\SupportedClasses\ISupportedPropertyMetaProvider.cs" />
     <Compile Include="Discovery\SupportedClasses\SupportedClassMeta.cs" />
+    <Compile Include="Discovery\SupportedProperties\IPropertyRangeRetrievalPolicy.cs" />
     <Compile Include="Discovery\SupportedProperties\ISupportedPropertySelectionPolicy.cs" />
     <Compile Include="Discovery\SupportedProperties\SupportedPropertyMeta.cs" />
     <Compile Include="IHydraDocumentationSettings.cs" />

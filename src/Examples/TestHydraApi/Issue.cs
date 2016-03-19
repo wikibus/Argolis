@@ -20,6 +20,9 @@ namespace TestHydraApi
 
         public User Submitter { get; set; }
 
+        [Range("http://example.api/o#project")]
+        public string ProjectId { get; set; }
+
         public UndocumentedClass UndocumentedClassProperty { get; set; }
     }
 }

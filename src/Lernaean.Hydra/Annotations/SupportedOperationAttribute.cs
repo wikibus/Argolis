@@ -1,17 +1,25 @@
 ﻿using System;
-using NullGuard;
 
 namespace Hydra.Annotations
 {
     /// <summary>
     /// Marks a property available for invoking GET
     /// </summary>
-    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
-    public class AllowGetAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Property)]
+    public class RangeAttribute : Attribute
     {
         /// <summary>
-        /// Gets or sets the range.
+        /// Initializes a new instance of the <see cref="RangeAttribute"/> class.
         /// </summary>
-        public string Range { [return: AllowNull] get; set; }
+        /// <param name="range">The range predicate.</param>
+        public RangeAttribute(string range)
+        {
+            Range = range;
+        }
+
+        /// <summary>
+        /// Gets the range.
+        /// </summary>
+        public string Range { get; private set; }
     }
 }

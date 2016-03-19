@@ -20,6 +20,7 @@ namespace Hydra.Nancy
             RegisterWithDefault<ISupportedPropertyMetaProvider>(typeof(DefaultSupportedPropertyMetaProvider));
             RegisterWithDefault<ISupportedClassMetaProvider>(typeof(DefaultSupportedClassMetaProvider));
             RegisterWithDefault<IPropertyPredicateIdPolicy>(typeof(DefaultPropertyIdPolicy));
+            RegisterWithDefault<IPropertyRangeRetrievalPolicy>(typeof(DefaultPropertyRangeRetrievalPolicy));
             RegisterWithUserThenDefault<IDocumentedTypeSelector>(new[]
             {
                 typeof(HydraBuiltInTypesSelector)

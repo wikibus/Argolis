@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Hydra.Core;
+using JsonLD.Entities;
 using Xunit;
 
 namespace Lernaean.Hydra.Tests.Serialization
@@ -22,7 +23,7 @@ namespace Lernaean.Hydra.Tests.Serialization
 
         public class TestApiDocumentation : global::Hydra.Core.ApiDocumentation
         {
-            public TestApiDocumentation() : base(new Uri("http://example.test"))
+            public TestApiDocumentation() : base((IriRef)new Uri("http://example.test"))
             {
                 Id = "http://documentation.uri/";
                 SupportedClasses = GetSupportedClasses();
@@ -35,7 +36,7 @@ namespace Lernaean.Hydra.Tests.Serialization
                 {
                     new Operation("POST")
                     {
-                        Returns = new Uri("http://example.api/ReturnType")
+                        Returns = (IriRef)new Uri("http://example.api/ReturnType")
                     }
                 };
 
@@ -43,7 +44,7 @@ namespace Lernaean.Hydra.Tests.Serialization
                 {
                     new SupportedProperty
                     {
-                        Property = new Property { Range = new Uri("http://example.api/prop") }
+                        Property = new Property { Range = (IriRef)new Uri("http://example.api/prop") }
                     }
                 };
 

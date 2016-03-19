@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using Hydra.Core;
 using Hydra.Discovery.SupportedClasses;
@@ -13,7 +12,7 @@ namespace Hydra.Discovery.SupportedProperties
     /// </summary>
     public class DefaultSupportedPropertyFactory : ISupportedPropertyFactory
     {
-        private readonly IEnumerable<IPropertyRangeMappingPolicy> _propertyTypeMappings;
+        private readonly IPropertyRangeRetrievalPolicy _rangeRetrieval;
         private readonly ISupportedPropertyMetaProvider _metaProvider;
         private readonly IPropertyPredicateIdPolicy _fallbackPropertyPredicateId;
 
@@ -21,11 +20,11 @@ namespace Hydra.Discovery.SupportedProperties
         /// Initializes a new instance of the <see cref="DefaultSupportedPropertyFactory"/> class.
         /// </summary>
         public DefaultSupportedPropertyFactory(
-            IEnumerable<IPropertyRangeMappingPolicy> propertyTypeMappings,
+            IPropertyRangeRetrievalPolicy rangeRetrieval,
             ISupportedPropertyMetaProvider metaProvider,
             IPropertyPredicateIdPolicy fallbackPropertyPredicateId)
         {
-            _propertyTypeMappings = propertyTypeMappings;
+            _rangeRetrieval = rangeRetrieval;
             _metaProvider = metaProvider;
             _fallbackPropertyPredicateId = fallbackPropertyPredicateId;
         }
@@ -36,10 +35,7 @@ namespace Hydra.Discovery.SupportedProperties
         /// </summary>
         public virtual SupportedProperty Create(PropertyInfo prop, IReadOnlyDictionary<Type, Uri> classIds)
         {
-            Uri mappedType = (from mapping in _propertyTypeMappings
-                              let mapType = mapping.MapType(prop, classIds)
-                              where mapType != null
-                              select mapType).FirstOrDefault();
+            IriRef? mappedType = _rangeRetrieval.GetRange(prop, classIds);
             var meta = _metaProvider.GetMeta(prop);
             string propertyId = _fallbackPropertyPredicateId.GetPropertyId(prop, meta.Title, classIds[prop.ReflectedType]);
 
