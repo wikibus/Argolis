@@ -62,8 +62,10 @@
     <Compile Include="Discovery\SupportedClasses\AttributeRdfTypeProviderPolicy.cs" />
     <Compile Include="Discovery\ReflectionExtensions.cs" />
     <Compile Include="Discovery\SupportedClasses\DefaultSupportedClassMetaProvider.cs" />
+    <Compile Include="Discovery\SupportedProperties\ClassAndPropertyNameConcatenation.cs" />
     <Compile Include="Discovery\SupportedProperties\DefaultSupportedPropertyFactory.cs" />
     <Compile Include="Discovery\SupportedProperties\DefaultSupportedPropertyMetaProvider.cs" />
+    <Compile Include="Discovery\SupportedProperties\IPropertyIdFallbackStrategy.cs" />
     <Compile Include="Discovery\SupportedProperties\IPropertyRangeMapper.cs" />
     <Compile Include="Discovery\SupportedClasses\IRdfTypeProviderPolicy.cs" />
     <Compile Include="Discovery\SupportedClasses\IDocumentedTypeSelector.cs" />

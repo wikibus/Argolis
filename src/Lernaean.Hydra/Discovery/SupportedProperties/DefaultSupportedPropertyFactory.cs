@@ -15,26 +15,30 @@ namespace Hydra.Discovery.SupportedProperties
     {
         private readonly IEnumerable<IPropertyRangeMapper> _propertyTypeMappings;
         private readonly ISupportedPropertyMetaProvider _metaProvider;
+        private readonly IPropertyIdFallbackStrategy _fallbackPropertyId;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultSupportedPropertyFactory"/> class.
         /// </summary>
         public DefaultSupportedPropertyFactory(
             IEnumerable<IPropertyRangeMapper> propertyTypeMappings,
-            ISupportedPropertyMetaProvider metaProvider)
+            ISupportedPropertyMetaProvider metaProvider,
+            IPropertyIdFallbackStrategy fallbackPropertyId)
         {
             _propertyTypeMappings = propertyTypeMappings;
             _metaProvider = metaProvider;
+            _fallbackPropertyId = fallbackPropertyId;
         }
 
         /// <summary>
         /// Creates a hydra <see cref="SupportedProperty" /> from a type's property
         /// using sensible defaults.
         /// </summary>
-        public SupportedProperty Create(PropertyInfo prop, IReadOnlyDictionary<Type, Uri> classIds)
+        public virtual SupportedProperty Create(PropertyInfo prop, IReadOnlyDictionary<Type, Uri> classIds)
         {
             Uri mappedType = _propertyTypeMappings.Select(mapping => mapping.MapType(prop, classIds)).FirstOrDefault(mapType => mapType != null);
             var meta = _metaProvider.GetMeta(prop);
+            string propertyId = _fallbackPropertyId.GetPropertyId(prop, meta.Title, classIds[prop.DeclaringType]);
 
             var property = new SupportedProperty
             {
@@ -42,6 +46,7 @@ namespace Hydra.Discovery.SupportedProperties
                 Description = meta.Description,
                 Property =
                 {
+                    Id = propertyId,
                     Range = mappedType ?? (IriRef)Hydra.Resource
                 }
             };

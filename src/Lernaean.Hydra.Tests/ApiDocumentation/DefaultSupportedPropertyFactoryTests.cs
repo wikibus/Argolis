@@ -25,18 +25,23 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
                 {
                     _propertyType
                 },
-                A.Fake<ISupportedPropertyMetaProvider>());
+                A.Fake<ISupportedPropertyMetaProvider>(),
+                A.Fake<IPropertyIdFallbackStrategy>());
         }
 
         [Fact]
-        public void Should_map_property_type_to_RDF_type()
+        public void Should_map_property_range_to_RDF_type()
         {
             // given
             var mappedPredicate = new Uri(Xsd.@string);
+            var classIds = new Dictionary<Type, Uri>
+            {
+                { typeof(Issue), new Uri("http://example.com/issue") }
+            };
             A.CallTo(() => _propertyType.MapType(A<PropertyInfo>._, A<IReadOnlyDictionary<Type, Uri>>._)).Returns(mappedPredicate);
 
             // when
-            var property = _factory.Create(typeof(Issue).GetProperty("Id"), new Dictionary<Type, Uri>());
+            var property = _factory.Create(typeof(Issue).GetProperty("Id"), classIds);
 
             // then
             property.Property.Range.Should().Be((IriRef)mappedPredicate);

@@ -1,5 +1,7 @@
+using JetBrains.Annotations;
 using JsonLD.Entities;
 using Newtonsoft.Json;
+using NullGuard;
 using Vocab;
 
 namespace Hydra.Core
@@ -13,6 +15,17 @@ namespace Hydra.Core
         /// Gets or sets the RDFS range.
         /// </summary>
         [JsonProperty(Rdfs.range)]
-        public IriRef Range { get; set; }
+        public IriRef Range { [return: AllowNull] get; set; }
+
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        public string Id { [return: AllowNull] get; set; }
+
+        [JsonProperty, UsedImplicitly]
+        private string Type
+        {
+            get { return Rdf.Property; }
+        }
     }
 }
