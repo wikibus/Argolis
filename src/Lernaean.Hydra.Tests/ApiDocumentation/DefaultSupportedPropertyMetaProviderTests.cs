@@ -15,13 +15,13 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         }
 
         [Fact]
-        public void Should_get_title_equal_to_property_name()
+        public void Should_get_title_equal_to_camelized_property_name()
         {
             // when
             var meta = _metaProvider.GetMeta(typeof(Issue).GetProperty("DateCreated"));
 
             // then
-            meta.Title.Should().Be("DateCreated");
+            meta.Title.Should().Be("dateCreated");
         }
 
         [Fact]

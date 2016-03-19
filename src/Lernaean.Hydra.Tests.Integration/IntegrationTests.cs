@@ -38,11 +38,11 @@ namespace Lernaean.Hydra.Tests.Integration
         }
 
         [Theory]
-        [InlineData("Title", Xsd.@string)]
-        [InlineData("LikesCount", Xsd.@int)]
-        [InlineData("DateCreated", Xsd.dateTime)]
-        [InlineData("DateDeleted", Xsd.dateTime)]
-        [InlineData("IsResolved", Xsd.boolean)]
+        [InlineData("title", Xsd.@string)]
+        [InlineData("likesCount", Xsd.@int)]
+        [InlineData("dateCreated", Xsd.dateTime)]
+        [InlineData("dateDeleted", Xsd.dateTime)]
+        [InlineData("isResolved", Xsd.boolean)]
         public void Should_map_default_predicate_ranges_for_primitive_property_types(string title, string predicate)
         {
             // when
@@ -74,7 +74,7 @@ namespace Lernaean.Hydra.Tests.Integration
                 .Where(tpb => tpb.Subject("prop").PredicateUri(new Uri(HCore.title)).Object("title"))
                 .Where(tpb => tpb.Subject("prop").PredicateUri(new Uri(HCore.property)).Object("pred"))
                 .Where(tpb => tpb.Subject("pred").PredicateUri(new Uri(Rdfs.range)).Object(new Uri(expectedRange)))
-                .Filter(exb => exb.Str(exb.Variable("title")) == "Submitter")
+                .Filter(exb => exb.Str(exb.Variable("title")) == "submitter")
                 .BuildQuery();
             documentation.Should().MatchAsk(query);
         }
@@ -94,7 +94,7 @@ namespace Lernaean.Hydra.Tests.Integration
                 .Where(tpb => tpb.Subject("prop").PredicateUri(new Uri(HCore.title)).Object("title"))
                 .Where(tpb => tpb.Subject("prop").PredicateUri(new Uri(HCore.property)).Object("pred"))
                 .Where(tpb => tpb.Subject("pred").PredicateUri(new Uri(Rdfs.range)).Object(expectedRange))
-                .Filter(exb => exb.Str(exb.Variable("title")) == "UndocumentedClassProperty")
+                .Filter(exb => exb.Str(exb.Variable("title")) == "undocumentedClassProperty")
                 .BuildQuery();
             documentation.Should().MatchAsk(query);
         }

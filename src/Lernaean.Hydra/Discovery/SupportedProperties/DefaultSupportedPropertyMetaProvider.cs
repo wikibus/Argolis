@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
 using Hydra.Discovery.SupportedClasses;
+using Newtonsoft.Json.Serialization;
 
 namespace Hydra.Discovery.SupportedProperties
 {
@@ -10,6 +11,7 @@ namespace Hydra.Discovery.SupportedProperties
     public class DefaultSupportedPropertyMetaProvider : ISupportedPropertyMetaProvider
     {
         private const string DefaultDescription = "The {0} property";
+        private readonly CamelCasePropertyNamesContractResolver _propertyNames = new CamelCasePropertyNamesContractResolver();
 
         /// <summary>
         /// Gets the <see cref="SupportedPropertyMeta"/> based on property features
@@ -18,11 +20,12 @@ namespace Hydra.Discovery.SupportedProperties
         public virtual SupportedPropertyMeta GetMeta(PropertyInfo property)
         {
             var isReadonly = property.SetMethod == null || property.SetMethod.IsPrivate || HasReadonlyAttribute(property);
-            var description = property.GetDescription() ?? string.Format(DefaultDescription, property.Name);
+            var title = _propertyNames.GetResolvedPropertyName(property.Name);
+            var description = property.GetDescription() ?? string.Format(DefaultDescription, title);
 
             return new SupportedPropertyMeta
             {
-                Title = property.Name,
+                Title = title,
                 Description = description,
                 Writeable = isReadonly == false
             };
