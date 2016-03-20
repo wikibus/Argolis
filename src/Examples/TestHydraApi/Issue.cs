@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using Hydra.Annotations;
+using Newtonsoft.Json;
 
 namespace TestHydraApi
 {
@@ -9,6 +10,7 @@ namespace TestHydraApi
     {
         public string Id { get; set; }
         
+        [JsonProperty("titel")]
         public string Title { get; set; }
         
         public string Content { get; set; }

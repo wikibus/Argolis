@@ -1,5 +1,6 @@
 ﻿using Hydra.Discovery.SupportedClasses;
 using Hydra.Discovery.SupportedProperties;
+using JsonLD.Entities;
 using Nancy.Bootstrapper;
 
 namespace Hydra.Nancy
@@ -21,6 +22,7 @@ namespace Hydra.Nancy
             RegisterWithDefault<ISupportedClassMetaProvider>(typeof(DefaultSupportedClassMetaProvider));
             RegisterWithDefault<IPropertyPredicateIdPolicy>(typeof(DefaultPropertyIdPolicy));
             RegisterWithDefault<IPropertyRangeRetrievalPolicy>(typeof(DefaultPropertyRangeRetrievalPolicy));
+            RegisterWithDefault<IContextProvider>(typeof(NullContextProvider));
             RegisterWithUserThenDefault<IDocumentedTypeSelector>(new[]
             {
                 typeof(HydraBuiltInTypesSelector)

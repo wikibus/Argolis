@@ -1,7 +1,8 @@
 using System;
-using System.Collections.Generic;
+using FakeItEasy;
 using FluentAssertions;
 using Hydra.Discovery.SupportedProperties;
+using JsonLD.Entities;
 using TestHydraApi;
 using Vocab;
 using Xunit;
@@ -14,7 +15,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
 
         public DefaultPropertyIdPolicyTests()
         {
-            _policy = new DefaultPropertyIdPolicy();
+            _policy = new DefaultPropertyIdPolicy(A.Fake<IContextProvider>());
         }
 
         [Theory]
@@ -26,36 +27,51 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             Uri issueClassId = new Uri(issueClassStr);
 
             // when
-            var propertyId = _policy.GetPropertyId(typeof(Issue).GetProperty("Title"), "titel", issueClassId);
+            var propertyId = _policy.GetPropertyId(typeof(Issue).GetProperty("Title"), issueClassId);
 
             // then
             propertyId.Should().Be(expectedPropertyId);
         } 
 
         [Fact]
-        public void Should_use_actual_and_not_decalring_class()
+        public void Should_use_actual_and_not_declaring_class()
         {
             // given
             Uri issueClassId = new Uri("http://example.org/ontolgy#Issue");
 
             // when
-            var propertyId = _policy.GetPropertyId(typeof(Issue).GetProperty("DateCreated"), "dateCreated", issueClassId);
+            var propertyId = _policy.GetPropertyId(typeof(Issue).GetProperty("DateCreated"), issueClassId);
 
             // then
             propertyId.Should().Be("http://example.org/ontolgy#Issue/dateCreated");
-        } 
+        }
 
         [Fact]
-        public void Should_use_value_set_to_JsonProperty_attribute()
+        public void Should_use_value_set_to_JsonProperty_attribute_for_concatentation()
         {
             // given
             var classId = new Uri("http://example.org/ontolgy/User");
 
             // when
-            var propertyId = _policy.GetPropertyId(typeof(User).GetProperty("Name"), "name", classId);
+            var propertyId = _policy.GetPropertyId(typeof(User).GetProperty("NotInContextWithAttribute"), classId);
 
             // then
-            propertyId.Should().Be(Foaf.givenName);
+            propertyId.Should().Be("http://example.org/ontolgy/User#with_attribute");
         }   
+
+        [Theory]
+        [InlineData("Name", Foaf.givenName)]
+        [InlineData("LastName", Foaf.lastName)]
+        public void Should_use_property_mapped_in_jsonld_ontext(string property, string expectedPredicat)
+        {
+            // given
+            var classId = new Uri("http://example.org/ontolgy/User");
+
+            // when
+            var propertyId = _policy.GetPropertyId(typeof(User).GetProperty(property), classId);
+
+            // then
+            propertyId.Should().Be(expectedPredicat);
+        } 
     }
 }

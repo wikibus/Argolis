@@ -12,6 +12,6 @@ namespace Hydra.Discovery.SupportedProperties
         /// <summary>
         /// Gets the property identifier.
         /// </summary>
-        string GetPropertyId(PropertyInfo property, string propertyName, Uri classIds);
+        string GetPropertyId(PropertyInfo property, Uri classIds);
     }
 }

@@ -52,6 +52,7 @@
     <Compile Include="ApiDocumentation\DefaultSupportedClassMetaProviderTests.cs" />
     <Compile Include="ApiDocumentation\DefaultSupportedPropertyFactoryTests.cs" />
     <Compile Include="ApiDocumentation\DefaultSupportedPropertyMetaProviderTests.cs" />
+    <Compile Include="ContextExtensionsTests.cs" />
     <Compile Include="TestExtension.cs" />
     <Compile Include="Serialization\ApiDocumentationSerializationTests.cs" />
     <Compile Include="Serialization\ClassSerializationTests.cs" />

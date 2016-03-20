@@ -37,7 +37,7 @@ namespace Hydra.Discovery.SupportedProperties
         {
             IriRef? mappedType = _rangeRetrieval.GetRange(prop, classIds);
             var meta = _metaProvider.GetMeta(prop);
-            string propertyId = _fallbackPropertyPredicateId.GetPropertyId(prop, meta.Title, classIds[prop.ReflectedType]);
+            string propertyId = _fallbackPropertyPredicateId.GetPropertyId(prop, classIds[prop.ReflectedType]);
 
             var property = new SupportedProperty
             {
