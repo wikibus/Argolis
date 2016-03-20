@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using Hydra.Core;
-using Hydra.Discovery;
+﻿using Hydra.Discovery;
 using Nancy;
 
 namespace Hydra.Nancy
