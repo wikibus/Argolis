@@ -14,7 +14,7 @@ namespace Hydra.Discovery.SupportedProperties
     {
         private readonly IPropertyRangeRetrievalPolicy _rangeRetrieval;
         private readonly ISupportedPropertyMetaProvider _metaProvider;
-        private readonly IPropertyPredicateIdPolicy _fallbackPropertyPredicateId;
+        private readonly IPropertyPredicateIdPolicy _propertyPredicateIdPolicy;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultSupportedPropertyFactory"/> class.
@@ -22,11 +22,11 @@ namespace Hydra.Discovery.SupportedProperties
         public DefaultSupportedPropertyFactory(
             IPropertyRangeRetrievalPolicy rangeRetrieval,
             ISupportedPropertyMetaProvider metaProvider,
-            IPropertyPredicateIdPolicy fallbackPropertyPredicateId)
+            IPropertyPredicateIdPolicy propertyPredicateIdPolicy)
         {
             _rangeRetrieval = rangeRetrieval;
             _metaProvider = metaProvider;
-            _fallbackPropertyPredicateId = fallbackPropertyPredicateId;
+            _propertyPredicateIdPolicy = propertyPredicateIdPolicy;
         }
 
         /// <summary>
@@ -37,12 +37,14 @@ namespace Hydra.Discovery.SupportedProperties
         {
             IriRef? mappedType = _rangeRetrieval.GetRange(prop, classIds);
             var meta = _metaProvider.GetMeta(prop);
-            string propertyId = _fallbackPropertyPredicateId.GetPropertyId(prop, classIds[prop.ReflectedType]);
+            string propertyId = _propertyPredicateIdPolicy.GetPropertyId(prop, classIds[prop.ReflectedType]);
 
             var property = new SupportedProperty
             {
                 Title = meta.Title,
                 Description = meta.Description,
+                Writeable = meta.Writeable,
+                Readable = meta.Readable,
                 Property =
                 {
                     Id = propertyId,
