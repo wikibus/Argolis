@@ -1,9 +1,7 @@
 using System;
 using System.Reflection;
-using JsonLD.Core;
 using JsonLD.Entities;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Hydra.Discovery.SupportedProperties
 {
@@ -16,7 +14,6 @@ namespace Hydra.Discovery.SupportedProperties
         private const string SlashClassIdAppendFormat = "{0}#{1}";
         private const string HashClassIdAppendFormat = "{0}/{1}";
 
-        private readonly JsonLdContractResolver _contractResolver;
         private readonly ContextResolver _contextResolver;
 
         /// <summary>
@@ -24,7 +21,6 @@ namespace Hydra.Discovery.SupportedProperties
         /// </summary>
         public DefaultPropertyIdPolicy(IContextProvider contextProvider)
         {
-            _contractResolver = new JsonLdContractResolver();
             _contextResolver = new ContextResolver(contextProvider);
         }
 
@@ -34,20 +30,11 @@ namespace Hydra.Discovery.SupportedProperties
         /// </summary>
         public string GetPropertyId(PropertyInfo property, Uri classId)
         {
-            var jsonProperty = property.GetCustomAttribute<JsonPropertyAttribute>();
             var context = _contextResolver.GetContext(property.ReflectedType);
 
             if (context != null)
             {
-                string mappedTerm;
-                if (jsonProperty != null && jsonProperty.PropertyName != null)
-                {
-                    mappedTerm = ContextHelpers.GetExpandedIri(context, jsonProperty.PropertyName);
-                }
-                else
-                {
-                    mappedTerm = ContextHelpers.GetExpandedIri(context, _contractResolver.GetResolvedPropertyName(property.Name));
-                }
+                var mappedTerm = ContextHelpers.GetExpandedIri(context, property.GetJsonPropertyName());
 
                 if (mappedTerm != null)
                 {
@@ -55,17 +42,7 @@ namespace Hydra.Discovery.SupportedProperties
                 }
             }
 
-            string propertyName;
-            if (jsonProperty != null && jsonProperty.PropertyName != null)
-            {
-                propertyName = jsonProperty.PropertyName;
-            }
-            else
-            {
-                propertyName = _contractResolver.GetResolvedPropertyName(property.Name);
-            }
-
-            return GetFallbackPropertyId(property, propertyName, classId);
+            return GetFallbackPropertyId(property, property.GetJsonPropertyName(), classId);
         }
 
         /// <summary>

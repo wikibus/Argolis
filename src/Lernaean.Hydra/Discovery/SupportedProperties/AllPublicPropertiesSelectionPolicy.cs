@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using Hydra.Discovery.SupportedClasses;
+using JsonLD.Entities;
 
 namespace Hydra.Discovery.SupportedProperties
 {
@@ -14,7 +14,10 @@ namespace Hydra.Discovery.SupportedProperties
         /// </summary>
         public bool ShouldIncludeProperty(PropertyInfo property)
         {
-            return property.Name != "Id";
+            var propertName = property.GetJsonPropertyName();
+
+            return propertName != JsonLdKeywords.Id
+                && propertName != JsonLdKeywords.Type;
         }
     }
 }
