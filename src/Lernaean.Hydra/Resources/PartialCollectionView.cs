@@ -1,5 +1,7 @@
-using System;
+using System.ComponentModel;
+using Hydra.Annotations;
 using JetBrains.Annotations;
+using JsonLD.Entities;
 using Newtonsoft.Json;
 using NullGuard;
 
@@ -8,33 +10,42 @@ namespace Hydra.Resources
     /// <summary>
     /// Hydra partial collection view
     /// </summary>
+    [Description("A sliced view of a collection (ie. a page)")]
+    [SupportedClass(Hydra.PartialCollectionView)]
     [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
-    public class PartialCollectionView : IView
+    public class PartialCollectionView : Resource, IView
     {
-        /// <summary>
-        /// Gets or sets the identifier.
-        /// </summary>
-        public Uri Id { get; set; }
-
         /// <summary>
         /// Gets or sets the next page URI.
         /// </summary>
-        public Uri Next { get; set; }
+        [Description("The next page of this collection")]
+        [Range(Hydra.Collection)]
+        [ReadOnly(true)]
+        public IriRef? Next { get; set; }
 
         /// <summary>
         /// Gets or sets the last page URI.
         /// </summary>
-        public Uri Previous { get; set; }
+        [Description("The previous page of this collection")]
+        [Range(Hydra.Collection)]
+        [ReadOnly(true)]
+        public IriRef? Previous { get; set; }
 
         /// <summary>
         /// Gets or sets the last page URI.
         /// </summary>
-        public Uri Last { get; set; }
+        [Description("The last page of this collection")]
+        [Range(Hydra.Collection)]
+        [ReadOnly(true)]
+        public IriRef? Last { get; set; }
 
         /// <summary>
         /// Gets or sets the first page URI.
         /// </summary>
-        public Uri First { get; set; }
+        [Description("The first page of this collection")]
+        [Range(Hydra.Collection)]
+        [ReadOnly(true)]
+        public IriRef? First { get; set; }
 
         /// <summary>
         /// Gets the RDF type.

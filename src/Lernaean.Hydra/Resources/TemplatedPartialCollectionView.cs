@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using JsonLD.Entities;
 using NullGuard;
 using TunnelVisionLabs.Net;
 
@@ -33,10 +34,10 @@ namespace Hydra.Resources
             _totalPages = (int)(totalItems / pageSize) + 1;
 
             Id = BindPageUri(page);
-            Next = BindPageUri(page + 1);
-            Previous = BindPageUri(page - 1);
-            Last = BindPageUri((int)Math.Ceiling((double)totalItems / pageSize));
-            First = BindPageUri(1);
+            Next = (IriRef?)BindPageUri(page + 1);
+            Previous = (IriRef?)BindPageUri(page - 1);
+            Last = (IriRef?)BindPageUri((int)Math.Ceiling((double)totalItems / pageSize));
+            First = (IriRef?)BindPageUri(1);
         }
 
         private Uri BindPageUri(int page)

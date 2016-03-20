@@ -16,7 +16,8 @@ namespace Hydra.Nancy
             return new[]
             {
                 typeof(Collection<>),
-                typeof(Resource)
+                typeof(Resource),
+                typeof(PartialCollectionView)
             };
         }
     }

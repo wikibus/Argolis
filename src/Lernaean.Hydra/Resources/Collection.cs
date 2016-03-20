@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Reflection;
 using Hydra.Annotations;
 using JetBrains.Annotations;
@@ -6,6 +7,7 @@ using JsonLD.Entities.Context;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NullGuard;
+using Vocab;
 
 namespace Hydra.Resources
 {
@@ -15,7 +17,8 @@ namespace Hydra.Resources
     /// <typeparam name="T">collection element type</typeparam>
     [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
     [SupportedClass(Hydra.Collection)]
-    public class Collection<T> : IResourceWithViews
+    [Description("A collection of related resources")]
+    public class Collection<T> : Resource, IResourceWithViews
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Collection{T}"/> class
@@ -27,25 +30,27 @@ namespace Hydra.Resources
         }
 
         /// <summary>
-        /// Gets or sets the identifier.
-        /// </summary>
-        public Uri Id { get; set; }
-
-        /// <summary>
         /// Gets or sets the members.
         /// </summary>
         [JsonProperty("member")]
+        [Description("The members of this collection")]
+        [ReadOnly(true)]
         public T[] Members { get; set; }
 
         /// <summary>
         /// Gets or sets the views
         /// </summary>
         [JsonProperty("view")]
+        [Description("The views of this collection")]
+        [ReadOnly(true)]
         public IView[] Views { get; set; }
 
         /// <summary>
         /// Gets or sets the total items.
         /// </summary>
+        [Description("The number of members of this collection")]
+        [ReadOnly(true)]
+        [Range(Xsd.nonNegativeInteger)]
         public long TotalItems { get; set; }
 
         /// <summary>

@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using Hydra.Annotations;
 using NullGuard;
@@ -12,5 +13,9 @@ namespace Hydra.Resources
     [Description("The class of dereferenceable resources.")]
     public class Resource
     {
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        public Uri Id { get; set; }
     }
 }
