@@ -57,6 +57,8 @@
     <Compile Include="ContextHelpers.cs" />
     <Compile Include="Core\Property.cs" />
     <Compile Include="Core\Resource.cs" />
+    <Compile Include="Discovery\SupportedClasses\DefaultSupportedClassFactory.cs" />
+    <Compile Include="Discovery\SupportedClasses\ISupportedClassFactory.cs" />
     <Compile Include="Discovery\SupportedProperties\AllPublicPropertiesSelectionPolicy.cs" />
     <Compile Include="Discovery\ApiDocumentationFactory.cs" />
     <Compile Include="Discovery\SupportedClasses\AssemblyAnnotatedTypeSelector.cs" />

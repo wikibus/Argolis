@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Hydra.Core;
 using Hydra.Discovery.SupportedClasses;
-using Hydra.Discovery.SupportedProperties;
 
 namespace Hydra.Discovery
 {
@@ -16,9 +14,7 @@ namespace Hydra.Discovery
         private readonly IHydraDocumentationSettings _settings;
         private readonly IEnumerable<IDocumentedTypeSelector> _sources;
         private readonly IRdfTypeProviderPolicy _rdfClassProvider;
-        private readonly ISupportedPropertySelectionPolicy _propSelector;
-        private readonly ISupportedPropertyFactory _propFactory;
-        private readonly ISupportedClassMetaProvider _classMetaProvider;
+        private readonly ISupportedClassFactory _classFactory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiDocumentationFactory"/> class.
@@ -27,16 +23,12 @@ namespace Hydra.Discovery
             IHydraDocumentationSettings settings,
             IEnumerable<IDocumentedTypeSelector> sources,
             IRdfTypeProviderPolicy rdfClassProvider,
-            ISupportedPropertySelectionPolicy propSelector,
-            ISupportedPropertyFactory propFactory,
-            ISupportedClassMetaProvider classMetaProvider)
+            ISupportedClassFactory classFactory)
         {
             _settings = settings;
             _sources = sources;
             _rdfClassProvider = rdfClassProvider;
-            _propSelector = propSelector;
-            _propFactory = propFactory;
-            _classMetaProvider = classMetaProvider;
+            _classFactory = classFactory;
         }
 
         /// <summary>
@@ -46,39 +38,16 @@ namespace Hydra.Discovery
         {
             var apiDocumentation = new ApiDocumentation(_settings.EntryPoint);
 
-            var classes = DiscoverSupportedClasses();
-            var classIds = classes.ToDictionary(c => c.Key, c => c.Value.Id);
+            var types = (from type in _sources.SelectMany(source => source.FindTypes()).Distinct()
+                         let classId = _rdfClassProvider.Create(type)
+                         select type)
+                        .ToDictionary(t => t, type => _rdfClassProvider.Create(type));
 
-            foreach (var supportedClass in classes)
-            {
-                var supportedProperties =
-                    supportedClass.Key.GetProperties()
-                        .Where(_propSelector.ShouldIncludeProperty)
-                        .Select(sp => _propFactory.Create(sp, classIds));
+            var classes = types.Select(type => _classFactory.Create(type.Key, types));
 
-                supportedClass.Value.SupportedProperties = supportedProperties.ToList();
-            }
-
-            apiDocumentation.SupportedClasses = classes.Values;
+            apiDocumentation.SupportedClasses = classes.ToList();
 
             return apiDocumentation;
-        }
-
-        private Dictionary<Type, Class> DiscoverSupportedClasses()
-        {
-            return (from type in _sources.SelectMany(source => source.FindTypes()).Distinct()
-                let classId = _rdfClassProvider.Create(type)
-                let classMeta = _classMetaProvider.GetMeta(type)
-                select new
-                {
-                    type,
-                    @class = new Class(classId)
-                    {
-                        Title = classMeta.Title,
-                        Description = classMeta.Description
-                    }
-                })
-                .ToDictionary(t => t.type, t => t.@class);
         }
     }
 }

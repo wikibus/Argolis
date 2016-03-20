@@ -5,7 +5,6 @@ using FluentAssertions;
 using Hydra;
 using Hydra.Discovery;
 using Hydra.Discovery.SupportedClasses;
-using Hydra.Discovery.SupportedProperties;
 using TestHydraApi;
 using Xunit;
 
@@ -23,9 +22,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
                 A.Fake<IHydraDocumentationSettings>(),
                 new[] { _documentedTypeSource },
                 A.Fake<IRdfTypeProviderPolicy>(),
-                A.Fake<ISupportedPropertySelectionPolicy>(),
-                A.Fake<ISupportedPropertyFactory>(),
-                A.Fake<ISupportedClassMetaProvider>());
+                A.Fake<ISupportedClassFactory>());
         }
 
         [Fact]
