@@ -39,10 +39,10 @@ namespace Hydra.Core
         public bool Writeable { get; set; }
 
         /// <summary>
-        /// Gets the supported operations.
+        /// Gets or sets the supported operations.
         /// </summary>
         [JsonProperty(Hydra.supportedOperation)]
-        public ICollection<Operation> SupportedOperations { get; private set; }
+        public ICollection<Operation> SupportedOperations { get; set; }
 
         /// <summary>
         /// Gets or sets the property.
