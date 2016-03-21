@@ -9,7 +9,7 @@ namespace Hydra.Discovery
     /// Discovers Types and converts them into Supported Classes to
     /// be included in the <see cref="ApiDocumentation"/>
     /// </summary>
-    public class ApiDocumentationFactory
+    public class ApiDocumentationFactory : IApiDocumentationFactory
     {
         private readonly IHydraDocumentationSettings _settings;
         private readonly IEnumerable<IDocumentedTypeSelector> _sources;

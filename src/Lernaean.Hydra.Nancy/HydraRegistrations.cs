@@ -1,4 +1,5 @@
-﻿using Hydra.Discovery.SupportedClasses;
+﻿using Hydra.Discovery;
+using Hydra.Discovery.SupportedClasses;
 using Hydra.Discovery.SupportedProperties;
 using JsonLD.Entities;
 using Nancy.Bootstrapper;
@@ -15,6 +16,7 @@ namespace Hydra.Nancy
         /// </summary>
         public HydraRegistrations()
         {
+            RegisterWithDefault<IApiDocumentationFactory>(typeof(ApiDocumentationFactory), Lifetime.PerRequest);
             RegisterWithDefault<IRdfTypeProviderPolicy>(typeof(AttributeRdfTypeProviderPolicy));
             RegisterWithDefault<ISupportedPropertySelectionPolicy>(typeof(AllPublicPropertiesSelectionPolicy));
             RegisterWithDefault<ISupportedPropertyFactory>(typeof(DefaultSupportedPropertyFactory));
