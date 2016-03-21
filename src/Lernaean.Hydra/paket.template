@@ -8,7 +8,7 @@ dependencies
   Rdf.Vocabularies >= LOCKEDVERSION
   TunnelVisionLabs.Net.UriTemplate >= LOCKEDVERSION
 iconUrl
-  https://raw.githubusercontent.com/HydraCG/hydra-cg.com/master/img/logo.png
+  https://raw.githubusercontent.com/wikibus/Argolis/master/assets/logo.png
 tags
   rdf rest hydra nancy semantic web json-ld
 copyright 
