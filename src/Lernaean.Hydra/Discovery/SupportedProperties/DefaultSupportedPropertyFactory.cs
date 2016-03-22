@@ -17,7 +17,7 @@ namespace Hydra.Discovery.SupportedProperties
         private readonly IPropertyRangeRetrievalPolicy _rangeRetrieval;
         private readonly ISupportedPropertyMetaProvider _metaProvider;
         private readonly IPropertyPredicateIdPolicy _propertyPredicateIdPolicy;
-        private readonly IEnumerable<ISupportedOperations> _operations;
+        private readonly ISupportedOperationFactory _operationFactory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultSupportedPropertyFactory"/> class.
@@ -26,12 +26,12 @@ namespace Hydra.Discovery.SupportedProperties
             IPropertyRangeRetrievalPolicy rangeRetrieval,
             ISupportedPropertyMetaProvider metaProvider,
             IPropertyPredicateIdPolicy propertyPredicateIdPolicy,
-            IEnumerable<ISupportedOperations> operations)
+            ISupportedOperationFactory operationFactory)
         {
             _rangeRetrieval = rangeRetrieval;
             _metaProvider = metaProvider;
             _propertyPredicateIdPolicy = propertyPredicateIdPolicy;
-            _operations = operations;
+            _operationFactory = operationFactory;
         }
 
         /// <summary>
@@ -57,14 +57,7 @@ namespace Hydra.Discovery.SupportedProperties
                 }
             };
 
-            var operations = from operation in _operations
-                             where operation.Type == prop.ReflectedType
-                             from opMeta in operation.GetSupportedPropertyOperations(prop)
-                             select new Operation(opMeta.Method)
-                             {
-                                 Returns = property.Property.Range
-                             };
-            property.SupportedOperations = operations.ToList();
+            property.SupportedOperations = _operationFactory.CreateOperations(prop, classIds).ToList();
 
             return property;
         }

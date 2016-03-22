@@ -60,6 +60,8 @@
     <Compile Include="Discovery\IApiDocumentationFactory.cs" />
     <Compile Include="Discovery\SupportedClasses\DefaultSupportedClassFactory.cs" />
     <Compile Include="Discovery\SupportedClasses\ISupportedClassFactory.cs" />
+    <Compile Include="Discovery\SupportedOperations\DefaultSupportedOperationFactory.cs" />
+    <Compile Include="Discovery\SupportedOperations\ISupportedOperationFactory.cs" />
     <Compile Include="Discovery\SupportedOperations\ISupportedOperations.cs" />
     <Compile Include="Discovery\SupportedOperations\OperationMeta.cs" />
     <Compile Include="Discovery\SupportedOperations\SupportedOperationBuilder.cs" />

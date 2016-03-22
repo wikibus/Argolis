@@ -39,7 +39,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
                 _propertyRangeRetrievalPolicy,
                 _metaProvider,
                 _propertyPredicateIdPolicy,
-                A.CollectionOfFake<ISupportedOperations>(0));
+                A.Fake<ISupportedOperationFactory>());
         }
 
         [Fact]
