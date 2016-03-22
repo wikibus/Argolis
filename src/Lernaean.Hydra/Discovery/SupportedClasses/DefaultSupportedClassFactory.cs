@@ -53,7 +53,7 @@ namespace Hydra.Discovery.SupportedClasses
 
              var operations = from source in _operations
                               where source.Type == supportedClassType
-                              from op in source.GetTypeOperations()
+                              from op in source.GetSupportedClassOperations()
                               select new Operation(op.Method)
                               {
                                   Returns = (IriRef)supportedClass.Id

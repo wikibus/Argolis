@@ -59,7 +59,7 @@ namespace Hydra.Discovery.SupportedProperties
 
             var operations = from operation in _operations
                              where operation.Type == prop.ReflectedType
-                             from opMeta in operation.GetPropertyOperations(prop)
+                             from opMeta in operation.GetSupportedPropertyOperations(prop)
                              select new Operation(opMeta.Method)
                              {
                                  Returns = property.Property.Range

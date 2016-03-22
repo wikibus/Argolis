@@ -63,6 +63,7 @@
     <Compile Include="Discovery\SupportedOperations\ISupportedOperations.cs" />
     <Compile Include="Discovery\SupportedOperations\OperationMeta.cs" />
     <Compile Include="Discovery\SupportedOperations\SupportedOperationBuilder.cs" />
+    <Compile Include="Discovery\SupportedOperations\SupportedOperationsOfT.cs" />
     <Compile Include="Discovery\SupportedOperations\SupportedOperations.cs" />
     <Compile Include="Discovery\SupportedProperties\AllPublicPropertiesSelectionPolicy.cs" />
     <Compile Include="Discovery\ApiDocumentationFactory.cs" />
