@@ -1,7 +1,7 @@
 mode: ContinuousDeployment
-continuous-delivery-fallback-tag: pre
+continuous-delivery-fallback-tag: alpha
 next-version: 0.2
 
 branches:
-  (pull|pull\-requests|pr)[/-]:
-    tag: alpha
+  master:
+    tag: pre
