@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Hydra.Core;
+using Hydra.Discovery.SupportedOperations;
 using Hydra.Discovery.SupportedProperties;
+using JsonLD.Entities;
 
 namespace Hydra.Discovery.SupportedClasses
 {
@@ -14,6 +16,7 @@ namespace Hydra.Discovery.SupportedClasses
         private readonly ISupportedPropertySelectionPolicy _propSelector;
         private readonly ISupportedPropertyFactory _propFactory;
         private readonly ISupportedClassMetaProvider _classMetaProvider;
+        private readonly IEnumerable<ISupportedOperations> _operations;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultSupportedClassFactory"/> class.
@@ -21,11 +24,13 @@ namespace Hydra.Discovery.SupportedClasses
         public DefaultSupportedClassFactory(
             ISupportedPropertySelectionPolicy propSelector,
             ISupportedPropertyFactory propFactory,
-            ISupportedClassMetaProvider classMetaProvider)
+            ISupportedClassMetaProvider classMetaProvider,
+            IEnumerable<ISupportedOperations> operations)
         {
             _propSelector = propSelector;
             _propFactory = propFactory;
             _classMetaProvider = classMetaProvider;
+            _operations = operations;
         }
 
         /// <summary>
@@ -45,6 +50,15 @@ namespace Hydra.Discovery.SupportedClasses
                 supportedClassType.GetProperties()
                     .Where(_propSelector.ShouldIncludeProperty)
                     .Select(sp => _propFactory.Create(sp, classIds));
+
+             var operations = from source in _operations
+                              where source.Type == supportedClassType
+                              from op in source.GetTypeOperations()
+                              select new Operation(op.Method)
+                              {
+                                  Returns = (IriRef)supportedClass.Id
+                              };
+            supportedClass.SupportedOperations = operations.ToList();
 
             supportedClass.SupportedProperties = supportedProperties.ToList();
 

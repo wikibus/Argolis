@@ -60,6 +60,10 @@
     <Compile Include="Discovery\IApiDocumentationFactory.cs" />
     <Compile Include="Discovery\SupportedClasses\DefaultSupportedClassFactory.cs" />
     <Compile Include="Discovery\SupportedClasses\ISupportedClassFactory.cs" />
+    <Compile Include="Discovery\SupportedOperations\ISupportedOperations.cs" />
+    <Compile Include="Discovery\SupportedOperations\OperationMeta.cs" />
+    <Compile Include="Discovery\SupportedOperations\SupportedOperationBuilder.cs" />
+    <Compile Include="Discovery\SupportedOperations\SupportedOperations.cs" />
     <Compile Include="Discovery\SupportedProperties\AllPublicPropertiesSelectionPolicy.cs" />
     <Compile Include="Discovery\ApiDocumentationFactory.cs" />
     <Compile Include="Discovery\SupportedClasses\AssemblyAnnotatedTypeSelector.cs" />
@@ -125,6 +129,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

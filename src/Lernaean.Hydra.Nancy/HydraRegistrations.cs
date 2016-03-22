@@ -1,5 +1,6 @@
 ﻿using Hydra.Discovery;
 using Hydra.Discovery.SupportedClasses;
+using Hydra.Discovery.SupportedOperations;
 using Hydra.Discovery.SupportedProperties;
 using JsonLD.Entities;
 using Nancy.Bootstrapper;
@@ -30,6 +31,7 @@ namespace Hydra.Nancy
             {
                 typeof(HydraBuiltInTypesSelector)
             });
+            RegisterAll<ISupportedOperations>();
             RegisterWithUserThenDefault<IPropertyRangeMappingPolicy>(new[]
             {
                 typeof(XsdDatatypesMappingPolicy),

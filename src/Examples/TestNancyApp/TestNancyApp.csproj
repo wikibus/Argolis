@@ -75,7 +75,7 @@
     <Compile Include="IssuesModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="SupportedOperations.cs" />
+    <Compile Include="IssueSupportedOperations.cs" />
     <Compile Include="TestAppRegistrations.cs" />
   </ItemGroup>
   <ItemGroup>

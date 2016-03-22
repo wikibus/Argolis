@@ -4,6 +4,7 @@ using System.Reflection;
 using FakeItEasy;
 using FluentAssertions;
 using Hydra.Discovery.SupportedClasses;
+using Hydra.Discovery.SupportedOperations;
 using Hydra.Discovery.SupportedProperties;
 using JsonLD.Entities;
 using TestHydraApi;
@@ -16,7 +17,6 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         private static readonly PropertyInfo PropertyInfo;
         private static readonly Dictionary<Type, Uri> ClassIds;
         private readonly DefaultSupportedPropertyFactory _factory;
-        private readonly IPropertyRangeMappingPolicy _propertyType;
         private readonly ISupportedPropertyMetaProvider _metaProvider;
         private readonly IPropertyRangeRetrievalPolicy _propertyRangeRetrievalPolicy;
         private readonly IPropertyPredicateIdPolicy _propertyPredicateIdPolicy;
@@ -32,14 +32,14 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
 
         public DefaultSupportedPropertyFactoryTests()
         {
-            _propertyType = A.Fake<IPropertyRangeMappingPolicy>();
             _metaProvider = A.Fake<ISupportedPropertyMetaProvider>();
             _propertyRangeRetrievalPolicy = A.Fake<IPropertyRangeRetrievalPolicy>();
             _propertyPredicateIdPolicy = A.Fake<IPropertyPredicateIdPolicy>();
             _factory = new DefaultSupportedPropertyFactory(
                 _propertyRangeRetrievalPolicy,
                 _metaProvider,
-                _propertyPredicateIdPolicy);
+                _propertyPredicateIdPolicy,
+                A.CollectionOfFake<ISupportedOperations>(0));
         }
 
         [Fact]

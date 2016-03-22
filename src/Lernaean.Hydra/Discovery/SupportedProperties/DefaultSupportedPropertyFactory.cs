@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Hydra.Core;
 using Hydra.Discovery.SupportedClasses;
+using Hydra.Discovery.SupportedOperations;
 using JsonLD.Entities;
 
 namespace Hydra.Discovery.SupportedProperties
@@ -15,6 +17,7 @@ namespace Hydra.Discovery.SupportedProperties
         private readonly IPropertyRangeRetrievalPolicy _rangeRetrieval;
         private readonly ISupportedPropertyMetaProvider _metaProvider;
         private readonly IPropertyPredicateIdPolicy _propertyPredicateIdPolicy;
+        private readonly IEnumerable<ISupportedOperations> _operations;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultSupportedPropertyFactory"/> class.
@@ -22,11 +25,13 @@ namespace Hydra.Discovery.SupportedProperties
         public DefaultSupportedPropertyFactory(
             IPropertyRangeRetrievalPolicy rangeRetrieval,
             ISupportedPropertyMetaProvider metaProvider,
-            IPropertyPredicateIdPolicy propertyPredicateIdPolicy)
+            IPropertyPredicateIdPolicy propertyPredicateIdPolicy,
+            IEnumerable<ISupportedOperations> operations)
         {
             _rangeRetrieval = rangeRetrieval;
             _metaProvider = metaProvider;
             _propertyPredicateIdPolicy = propertyPredicateIdPolicy;
+            _operations = operations;
         }
 
         /// <summary>
@@ -51,6 +56,15 @@ namespace Hydra.Discovery.SupportedProperties
                     Range = mappedType ?? (IriRef)Hydra.Resource
                 }
             };
+
+            var operations = from operation in _operations
+                             where operation.Type == prop.ReflectedType
+                             from opMeta in operation.GetPropertyOperations(prop)
+                             select new Operation(opMeta.Method)
+                             {
+                                 Returns = property.Property.Range
+                             };
+            property.SupportedOperations = operations.ToList();
 
             return property;
         }
