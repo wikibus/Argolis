@@ -34,10 +34,10 @@ namespace Hydra.Resources
             _totalPages = (int)(totalItems / pageSize) + 1;
 
             Id = BindPageUri(page);
-            Next = (IriRef?)BindPageUri(page + 1);
-            Previous = (IriRef?)BindPageUri(page - 1);
-            Last = (IriRef?)BindPageUri((int)Math.Ceiling((double)totalItems / pageSize));
-            First = (IriRef?)BindPageUri(1);
+            Next = BindPageRef(page + 1);
+            Previous = BindPageRef(page - 1);
+            Last = BindPageRef((int)Math.Ceiling((double)totalItems / pageSize));
+            First = BindPageRef(1);
         }
 
         private Uri BindPageUri(int page)
@@ -58,6 +58,17 @@ namespace Hydra.Resources
             {
                 { _pageVariable, actualPage }
             });
+        }
+
+        private IriRef? BindPageRef(int page)
+        {
+            var bindPageUri = BindPageUri(page);
+            if (bindPageUri == null)
+            {
+                return null;
+            }
+
+            return (IriRef?)bindPageUri;
         }
     }
 }

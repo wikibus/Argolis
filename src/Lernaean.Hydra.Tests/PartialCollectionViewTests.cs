@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Hydra;
 using Hydra.Resources;
+using JsonLD.Entities;
 using TunnelVisionLabs.Net;
 using Xunit;
 
@@ -48,10 +49,10 @@ namespace Lernaean.Hydra.Tests
 
             // then
             view.Id.Should().Be(new Uri("/some/collection?page=5", UriKind.Relative));
-            view.First.Should().Be(new Uri("/some/collection", UriKind.Relative));
-            view.Last.Should().Be(new Uri("/some/collection?page=9", UriKind.Relative));
-            view.Next.Should().Be(new Uri("/some/collection?page=6", UriKind.Relative));
-            view.Previous.Should().Be(new Uri("/some/collection?page=4", UriKind.Relative));
+            view.First.Should().Be((IriRef)new Uri("/some/collection", UriKind.Relative));
+            view.Last.Should().Be((IriRef)new Uri("/some/collection?page=9", UriKind.Relative));
+            view.Next.Should().Be((IriRef)new Uri("/some/collection?page=6", UriKind.Relative));
+            view.Previous.Should().Be((IriRef)new Uri("/some/collection?page=4", UriKind.Relative));
         }
 
         [Fact]
@@ -69,10 +70,10 @@ namespace Lernaean.Hydra.Tests
 
             // then
             view.Id.Should().Be(new Uri("/some/collection?page=9", UriKind.Relative));
-            view.First.Should().Be(new Uri("/some/collection", UriKind.Relative));
-            view.Last.Should().Be(new Uri("/some/collection?page=9", UriKind.Relative));
+            view.First.Should().Be((IriRef)new Uri("/some/collection", UriKind.Relative));
+            view.Last.Should().Be((IriRef)new Uri("/some/collection?page=9", UriKind.Relative));
             view.Next.Should().BeNull();
-            view.Previous.Should().Be(new Uri("/some/collection?page=8", UriKind.Relative));
+            view.Previous.Should().Be((IriRef)new Uri("/some/collection?page=8", UriKind.Relative));
         }
 
         [Fact]
@@ -90,9 +91,9 @@ namespace Lernaean.Hydra.Tests
 
             // then
             view.Id.Should().Be(new Uri("/some/collection", UriKind.Relative));
-            view.First.Should().Be(new Uri("/some/collection", UriKind.Relative));
-            view.Last.Should().Be(new Uri("/some/collection?page=9", UriKind.Relative));
-            view.First.Should().Be(new Uri("/some/collection", UriKind.Relative));
+            view.First.Should().Be((IriRef)new Uri("/some/collection", UriKind.Relative));
+            view.Last.Should().Be((IriRef)new Uri("/some/collection?page=9", UriKind.Relative));
+            view.First.Should().Be((IriRef)new Uri("/some/collection", UriKind.Relative));
             view.Previous.Should().BeNull();
         }
     }
