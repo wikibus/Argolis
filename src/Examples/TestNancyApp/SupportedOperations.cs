@@ -91,7 +91,7 @@ namespace TestNancyApp
 
             if (PropertyOperations.ContainsKey(propertyInfo) == false)
             {
-                PropertyOperations[propertyInfo] = new List<SupportedOperationMeta>();
+                PropertyOperations[propertyInfo] = new List<OperationMeta>();
             }
 
             return new SupportedOperationBuilder(propertyInfo, PropertyOperations[propertyInfo]);
@@ -100,26 +100,26 @@ namespace TestNancyApp
 
     public abstract class SupportedOperations : ISupportedOperations
     {
-        private readonly IList<SupportedOperationMeta> _typeOperations = new List<SupportedOperationMeta>();
-        private readonly IDictionary<PropertyInfo, IList<SupportedOperationMeta>> _propertyOperations = new Dictionary<PropertyInfo, IList<SupportedOperationMeta>>();
+        private readonly IList<OperationMeta> _typeOperations = new List<OperationMeta>();
+        private readonly IDictionary<PropertyInfo, IList<OperationMeta>> _propertyOperations = new Dictionary<PropertyInfo, IList<OperationMeta>>();
 
         public Type Type { get; private set; }
 
-        public IEnumerable<SupportedOperationMeta> TypeOperations
+        public IEnumerable<OperationMeta> TypeOperations
         {
             get { return _typeOperations; }
         }
 
-        protected IDictionary<PropertyInfo, IList<SupportedOperationMeta>> PropertyOperations
+        protected IDictionary<PropertyInfo, IList<OperationMeta>> PropertyOperations
         {
             get { return _propertyOperations; }
         }
 
-        public IEnumerable<SupportedOperationMeta> GetPropertyOperations(PropertyInfo property)
+        public IEnumerable<OperationMeta> GetPropertyOperations(PropertyInfo property)
         {
             if (_propertyOperations.ContainsKey(property) == false)
             {
-                return Enumerable.Empty<SupportedOperationMeta>();
+                return Enumerable.Empty<OperationMeta>();
             }
 
             return _propertyOperations[property];
@@ -132,7 +132,7 @@ namespace TestNancyApp
 
         protected void CanGet()
         {
-            _typeOperations.Add(new SupportedOperationMeta
+            _typeOperations.Add(new OperationMeta
             {
                 Method = "GET"
             });
@@ -143,12 +143,12 @@ namespace TestNancyApp
     {
         Type Type { get; }
 
-        IEnumerable<SupportedOperationMeta> TypeOperations { get; }
+        IEnumerable<OperationMeta> TypeOperations { get; }
 
-        IEnumerable<SupportedOperationMeta> GetPropertyOperations(PropertyInfo property);
+        IEnumerable<OperationMeta> GetPropertyOperations(PropertyInfo property);
     }
 
-    public class SupportedOperationMeta
+    public class OperationMeta
     {
         public string Method { get; set; }
     }
@@ -156,9 +156,9 @@ namespace TestNancyApp
     public class SupportedOperationBuilder
     {
         private PropertyInfo _property;
-        private readonly IList<SupportedOperationMeta> _propertyOperations;
+        private readonly IList<OperationMeta> _propertyOperations;
 
-        public SupportedOperationBuilder(PropertyInfo property, IList<SupportedOperationMeta> propertyOperations)
+        public SupportedOperationBuilder(PropertyInfo property, IList<OperationMeta> propertyOperations)
         {
             this._property = property;
             _propertyOperations = propertyOperations;
@@ -166,7 +166,7 @@ namespace TestNancyApp
 
         public SupportedOperationBuilder CanGet()
         {
-            _propertyOperations.Add(new SupportedOperationMeta
+            _propertyOperations.Add(new OperationMeta
             {
                 Method = "GET"
             });
