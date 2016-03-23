@@ -5,7 +5,7 @@ using Nancy.Bootstrapper;
 namespace Hydra.Nancy
 {
     /// <summary>
-    /// Initialized the application for serving hydra API documentation
+    /// Initializes the application for serving hydra API documentation
     /// </summary>
     public class HydraDocumentationStartup : IApplicationStartup
     {
