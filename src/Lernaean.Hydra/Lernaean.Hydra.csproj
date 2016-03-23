@@ -52,7 +52,6 @@
     </Compile>
     <Compile Include="Annotations\SupportedClassAttribute.cs" />
     <Compile Include="Annotations\SupportedOperationAttribute.cs" />
-    <Compile Include="Annotations\SupportedPropertyAttribute.cs" />
     <Compile Include="Annotations\WriteOnlyAttribute.cs" />
     <Compile Include="ContextHelpers.cs" />
     <Compile Include="Core\Property.cs" />
