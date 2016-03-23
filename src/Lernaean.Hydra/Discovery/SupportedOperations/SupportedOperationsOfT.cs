@@ -21,7 +21,8 @@ namespace Hydra.Discovery.SupportedOperations
         /// <summary>
         /// Allows the setup of an operation supported by a property
         /// </summary>
-        protected SupportedOperationBuilder Property(Expression<Func<T, object>> propertyExpression)
+        /// <typeparam name="TReturn">Property return type.</typeparam>
+        protected SupportedOperationBuilder Property<TReturn>(Expression<Func<T, TReturn>> propertyExpression)
         {
             PropertyInfo propertyInfo = (PropertyInfo)((MemberExpression)propertyExpression.Body).Member;
 
