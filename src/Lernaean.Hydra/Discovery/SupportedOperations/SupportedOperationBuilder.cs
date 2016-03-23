@@ -25,10 +25,9 @@ namespace Hydra.Discovery.SupportedOperations
         /// </summary>
         public SupportedOperationBuilder SupportsGet(
             string title = null,
-            string description = null,
-            IriRef? returns = null)
+            string description = null)
         {
-            return Supports(HttpMethod.Get, title, description, returns: returns);
+            return Supports(HttpMethod.Get, title, description);
         }
 
         /// <summary>
