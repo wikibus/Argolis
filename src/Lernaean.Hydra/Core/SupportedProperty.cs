@@ -16,7 +16,6 @@ namespace Hydra.Core
         /// </summary>
         public SupportedProperty()
         {
-            SupportedOperations = new System.Collections.ObjectModel.Collection<Operation>();
             Property = new Property();
         }
 
@@ -37,12 +36,6 @@ namespace Hydra.Core
         /// </summary>
         [JsonProperty(Hydra.writeable)]
         public bool Writeable { get; set; }
-
-        /// <summary>
-        /// Gets or sets the supported operations.
-        /// </summary>
-        [JsonProperty(Hydra.supportedOperation)]
-        public ICollection<Operation> SupportedOperations { get; set; }
 
         /// <summary>
         /// Gets or sets the property.

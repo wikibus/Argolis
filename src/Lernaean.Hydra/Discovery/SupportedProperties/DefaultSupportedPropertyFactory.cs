@@ -53,11 +53,10 @@ namespace Hydra.Discovery.SupportedProperties
                 Property =
                 {
                     Id = propertyId,
-                    Range = mappedType ?? (IriRef)Hydra.Resource
+                    Range = mappedType ?? (IriRef) Hydra.Resource,
+                    SupportedOperations = _operationFactory.CreateOperations(prop, classIds).ToList()
                 }
             };
-
-            property.SupportedOperations = _operationFactory.CreateOperations(prop, classIds).ToList();
 
             return property;
         }

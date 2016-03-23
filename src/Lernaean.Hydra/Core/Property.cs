@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using JsonLD.Entities;
 using Newtonsoft.Json;
@@ -12,6 +13,14 @@ namespace Hydra.Core
     public class Property
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="Property"/> class.
+        /// </summary>
+        public Property()
+        {
+            SupportedOperations = new List<Operation>();
+        }
+
+        /// <summary>
         /// Gets or sets the RDFS range.
         /// </summary>
         [JsonProperty(Rdfs.range)]
@@ -21,6 +30,12 @@ namespace Hydra.Core
         /// Gets or sets the identifier.
         /// </summary>
         public string Id { [return: AllowNull] get; set; }
+
+        /// <summary>
+        /// Gets or sets the supported operations.
+        /// </summary>
+        [JsonProperty(Hydra.supportedOperation)]
+        public ICollection<Operation> SupportedOperations { get; set; }
 
         [JsonProperty, UsedImplicitly]
         private string Type
