@@ -50,6 +50,7 @@
     <Compile Include="ApiDocumentation\DefaultPropertyIdPolicyTests.cs" />
     <Compile Include="ApiDocumentation\DefaultPropertyRangeRetrievalPolicyTests.cs" />
     <Compile Include="ApiDocumentation\DefaultSupportedClassMetaProviderTests.cs" />
+    <Compile Include="ApiDocumentation\DefaultSupportedOperationFactoryTests.cs" />
     <Compile Include="ApiDocumentation\DefaultSupportedPropertyFactoryTests.cs" />
     <Compile Include="ApiDocumentation\DefaultSupportedPropertyMetaProviderTests.cs" />
     <Compile Include="ContextExtensionsTests.cs" />

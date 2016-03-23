@@ -1,4 +1,5 @@
 using Hydra.Core;
+using JsonLD.Entities;
 
 namespace Hydra.Discovery.SupportedOperations
 {
@@ -11,5 +12,15 @@ namespace Hydra.Discovery.SupportedOperations
         /// Gets or sets the HTTP method.
         /// </summary>
         public string Method { get; set; }
+
+        /// <summary>
+        /// Gets or sets the operation request model type identifier.
+        /// </summary>
+        public IriRef? Expects { get; set; }
+
+        /// <summary>
+        /// Gets or sets the operation response type identifier.
+        /// </summary>
+        public IriRef? Returns { get; set; }
     }
 }

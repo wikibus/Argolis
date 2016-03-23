@@ -5,6 +5,7 @@ using System.Reflection;
 using Hydra.Core;
 using Hydra.Discovery.SupportedProperties;
 using JsonLD.Entities;
+using Vocab;
 
 namespace Hydra.Discovery.SupportedOperations
 {
@@ -33,12 +34,9 @@ namespace Hydra.Discovery.SupportedOperations
         public IEnumerable<Operation> CreateOperations(Type supportedClassType, IReadOnlyDictionary<Type, Uri> classIds)
         {
             return from source in _operations
-                where source.Type == supportedClassType
-                from op in source.GetSupportedClassOperations()
-                select new Operation(op.Method)
-                {
-                    Returns = (IriRef)classIds[supportedClassType]
-                };
+                   where source.Type == supportedClassType
+                   from opMeta in source.GetSupportedClassOperations()
+                   select CreateOperation(opMeta, (IriRef)classIds[supportedClassType]);
         }
 
         /// <summary>
@@ -46,15 +44,43 @@ namespace Hydra.Discovery.SupportedOperations
         /// </summary>
         public IEnumerable<Operation> CreateOperations(PropertyInfo prop, IReadOnlyDictionary<Type, Uri> classIds)
         {
-            IriRef? mappedType = _rangeRetrieval.GetRange(prop, classIds);
+            IriRef mappedType = _rangeRetrieval.GetRange(prop, classIds) ?? (IriRef)Hydra.Resource;
 
             return from operation in _operations
-                where operation.Type == prop.ReflectedType
-                from opMeta in operation.GetSupportedPropertyOperations(prop)
-                select new Operation(opMeta.Method)
-                {
-                    Returns = mappedType ?? (IriRef)Hydra.Resource
-                };
+                   where operation.Type == prop.ReflectedType
+                   from meta in operation.GetSupportedPropertyOperations(prop)
+                   select CreateOperation(meta, mappedType);
+        }
+
+        /// <summary>
+        /// Creates the operation replacing meta values with defaults.
+        /// </summary>
+        /// <example>
+        /// GET always expects owl:Nothing, PUT always returns owl:Nothing, etc.
+        /// </example>
+        protected virtual Operation CreateOperation(OperationMeta meta, IriRef modelOrPropertyType)
+        {
+            switch (meta.Method)
+            {
+                case HttpMethod.Get:
+                    meta.Returns = modelOrPropertyType;
+                    goto case HttpMethod.Head;
+                case HttpMethod.Head:
+                case HttpMethod.Trace:
+                case HttpMethod.Delete:
+                    meta.Expects = (IriRef)Owl.Nothing;
+                    break;
+                case HttpMethod.Put:
+                    meta.Expects = modelOrPropertyType;
+                    meta.Returns = (IriRef?)Owl.Nothing;
+                    break;
+            }
+
+            return new Operation(meta.Method)
+            {
+                Returns = meta.Returns.GetValueOrDefault(modelOrPropertyType),
+                Expects = meta.Expects.GetValueOrDefault((IriRef)Owl.Nothing)
+            };
         }
     }
 }

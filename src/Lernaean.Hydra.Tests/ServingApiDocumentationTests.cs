@@ -3,6 +3,7 @@ using FakeItEasy;
 using FluentAssertions;
 using Hydra;
 using Hydra.Discovery.SupportedClasses;
+using Hydra.Discovery.SupportedOperations;
 using Hydra.Nancy;
 using JsonLD.Entities;
 using Nancy;
@@ -34,6 +35,7 @@ namespace Lernaean.Hydra.Tests
                 configurator.Dependency(rdfTypeProviderPolicy);
                 configurator.Dependency(A.Fake<ISupportedPropertyFactory>());
                 configurator.Dependency(A.Fake<ISupportedClassMetaProvider>());
+                configurator.Dependency(A.Fake<ISupportedOperationFactory>());
                 configurator.ApplicationStartupTask<HydraDocumentationStartup>();
             }, 
             context => context.HostName("hydra.guru"));

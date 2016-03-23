@@ -26,6 +26,7 @@ namespace Hydra.Nancy
             RegisterWithDefault<ISupportedClassMetaProvider>(typeof(DefaultSupportedClassMetaProvider));
             RegisterWithDefault<IPropertyPredicateIdPolicy>(typeof(DefaultPropertyIdPolicy));
             RegisterWithDefault<IPropertyRangeRetrievalPolicy>(typeof(DefaultPropertyRangeRetrievalPolicy));
+            RegisterWithDefault<ISupportedOperationFactory>(typeof(DefaultSupportedOperationFactory));
             RegisterWithDefault<IContextProvider>(typeof(NullContextProvider));
             RegisterWithUserThenDefault<IDocumentedTypeSelector>(new[]
             {

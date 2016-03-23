@@ -12,11 +12,10 @@ namespace Hydra.Discovery.SupportedProperties
     public interface IPropertyRangeRetrievalPolicy
     {
         /// <summary>
-        /// Gets the range for property <paramref cref="prop"/>
+        /// Gets the range for the <paramref name="property"/>
         /// </summary>
-        /// <param name="prop">The model property</param>
+        /// <param name="property">The model property</param>
         /// <param name="classIds">identifiers mapped to supported classes</param>
-        /// <returns>An identifier or null if none could be determined</returns>
-        IriRef? GetRange(PropertyInfo prop, IReadOnlyDictionary<Type, Uri> classIds);
+        IriRef? GetRange(PropertyInfo property, IReadOnlyDictionary<Type, Uri> classIds);
     }
 }
