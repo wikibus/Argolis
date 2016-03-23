@@ -25,10 +25,10 @@ namespace Hydra.Discovery.SupportedOperations
         /// </summary>
         public SupportedOperationBuilder SupportsGet(
             string title = null,
-            string descrption = null,
+            string description = null,
             IriRef? returns = null)
         {
-            return Supports(HttpMethod.Get, title, descrption, returns: returns);
+            return Supports(HttpMethod.Get, title, description, returns: returns);
         }
 
         /// <summary>
@@ -36,10 +36,10 @@ namespace Hydra.Discovery.SupportedOperations
         /// </summary>
         public SupportedOperationBuilder SupportsPut(
             string title = null,
-            string descrption = null,
+            string description = null,
             IriRef? expects = null)
         {
-            return Supports(HttpMethod.Put, title, descrption, expects);
+            return Supports(HttpMethod.Put, title, description, expects);
         }
 
         /// <summary>
@@ -47,11 +47,11 @@ namespace Hydra.Discovery.SupportedOperations
         /// </summary>
         public SupportedOperationBuilder SupportsPost(
             string title = null,
-            string descrption = null,
+            string description = null,
             IriRef? expects = null,
             IriRef? returns = null)
         {
-            return Supports(HttpMethod.Post, title, descrption, expects, returns);
+            return Supports(HttpMethod.Post, title, description, expects, returns);
         }
 
         /// <summary>
@@ -59,10 +59,10 @@ namespace Hydra.Discovery.SupportedOperations
         /// </summary>
         public SupportedOperationBuilder SupportsDelete(
             string title = null,
-            string descrption = null,
+            string description = null,
             IriRef? returns = null)
         {
-            return Supports(HttpMethod.Delete, title, descrption, returns: returns);
+            return Supports(HttpMethod.Delete, title, description, returns: returns);
         }
 
         /// <summary>
@@ -70,11 +70,11 @@ namespace Hydra.Discovery.SupportedOperations
         /// </summary>
         public SupportedOperationBuilder SupportsPatch(
             string title = null,
-            string descrption = null,
+            string description = null,
             IriRef? expects = null,
             IriRef? returns = null)
         {
-            return Supports(HttpMethod.Patch, title, descrption, expects, returns);
+            return Supports(HttpMethod.Patch, title, description, expects, returns);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Hydra.Discovery.SupportedOperations
         public SupportedOperationBuilder Supports(
             string method,
             string title = null,
-            string descrption = null,
+            string description = null,
             IriRef? expects = null,
             IriRef? returns = null)
         {
@@ -93,7 +93,7 @@ namespace Hydra.Discovery.SupportedOperations
                 Expects = expects,
                 Returns = returns,
                 Title = title,
-                Description = descrption
+                Description = description
             });
 
             return this;
