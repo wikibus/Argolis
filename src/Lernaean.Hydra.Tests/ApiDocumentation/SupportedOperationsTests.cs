@@ -2,7 +2,6 @@
 using System.Linq.Expressions;
 using FluentAssertions;
 using Hydra.Discovery.SupportedOperations;
-using ImpromptuInterface;
 using TestHydraApi;
 using Xunit;
 
@@ -23,39 +22,30 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             Assert.ThrowsAny<ArgumentException>(() => _operations.Prop(i => i.Method()));
         }
 
-        [Theory]
-        [InlineData("SupportsGet", HttpMethod.Get)]
-        [InlineData("SupportsPost", HttpMethod.Post)]
-        [InlineData("SupportsDelete", HttpMethod.Delete)]
-        [InlineData("SupportsPatch", HttpMethod.Patch)]
-        [InlineData("SupportsPut", HttpMethod.Put)]
-        public void Should_store_operation_meta_with_with_correct_method(string operationMethodName, string expectedMethod)
+        [Fact]
+        public void Should_return_same_builder_for_class()
         {
             // given
-            var builder = _operations.Prop(i => i.Title);
+            var builder = _operations.Class;
 
             // when
-            Impromptu.InvokeMember(builder, operationMethodName);
+            var builder2 = _operations.Class;
 
             // then
-            _operations.GetSupportedPropertyOperations(typeof(Issue).GetProperty("Title"))
-                .Should().Contain(meta => meta.Method == expectedMethod);
+            builder.Should().BeSameAs(builder2);
         }
-        
-        [Theory]
-        [InlineData("SupportsGet", HttpMethod.Get)]
-        [InlineData("SupportsPost", HttpMethod.Post)]
-        [InlineData("SupportsDelete", HttpMethod.Delete)]
-        [InlineData("SupportsPatch", HttpMethod.Patch)]
-        [InlineData("SupportsPut", HttpMethod.Put)]
-        public void Should_contain_defaults_for_an_operation(string operationMethodName, string expectedMethod)
+
+        [Fact]
+        public void Should_return_same_builder_for_property()
         {
             // given
-            _operations.Supports(operationMethodName);
+            var builder = _operations.Class;
+
+            // when
+            var builder2 = _operations.Class;
 
             // then
-            _operations.GetSupportedClassOperations()
-                .Should().Contain(meta => meta.Method == expectedMethod);
+            builder.Should().BeSameAs(builder2);
         }
 
         private class TestOperations : SupportedOperations<Issue>
@@ -63,11 +53,6 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             public SupportedOperationBuilder Prop(Expression<Func<Issue, string>> propertyExpression)
             {
                 return Property(propertyExpression);
-            }
-
-            public SupportedOperationBuilder Supports(string protectedMethodName)
-            {
-                return Impromptu.InvokeMember(Class, protectedMethodName);
             }
         }
     }

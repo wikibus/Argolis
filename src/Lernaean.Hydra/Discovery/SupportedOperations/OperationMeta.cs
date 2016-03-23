@@ -1,11 +1,13 @@
 using Hydra.Core;
 using JsonLD.Entities;
+using NullGuard;
 
 namespace Hydra.Discovery.SupportedOperations
 {
     /// <summary>
     /// Basic information about an <see cref="Operation" />
     /// </summary>
+    [NullGuard(ValidationFlags.None)]
     public class OperationMeta
     {
         /// <summary>
@@ -22,5 +24,15 @@ namespace Hydra.Discovery.SupportedOperations
         /// Gets or sets the operation response type identifier.
         /// </summary>
         public IriRef? Returns { get; set; }
+
+        /// <summary>
+        /// Gets or sets the operation title.
+        /// </summary>
+        public string Title { get; set; }
+
+        /// <summary>
+        /// Gets or sets the operation description.
+        /// </summary>
+        public string Description { get; set; }
     }
 }

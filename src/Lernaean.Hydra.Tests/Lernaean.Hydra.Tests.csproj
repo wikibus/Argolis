@@ -53,6 +53,7 @@
     <Compile Include="ApiDocumentation\DefaultSupportedOperationFactoryTests.cs" />
     <Compile Include="ApiDocumentation\DefaultSupportedPropertyFactoryTests.cs" />
     <Compile Include="ApiDocumentation\DefaultSupportedPropertyMetaProviderTests.cs" />
+    <Compile Include="ApiDocumentation\SupportedOperationBuilderTests.cs" />
     <Compile Include="ApiDocumentation\SupportedOperationsTests.cs" />
     <Compile Include="ContextExtensionsTests.cs" />
     <Compile Include="TestExtension.cs" />

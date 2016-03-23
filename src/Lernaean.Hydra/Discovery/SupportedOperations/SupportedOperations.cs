@@ -9,8 +9,6 @@ namespace Hydra.Discovery.SupportedOperations
     /// </summary>
     public abstract class SupportedOperations : ISupportedOperations
     {
-        private readonly Type _type;
-        private readonly SupportedOperationBuilder _builder;
         private readonly List<OperationMeta> _typeOperations;
 
         /// <summary>
@@ -19,29 +17,20 @@ namespace Hydra.Discovery.SupportedOperations
         /// <param name="type">The supported class type.</param>
         protected SupportedOperations(Type type)
         {
-            _type = type;
+            Type = type;
             _typeOperations = new List<OperationMeta>();
-            _builder = new SupportedOperationBuilder(_typeOperations);
+            Class = new SupportedOperationBuilder(_typeOperations);
         }
 
         /// <summary>
         /// Gets the type, which these operations apply to
         /// </summary>
-        public Type Type
-        {
-            get { return _type; }
-        }
+        public Type Type { get; }
 
         /// <summary>
         /// Gets a builder, which sets up operations supported by the supported class
         /// </summary>
-        public SupportedOperationBuilder Class
-        {
-            get
-            {
-                return _builder;
-            }
-        }
+        public SupportedOperationBuilder Class { get; }
 
         /// <summary>
         /// Gets the supported operations for a supported class.
