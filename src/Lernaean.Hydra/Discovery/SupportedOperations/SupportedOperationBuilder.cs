@@ -26,7 +26,7 @@ namespace Hydra.Discovery.SupportedOperations
         {
             _propertyOperations.Add(new OperationMeta
             {
-                Method = "GET"
+                Method = HttpMethod.Get
             });
 
             return this;

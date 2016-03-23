@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Hydra.Core;
+using Hydra.Discovery.SupportedOperations;
 using JsonLD.Entities;
 using Xunit;
 
@@ -34,7 +35,7 @@ namespace Lernaean.Hydra.Tests.Serialization
                 var @class = new Class(new Uri("http://example.test/class"));
                 @class.SupportedOperations = new List<Operation>
                 {
-                    new Operation("POST")
+                    new Operation(HttpMethod.Post)
                     {
                         Returns = (IriRef)new Uri("http://example.api/ReturnType")
                     }

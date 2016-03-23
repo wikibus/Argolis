@@ -36,10 +36,10 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         }
 
         [Theory]
-        [InlineData("HEAD")]
-        [InlineData("GET")]
-        [InlineData("TRACE")]
-        [InlineData("DELETE")]
+        [InlineData(HttpMethod.Head)]
+        [InlineData(HttpMethod.Get)]
+        [InlineData(HttpMethod.Trace)]
+        [InlineData(HttpMethod.Delete)]
         public void Operation_should_always_expect_nothing(string method)
         {
             // given
@@ -80,7 +80,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             A.CallTo(() => _operations.Type).Returns(typeof(Issue));
             A.CallTo(() => _operations.GetSupportedClassOperations()).Returns(new[]
             {
-                new OperationMeta { Method = "GET", Returns = (IriRef)Schema.Person }
+                new OperationMeta { Method = HttpMethod.Get, Returns = (IriRef)Schema.Person }
             });
 
             // when
@@ -114,7 +114,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             A.CallTo(() => _operations.Type).Returns(typeof(Issue));
             A.CallTo(() => _operations.GetSupportedClassOperations()).Returns(new[]
             {
-                new OperationMeta { Method = "POST", Returns = (IriRef)Schema.Person }
+                new OperationMeta { Method = HttpMethod.Post, Returns = (IriRef)Schema.Person }
             });
 
             // when
@@ -131,7 +131,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             A.CallTo(() => _operations.Type).Returns(typeof(Issue));
             A.CallTo(() => _operations.GetSupportedClassOperations()).Returns(new[]
             {
-                new OperationMeta { Method = "PUT", Expects = (IriRef)Foaf.Agent }
+                new OperationMeta { Method = HttpMethod.Put, Expects = (IriRef)Foaf.Agent }
             });
 
             // when
