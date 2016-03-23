@@ -6,6 +6,9 @@ before_build:
   - .paket\paket.exe restore
   - ps: gitversion /l console /output buildserver
 
+build:
+  project: Argolis.sln
+
 configuration: Release
 
 after_build:
