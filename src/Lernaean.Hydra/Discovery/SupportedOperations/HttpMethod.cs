@@ -44,5 +44,10 @@ namespace Hydra.Discovery.SupportedOperations
         /// The PUT method name
         /// </summary>
         public const string Put = "PUT";
+
+        /// <summary>
+        /// The PATCH method name
+        /// </summary>
+        public const string Patch = "PATCH";
     }
 }

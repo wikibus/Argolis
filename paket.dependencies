@@ -29,6 +29,7 @@ nuget json-ld.net
 nuget nancy.rdf = 0.2.0-pre0049
 nuget OpenCover
 nuget xunit.runner.console
+nuget ImpromptuInterface
 
 http https://gist.githubusercontent.com/tpluscode/5d9c6983004c1c9ec91f/raw/2a5f0785c2686635f1b8ab21af1751d276d02727/vocabulary.tt
 

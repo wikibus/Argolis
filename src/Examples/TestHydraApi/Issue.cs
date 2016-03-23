@@ -26,5 +26,10 @@ namespace TestHydraApi
         public string ProjectId { get; set; }
 
         public UndocumentedClass UndocumentedClassProperty { get; set; }
+
+        public string Method()
+        {
+            return null;
+        }
     }
 }

@@ -16,6 +16,7 @@ NUGET
     gitlink (2.2.0)
     GitVersionTask (3.4.1)
     HtmlAgilityPack (1.4.9)
+    ImpromptuInterface (6.2.2)
     JetBrainsAnnotations.Fody (1.0.4)
       Fody (>= 1.29.2)
     json-ld.net (1.0.4)

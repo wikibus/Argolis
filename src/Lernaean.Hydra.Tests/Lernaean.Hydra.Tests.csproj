@@ -53,6 +53,7 @@
     <Compile Include="ApiDocumentation\DefaultSupportedOperationFactoryTests.cs" />
     <Compile Include="ApiDocumentation\DefaultSupportedPropertyFactoryTests.cs" />
     <Compile Include="ApiDocumentation\DefaultSupportedPropertyMetaProviderTests.cs" />
+    <Compile Include="ApiDocumentation\SupportedOperationsTests.cs" />
     <Compile Include="ContextExtensionsTests.cs" />
     <Compile Include="TestExtension.cs" />
     <Compile Include="Serialization\ApiDocumentationSerializationTests.cs" />
@@ -188,6 +189,17 @@
       <ItemGroup>
         <Reference Include="HtmlAgilityPack">
           <HintPath>..\..\packages\HtmlAgilityPack\lib\Net45\HtmlAgilityPack.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
+      <ItemGroup>
+        <Reference Include="ImpromptuInterface">
+          <HintPath>..\..\packages\ImpromptuInterface\lib\net40\ImpromptuInterface.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>

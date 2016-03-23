@@ -14,7 +14,7 @@ namespace Hydra.Discovery.SupportedOperations
         /// Creates the supported operations for supported class.
         /// </summary>
         IEnumerable<Operation> CreateOperations(Type supportedClassType, IReadOnlyDictionary<Type, Uri> classIds);
-        
+
         /// <summary>
         /// Creates the supported operations for supported property.
         /// </summary>

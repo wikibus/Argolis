@@ -24,7 +24,13 @@ namespace Hydra.Discovery.SupportedOperations
         /// <typeparam name="TReturn">Property return type.</typeparam>
         protected SupportedOperationBuilder Property<TReturn>(Expression<Func<T, TReturn>> propertyExpression)
         {
-            PropertyInfo propertyInfo = (PropertyInfo)((MemberExpression)propertyExpression.Body).Member;
+            if (!(propertyExpression.Body is MemberExpression))
+            {
+                throw new ArgumentException("Parameter must be a property access expression", nameof(propertyExpression));
+            }
+
+            var memberExpression = (MemberExpression)propertyExpression.Body;
+            var propertyInfo = (PropertyInfo)memberExpression.Member;
 
             if (PropertyOperations.ContainsKey(propertyInfo) == false)
             {

@@ -10,8 +10,8 @@ namespace Hydra.Discovery.SupportedOperations
     /// </summary>
     public abstract class SupportedOperations : ISupportedOperations
     {
-        private readonly IList<OperationMeta> _typeOperations = new List<OperationMeta>();
-        private readonly IDictionary<PropertyInfo, IList<OperationMeta>> _propertyOperations = new Dictionary<PropertyInfo, IList<OperationMeta>>();
+        private readonly IList<OperationMeta> _typeOperations;
+        private readonly IDictionary<PropertyInfo, IList<OperationMeta>> _propertyOperations;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SupportedOperations"/> class.
@@ -20,23 +20,25 @@ namespace Hydra.Discovery.SupportedOperations
         protected SupportedOperations(Type type)
         {
             Type = type;
+            _typeOperations = new List<OperationMeta>();
+            _propertyOperations = new Dictionary<PropertyInfo, IList<OperationMeta>>();
         }
 
         /// <inheritdoc />
         public Type Type { get; private set; }
-        
+
         /// <inheritdoc />
         protected IDictionary<PropertyInfo, IList<OperationMeta>> PropertyOperations
         {
             get { return _propertyOperations; }
         }
-        
+
         /// <inheritdoc />
         public IEnumerable<OperationMeta> GetSupportedClassOperations()
         {
             return _typeOperations;
         }
-        
+
         /// <inheritdoc />
         public IEnumerable<OperationMeta> GetSupportedPropertyOperations(PropertyInfo property)
         {
