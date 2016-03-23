@@ -140,5 +140,41 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             // then
             operation.Expects.Should().Be((IriRef)IssueType);
         }
+
+        [Fact]
+        public void Operation_should_have_title_as_configured()
+        {
+            // given
+            const string asExpected = "The title";
+            A.CallTo(() => _operations.Type).Returns(typeof(Issue));
+            A.CallTo(() => _operations.GetSupportedClassOperations()).Returns(new[]
+            {
+                new OperationMeta { Method = HttpMethod.Post, Title = asExpected }
+            });
+
+            // when
+            var operation = _factory.CreateOperations(typeof(Issue), ClassIds).Single();
+
+            // then
+            operation.Title.Should().Be(asExpected);
+        }
+
+        [Fact]
+        public void Operation_should_have_description_as_configured()
+        {
+            // given
+            const string asExpected = "The description";
+            A.CallTo(() => _operations.Type).Returns(typeof(Issue));
+            A.CallTo(() => _operations.GetSupportedClassOperations()).Returns(new[]
+            {
+                new OperationMeta { Method = HttpMethod.Post, Description = asExpected }
+            });
+
+            // when
+            var operation = _factory.CreateOperations(typeof(Issue), ClassIds).Single();
+
+            // then
+            operation.Description.Should().Be(asExpected);
+        }
     }
 }

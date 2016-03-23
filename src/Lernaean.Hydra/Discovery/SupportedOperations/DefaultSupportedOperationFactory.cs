@@ -78,6 +78,8 @@ namespace Hydra.Discovery.SupportedOperations
 
             return new Operation(meta.Method)
             {
+                Title = meta.Title,
+                Description = meta.Description,
                 Returns = meta.Returns.GetValueOrDefault(modelOrPropertyType),
                 Expects = meta.Expects.GetValueOrDefault((IriRef)Owl.Nothing)
             };
