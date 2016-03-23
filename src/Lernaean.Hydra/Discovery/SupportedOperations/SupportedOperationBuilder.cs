@@ -9,14 +9,14 @@ namespace Hydra.Discovery.SupportedOperations
     public class SupportedOperationBuilder
     {
         [Obsolete("use set?")]
-        private readonly IList<OperationMeta> _propertyOperations;
+        private readonly IList<OperationMeta> _operations;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SupportedOperationBuilder"/> class.
         /// </summary>
-        internal SupportedOperationBuilder(IList<OperationMeta> propertyOperations)
+        internal SupportedOperationBuilder(IList<OperationMeta> operations)
         {
-            _propertyOperations = propertyOperations;
+            _operations = operations;
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Hydra.Discovery.SupportedOperations
         /// </summary>
         public SupportedOperationBuilder Supports(string method)
         {
-            _propertyOperations.Add(new OperationMeta
+            _operations.Add(new OperationMeta
             {
                 Method = method
             });

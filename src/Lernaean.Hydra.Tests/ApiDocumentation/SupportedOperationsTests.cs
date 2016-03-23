@@ -41,12 +41,33 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             _operations.GetSupportedPropertyOperations(typeof(Issue).GetProperty("Title"))
                 .Should().Contain(meta => meta.Method == expectedMethod);
         }
+        
+        [Theory]
+        [InlineData("SupportsGet", HttpMethod.Get)]
+        [InlineData("SupportsPost", HttpMethod.Post)]
+        [InlineData("SupportsDelete", HttpMethod.Delete)]
+        [InlineData("SupportsPatch", HttpMethod.Patch)]
+        [InlineData("SupportsPut", HttpMethod.Put)]
+        public void Should_contain_defaults_for_an_operation(string operationMethodName, string expectedMethod)
+        {
+            // given
+            _operations.Supports(operationMethodName);
+
+            // then
+            _operations.GetSupportedClassOperations()
+                .Should().Contain(meta => meta.Method == expectedMethod);
+        }
 
         private class TestOperations : SupportedOperations<Issue>
         {
             public SupportedOperationBuilder Prop(Expression<Func<Issue, string>> propertyExpression)
             {
                 return Property(propertyExpression);
+            }
+
+            public SupportedOperationBuilder Supports(string protectedMethodName)
+            {
+                return Impromptu.InvokeMember(Class, protectedMethodName);
             }
         }
     }

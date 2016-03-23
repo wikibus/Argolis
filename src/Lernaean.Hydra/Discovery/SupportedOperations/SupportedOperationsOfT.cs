@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -11,11 +12,28 @@ namespace Hydra.Discovery.SupportedOperations
     /// <typeparam name="T">the supported class type</typeparam>
     public abstract class SupportedOperations<T> : SupportedOperations
     {
+        private readonly IDictionary<PropertyInfo, IList<OperationMeta>> _propertyOperations;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SupportedOperations{T}"/> class.
         /// </summary>
         protected SupportedOperations() : base(typeof(T))
         {
+            _propertyOperations = new Dictionary<PropertyInfo, IList<OperationMeta>>();
+        }
+
+        /// <summary>
+        /// Gets the supported operations for a supported property .
+        /// </summary>
+        /// <param name="property">The supported property.</param>
+        public override IEnumerable<OperationMeta> GetSupportedPropertyOperations(PropertyInfo property)
+        {
+            if (_propertyOperations.ContainsKey(property) == false)
+            {
+                return Enumerable.Empty<OperationMeta>();
+            }
+
+            return _propertyOperations[property];
         }
 
         /// <summary>
@@ -32,12 +50,12 @@ namespace Hydra.Discovery.SupportedOperations
             var memberExpression = (MemberExpression)propertyExpression.Body;
             var propertyInfo = (PropertyInfo)memberExpression.Member;
 
-            if (PropertyOperations.ContainsKey(propertyInfo) == false)
+            if (_propertyOperations.ContainsKey(propertyInfo) == false)
             {
-                PropertyOperations[propertyInfo] = new List<OperationMeta>();
+                _propertyOperations[propertyInfo] = new List<OperationMeta>();
             }
 
-            return new SupportedOperationBuilder(PropertyOperations[propertyInfo]);
+            return new SupportedOperationBuilder(_propertyOperations[propertyInfo]);
         }
     }
 }

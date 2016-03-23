@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 
 namespace Hydra.Discovery.SupportedOperations
@@ -10,8 +9,9 @@ namespace Hydra.Discovery.SupportedOperations
     /// </summary>
     public abstract class SupportedOperations : ISupportedOperations
     {
-        private readonly IList<OperationMeta> _typeOperations;
-        private readonly IDictionary<PropertyInfo, IList<OperationMeta>> _propertyOperations;
+        private readonly Type _type;
+        private readonly SupportedOperationBuilder _builder;
+        private readonly List<OperationMeta> _typeOperations;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SupportedOperations"/> class.
@@ -19,46 +19,42 @@ namespace Hydra.Discovery.SupportedOperations
         /// <param name="type">The supported class type.</param>
         protected SupportedOperations(Type type)
         {
-            Type = type;
+            _type = type;
             _typeOperations = new List<OperationMeta>();
-            _propertyOperations = new Dictionary<PropertyInfo, IList<OperationMeta>>();
+            _builder = new SupportedOperationBuilder(_typeOperations);
         }
 
-        /// <inheritdoc />
-        public Type Type { get; private set; }
-
-        /// <inheritdoc />
-        protected IDictionary<PropertyInfo, IList<OperationMeta>> PropertyOperations
+        /// <summary>
+        /// Gets the type, which these operations apply to
+        /// </summary>
+        public Type Type
         {
-            get { return _propertyOperations; }
+            get { return _type; }
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Gets a builder, which sets up operations supported by the supported class
+        /// </summary>
+        public SupportedOperationBuilder Class
+        {
+            get
+            {
+                return _builder;
+            }
+        }
+
+        /// <summary>
+        /// Gets the supported operations for a supported class.
+        /// </summary>
         public IEnumerable<OperationMeta> GetSupportedClassOperations()
         {
             return _typeOperations;
         }
 
-        /// <inheritdoc />
-        public IEnumerable<OperationMeta> GetSupportedPropertyOperations(PropertyInfo property)
-        {
-            if (_propertyOperations.ContainsKey(property) == false)
-            {
-                return Enumerable.Empty<OperationMeta>();
-            }
-
-            return _propertyOperations[property];
-        }
-
         /// <summary>
-        /// Includes the GET operation in the supported class' supported operations
+        /// Gets the supported operations for a supported property .
         /// </summary>
-        protected void SupportsGet()
-        {
-            _typeOperations.Add(new OperationMeta
-            {
-                Method = "GET"
-            });
-        }
+        /// <param name="property">The supported property.</param>
+        public abstract IEnumerable<OperationMeta> GetSupportedPropertyOperations(PropertyInfo property);
     }
 }

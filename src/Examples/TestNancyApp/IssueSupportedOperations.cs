@@ -7,7 +7,7 @@ namespace TestNancyApp
     {
         public IssueSupportedOperations()
         {
-            SupportsGet();
+            Class.SupportsGet();
 
             Property(issue => issue.ProjectId).SupportsGet();
         }
