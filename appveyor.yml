@@ -22,3 +22,6 @@ after_test:
 
 artifacts:
   - path: 'nugets\*.nupkg'
+
+cache:
+  - packages -> paket.lock
