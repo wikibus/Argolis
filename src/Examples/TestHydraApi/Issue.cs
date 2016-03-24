@@ -4,10 +4,12 @@ using Newtonsoft.Json;
 
 namespace TestHydraApi
 {
-    [SupportedClass("http://example.api/o#Issue")]
+    [SupportedClass(IssueType)]
     [Description("An issue reported by our users")]
     public class Issue : IssueBase
     {
+        private const string IssueType = "http://example.api/o#Issue";
+
         public string Id { get; set; }
         
         [JsonProperty("titel")]
@@ -30,6 +32,12 @@ namespace TestHydraApi
         public string Method()
         {
             return null;
+        }
+
+        [JsonProperty]
+        private string Type
+        {
+            get { return IssueType; }
         }
     }
 }
