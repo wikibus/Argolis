@@ -75,7 +75,7 @@ namespace Hydra.Resources
                 if (propertyInfo != null)
                 {
                     var memberContext = (JToken)propertyInfo.GetValue(null, null);
-                    
+
                     return Hydra.Context.MergeWith(collectionContext, memberContext);
                 }
 
