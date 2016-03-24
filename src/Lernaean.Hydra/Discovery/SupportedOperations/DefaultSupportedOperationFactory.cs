@@ -62,12 +62,14 @@ namespace Hydra.Discovery.SupportedOperations
         {
             switch (meta.Method)
             {
+                case HttpMethod.Delete:
+                    meta.Returns = meta.Returns ?? (IriRef)Owl.Nothing;
+                    goto case HttpMethod.Head;
                 case HttpMethod.Get:
                     meta.Returns = modelOrPropertyType;
                     goto case HttpMethod.Head;
                 case HttpMethod.Head:
                 case HttpMethod.Trace:
-                case HttpMethod.Delete:
                     meta.Expects = (IriRef)Owl.Nothing;
                     break;
                 case HttpMethod.Put:

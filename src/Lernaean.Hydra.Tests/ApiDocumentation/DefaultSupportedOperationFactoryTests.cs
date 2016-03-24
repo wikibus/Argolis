@@ -91,6 +91,23 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         }
 
         [Fact]
+        public void DELETE_operation_should_return_nothing_by_default()
+        {
+            // given
+            A.CallTo(() => _operations.Type).Returns(typeof(Issue));
+            A.CallTo(() => _operations.GetSupportedClassOperations()).Returns(new[]
+            {
+                new OperationMeta { Method = HttpMethod.Delete }
+            });
+
+            // when
+            var operation = _factory.CreateOperations(typeof(Issue), ClassIds).Single();
+
+            // then
+            operation.Returns.Should().Be((IriRef)Owl.Nothing);
+        }
+
+        [Fact]
         public void Operation_should_have_correct_method()
         {
             // given
