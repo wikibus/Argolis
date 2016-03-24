@@ -61,10 +61,9 @@ NUGET
       xunit.abstractions (2.0.0)
     xunit.extensibility.execution (2.1.0) - framework: net45
       xunit.extensibility.core (2.1.0) - framework: net45
-    xunit.runner.console (2.1.0)
   remote: https://ci.appveyor.com/nuget/jsonld-entities-aavhsnxi7xjp
   specs:
-    JsonLD.Entities (0.3.1-pre0032)
+    JsonLD.Entities (0.3.1-pre0041)
       json-ld.net
   remote: https://ci.appveyor.com/nuget/nancy-rdf-kh5o73kjrn37
   specs:

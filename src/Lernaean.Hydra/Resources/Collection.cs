@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel;
 using System.Reflection;
 using Hydra.Annotations;
@@ -75,12 +74,12 @@ namespace Hydra.Resources
                 var propertyInfo = typeof(T).GetProperty("Context", BindingFlags.Static | BindingFlags.NonPublic);
                 if (propertyInfo != null)
                 {
-                    var memberContext = propertyInfo.GetValue(null, null);
-
-                    return new JArray(Hydra.Context, collectionContext, memberContext);
+                    var memberContext = (JToken)propertyInfo.GetValue(null, null);
+                    
+                    return Hydra.Context.MergeWith(collectionContext, memberContext);
                 }
 
-                return new JArray(Hydra.Context, collectionContext);
+                return Hydra.Context.MergeWith(collectionContext);
             }
         }
     }
