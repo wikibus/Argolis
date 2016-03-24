@@ -1,11 +1,12 @@
 using Hydra;
 using Nancy.Bootstrapper;
+using TestNancyApp.Hydra;
 
-namespace TestNancyApp
+namespace TestNancyApp.Bootstrap
 {
-    public class TestAppRegistrations : Registrations
+    public class HydraRegistrations : Registrations
     {
-        public TestAppRegistrations()
+        public HydraRegistrations()
         {
             Register<IHydraDocumentationSettings>(new HydraDocumentationSettings());
         }

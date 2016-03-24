@@ -70,13 +70,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssembliesToScanForSupportedTypes.cs" />
-    <Compile Include="HydraDocumentationSettings.cs" />
-    <Compile Include="IssuesModule.cs" />
+    <Compile Include="Bootstrap\Bootstrapper.cs" />
+    <Compile Include="Bootstrap\AuthenticationStartup.cs" />
+    <Compile Include="Hydra\AssembliesToScanForSupportedTypes.cs" />
+    <Compile Include="Hydra\HydraDocumentationSettings.cs" />
+    <Compile Include="Modules\IssuesModule.cs" />
+    <Compile Include="Bootstrap\NancyContextWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Hydra\IssueSupportedOperations.cs" />
+    <Compile Include="Bootstrap\HydraRegistrations.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="IssueSupportedOperations.cs" />
-    <Compile Include="TestAppRegistrations.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Lernaean.Hydra.Nancy\Lernaean.Hydra.Nancy.csproj">
@@ -215,6 +218,17 @@
       <ItemGroup>
         <Reference Include="Nancy">
           <HintPath>..\..\..\packages\Nancy\lib\net40\Nancy.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5')">
+      <ItemGroup>
+        <Reference Include="Nancy.Authentication.Basic">
+          <HintPath>..\..\..\packages\Nancy.Authentication.Basic\lib\net40\Nancy.Authentication.Basic.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>

@@ -30,6 +30,8 @@ NUGET
       Microsoft.Owin (>= 3.0.1)
       Owin (>= 1.0)
     Nancy (1.4.3)
+    Nancy.Authentication.Basic (1.4.1)
+      Nancy (>= 1.4.1)
     Nancy.Owin (1.4.1)
       Nancy (>= 1.4.1)
       Owin (>= 1.0)

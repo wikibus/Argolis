@@ -2,7 +2,7 @@
 using Nancy;
 using TestHydraApi;
 
-namespace TestNancyApp
+namespace TestNancyApp.Modules
 {
     public class IssuesModule : NancyModule
     {
