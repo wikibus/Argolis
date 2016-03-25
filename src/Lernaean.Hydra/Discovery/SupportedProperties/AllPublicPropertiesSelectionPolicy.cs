@@ -17,7 +17,8 @@ namespace Hydra.Discovery.SupportedProperties
             var propertName = property.GetJsonPropertyName();
 
             return propertName != JsonLdKeywords.Id
-                && propertName != JsonLdKeywords.Type;
+                && propertName != JsonLdKeywords.Type
+                && propertName != JsonLdKeywords.Context;
         }
     }
 }

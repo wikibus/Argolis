@@ -27,7 +27,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             Uri issueClassId = new Uri(issueClassStr);
 
             // when
-            var propertyId = _policy.GetPropertyId(typeof(Issue).GetProperty("Title"), issueClassId);
+            var propertyId = _policy.GetPropertyId(typeof(Issue).GetProperty("Title"));
 
             // then
             propertyId.Should().Be(expectedPropertyId);
@@ -40,7 +40,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             Uri issueClassId = new Uri("http://example.org/ontolgy#Issue");
 
             // when
-            var propertyId = _policy.GetPropertyId(typeof(Issue).GetProperty("DateCreated"), issueClassId);
+            var propertyId = _policy.GetPropertyId(typeof(Issue).GetProperty("DateCreated"));
 
             // then
             propertyId.Should().Be("http://example.org/ontolgy#Issue/dateCreated");
@@ -53,7 +53,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             var classId = new Uri("http://example.org/ontolgy/User");
 
             // when
-            var propertyId = _policy.GetPropertyId(typeof(User).GetProperty("NotInContextWithAttribute"), classId);
+            var propertyId = _policy.GetPropertyId(typeof(User).GetProperty("NotInContextWithAttribute"));
 
             // then
             propertyId.Should().Be("http://example.org/ontolgy/User#with_attribute");
@@ -68,7 +68,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             var classId = new Uri("http://example.org/ontolgy/User");
 
             // when
-            var propertyId = _policy.GetPropertyId(typeof(User).GetProperty(property), classId);
+            var propertyId = _policy.GetPropertyId(typeof(User).GetProperty(property));
 
             // then
             propertyId.Should().Be(expectedPredicat);

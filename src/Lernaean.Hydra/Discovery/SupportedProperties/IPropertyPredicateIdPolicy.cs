@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 
 namespace Hydra.Discovery.SupportedProperties
@@ -12,6 +11,6 @@ namespace Hydra.Discovery.SupportedProperties
         /// <summary>
         /// Gets the property identifier.
         /// </summary>
-        string GetPropertyId(PropertyInfo property, Uri classIds);
+        string GetPropertyId(PropertyInfo property);
     }
 }

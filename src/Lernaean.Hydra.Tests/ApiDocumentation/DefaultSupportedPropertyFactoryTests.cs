@@ -105,7 +105,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         {
             // given
             const string propertyId = "http://argolis.test/prop";
-            A.CallTo(() => _propertyPredicateIdPolicy.GetPropertyId(PropertyInfo, new Uri("http://argolis.test/Issue")))
+            A.CallTo(() => _propertyPredicateIdPolicy.GetPropertyId(PropertyInfo))
                 .Returns(propertyId);
 
             // when

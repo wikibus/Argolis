@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.Linq.Expressions;
 using System.Reflection;
 using JsonLD.Entities;
 using Newtonsoft.Json;
@@ -35,6 +37,24 @@ namespace Hydra.Discovery
             }
 
             return ContractResolver.GetResolvedPropertyName(property.Name);
+        }
+
+        /// <summary>
+        /// Gets the property from LINQ expression.
+        /// </summary>
+        /// <typeparam name="T">target type</typeparam>
+        /// <typeparam name="TReturn">The property return type.</typeparam>
+        /// <param name="propertyExpression">The property expression.</param>
+        /// <exception cref="System.ArgumentException">Parameter must be a property access expression</exception>
+        internal static PropertyInfo GetProperty<T, TReturn>(this Expression<Func<T, TReturn>> propertyExpression)
+        {
+             if (!(propertyExpression.Body is MemberExpression))
+            {
+                throw new ArgumentException("Parameter must be a property access expression", nameof(propertyExpression));
+            }
+
+            var memberExpression = (MemberExpression)propertyExpression.Body;
+            return (PropertyInfo)memberExpression.Member;
         }
     }
 }

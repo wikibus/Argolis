@@ -42,7 +42,7 @@ namespace Hydra.Discovery.SupportedProperties
         {
             IriRef? mappedType = _rangeRetrieval.GetRange(prop, classIds);
             var meta = _metaProvider.GetMeta(prop);
-            string propertyId = _propertyPredicateIdPolicy.GetPropertyId(prop, classIds[prop.ReflectedType]);
+            string propertyId = _propertyPredicateIdPolicy.GetPropertyId(prop);
 
             var property = new SupportedProperty
             {

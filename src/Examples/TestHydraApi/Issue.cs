@@ -1,6 +1,11 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using Hydra.Annotations;
+using Hydra.Serialization;
+using JsonLD.Entities;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Vocab;
 
 namespace TestHydraApi
 {
@@ -25,7 +30,7 @@ namespace TestHydraApi
         public User Submitter { get; set; }
 
         [Range("http://example.api/o#project")]
-        public string ProjectId { get; set; }
+        public IriRef ProjectId { get; set; }
 
         public UndocumentedClass UndocumentedClassProperty { get; set; }
 
@@ -38,6 +43,18 @@ namespace TestHydraApi
         private string Type
         {
             get { return IssueType; }
+        }
+
+        private static JToken Context
+        {
+            get
+            {
+                return new JArray(
+                    new AutoContext<Issue>(new Uri(IssueType))
+                        .Property(i => i.ProjectId, builder => builder.Type().Id()),
+                    User.Context
+                    );
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using JsonLD.Entities;
 using Nancy;
 using TestHydraApi;
 
@@ -14,7 +15,7 @@ namespace TestNancyApp.Modules
                 Content = "This Hydra library is not yet complete",
                 DateCreated = new DateTime(2016,3,21),
                 IsResolved = _.id % 2 == 0,
-                ProjectId = "/project/argolis",
+                ProjectId = (IriRef)"/project/argolis",
                 Submitter = new User { Name = "Tomasz", LastName = "Pluskiewicz" },
                 Title = "Complete implementation"
             };
