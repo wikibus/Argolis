@@ -98,5 +98,27 @@ namespace Lernaean.Hydra.Tests
             // then
             Assert.True(JToken.DeepEquals(context["projectId"], contextAfter));
         }
+
+        [Theory]
+        [InlineData("http://example.org/o#Issue", "http://example.org/o#Issue/projectId")]
+        [InlineData("http://example.org/o/Issue", "http://example.org/o/Issue#projectId")]
+        public void Should_concatenate_with_separator_depending_on_class_id(string issueClassStr, string expectedPropertyId)
+        {
+            // when
+            var context = new AutoContext<Issue>(new Uri(issueClassStr));
+
+            // then
+            context["projectId"].ToString().Should().Be(expectedPropertyId);
+        }
+
+        [Fact]
+        public void Should_use_value_set_to_JsonProperty_attribute_for_concatentation()
+        {
+            // given
+            var context = new AutoContext<User>(new Uri("http://example.org/ontolgy/User"));
+
+            // then
+            context["with_attribute"].ToString().Should().Be("http://example.org/ontolgy/User#with_attribute");
+        }   
     }
 }
