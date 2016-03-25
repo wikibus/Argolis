@@ -1,8 +1,10 @@
 using System.ComponentModel;
 using Hydra.Annotations;
+using Hydra.Serialization;
 using JetBrains.Annotations;
 using JsonLD.Entities;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NullGuard;
 
 namespace Hydra.Resources
@@ -54,6 +56,15 @@ namespace Hydra.Resources
         public string Type
         {
             get { return Hydra.PartialCollectionView; }
+        }
+
+        [UsedImplicitly]
+        private static JObject Context
+        {
+            get
+            {
+                return new VocabContext<PartialCollectionView>(Hydra.BaseUri);
+            }
         }
     }
 }

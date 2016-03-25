@@ -44,6 +44,11 @@ namespace Hydra.Discovery.SupportedProperties
             var meta = _metaProvider.GetMeta(prop);
             string propertyId = _propertyPredicateIdPolicy.GetPropertyId(prop);
 
+            if (propertyId == null)
+            {
+                throw new ApiDocumentationException(string.Format("Property {0} is not included in the context", prop));
+            }
+
             var property = new SupportedProperty
             {
                 Title = meta.Title,

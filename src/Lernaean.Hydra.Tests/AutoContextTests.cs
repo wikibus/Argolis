@@ -119,6 +119,6 @@ namespace Lernaean.Hydra.Tests
 
             // then
             context["with_attribute"].ToString().Should().Be("http://example.org/ontolgy/User#with_attribute");
-        }   
+        }
     }
 }

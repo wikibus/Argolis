@@ -7,6 +7,8 @@ dependencies
   JsonLd.Entities >= LOCKEDVERSION
   Rdf.Vocabularies >= LOCKEDVERSION
   TunnelVisionLabs.Net.UriTemplate >= LOCKEDVERSION
+frameworkAssemblies 
+  System.Runtime.Serialization
 iconUrl
   https://raw.githubusercontent.com/wikibus/Argolis/master/assets/logo.png
 tags

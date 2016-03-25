@@ -19,7 +19,7 @@ namespace Hydra.Nancy
         {
             RegisterWithDefault<IApiDocumentationFactory>(typeof(ApiDocumentationFactory), Lifetime.PerRequest);
             RegisterWithDefault<IRdfTypeProviderPolicy>(typeof(AttributeRdfTypeProviderPolicy));
-            RegisterWithDefault<ISupportedPropertySelectionPolicy>(typeof(AllPublicPropertiesSelectionPolicy));
+            RegisterWithDefault<ISupportedPropertySelectionPolicy>(typeof(DefaultPropertiesSelectionPolicy));
             RegisterWithDefault<ISupportedPropertyFactory>(typeof(DefaultSupportedPropertyFactory), Lifetime.PerRequest);
             RegisterWithDefault<ISupportedClassFactory>(typeof(DefaultSupportedClassFactory), Lifetime.PerRequest);
             RegisterWithDefault<ISupportedPropertyMetaProvider>(typeof(DefaultSupportedPropertyMetaProvider));

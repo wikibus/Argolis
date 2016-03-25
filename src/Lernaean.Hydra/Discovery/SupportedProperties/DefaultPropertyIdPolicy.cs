@@ -1,7 +1,6 @@
-using System;
 using System.Reflection;
 using JsonLD.Entities;
-using Newtonsoft.Json;
+using NullGuard;
 
 namespace Hydra.Discovery.SupportedProperties
 {
@@ -32,6 +31,7 @@ namespace Hydra.Discovery.SupportedProperties
         /// Gets the property identifier from the @context
         /// or as concatenation of class and property name.
         /// </summary>
+        [return: AllowNull]
         public string GetPropertyId(PropertyInfo property)
         {
             var context = _contextResolver.GetContext(property.ReflectedType);
