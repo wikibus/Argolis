@@ -48,7 +48,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             A.CallTo(() => _propertyType.MapType(A<PropertyInfo>._, A<IReadOnlyDictionary<Type, Uri>>._)).Returns(mappedPredicate);
 
             // when
-            var range = _rangePolicy.GetRange(typeof(Issue).GetProperty("Id"), classIds);
+            var range = _rangePolicy.GetRange(typeof(Issue).GetProperty("Content"), classIds);
 
             // then
             range.Should().Be((IriRef)mappedPredicate);
