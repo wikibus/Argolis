@@ -4,6 +4,7 @@ using Nancy;
 using Nancy.Responses.Negotiation;
 using Nancy.Testing;
 using Newtonsoft.Json;
+using TestNancyApp.Bootstrap;
 using VDS.RDF;
 using VDS.RDF.Parsing;
 using VDS.RDF.Query.Builder;
@@ -20,7 +21,7 @@ namespace Lernaean.Hydra.Tests.Integration
 
         public IntegrationTests()
         {
-            _browser = new Browser(new DefaultNancyBootstrapper(), context => context.HostName("hydra.guru"));
+            _browser = new Browser(new Bootstrapper(), context => context.HostName("hydra.guru"));
         }
 
         [Fact]
