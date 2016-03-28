@@ -5,6 +5,7 @@ using Nancy.Responses.Negotiation;
 using Nancy.Testing;
 using Newtonsoft.Json;
 using VDS.RDF;
+using VDS.RDF.Parsing;
 using VDS.RDF.Query.Builder;
 using Vocab;
 using Xunit;
@@ -160,6 +161,31 @@ namespace Lernaean.Hydra.Tests.Integration
             dynamic apiDoc = JsonConvert.DeserializeObject(asString);
 
             ((string)apiDoc.id).Should().Be(ExpectedApiDocPath);
+        }
+
+        [Fact]
+        public void Should_not_contain_duplicate_operations()
+        {
+            // when
+            var documentation = GetDocumentationGraph();
+            
+            // then
+            var query = @"
+ASK
+WHERE
+{
+    {
+    SELECT count(?o) as ?count
+    WHERE
+    {
+        <http://example.api/o#Issue> <http://www.w3.org/ns/hydra/core#supportedOperation> ?o .
+        ?o <http://www.w3.org/ns/hydra/core#method> ""GET""^^<http://www.w3.org/2001/XMLSchema#string> .
+    }
+    }
+
+    FILTER (?count = 1)
+}";
+            documentation.Should().MatchAsk(new SparqlQueryParser().ParseFromString(query));
         }
 
         private IGraph GetDocumentationGraph()
