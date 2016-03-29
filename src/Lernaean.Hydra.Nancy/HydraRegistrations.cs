@@ -32,15 +32,12 @@ namespace Hydra.Nancy
             {
                 typeof(HydraBuiltInTypesSelector)
             });
-            RegisterAll<ISupportedOperations>(Lifetime.PerRequest);
-            RegisterWithUserThenDefault<IPropertyRangeMappingPolicy>(
-            new[]
+            Register<IPropertyRangeMappingPolicy>(new[]
             {
                 typeof(XsdDatatypesMappingPolicy),
                 typeof(XsdDatatypesNullablesMappingPolicy),
                 typeof(SupportedClassRangeMappingPolicy),
-            },
-            Lifetime.PerRequest);
+            });
         }
     }
 }
