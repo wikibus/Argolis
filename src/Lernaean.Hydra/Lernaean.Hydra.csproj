@@ -112,9 +112,6 @@
     <Compile Include="Resources\PartialCollectionView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\SupportedProperty.cs" />
-    <Compile Include="Serialization\AutoContext.cs" />
-    <Compile Include="Serialization\AutoContextBase.cs" />
-    <Compile Include="Serialization\VocabContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml">
@@ -137,6 +134,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

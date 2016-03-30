@@ -1,7 +1,7 @@
 ﻿using System;
 using FluentAssertions;
-using Hydra.Serialization;
 using JsonLD.Entities;
+using JsonLD.Entities.Context;
 using Newtonsoft.Json.Linq;
 using TestHydraApi;
 using Xunit;

@@ -1,8 +1,8 @@
 using System.ComponentModel;
 using Hydra.Annotations;
-using Hydra.Serialization;
 using JetBrains.Annotations;
 using JsonLD.Entities;
+using JsonLD.Entities.Context;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NullGuard;

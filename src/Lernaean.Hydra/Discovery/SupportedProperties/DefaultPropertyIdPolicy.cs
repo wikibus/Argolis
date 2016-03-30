@@ -1,5 +1,6 @@
 using System.Reflection;
 using JsonLD.Entities;
+using JsonLD.Entities.Context;
 using NullGuard;
 
 namespace Hydra.Discovery.SupportedProperties

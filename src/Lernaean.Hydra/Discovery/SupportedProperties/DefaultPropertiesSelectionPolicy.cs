@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Runtime.Serialization;
 using JsonLD.Entities;
+using JsonLD.Entities.Context;
 using Newtonsoft.Json;
 
 namespace Hydra.Discovery.SupportedProperties
@@ -19,16 +20,9 @@ namespace Hydra.Discovery.SupportedProperties
         {
             var propertyName = property.GetJsonPropertyName();
 
-            return IsKeyword(propertyName) == false
+            return JsonLdKeywords.IsKeyword(propertyName) == false
                 && property.GetCustomAttributes<JsonIgnoreAttribute>().Any() == false
                 && property.GetCustomAttributes<IgnoreDataMemberAttribute>().Any() == false;
-        }
-
-        private static bool IsKeyword(string propertName)
-        {
-            return propertName == JsonLdKeywords.Id
-                   || propertName == JsonLdKeywords.Type
-                   || propertName == JsonLdKeywords.Context;
         }
     }
 }
