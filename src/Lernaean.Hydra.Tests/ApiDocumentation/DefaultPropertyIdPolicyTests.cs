@@ -54,16 +54,6 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
 
             // then
             propertyId.Should().Be(Foaf.givenName);
-        } 
-
-        [Fact]
-        public void Should_return_null_if_not_found()
-        {
-            // when
-            var propertyId = _policy.GetPropertyId(typeof(User).GetProperty("DataMemberIgnored"));
-
-            // then
-            propertyId.Should().BeNull();
-        } 
+        }
     }
 }

@@ -46,5 +46,17 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             // then
             shouldIncludeProperty.Should().BeFalse();
         }
+        
+        [Theory]
+        [InlineData("DataMemberIgnored")]
+        [InlineData("JsonIgnored")]
+        public void Should_ignore_property_if_it_is_ignored_with_attrbiute(string property)
+        {
+            // when
+            var shouldIncludeProperty = _policy.ShouldIncludeProperty(typeof(User).GetProperty(property));
+
+            // then
+            shouldIncludeProperty.Should().BeFalse();
+        } 
     }
 }
