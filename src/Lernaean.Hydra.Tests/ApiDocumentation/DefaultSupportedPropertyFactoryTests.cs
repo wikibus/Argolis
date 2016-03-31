@@ -129,5 +129,15 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             // then
             property.Property.Range.Should().Be((IriRef)expectedRange);
         }
+
+        [Fact]
+        public void Should_throw_if_property_id_was_not_found()
+        {
+            // given
+            A.CallTo(() => _propertyPredicateIdPolicy.GetPropertyId(PropertyInfo)).Returns(null);
+
+            // then
+            Assert.Throws<ApiDocumentationException>(() => _factory.Create(PropertyInfo, ClassIds));
+        }
     }
 }
