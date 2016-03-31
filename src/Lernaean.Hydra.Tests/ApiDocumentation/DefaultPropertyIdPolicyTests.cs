@@ -55,5 +55,22 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             // then
             propertyId.Should().Be(Foaf.givenName);
         }
+
+        [Fact]
+        public void Should_return_null_if_not_found_in_context()
+        {
+            var policy = new DefaultPropertyIdPolicy();
+
+            // when
+            var propertyId = policy.GetPropertyId(typeof(NoContext).GetProperty("String"));
+
+            // then
+            propertyId.Should().BeNull();
+        }
+
+        private class NoContext
+        {
+            public string String { get; set; }
+        }
     }
 }
