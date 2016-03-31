@@ -22,6 +22,7 @@ after_test:
 
 artifacts:
   - path: 'nugets\*.nupkg'
+  - path: Argolis_coverage.xml
 
 cache:
   - packages -> paket.lock
