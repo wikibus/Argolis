@@ -61,8 +61,10 @@ namespace Hydra.Resources
             get { return Hydra.Collection; }
         }
 
-        [UsedImplicitly]
-        private static JToken Context
+        /// <summary>
+        /// Gets the JSON-LD context.
+        /// </summary>
+        protected static JToken Context
         {
             get
             {

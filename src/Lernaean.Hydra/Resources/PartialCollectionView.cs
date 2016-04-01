@@ -58,8 +58,11 @@ namespace Hydra.Resources
             get { return Hydra.PartialCollectionView; }
         }
 
+        /// <summary>
+        /// Gets the JSON-LD context.
+        /// </summary>
         [UsedImplicitly]
-        private static JObject Context
+        protected static JObject Context
         {
             get
             {
