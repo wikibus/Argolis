@@ -44,11 +44,6 @@ namespace Hydra.Resources
         {
             int? actualPage = page;
 
-            if (actualPage == 1)
-            {
-                actualPage = null;
-            }
-
             if (actualPage < 1 || actualPage > _totalPages)
             {
                 return null;
