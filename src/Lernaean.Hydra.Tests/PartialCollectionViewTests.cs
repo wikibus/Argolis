@@ -49,7 +49,7 @@ namespace Lernaean.Hydra.Tests
 
             // then
             view.Id.Should().Be(new Uri("/some/collection?page=5", UriKind.Relative));
-            view.First.Should().Be((IriRef)new Uri("/some/collection", UriKind.Relative));
+            view.First.Should().Be((IriRef)new Uri("/some/collection?page=1", UriKind.Relative));
             view.Last.Should().Be((IriRef)new Uri("/some/collection?page=9", UriKind.Relative));
             view.Next.Should().Be((IriRef)new Uri("/some/collection?page=6", UriKind.Relative));
             view.Previous.Should().Be((IriRef)new Uri("/some/collection?page=4", UriKind.Relative));
@@ -70,7 +70,7 @@ namespace Lernaean.Hydra.Tests
 
             // then
             view.Id.Should().Be(new Uri("/some/collection?page=9", UriKind.Relative));
-            view.First.Should().Be((IriRef)new Uri("/some/collection", UriKind.Relative));
+            view.First.Should().Be((IriRef)new Uri("/some/collection?page=1", UriKind.Relative));
             view.Last.Should().Be((IriRef)new Uri("/some/collection?page=9", UriKind.Relative));
             view.Next.Should().BeNull();
             view.Previous.Should().Be((IriRef)new Uri("/some/collection?page=8", UriKind.Relative));
@@ -90,10 +90,10 @@ namespace Lernaean.Hydra.Tests
             var view = new TemplatedPartialCollectionView(template, pageVariable, totalItems, page, pageSize);
 
             // then
-            view.Id.Should().Be(new Uri("/some/collection", UriKind.Relative));
-            view.First.Should().Be((IriRef)new Uri("/some/collection", UriKind.Relative));
+            view.Id.Should().Be(new Uri("/some/collection?page=1", UriKind.Relative));
+            view.First.Should().Be((IriRef)new Uri("/some/collection?page=1", UriKind.Relative));
             view.Last.Should().Be((IriRef)new Uri("/some/collection?page=9", UriKind.Relative));
-            view.First.Should().Be((IriRef)new Uri("/some/collection", UriKind.Relative));
+            view.Next.Should().Be((IriRef)new Uri("/some/collection?page=2", UriKind.Relative));
             view.Previous.Should().BeNull();
         }
     }
