@@ -43,7 +43,6 @@ namespace Hydra.Resources
         private Uri BindPageUri(int page)
         {
             int? actualPage = page;
-
             if (actualPage < 1 || actualPage > _totalPages)
             {
                 return null;
