@@ -26,7 +26,7 @@ nuget GitLink
 nuget Rdf.Vocabularies
 nuget dotnetrdf
 nuget json-ld.net
-nuget nancy.rdf = 0.2.0-pre0049
+nuget nancy.rdf
 nuget OpenCover
 nuget ImpromptuInterface
 nuget Nancy.Authentication.Basic
