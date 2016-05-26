@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using FakeItEasy;
 using FluentAssertions;
 using Hydra.Discovery.SupportedProperties;
@@ -40,15 +39,16 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         public void Should_map_property_range_to_RDF_type()
         {
             // given
+            var propertyInfo = typeof(Issue).GetProperty("Content");
             var mappedPredicate = new Uri(Xsd.@string);
             var classIds = new Dictionary<Type, Uri>
             {
                 { typeof(Issue), new Uri("http://example.com/issue") }
             };
-            A.CallTo(() => _propertyType.MapType(A<PropertyInfo>._, A<IReadOnlyDictionary<Type, Uri>>._)).Returns(mappedPredicate);
+            A.CallTo(() => _propertyType.MapType(propertyInfo, classIds)).Returns(mappedPredicate);
 
             // when
-            var range = _rangePolicy.GetRange(typeof(Issue).GetProperty("Content"), classIds);
+            var range = _rangePolicy.GetRange(propertyInfo, classIds);
 
             // then
             range.Should().Be((IriRef)mappedPredicate);
