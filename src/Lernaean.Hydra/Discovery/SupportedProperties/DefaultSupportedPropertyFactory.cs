@@ -55,6 +55,7 @@ namespace Hydra.Discovery.SupportedProperties
                 Description = meta.Description,
                 Writeable = meta.Writeable,
                 Readable = meta.Readable,
+                Required = meta.Required,
                 Property =
                 {
                     Id = propertyId,

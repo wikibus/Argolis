@@ -70,6 +70,21 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             property.Readable.Should().BeTrue();
         }
 
+
+        [Fact]
+        public void Should_copy_required_property_from_meta()
+        {
+            // given
+            A.CallTo(() => _metaProvider.GetMeta(PropertyInfo))
+                .Returns(new SupportedPropertyMeta { Required = true });
+
+            // when
+            var property = _factory.Create(PropertyInfo, ClassIds);
+
+            // then
+            property.Required.Should().BeTrue();
+        }
+
         [Fact]
         public void Should_copy_description_property_from_meta()
         {

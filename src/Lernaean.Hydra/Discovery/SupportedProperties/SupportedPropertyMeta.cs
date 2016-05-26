@@ -28,5 +28,10 @@ namespace Hydra.Discovery.SupportedProperties
         /// Gets or sets a description of a <see cref="SupportedProperty"/>.
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="SupportedPropertyMeta"/> is required.
+        /// </summary>
+        public bool Required { get; set; }
     }
 }
