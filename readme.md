@@ -218,5 +218,5 @@ Link: <http://localhost:61186/api>; rel="http://www.w3.org/ns/hydra/core#apiDocu
 [Nancy.Rdf]: https://github.com/wikibus/Nancy.Rdf
 [sc]: http://www.hydra-cg.com/spec/latest/core/#documenting-a-web-api
 [Registrations]: #
-[cov-badge]: https://codecov.io/github/codecov/codecov-ruby/coverage.svg?branch=master
-[cov-link]: https://codecov.io/github/codecov/codecov-ruby?branch=master
+[cov-badge]: https://codecov.io/gh/wikibus/Argolis/branch/master/graph/badge.svg
+[cov-link]: https://codecov.io/gh/wikibus/Argolis
