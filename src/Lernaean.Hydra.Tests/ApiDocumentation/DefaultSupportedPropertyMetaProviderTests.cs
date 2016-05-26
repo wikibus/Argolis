@@ -55,6 +55,16 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         }
 
         [Fact]
+        public void Should_set_required_to_false_if_attribute_is_present()
+        {
+            // when
+            var meta = _metaProvider.GetMeta(typeof(Issue).GetProperty("Content"));
+
+            // then
+            meta.Required.Should().BeTrue();
+        }
+
+        [Fact]
         public void Should_set_writeable_to_false_if_property_is_readonly()
         {
             // when

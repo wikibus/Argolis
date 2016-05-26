@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using Hydra.Annotations;
 using Hydra.Discovery.SupportedClasses;
@@ -26,13 +27,15 @@ namespace Hydra.Discovery.SupportedProperties
             var isWriteOnly = property.GetMethod == null ||
                               property.GetMethod.IsPrivate ||
                               property.GetCustomAttribute<WriteOnlyAttribute>() != null;
+            var isRequired = property.GetCustomAttribute<RequiredAttribute>() != null;
 
             return new SupportedPropertyMeta
             {
                 Title = title,
                 Description = description,
                 Writeable = isReadonly == false,
-                Readable = isWriteOnly == false
+                Readable = isWriteOnly == false,
+                Required = isRequired
             };
         }
 

@@ -9,6 +9,7 @@ dependencies
   TunnelVisionLabs.Net.UriTemplate >= LOCKEDVERSION
 frameworkAssemblies 
   System.Runtime.Serialization
+  System.ComponentModel.DataAnnotations
 iconUrl
   https://raw.githubusercontent.com/wikibus/Argolis/master/assets/logo.png
 tags

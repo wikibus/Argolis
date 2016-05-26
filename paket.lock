@@ -11,7 +11,7 @@ NUGET
       Newtonsoft.Json (>= 6.0.8)
       VDS.Common (1.6.0)
     FakeItEasy (2.0.0)
-    FluentAssertions (4.2.2)
+    FluentAssertions (4.6.3)
     Fody (1.29.4)
     gitlink (2.2)
     GitVersionTask (3.4.1)

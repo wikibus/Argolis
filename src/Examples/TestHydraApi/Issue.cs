@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using Hydra.Annotations;
 using JsonLD.Entities;
 using JsonLD.Entities.Context;
@@ -19,6 +20,7 @@ namespace TestHydraApi
         [JsonProperty("titel")]
         public string Title { get; set; }
         
+        [Required]
         public string Content { get; set; }
         
         [Description("The number of people who liked this issue")]
@@ -28,7 +30,7 @@ namespace TestHydraApi
 
         public User Submitter { get; set; }
 
-        [Range("http://example.api/o#project")]
+        [Hydra.Annotations.Range("http://example.api/o#project")]
         public IriRef ProjectId { get; set; }
 
         public UndocumentedClass UndocumentedClassProperty { get; set; }
