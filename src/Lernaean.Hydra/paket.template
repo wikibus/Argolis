@@ -6,7 +6,7 @@ excludeddependencies
 dependencies
   JsonLd.Entities >= LOCKEDVERSION
   Rdf.Vocabularies >= LOCKEDVERSION
-  TunnelVisionLabs.Net.UriTemplate >= LOCKEDVERSION
+  Tavis.UriTemplates >= LOCKEDVERSION
 frameworkAssemblies 
   System.Runtime.Serialization
   System.ComponentModel.DataAnnotations

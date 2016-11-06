@@ -1,8 +1,7 @@
 using System;
-using System.Collections.Generic;
 using JsonLD.Entities;
 using NullGuard;
-using TunnelVisionLabs.Net;
+using Tavis.UriTemplates;
 
 namespace Hydra.Resources
 {
@@ -48,10 +47,8 @@ namespace Hydra.Resources
                 return null;
             }
 
-            return _template.BindByName(new Dictionary<string, int?>
-            {
-                { _pageVariable, actualPage }
-            });
+            var uriString = _template.AddParameter(_pageVariable, actualPage).Resolve();
+            return new Uri(uriString, UriKind.RelativeOrAbsolute);
         }
 
         private IriRef? BindPageRef(int page)

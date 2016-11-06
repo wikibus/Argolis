@@ -1,9 +1,8 @@
 ﻿using System;
 using FluentAssertions;
-using Hydra;
 using Hydra.Resources;
 using JsonLD.Entities;
-using TunnelVisionLabs.Net;
+using Tavis.UriTemplates;
 using Xunit;
 
 namespace Lernaean.Hydra.Tests
