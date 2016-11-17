@@ -19,7 +19,7 @@ nuget Resourcer.Fody
 nuget StyleCopPlus.MSBuild
 nuget xunit
 nuget fluentassertions
-nuget Tavis.UriTemplates
+nuget TunnelVisionLabs.Net.UriTemplate prerelease
 nuget GitLink
 nuget Rdf.Vocabularies
 nuget dotnetrdf

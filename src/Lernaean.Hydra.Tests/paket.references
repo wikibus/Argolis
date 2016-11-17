@@ -2,7 +2,7 @@ NullGuard.Fody
 GitVersionTask
 xunit
 fluentassertions
-Tavis.UriTemplates
+TunnelVisionLabs.Net.UriTemplate
 Resourcer.Fody
 JsonLd.Entities
 Nancy.Testing

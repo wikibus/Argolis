@@ -2,7 +2,7 @@
 using FluentAssertions;
 using Hydra.Resources;
 using JsonLD.Entities;
-using Tavis.UriTemplates;
+using TunnelVisionLabs.Net;
 using Xunit;
 
 namespace Lernaean.Hydra.Tests
