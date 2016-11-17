@@ -9,7 +9,7 @@ namespace TestNancyApp.Modules
     {
         public IssuesModule() : base("issues")
         {
-            Get["{id}"] = _ => new Issue
+            Get("{id}", _ => new Issue
             {
                 Id = Request.Url,
                 Content = "This Hydra library is not yet complete",
@@ -18,7 +18,7 @@ namespace TestNancyApp.Modules
                 ProjectId = (IriRef)"/project/argolis",
                 Submitter = new User { Name = "Tomasz", LastName = "Pluskiewicz" },
                 Title = "Complete implementation"
-            };
+            });
         }
     }
 }

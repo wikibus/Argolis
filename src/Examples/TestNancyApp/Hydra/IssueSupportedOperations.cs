@@ -1,5 +1,4 @@
 using Hydra.Discovery.SupportedOperations;
-using Nancy.Security;
 using TestHydraApi;
 using TestNancyApp.Bootstrap;
 
@@ -11,7 +10,7 @@ namespace TestNancyApp.Hydra
         {
             Class.SupportsGet();
 
-            if (current.Context.CurrentUser.HasClaim("Admin"))
+            if (current.Context.CurrentUser?.IsInRole("Admin") == true)
             {
                 Class.SupportsDelete();
             }

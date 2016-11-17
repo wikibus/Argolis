@@ -1,8 +1,6 @@
 source https://www.nuget.org/api/v2
-source https://ci.appveyor.com/nuget/nancy-rdf-kh5o73kjrn37
-source https://ci.appveyor.com/nuget/jsonld-entities-aavhsnxi7xjp
 
-framework: net40, net45
+framework: net452
 content: none
 redirects: on
 copy_local: true
@@ -10,12 +8,12 @@ copy_local: true
 nuget fakeiteasy
 nuget GitVersionTask
 nuget JetBrainsAnnotations.Fody
-nuget JsonLd.Entities prerelease
+nuget JsonLd.Entities
 nuget Microsoft.Owin.Host.SystemWeb
 nuget Microsoft.Owin.Hosting
-nuget Nancy
-nuget Nancy.Owin
-nuget Nancy.Testing
+nuget Nancy >= 2 prerelease
+nuget Nancy.Owin >= 2 prerelease
+nuget Nancy.Testing >= 2 prerelease
 nuget NullGuard.Fody
 nuget Resourcer.Fody
 nuget StyleCopPlus.MSBuild
@@ -26,10 +24,10 @@ nuget GitLink
 nuget Rdf.Vocabularies
 nuget dotnetrdf
 nuget json-ld.net
-nuget nancy.rdf
+nuget nancy.rdf >= 0.3 prerelease
 nuget OpenCover
 nuget ImpromptuInterface
-nuget Nancy.Authentication.Basic
+nuget Nancy.Authentication.Basic >= 2 prerelease
 
 http https://gist.githubusercontent.com/tpluscode/5d9c6983004c1c9ec91f/raw/2a5f0785c2686635f1b8ab21af1751d276d02727/vocabulary.tt
 

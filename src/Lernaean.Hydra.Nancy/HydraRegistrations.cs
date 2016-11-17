@@ -3,6 +3,7 @@ using Hydra.Discovery.SupportedClasses;
 using Hydra.Discovery.SupportedOperations;
 using Hydra.Discovery.SupportedProperties;
 using JsonLD.Entities;
+using Nancy;
 using Nancy.Bootstrapper;
 
 namespace Hydra.Nancy
@@ -15,7 +16,7 @@ namespace Hydra.Nancy
         /// <summary>
         /// Initializes a new instance of the <see cref="HydraRegistrations"/> class.
         /// </summary>
-        public HydraRegistrations()
+        public HydraRegistrations(ITypeCatalog catalog) : base(catalog)
         {
             RegisterWithDefault<IApiDocumentationFactory>(typeof(ApiDocumentationFactory), Lifetime.PerRequest);
             RegisterWithDefault<IRdfTypeProviderPolicy>(typeof(AttributeRdfTypeProviderPolicy));

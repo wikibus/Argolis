@@ -42,10 +42,10 @@ namespace Lernaean.Hydra.Tests
         }
 
         [Fact]
-        public void Should_append_api_doc_header_to_GET_query()
+        public async void Should_append_api_doc_header_to_GET_query()
         {
             // when
-            var response = _browser.Post("test");
+            var response = await _browser.Post("test");
 
             // then
             response.Headers.Should().ContainKey("Link");
@@ -53,10 +53,10 @@ namespace Lernaean.Hydra.Tests
         }
 
         [Fact]
-        public void Should_append_api_doc_header_to_POST_query()
+        public async void Should_append_api_doc_header_to_POST_query()
         {
             // when
-            var response = _browser.Get("test");
+            var response = await _browser.Get("test");
 
             // then
             response.Headers.Should().ContainKey("Link");
@@ -67,8 +67,8 @@ namespace Lernaean.Hydra.Tests
         {
             public TestModule()
             {
-                Get["test"] = _ => "GET test";
-                Post["test"] = _ => "POST test";
+                Get("test", _ => "GET test");
+                Post("test", _ => "POST test");
             }
         }
 

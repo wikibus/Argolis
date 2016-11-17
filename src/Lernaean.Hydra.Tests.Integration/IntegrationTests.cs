@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
 using FluentAssertions;
+using Hydra.Core;
 using Nancy;
 using Nancy.Responses.Negotiation;
 using Nancy.Testing;
@@ -25,10 +27,10 @@ namespace Lernaean.Hydra.Tests.Integration
         }
 
         [Fact]
-        public void Should_include_supported_class_in_documentation_response()
+        public async void Should_include_supported_class_in_documentation_response()
         {
             // when
-            var documentation = GetDocumentationGraph();
+            var documentation = await GetDocumentationGraph();
 
             // then
             var query = QueryBuilder.Ask()
@@ -45,10 +47,10 @@ namespace Lernaean.Hydra.Tests.Integration
         [InlineData("dateCreated", Xsd.dateTime)]
         [InlineData("dateDeleted", Xsd.dateTime)]
         [InlineData("isResolved", Xsd.boolean)]
-        public void Should_map_default_predicate_ranges_for_primitive_property_types(string title, string predicate)
+        public async void Should_map_default_predicate_ranges_for_primitive_property_types(string title, string predicate)
         {
             // when
-            var documentation = GetDocumentationGraph();
+            var documentation = await GetDocumentationGraph();
 
             // then
             var query = QueryBuilder.Ask()
@@ -62,13 +64,13 @@ namespace Lernaean.Hydra.Tests.Integration
         }
 
         [Fact]
-        public void Should_map_predicate_range_for_property_with_supported_property_type()
+        public async void Should_map_predicate_range_for_property_with_supported_property_type()
         {
             // given
             const string expectedRange = "http://example.api/o#User";
 
             // when
-            var documentation = GetDocumentationGraph();
+            var documentation = await GetDocumentationGraph();
 
             // then
             var query = QueryBuilder.Ask()
@@ -82,13 +84,13 @@ namespace Lernaean.Hydra.Tests.Integration
         }
 
         [Fact]
-        public void Should_map_predicate_range_for_unknown_type_to_Thing()
+        public async void Should_map_predicate_range_for_unknown_type_to_Thing()
         {
             // given
             var expectedRange = new Uri(HCore.Resource);
 
             // when
-            var documentation = GetDocumentationGraph();
+            var documentation = await GetDocumentationGraph();
 
             // then
             var query = QueryBuilder.Ask()
@@ -102,13 +104,13 @@ namespace Lernaean.Hydra.Tests.Integration
         }
 
         [Fact]
-        public void Should_fill_class_description_from_DescriptionAttribute()
+        public async void Should_fill_class_description_from_DescriptionAttribute()
         {
             // given
             string expectedDescription = "The number of people who liked this issue";
 
             // when
-            var documentation = GetDocumentationGraph();
+            var documentation = await GetDocumentationGraph();
 
             // then
             var query = QueryBuilder.Ask()
@@ -120,13 +122,13 @@ namespace Lernaean.Hydra.Tests.Integration
         }
 
         [Fact]
-        public void Should_fill_property_description_from_DescriptionAttribute()
+        public async void Should_fill_property_description_from_DescriptionAttribute()
         {
             // given
             string expectedDescription = "An issue reported by our users";
 
             // when
-            var documentation = GetDocumentationGraph();
+            var documentation = await GetDocumentationGraph();
 
             // then
             var query = QueryBuilder.Ask()
@@ -139,10 +141,10 @@ namespace Lernaean.Hydra.Tests.Integration
         [Theory]
         [InlineData(HCore.Collection)]
         [InlineData(HCore.Resource)]
-        public void Should_include_hydra_base_types_as_supported_classes(string expectedType)
+        public async void Should_include_hydra_base_types_as_supported_classes(string expectedType)
         {
             // when
-            var documentation = GetDocumentationGraph();
+            var documentation = await GetDocumentationGraph();
 
             // then
             var query = QueryBuilder.Ask()
@@ -152,10 +154,10 @@ namespace Lernaean.Hydra.Tests.Integration
         }
 
         [Fact]
-        public void Should_serve_API_doc_with_correct_Id()
+        public async void Should_serve_API_doc_with_correct_Id()
         {
             // when
-            var response = _browser.Get("api", context => context.Accept(new MediaRange("application/json")));
+            var response = await _browser.Get("api", context => context.Accept(new MediaRange("application/json")));
 
             // then
             var asString = response.Body.AsString();
@@ -165,10 +167,12 @@ namespace Lernaean.Hydra.Tests.Integration
         }
 
         [Fact]
-        public void Should_not_contain_duplicate_operations()
+        public async void Should_not_contain_duplicate_operations()
         {
+            var serialize = new JsonLD.Entities.EntitySerializer().Serialize(new Class(new Uri("http://ex.com/issue")));
+
             // when
-            var documentation = GetDocumentationGraph();
+            var documentation = await GetDocumentationGraph();
             
             // then
             var query = @"
@@ -189,9 +193,12 @@ WHERE
             documentation.Should().MatchAsk(new SparqlQueryParser().ParseFromString(query));
         }
 
-        private IGraph GetDocumentationGraph()
+        private async Task<IGraph> GetDocumentationGraph()
         {
-            var response = _browser.Get("api", context => { context.Accept("text/turtle"); });
+            var response = await _browser.Get("api", context => { context.Accept("text/turtle"); });
+
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
             return response.Body.AsRdf();
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Nancy;
 using Nancy.Bootstrapper;
+using Nancy.Configuration;
 using Nancy.TinyIoc;
 
 namespace TestNancyApp.Bootstrap
@@ -8,8 +9,13 @@ namespace TestNancyApp.Bootstrap
     {
         protected override void ConfigureApplicationContainer(TinyIoCContainer container)
         {
-            StaticConfiguration.DisableErrorTraces = false;
             // don't call base to disable automatic registration
+        }
+
+        public override void Configure(INancyEnvironment environment)
+        {
+            base.Configure(environment);
+            environment.Tracing(true, false);
         }
 
         protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)

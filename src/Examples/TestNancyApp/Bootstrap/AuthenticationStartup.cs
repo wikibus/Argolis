@@ -1,7 +1,8 @@
+using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using Nancy.Authentication.Basic;
 using Nancy.Bootstrapper;
-using Nancy.Security;
 
 namespace TestNancyApp.Bootstrap
 {
@@ -14,7 +15,7 @@ namespace TestNancyApp.Bootstrap
 
         public class DummyValidator : IUserValidator
         {
-            public IUserIdentity Validate(string username, string password)
+            public ClaimsPrincipal Validate(string username, string password)
             {
                 if (password == "P@ssw0rD")
                 {
@@ -25,20 +26,20 @@ namespace TestNancyApp.Bootstrap
             }
         }
 
-        public class TestUser : IUserIdentity
+        public class TestUser : ClaimsPrincipal
         {
             public TestUser(string userName)
             {
                 UserName = userName;
                 Claims = new[]
                 {
-                    userName
+                    new Claim(ClaimTypes.Name, userName) 
                 };
             }
 
             public string UserName { get; }
 
-            public IEnumerable<string> Claims { get; }
+            public override IEnumerable<Claim> Claims { get; }
         }
     }
 }
