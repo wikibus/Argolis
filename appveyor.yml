@@ -3,7 +3,7 @@ install:
   
 before_build:  
   - .paket\paket.bootstrapper.exe prerelease
-  - .paket\paket.exe restore
+  - ps: If(-Not Test-Path packages) { .paket\paket.exe restore }
   - ps: gitversion /l console /output buildserver
 
 build:
