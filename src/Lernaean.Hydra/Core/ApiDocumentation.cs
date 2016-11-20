@@ -20,7 +20,7 @@ namespace Hydra.Core
         /// <param name="entrypoint">The entrypoint Uri.</param>
         public ApiDocumentation(IriRef entrypoint)
         {
-            Entrypoint = entrypoint;
+            this.Entrypoint = entrypoint;
         }
 
         /// <summary>

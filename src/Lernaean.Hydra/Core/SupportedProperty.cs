@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using NullGuard;
@@ -16,7 +16,7 @@ namespace Hydra.Core
         /// </summary>
         public SupportedProperty()
         {
-            Property = new Property();
+            this.Property = new Property();
         }
 
         /// <summary>

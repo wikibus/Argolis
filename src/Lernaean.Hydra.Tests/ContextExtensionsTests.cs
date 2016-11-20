@@ -17,8 +17,7 @@ namespace Lernaean.Hydra.Tests
             SingleContext = new JObject(
                 "xsd".IsPrefixOf(Xsd.BaseUri),
                 "givenName".IsProperty(Foaf.givenName),
-                new JProperty("time_prop", "xsd:time")
-            );
+                new JProperty("time_prop", "xsd:time"));
         }
 
         [Fact]

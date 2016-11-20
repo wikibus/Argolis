@@ -19,7 +19,7 @@ namespace Lernaean.Hydra.Tests
         private const string ExpectedApiDocPath = "http://hydra.guru/uber/documentation/path";
         private const string ExpectedLinkHeader = "<" + ExpectedApiDocPath + ">; rel=\"" + global::Hydra.Hydra.apiDocumentation + "\"";
 
-        private readonly Browser _browser;
+        private readonly Browser browser;
 
         public ServingApiDocumentationTests()
         {
@@ -27,25 +27,26 @@ namespace Lernaean.Hydra.Tests
             A.CallTo(() => rdfTypeProviderPolicy.Create(A<Type>._))
                 .ReturnsLazily(call => new Uri("http://example.com/class"));
 
-            _browser = new Browser(configurator =>
-            {
-                configurator.Module<TestModule>();
-                configurator.Module<HydraApiDocumentationModule>();
-                configurator.Dependency<IHydraDocumentationSettings>(new TestSettings());
-                configurator.Dependency(rdfTypeProviderPolicy);
-                configurator.Dependency(A.Fake<ISupportedPropertyFactory>());
-                configurator.Dependency(A.Fake<ISupportedClassMetaProvider>());
-                configurator.Dependency(A.Fake<ISupportedOperationFactory>());
-                configurator.ApplicationStartupTask<HydraDocumentationStartup>();
-            }, 
-            context => context.HostName("hydra.guru"));
+            this.browser = new Browser(
+                configurator =>
+                {
+                    configurator.Module<TestModule>();
+                    configurator.Module<HydraApiDocumentationModule>();
+                    configurator.Dependency<IHydraDocumentationSettings>(new TestSettings());
+                    configurator.Dependency(rdfTypeProviderPolicy);
+                    configurator.Dependency(A.Fake<ISupportedPropertyFactory>());
+                    configurator.Dependency(A.Fake<ISupportedClassMetaProvider>());
+                    configurator.Dependency(A.Fake<ISupportedOperationFactory>());
+                    configurator.ApplicationStartupTask<HydraDocumentationStartup>();
+                },
+                context => context.HostName("hydra.guru"));
         }
 
         [Fact]
         public async void Should_append_api_doc_header_to_GET_query()
         {
             // when
-            var response = await _browser.Post("test");
+            var response = await this.browser.Post("test");
 
             // then
             response.Headers.Should().ContainKey("Link");
@@ -56,7 +57,7 @@ namespace Lernaean.Hydra.Tests
         public async void Should_append_api_doc_header_to_POST_query()
         {
             // when
-            var response = await _browser.Get("test");
+            var response = await this.browser.Get("test");
 
             // then
             response.Headers.Should().ContainKey("Link");
@@ -67,8 +68,8 @@ namespace Lernaean.Hydra.Tests
         {
             public TestModule()
             {
-                Get("test", _ => "GET test");
-                Post("test", _ => "POST test");
+                this.Get("test", _ => "GET test");
+                this.Post("test", _ => "POST test");
             }
         }
 

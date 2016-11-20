@@ -14,7 +14,7 @@ namespace Hydra.Annotations
         /// <param name="range">The range predicate.</param>
         public RangeAttribute(string range)
         {
-            Range = range;
+            this.Range = range;
         }
 
         /// <summary>

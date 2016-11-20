@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
@@ -16,9 +16,9 @@ namespace Hydra.Core
         /// <param name="typeId">The class URI.</param>
         public Class(Uri typeId)
         {
-            Id = typeId;
-            SupportedOperations = new Operation[0];
-            SupportedProperties = new SupportedProperty[0];
+            this.Id = typeId;
+            this.SupportedOperations = new Operation[0];
+            this.SupportedProperties = new SupportedProperty[0];
         }
 
         /// <summary>

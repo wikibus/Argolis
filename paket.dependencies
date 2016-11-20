@@ -16,7 +16,7 @@ nuget Nancy.Owin >= 2 prerelease
 nuget Nancy.Testing >= 2 prerelease
 nuget NullGuard.Fody
 nuget Resourcer.Fody
-nuget StyleCopPlus.MSBuild
+nuget StyleCop.Analyzers
 nuget xunit
 nuget fluentassertions
 nuget TunnelVisionLabs.Net.UriTemplate prerelease
@@ -33,3 +33,5 @@ http https://gist.githubusercontent.com/tpluscode/5d9c6983004c1c9ec91f/raw/2a5f0
 
 http https://raw.githubusercontent.com/HydraCG/Specifications/master/spec/latest/core/core.jsonld
 http http://rdf-translator.appspot.com/convert/json-ld/xml/https%3A%2F%2Fraw.githubusercontent.com%2FHydraCG%2FSpecifications%2Fmaster%2Fspec%2Flatest%2Fcore%2Fcore.jsonld hydra.rdf
+
+gist tpluscode/a285267d2543466fc35c3a168c846f9f

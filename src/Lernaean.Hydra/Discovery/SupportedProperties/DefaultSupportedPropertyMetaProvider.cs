@@ -13,7 +13,7 @@ namespace Hydra.Discovery.SupportedProperties
     public class DefaultSupportedPropertyMetaProvider : ISupportedPropertyMetaProvider
     {
         private const string DefaultDescription = "The {0} property";
-        private readonly CamelCasePropertyNamesContractResolver _propertyNames = new CamelCasePropertyNamesContractResolver();
+        private readonly CamelCasePropertyNamesContractResolver propertyNames = new CamelCasePropertyNamesContractResolver();
 
         /// <summary>
         /// Gets the <see cref="SupportedPropertyMeta"/> based on property features
@@ -22,7 +22,7 @@ namespace Hydra.Discovery.SupportedProperties
         public virtual SupportedPropertyMeta GetMeta(PropertyInfo property)
         {
             var isReadonly = property.SetMethod == null || property.SetMethod.IsPrivate || HasReadonlyAttribute(property);
-            var title = _propertyNames.GetResolvedPropertyName(property.Name);
+            var title = this.propertyNames.GetResolvedPropertyName(property.Name);
             var description = property.GetDescription() ?? string.Format(DefaultDescription, title);
             var isWriteOnly = property.GetMethod == null ||
                               property.GetMethod.IsPrivate ||

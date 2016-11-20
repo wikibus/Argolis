@@ -8,24 +8,24 @@ namespace Hydra.Nancy
     /// </summary>
     public class HydraApiDocumentationModule : NancyModule
     {
-        private readonly IHydraDocumentationSettings _settings;
-        private readonly IApiDocumentationFactory _builder;
+        private readonly IHydraDocumentationSettings settings;
+        private readonly IApiDocumentationFactory builder;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HydraApiDocumentationModule"/> class.
         /// </summary>
         public HydraApiDocumentationModule(IHydraDocumentationSettings settings, IApiDocumentationFactory builder)
         {
-            _settings = settings;
-            _builder = builder;
+            this.settings = settings;
+            this.builder = builder;
 
-            Get(settings.DocumentationPath, _ => GetDocumentation());
+            this.Get(settings.DocumentationPath, _ => this.GetDocumentation());
         }
 
         private dynamic GetDocumentation()
         {
-            var apiDocumentation = _builder.Create();
-            apiDocumentation.Id = Request.GetApiDocumentationUri(_settings.DocumentationPath);
+            var apiDocumentation = this.builder.Create();
+            apiDocumentation.Id = this.Request.GetApiDocumentationUri(this.settings.DocumentationPath);
             return apiDocumentation;
         }
     }

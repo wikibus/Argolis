@@ -61,9 +61,7 @@ NUGET
     Rdf.Vocabularies (1.1.1)
     Resourcer.Fody (1.4.2)
       Fody (>= 1.29.2)
-    StyleCop.MSBuild (4.7.55)
-    StyleCopPlus.MSBuild (4.7.49.5)
-      StyleCop.MSBuild (>= 4.7.49)
+    StyleCop.Analyzers (1.0)
     TunnelVisionLabs.Net.UriTemplate (1.0.0-beta004)
     VDS.Common (1.6.4)
     xunit (2.1)
@@ -85,3 +83,6 @@ HTTP
     core.jsonld (/HydraCG/Specifications/master/spec/latest/core/core.jsonld)
   remote: http://rdf-translator.appspot.com
     hydra.rdf (/convert/json-ld/xml/https%3A%2F%2Fraw.githubusercontent.com%2FHydraCG%2FSpecifications%2Fmaster%2Fspec%2Flatest%2Fcore%2Fcore.jsonld)
+GIST
+  remote: tpluscode/a285267d2543466fc35c3a168c846f9f
+    FULLPROJECT (afcf079a05c2d8dccca3c007ffe8ad829ffc60c4)

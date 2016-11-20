@@ -1,4 +1,4 @@
-using Hydra.Core;
+﻿using Hydra.Core;
 using JsonLD.Entities;
 using NullGuard;
 

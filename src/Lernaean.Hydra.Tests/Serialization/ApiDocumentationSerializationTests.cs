@@ -16,7 +16,7 @@ namespace Lernaean.Hydra.Tests.Serialization
             var doc = new TestApiDocumentation();
 
             // when
-            dynamic jsonld = Serializer.Serialize(doc);
+            dynamic jsonld = this.Serializer.Serialize(doc);
 
             // then
             Assert.Equal("http://example.api/prop", jsonld.supportedClass.supportedProperty["hydra:property"].range.ToString());
@@ -24,10 +24,11 @@ namespace Lernaean.Hydra.Tests.Serialization
 
         public class TestApiDocumentation : global::Hydra.Core.ApiDocumentation
         {
-            public TestApiDocumentation() : base((IriRef)new Uri("http://example.test"))
+            public TestApiDocumentation()
+                : base((IriRef)new Uri("http://example.test"))
             {
-                Id = "http://documentation.uri/";
-                SupportedClasses = GetSupportedClasses();
+                this.Id = "http://documentation.uri/";
+                this.SupportedClasses = this.GetSupportedClasses();
             }
 
             public IEnumerable<Class> GetSupportedClasses()

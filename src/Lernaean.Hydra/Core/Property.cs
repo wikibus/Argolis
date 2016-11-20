@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using JetBrains.Annotations;
 using JsonLD.Entities;
 using Newtonsoft.Json;
@@ -17,7 +17,7 @@ namespace Hydra.Core
         /// </summary>
         public Property()
         {
-            SupportedOperations = new List<Operation>();
+            this.SupportedOperations = new List<Operation>();
         }
 
         /// <summary>

@@ -1,4 +1,4 @@
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using JsonLD.Entities;
 using Newtonsoft.Json;
 using NullGuard;
@@ -18,9 +18,9 @@ namespace Hydra.Core
         /// <param name="method">The HTTP method.</param>
         public Operation(string method)
         {
-            Method = method;
-            Expects = (IriRef)Owl.Nothing;
-            Returns = (IriRef)Owl.Nothing;
+            this.Method = method;
+            this.Expects = (IriRef)Owl.Nothing;
+            this.Returns = (IriRef)Owl.Nothing;
         }
 
         /// <summary>

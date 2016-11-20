@@ -1,4 +1,4 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Reflection;
 using Hydra.Annotations;
 using JetBrains.Annotations;
@@ -24,8 +24,8 @@ namespace Hydra.Resources
         /// </summary>
         public Collection()
         {
-            Views = new IView[0];
-            Members = new T[0];
+            this.Views = new IView[0];
+            this.Members = new T[0];
         }
 
         /// <summary>

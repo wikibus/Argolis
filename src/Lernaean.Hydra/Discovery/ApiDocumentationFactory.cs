@@ -11,10 +11,10 @@ namespace Hydra.Discovery
     /// </summary>
     public class ApiDocumentationFactory : IApiDocumentationFactory
     {
-        private readonly IHydraDocumentationSettings _settings;
-        private readonly IEnumerable<IDocumentedTypeSelector> _sources;
-        private readonly IRdfTypeProviderPolicy _rdfClassProvider;
-        private readonly ISupportedClassFactory _classFactory;
+        private readonly IHydraDocumentationSettings settings;
+        private readonly IEnumerable<IDocumentedTypeSelector> sources;
+        private readonly IRdfTypeProviderPolicy rdfClassProvider;
+        private readonly ISupportedClassFactory classFactory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiDocumentationFactory"/> class.
@@ -25,10 +25,10 @@ namespace Hydra.Discovery
             IRdfTypeProviderPolicy rdfClassProvider,
             ISupportedClassFactory classFactory)
         {
-            _settings = settings;
-            _sources = sources;
-            _rdfClassProvider = rdfClassProvider;
-            _classFactory = classFactory;
+            this.settings = settings;
+            this.sources = sources;
+            this.rdfClassProvider = rdfClassProvider;
+            this.classFactory = classFactory;
         }
 
         /// <summary>
@@ -36,14 +36,14 @@ namespace Hydra.Discovery
         /// </summary>
         public ApiDocumentation Create()
         {
-            var apiDocumentation = new ApiDocumentation(_settings.EntryPoint);
+            var apiDocumentation = new ApiDocumentation(this.settings.EntryPoint);
 
-            var types = (from type in _sources.SelectMany(source => source.FindTypes()).Distinct()
-                         let classId = _rdfClassProvider.Create(type)
+            var types = (from type in this.sources.SelectMany(source => source.FindTypes()).Distinct()
+                         let classId = this.rdfClassProvider.Create(type)
                          select type)
-                        .ToDictionary(t => t, type => _rdfClassProvider.Create(type));
+                        .ToDictionary(t => t, type => this.rdfClassProvider.Create(type));
 
-            var classes = types.Select(type => _classFactory.Create(type.Key, types));
+            var classes = types.Select(type => this.classFactory.Create(type.Key, types));
 
             apiDocumentation.SupportedClasses = classes.ToList();
 

@@ -12,15 +12,15 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
 {
     public class ApiDocumentationFactoryTests
     {
-        private readonly ApiDocumentationFactory _factory;
-        private readonly IDocumentedTypeSelector _documentedTypeSource;
+        private readonly ApiDocumentationFactory factory;
+        private readonly IDocumentedTypeSelector documentedTypeSource;
 
         public ApiDocumentationFactoryTests()
         {
-            _documentedTypeSource = A.Fake<IDocumentedTypeSelector>();
-            _factory = new ApiDocumentationFactory(
+            this.documentedTypeSource = A.Fake<IDocumentedTypeSelector>();
+            this.factory = new ApiDocumentationFactory(
                 A.Fake<IHydraDocumentationSettings>(),
-                new[] { _documentedTypeSource },
+                new[] { this.documentedTypeSource },
                 A.Fake<IRdfTypeProviderPolicy>(),
                 A.Fake<ISupportedClassFactory>());
         }
@@ -29,14 +29,14 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         public void Should_only_include_each_type_once()
         {
             // given
-            A.CallTo(() => _documentedTypeSource.FindTypes()).Returns(new List<Type>
+            A.CallTo(() => this.documentedTypeSource.FindTypes()).Returns(new List<Type>
             {
-                typeof (Issue),
-                typeof (Issue)
+                typeof(Issue),
+                typeof(Issue)
             });
 
             // when
-            var apiDocumentation = _factory.Create();
+            var apiDocumentation = this.factory.Create();
 
             // then
             apiDocumentation.SupportedClasses.Should().HaveCount(1);

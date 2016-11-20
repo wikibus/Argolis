@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -14,10 +14,10 @@ namespace Hydra.Discovery.SupportedProperties
     /// </summary>
     public class DefaultSupportedPropertyFactory : ISupportedPropertyFactory
     {
-        private readonly IPropertyRangeRetrievalPolicy _rangeRetrieval;
-        private readonly ISupportedPropertyMetaProvider _metaProvider;
-        private readonly IPropertyPredicateIdPolicy _propertyPredicateIdPolicy;
-        private readonly ISupportedOperationFactory _operationFactory;
+        private readonly IPropertyRangeRetrievalPolicy rangeRetrieval;
+        private readonly ISupportedPropertyMetaProvider metaProvider;
+        private readonly IPropertyPredicateIdPolicy propertyPredicateIdPolicy;
+        private readonly ISupportedOperationFactory operationFactory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultSupportedPropertyFactory"/> class.
@@ -28,10 +28,10 @@ namespace Hydra.Discovery.SupportedProperties
             IPropertyPredicateIdPolicy propertyPredicateIdPolicy,
             ISupportedOperationFactory operationFactory)
         {
-            _rangeRetrieval = rangeRetrieval;
-            _metaProvider = metaProvider;
-            _propertyPredicateIdPolicy = propertyPredicateIdPolicy;
-            _operationFactory = operationFactory;
+            this.rangeRetrieval = rangeRetrieval;
+            this.metaProvider = metaProvider;
+            this.propertyPredicateIdPolicy = propertyPredicateIdPolicy;
+            this.operationFactory = operationFactory;
         }
 
         /// <summary>
@@ -40,9 +40,9 @@ namespace Hydra.Discovery.SupportedProperties
         /// </summary>
         public virtual SupportedProperty Create(PropertyInfo prop, IReadOnlyDictionary<Type, Uri> classIds)
         {
-            IriRef? mappedType = _rangeRetrieval.GetRange(prop, classIds);
-            var meta = _metaProvider.GetMeta(prop);
-            string propertyId = _propertyPredicateIdPolicy.GetPropertyId(prop);
+            IriRef? mappedType = this.rangeRetrieval.GetRange(prop, classIds);
+            var meta = this.metaProvider.GetMeta(prop);
+            string propertyId = this.propertyPredicateIdPolicy.GetPropertyId(prop);
 
             if (propertyId == null)
             {
@@ -60,7 +60,7 @@ namespace Hydra.Discovery.SupportedProperties
                 {
                     Id = propertyId,
                     Range = mappedType ?? (IriRef)Hydra.Resource,
-                    SupportedOperations = _operationFactory.CreateOperations(prop, classIds).ToList()
+                    SupportedOperations = this.operationFactory.CreateOperations(prop, classIds).ToList()
                 }
             };
 

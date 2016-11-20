@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -9,7 +9,7 @@ namespace Hydra.Discovery.SupportedOperations
     /// </summary>
     public abstract class SupportedOperations : ISupportedOperations
     {
-        private readonly List<OperationMeta> _typeOperations;
+        private readonly List<OperationMeta> typeOperations;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SupportedOperations"/> class.
@@ -17,9 +17,9 @@ namespace Hydra.Discovery.SupportedOperations
         /// <param name="type">The supported class type.</param>
         protected SupportedOperations(Type type)
         {
-            Type = type;
-            _typeOperations = new List<OperationMeta>();
-            Class = new SupportedOperationBuilder(_typeOperations);
+            this.Type = type;
+            this.typeOperations = new List<OperationMeta>();
+            this.Class = new SupportedOperationBuilder(this.typeOperations);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Hydra.Discovery.SupportedOperations
         /// </summary>
         public IEnumerable<OperationMeta> GetSupportedClassOperations()
         {
-            return _typeOperations;
+            return this.typeOperations;
         }
 
         /// <summary>

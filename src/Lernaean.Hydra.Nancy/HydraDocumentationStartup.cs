@@ -9,7 +9,7 @@ namespace Hydra.Nancy
     /// </summary>
     public class HydraDocumentationStartup : IApplicationStartup
     {
-        private readonly string _documentationPath;
+        private readonly string documentationPath;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HydraDocumentationStartup"/> class.
@@ -17,7 +17,7 @@ namespace Hydra.Nancy
         /// <param name="settings">The hydra settings.</param>
         public HydraDocumentationStartup(IHydraDocumentationSettings settings)
         {
-            _documentationPath = settings.DocumentationPath;
+            this.documentationPath = settings.DocumentationPath;
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Hydra.Nancy
         /// </summary>
         public void Initialize(IPipelines pipelines)
         {
-            pipelines.AfterRequest.AddItemToEndOfPipeline(AppendHydraHeader(_documentationPath));
+            pipelines.AfterRequest.AddItemToEndOfPipeline(AppendHydraHeader(this.documentationPath));
         }
 
         private static Action<NancyContext> AppendHydraHeader(string documentationPath)

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Hydra.Discovery.SupportedClasses;
 using Hydra.Resources;

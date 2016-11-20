@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -15,7 +15,7 @@ namespace Hydra.Discovery.SupportedProperties
     /// </summary>
     public class DefaultPropertyRangeRetrievalPolicy : IPropertyRangeRetrievalPolicy
     {
-        private readonly IEnumerable<IPropertyRangeMappingPolicy> _propertyTypeMappings;
+        private readonly IEnumerable<IPropertyRangeMappingPolicy> propertyTypeMappings;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultPropertyRangeRetrievalPolicy"/> class.
@@ -23,7 +23,7 @@ namespace Hydra.Discovery.SupportedProperties
         /// <param name="propertyTypeMappings">The property type mappings.</param>
         public DefaultPropertyRangeRetrievalPolicy(IEnumerable<IPropertyRangeMappingPolicy> propertyTypeMappings)
         {
-            _propertyTypeMappings = propertyTypeMappings;
+            this.propertyTypeMappings = propertyTypeMappings;
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Hydra.Discovery.SupportedProperties
                 return (IriRef)rangeAttribute.Range;
             }
 
-            var mappedType = (from mapping in _propertyTypeMappings
+            var mappedType = (from mapping in this.propertyTypeMappings
                               let mapType = mapping.MapType(property, classIds)
                               where mapType != null
                               select mapType).FirstOrDefault();

@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using JsonLD.Entities;
 using JsonLD.Entities.Context;
 using NullGuard;
@@ -11,20 +11,21 @@ namespace Hydra.Discovery.SupportedProperties
     /// </summary>
     public class DefaultPropertyIdPolicy : IPropertyPredicateIdPolicy
     {
-        private readonly ContextResolver _contextResolver;
+        private readonly ContextResolver contextResolver;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultPropertyIdPolicy"/> class.
         /// </summary>
         public DefaultPropertyIdPolicy(IContextProvider contextProvider)
         {
-            _contextResolver = new ContextResolver(contextProvider);
+            this.contextResolver = new ContextResolver(contextProvider);
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultPropertyIdPolicy"/> class.
         /// </summary>
-        public DefaultPropertyIdPolicy() : this(new NullContextProvider())
+        public DefaultPropertyIdPolicy()
+            : this(new NullContextProvider())
         {
         }
 
@@ -35,7 +36,7 @@ namespace Hydra.Discovery.SupportedProperties
         [return: AllowNull]
         public string GetPropertyId(PropertyInfo property)
         {
-            var context = _contextResolver.GetContext(property.ReflectedType);
+            var context = this.contextResolver.GetContext(property.ReflectedType);
 
             if (context != null)
             {

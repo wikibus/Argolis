@@ -9,27 +9,27 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
 {
     public class SupportedOperationsTests
     {
-        private readonly TestOperations _operations;
+        private readonly TestOperations operations;
 
         public SupportedOperationsTests()
         {
-            _operations = new TestOperations();
+            this.operations = new TestOperations();
         }
 
         [Fact]
         public void Should_throw_when_non_propety_is_passed()
         {
-            Assert.ThrowsAny<ArgumentException>(() => _operations.Prop(i => i.Method()));
+            Assert.ThrowsAny<ArgumentException>(() => this.operations.Prop(i => i.Method()));
         }
 
         [Fact]
         public void Should_return_same_builder_for_class()
         {
             // given
-            var builder = _operations.Class;
+            var builder = this.operations.Class;
 
             // when
-            var builder2 = _operations.Class;
+            var builder2 = this.operations.Class;
 
             // then
             builder.Should().BeSameAs(builder2);
@@ -39,10 +39,10 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         public void Should_return_same_builder_for_property()
         {
             // given
-            var builder = _operations.Class;
+            var builder = this.operations.Class;
 
             // when
-            var builder2 = _operations.Class;
+            var builder2 = this.operations.Class;
 
             // then
             builder.Should().BeSameAs(builder2);
@@ -52,7 +52,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         {
             public SupportedOperationBuilder Prop(Expression<Func<Issue, string>> propertyExpression)
             {
-                return Property(propertyExpression);
+                return this.Property(propertyExpression);
             }
         }
     }

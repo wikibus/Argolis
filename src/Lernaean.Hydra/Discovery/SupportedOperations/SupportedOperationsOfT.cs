@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,20 +7,23 @@ using JsonLD.Entities.Context;
 
 namespace Hydra.Discovery.SupportedOperations
 {
-    /// <summary>
-    /// Base class for setting up operations supported by class <typeparamref name="T" />
-    /// </summary>
-    /// <typeparam name="T">the supported class type</typeparam>
+#pragma warning disable SA1649 // File name must match first type name
+                              /// <summary>
+                              /// Base class for setting up operations supported by class <typeparamref name="T" />
+                              /// </summary>
+                              /// <typeparam name="T">the supported class type</typeparam>
     public abstract class SupportedOperations<T> : SupportedOperations
+#pragma warning restore SA1649 // File name must match first type name
     {
-        private readonly IDictionary<PropertyInfo, IList<OperationMeta>> _propertyOperations;
+        private readonly IDictionary<PropertyInfo, IList<OperationMeta>> propertyOperations;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SupportedOperations{T}"/> class.
         /// </summary>
-        protected SupportedOperations() : base(typeof(T))
+        protected SupportedOperations()
+            : base(typeof(T))
         {
-            _propertyOperations = new Dictionary<PropertyInfo, IList<OperationMeta>>();
+            this.propertyOperations = new Dictionary<PropertyInfo, IList<OperationMeta>>();
         }
 
         /// <summary>
@@ -29,12 +32,12 @@ namespace Hydra.Discovery.SupportedOperations
         /// <param name="property">The supported property.</param>
         public override IEnumerable<OperationMeta> GetSupportedPropertyOperations(PropertyInfo property)
         {
-            if (_propertyOperations.ContainsKey(property) == false)
+            if (this.propertyOperations.ContainsKey(property) == false)
             {
                 return Enumerable.Empty<OperationMeta>();
             }
 
-            return _propertyOperations[property];
+            return this.propertyOperations[property];
         }
 
         /// <summary>
@@ -45,12 +48,12 @@ namespace Hydra.Discovery.SupportedOperations
         {
             var propertyInfo = propertyExpression.GetProperty();
 
-            if (_propertyOperations.ContainsKey(propertyInfo) == false)
+            if (this.propertyOperations.ContainsKey(propertyInfo) == false)
             {
-                _propertyOperations[propertyInfo] = new List<OperationMeta>();
+                this.propertyOperations[propertyInfo] = new List<OperationMeta>();
             }
 
-            return new SupportedOperationBuilder(_propertyOperations[propertyInfo]);
+            return new SupportedOperationBuilder(this.propertyOperations[propertyInfo]);
         }
     }
 }

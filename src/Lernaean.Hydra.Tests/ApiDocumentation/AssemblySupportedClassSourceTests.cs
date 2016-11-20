@@ -9,18 +9,18 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
 {
     public class AssemblySupportedClassSourceTests
     {
-        private readonly AssemblyAnnotatedTypeSelector _source;
+        private readonly AssemblyAnnotatedTypeSelector source;
 
         public AssemblySupportedClassSourceTests()
         {
-            _source = new TestAssemblyAnnotatedTypeSelector();
+            this.source = new TestAssemblyAnnotatedTypeSelector();
         }
 
         [Fact]
         public void Should_discover_annotated_supported_classes()
         {
             // when
-            var supportedClasses = _source.FindTypes();
+            var supportedClasses = this.source.FindTypes();
 
             // then
             supportedClasses.Should().NotContain(typeof(UndocumentedClass));
@@ -30,7 +30,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         {
             protected override IEnumerable<Assembly> Assemblies
             {
-                get { yield return typeof (Issue).Assembly; }
+                get { yield return typeof(Issue).Assembly; }
             }
         }
     }

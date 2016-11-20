@@ -1,4 +1,4 @@
-namespace Hydra.Discovery.SupportedOperations
+﻿namespace Hydra.Discovery.SupportedOperations
 {
     /// <summary>
     /// HTTP Methods

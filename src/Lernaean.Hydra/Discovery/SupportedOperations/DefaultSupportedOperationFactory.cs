@@ -14,8 +14,8 @@ namespace Hydra.Discovery.SupportedOperations
     /// </summary>
     public class DefaultSupportedOperationFactory : ISupportedOperationFactory
     {
-        private readonly IEnumerable<ISupportedOperations> _operations;
-        private readonly IPropertyRangeRetrievalPolicy _rangeRetrieval;
+        private readonly IEnumerable<ISupportedOperations> operations;
+        private readonly IPropertyRangeRetrievalPolicy rangeRetrieval;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultSupportedOperationFactory"/> class.
@@ -24,8 +24,8 @@ namespace Hydra.Discovery.SupportedOperations
             IEnumerable<ISupportedOperations> operations,
             IPropertyRangeRetrievalPolicy rangeRetrieval)
         {
-            _operations = operations;
-            _rangeRetrieval = rangeRetrieval;
+            this.operations = operations;
+            this.rangeRetrieval = rangeRetrieval;
         }
 
         /// <summary>
@@ -33,10 +33,10 @@ namespace Hydra.Discovery.SupportedOperations
         /// </summary>
         public IEnumerable<Operation> CreateOperations(Type supportedClassType, IReadOnlyDictionary<Type, Uri> classIds)
         {
-            return from source in _operations
+            return from source in this.operations
                    where source.Type == supportedClassType
                    from opMeta in source.GetSupportedClassOperations()
-                   select CreateOperation(opMeta, (IriRef)classIds[supportedClassType]);
+                   select this.CreateOperation(opMeta, (IriRef)classIds[supportedClassType]);
         }
 
         /// <summary>
@@ -44,12 +44,12 @@ namespace Hydra.Discovery.SupportedOperations
         /// </summary>
         public IEnumerable<Operation> CreateOperations(PropertyInfo prop, IReadOnlyDictionary<Type, Uri> classIds)
         {
-            IriRef mappedType = _rangeRetrieval.GetRange(prop, classIds) ?? (IriRef)Hydra.Resource;
+            IriRef mappedType = this.rangeRetrieval.GetRange(prop, classIds) ?? (IriRef)Hydra.Resource;
 
-            return from operation in _operations
+            return from operation in this.operations
                    where operation.Type == prop.ReflectedType
                    from meta in operation.GetSupportedPropertyOperations(prop)
-                   select CreateOperation(meta, mappedType);
+                   select this.CreateOperation(meta, mappedType);
         }
 
         /// <summary>

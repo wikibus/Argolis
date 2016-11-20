@@ -10,13 +10,13 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
 {
     public class SupportedOperationBuilderTests
     {
-        private readonly SupportedOperationBuilder _builder;
-        private readonly List<OperationMeta> _operations;
+        private readonly SupportedOperationBuilder builder;
+        private readonly List<OperationMeta> operations;
 
         public SupportedOperationBuilderTests()
         {
-            _operations = new List<OperationMeta>();
-            _builder = new SupportedOperationBuilder(_operations);
+            this.operations = new List<OperationMeta>();
+            this.builder = new SupportedOperationBuilder(this.operations);
         }
 
         [Theory]
@@ -28,10 +28,10 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         public void Should_store_operation_meta_with_correct_method(string operationMethodName, string expectedMethod)
         {
             // when
-            Impromptu.InvokeMember(_builder, operationMethodName);
+            Impromptu.InvokeMember(this.builder, operationMethodName);
 
             // then
-            _operations.Should().Contain(meta => meta.Method == expectedMethod);
+            this.operations.Should().Contain(meta => meta.Method == expectedMethod);
         }
 
         [Fact]
@@ -41,10 +41,10 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             const string method = "RESERVE";
 
             // when
-            _builder.Supports(method);
+            this.builder.Supports(method);
 
             // then
-            _operations.Should().Contain(meta => meta.Method == method);
+            this.operations.Should().Contain(meta => meta.Method == method);
         }
 
         [Fact]
@@ -58,7 +58,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             var returns = (IriRef)Foaf.Project;
 
             // when
-            _builder.Supports(
+            this.builder.Supports(
                 method,
                 title,
                 description,
@@ -66,7 +66,7 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
                 returns);
 
             // then
-            _operations.Should()
+            this.operations.Should()
                 .Contain(meta => meta.Title == title &&
                                  meta.Description == description &&
                                  meta.Expects == expects &&

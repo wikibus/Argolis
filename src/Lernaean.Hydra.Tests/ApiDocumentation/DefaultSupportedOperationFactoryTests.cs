@@ -16,16 +16,9 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
     {
         private const string IssueType = "http://example.com/ontolgy#Issue";
         private static readonly Dictionary<Type, Uri> ClassIds;
-        private readonly DefaultSupportedOperationFactory _factory;
-        private readonly ISupportedOperations _operations;
-        private readonly IPropertyRangeRetrievalPolicy _propertyRanges;
-
-        public DefaultSupportedOperationFactoryTests()
-        {
-            _operations = A.Fake<ISupportedOperations>();
-            _propertyRanges = A.Fake<IPropertyRangeRetrievalPolicy>();
-            _factory = new DefaultSupportedOperationFactory(new[] { _operations }, _propertyRanges);
-        }
+        private readonly DefaultSupportedOperationFactory factory;
+        private readonly ISupportedOperations operations;
+        private readonly IPropertyRangeRetrievalPolicy propertyRanges;
 
         static DefaultSupportedOperationFactoryTests()
         {
@@ -33,6 +26,13 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             {
                 { typeof(Issue), new Uri(IssueType) }
             };
+        }
+
+        public DefaultSupportedOperationFactoryTests()
+        {
+            this.operations = A.Fake<ISupportedOperations>();
+            this.propertyRanges = A.Fake<IPropertyRangeRetrievalPolicy>();
+            this.factory = new DefaultSupportedOperationFactory(new[] { this.operations }, this.propertyRanges);
         }
 
         [Theory]
@@ -43,14 +43,14 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         public void Operation_should_always_expect_nothing(string method)
         {
             // given
-            A.CallTo(() => _operations.Type).Returns(typeof(Issue));
-            A.CallTo(() => _operations.GetSupportedClassOperations()).Returns(new[]
+            A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
+            A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
                 new OperationMeta { Method = method, Expects = (IriRef)Rdfs.Resource }
             });
 
             // when
-            var operation = _factory.CreateOperations(typeof(Issue), ClassIds).Single();
+            var operation = this.factory.CreateOperations(typeof(Issue), ClassIds).Single();
 
             // then
             operation.Expects.Should().Be((IriRef)Owl.Nothing);
@@ -60,14 +60,14 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         public void PUT_operation_should_always_return_nothing()
         {
             // given
-            A.CallTo(() => _operations.Type).Returns(typeof(Issue));
-            A.CallTo(() => _operations.GetSupportedClassOperations()).Returns(new[]
+            A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
+            A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
                 new OperationMeta { Method = HttpMethod.Put, Expects = (IriRef)Rdfs.Resource }
             });
 
             // when
-            var operation = _factory.CreateOperations(typeof(Issue), ClassIds).Single();
+            var operation = this.factory.CreateOperations(typeof(Issue), ClassIds).Single();
 
             // then
             operation.Returns.Should().Be((IriRef)Owl.Nothing);
@@ -77,14 +77,14 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         public void GET_operation_should_always_return_model_type()
         {
             // given
-            A.CallTo(() => _operations.Type).Returns(typeof(Issue));
-            A.CallTo(() => _operations.GetSupportedClassOperations()).Returns(new[]
+            A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
+            A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
                 new OperationMeta { Method = HttpMethod.Get, Returns = (IriRef)Schema.Person }
             });
 
             // when
-            var operation = _factory.CreateOperations(typeof(Issue), ClassIds).Single();
+            var operation = this.factory.CreateOperations(typeof(Issue), ClassIds).Single();
 
             // then
             operation.Returns.Should().Be((IriRef)IssueType);
@@ -94,14 +94,14 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         public void DELETE_operation_should_return_nothing_by_default()
         {
             // given
-            A.CallTo(() => _operations.Type).Returns(typeof(Issue));
-            A.CallTo(() => _operations.GetSupportedClassOperations()).Returns(new[]
+            A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
+            A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
                 new OperationMeta { Method = HttpMethod.Delete }
             });
 
             // when
-            var operation = _factory.CreateOperations(typeof(Issue), ClassIds).Single();
+            var operation = this.factory.CreateOperations(typeof(Issue), ClassIds).Single();
 
             // then
             operation.Returns.Should().Be((IriRef)Owl.Nothing);
@@ -111,14 +111,14 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         public void Operation_should_have_correct_method()
         {
             // given
-            A.CallTo(() => _operations.Type).Returns(typeof(Issue));
-            A.CallTo(() => _operations.GetSupportedClassOperations()).Returns(new[]
+            A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
+            A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
                 new OperationMeta { Method = "SELECT", Returns = (IriRef)Schema.Person }
             });
 
             // when
-            var operation = _factory.CreateOperations(typeof(Issue), ClassIds).Single();
+            var operation = this.factory.CreateOperations(typeof(Issue), ClassIds).Single();
 
             // then
             operation.Method.Should().Be("SELECT");
@@ -128,14 +128,14 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         public void Operation_should_have_return_as_configured_value()
         {
             // given
-            A.CallTo(() => _operations.Type).Returns(typeof(Issue));
-            A.CallTo(() => _operations.GetSupportedClassOperations()).Returns(new[]
+            A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
+            A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
                 new OperationMeta { Method = HttpMethod.Post, Returns = (IriRef)Schema.Person }
             });
 
             // when
-            var operation = _factory.CreateOperations(typeof(Issue), ClassIds).Single();
+            var operation = this.factory.CreateOperations(typeof(Issue), ClassIds).Single();
 
             // then
             operation.Returns.Should().Be((IriRef)Schema.Person);
@@ -145,14 +145,14 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         public void PUT_operation_should_always_expect_model_type()
         {
             // given
-            A.CallTo(() => _operations.Type).Returns(typeof(Issue));
-            A.CallTo(() => _operations.GetSupportedClassOperations()).Returns(new[]
+            A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
+            A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
                 new OperationMeta { Method = HttpMethod.Put, Expects = (IriRef)Foaf.Agent }
             });
 
             // when
-            var operation = _factory.CreateOperations(typeof(Issue), ClassIds).Single();
+            var operation = this.factory.CreateOperations(typeof(Issue), ClassIds).Single();
 
             // then
             operation.Expects.Should().Be((IriRef)IssueType);
@@ -163,14 +163,14 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         {
             // given
             const string asExpected = "The title";
-            A.CallTo(() => _operations.Type).Returns(typeof(Issue));
-            A.CallTo(() => _operations.GetSupportedClassOperations()).Returns(new[]
+            A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
+            A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
                 new OperationMeta { Method = HttpMethod.Post, Title = asExpected }
             });
 
             // when
-            var operation = _factory.CreateOperations(typeof(Issue), ClassIds).Single();
+            var operation = this.factory.CreateOperations(typeof(Issue), ClassIds).Single();
 
             // then
             operation.Title.Should().Be(asExpected);
@@ -181,14 +181,14 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         {
             // given
             const string asExpected = "The description";
-            A.CallTo(() => _operations.Type).Returns(typeof(Issue));
-            A.CallTo(() => _operations.GetSupportedClassOperations()).Returns(new[]
+            A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
+            A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
                 new OperationMeta { Method = HttpMethod.Post, Description = asExpected }
             });
 
             // when
-            var operation = _factory.CreateOperations(typeof(Issue), ClassIds).Single();
+            var operation = this.factory.CreateOperations(typeof(Issue), ClassIds).Single();
 
             // then
             operation.Description.Should().Be(asExpected);

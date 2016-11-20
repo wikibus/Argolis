@@ -6,21 +6,21 @@ namespace Lernaean.Hydra.Tests.Serialization
 {
     public abstract class SerializationTestsBase
     {
-        private readonly IEntitySerializer _serializer;
+        private readonly IEntitySerializer serializer;
 
         protected SerializationTestsBase()
         {
-            _serializer = new EntitySerializer();
+            this.serializer = new EntitySerializer();
         }
 
         public IEntitySerializer Serializer
         {
-            get { return _serializer; }
+            get { return this.serializer; }
         }
 
         protected JObject Serialize(object obj)
         {
-            var jObject = _serializer.Serialize(obj);
+            var jObject = this.serializer.Serialize(obj);
             return JsonLdProcessor.Compact(jObject, new JObject(), new JsonLdOptions());
         }
     }

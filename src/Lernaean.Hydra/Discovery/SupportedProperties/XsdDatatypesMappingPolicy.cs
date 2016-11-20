@@ -11,11 +11,11 @@ namespace Hydra.Discovery.SupportedProperties
     /// </summary>
     public class XsdDatatypesMappingPolicy : IPropertyRangeMappingPolicy
     {
-        private static readonly IDictionary<Type, Uri> _types;
+        private static readonly IDictionary<Type, Uri> Types;
 
         static XsdDatatypesMappingPolicy()
         {
-            _types = new Dictionary<Type, Uri>
+            Types = new Dictionary<Type, Uri>
             {
                 { typeof(int), new Uri(Xsd.@int) },
                 { typeof(DateTime), new Uri(Xsd.dateTime) },
@@ -40,7 +40,7 @@ namespace Hydra.Discovery.SupportedProperties
         [return: AllowNull]
         public Uri MapType(PropertyInfo property, IReadOnlyDictionary<Type, Uri> classIds)
         {
-            return GetMappedXsdTypeUri(property.PropertyType);
+            return this.GetMappedXsdTypeUri(property.PropertyType);
         }
 
         /// <summary>
@@ -48,12 +48,12 @@ namespace Hydra.Discovery.SupportedProperties
         /// </summary>
         protected Uri GetMappedXsdTypeUri(Type propertyType)
         {
-            if (_types.ContainsKey(propertyType) == false)
+            if (Types.ContainsKey(propertyType) == false)
             {
                 return null;
             }
 
-            return _types[propertyType];
+            return Types[propertyType];
         }
     }
 }

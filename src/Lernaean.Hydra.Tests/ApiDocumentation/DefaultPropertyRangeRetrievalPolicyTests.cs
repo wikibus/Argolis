@@ -13,24 +13,24 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
 {
     public class DefaultPropertyRangeRetrievalPolicyTests
     {
-        private readonly DefaultPropertyRangeRetrievalPolicy _rangePolicy;
-        private readonly IPropertyRangeMappingPolicy _propertyType;
+        private readonly DefaultPropertyRangeRetrievalPolicy rangePolicy;
+        private readonly IPropertyRangeMappingPolicy propertyType;
 
         public DefaultPropertyRangeRetrievalPolicyTests()
         {
-            _propertyType = A.Fake<IPropertyRangeMappingPolicy>();
+            this.propertyType = A.Fake<IPropertyRangeMappingPolicy>();
             var mappings = new[]
             {
-                _propertyType
+                this.propertyType
             };
-            _rangePolicy = new DefaultPropertyRangeRetrievalPolicy(mappings);
+            this.rangePolicy = new DefaultPropertyRangeRetrievalPolicy(mappings);
         }
 
         [Fact]
         public void Should_use_RangAttribute_if_present()
         {
             // when
-            var iriRef = _rangePolicy.GetRange(typeof (Issue).GetProperty("ProjectId"), new Dictionary<Type, Uri>());
+            var iriRef = this.rangePolicy.GetRange(typeof(Issue).GetProperty("ProjectId"), new Dictionary<Type, Uri>());
 
             // then
             iriRef.Should().Be((IriRef)"http://example.api/o#project");
@@ -45,10 +45,10 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
             {
                 { typeof(Issue), new Uri("http://example.com/issue") }
             };
-            A.CallTo(() => _propertyType.MapType(A<PropertyInfo>._, A<IReadOnlyDictionary<Type, Uri>>._)).Returns(mappedPredicate);
+            A.CallTo(() => this.propertyType.MapType(A<PropertyInfo>._, A<IReadOnlyDictionary<Type, Uri>>._)).Returns(mappedPredicate);
 
             // when
-            var range = _rangePolicy.GetRange(typeof(Issue).GetProperty("Content"), classIds);
+            var range = this.rangePolicy.GetRange(typeof(Issue).GetProperty("Content"), classIds);
 
             // then
             range.Should().Be((IriRef)mappedPredicate);

@@ -14,12 +14,12 @@ namespace Lernaean.Hydra.Tests.Serialization
             var collection = new Collection<int>
             {
                 Id = new Uri("http://example.org/collection"),
-                Members = new[] {1, 2, 3, 4, 5},
+                Members = new[] { 1, 2, 3, 4, 5 },
                 TotalItems = 5
             };
 
             // when
-            dynamic jsonLd = Serialize(collection);
+            dynamic jsonLd = this.Serialize(collection);
 
             // then
             Assert.Equal(((JArray)jsonLd[global::Hydra.Hydra.member]).Count, 5);

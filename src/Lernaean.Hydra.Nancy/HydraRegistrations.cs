@@ -16,24 +16,25 @@ namespace Hydra.Nancy
         /// <summary>
         /// Initializes a new instance of the <see cref="HydraRegistrations"/> class.
         /// </summary>
-        public HydraRegistrations(ITypeCatalog catalog) : base(catalog)
+        public HydraRegistrations(ITypeCatalog catalog)
+            : base(catalog)
         {
-            RegisterWithDefault<IApiDocumentationFactory>(typeof(ApiDocumentationFactory), Lifetime.PerRequest);
-            RegisterWithDefault<IRdfTypeProviderPolicy>(typeof(AttributeRdfTypeProviderPolicy));
-            RegisterWithDefault<ISupportedPropertySelectionPolicy>(typeof(DefaultPropertiesSelectionPolicy));
-            RegisterWithDefault<ISupportedPropertyFactory>(typeof(DefaultSupportedPropertyFactory), Lifetime.PerRequest);
-            RegisterWithDefault<ISupportedClassFactory>(typeof(DefaultSupportedClassFactory), Lifetime.PerRequest);
-            RegisterWithDefault<ISupportedPropertyMetaProvider>(typeof(DefaultSupportedPropertyMetaProvider));
-            RegisterWithDefault<ISupportedClassMetaProvider>(typeof(DefaultSupportedClassMetaProvider));
-            RegisterWithDefault<IPropertyPredicateIdPolicy>(typeof(DefaultPropertyIdPolicy));
-            RegisterWithDefault<IPropertyRangeRetrievalPolicy>(typeof(DefaultPropertyRangeRetrievalPolicy), Lifetime.PerRequest);
-            RegisterWithDefault<ISupportedOperationFactory>(typeof(DefaultSupportedOperationFactory), Lifetime.PerRequest);
-            RegisterWithDefault<IContextProvider>(typeof(NullContextProvider));
-            RegisterWithUserThenDefault<IDocumentedTypeSelector>(new[]
+            this.RegisterWithDefault<IApiDocumentationFactory>(typeof(ApiDocumentationFactory), Lifetime.PerRequest);
+            this.RegisterWithDefault<IRdfTypeProviderPolicy>(typeof(AttributeRdfTypeProviderPolicy));
+            this.RegisterWithDefault<ISupportedPropertySelectionPolicy>(typeof(DefaultPropertiesSelectionPolicy));
+            this.RegisterWithDefault<ISupportedPropertyFactory>(typeof(DefaultSupportedPropertyFactory), Lifetime.PerRequest);
+            this.RegisterWithDefault<ISupportedClassFactory>(typeof(DefaultSupportedClassFactory), Lifetime.PerRequest);
+            this.RegisterWithDefault<ISupportedPropertyMetaProvider>(typeof(DefaultSupportedPropertyMetaProvider));
+            this.RegisterWithDefault<ISupportedClassMetaProvider>(typeof(DefaultSupportedClassMetaProvider));
+            this.RegisterWithDefault<IPropertyPredicateIdPolicy>(typeof(DefaultPropertyIdPolicy));
+            this.RegisterWithDefault<IPropertyRangeRetrievalPolicy>(typeof(DefaultPropertyRangeRetrievalPolicy), Lifetime.PerRequest);
+            this.RegisterWithDefault<ISupportedOperationFactory>(typeof(DefaultSupportedOperationFactory), Lifetime.PerRequest);
+            this.RegisterWithDefault<IContextProvider>(typeof(NullContextProvider));
+            this.RegisterWithUserThenDefault<IDocumentedTypeSelector>(new[]
             {
                 typeof(HydraBuiltInTypesSelector)
             });
-            Register<IPropertyRangeMappingPolicy>(new[]
+            this.Register<IPropertyRangeMappingPolicy>(new[]
             {
                 typeof(XsdDatatypesMappingPolicy),
                 typeof(XsdDatatypesNullablesMappingPolicy),

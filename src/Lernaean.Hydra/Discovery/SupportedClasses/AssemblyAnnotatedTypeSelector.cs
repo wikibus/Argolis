@@ -24,7 +24,7 @@ namespace Hydra.Discovery.SupportedClasses
         /// </summary>
         public ICollection<Type> FindTypes()
         {
-            return (from assembly in Assemblies
+            return (from assembly in this.Assemblies
                     from type in assembly.GetTypes()
                     where type.GetCustomAttributes<SupportedClassAttribute>().Any()
                     select type).ToList();

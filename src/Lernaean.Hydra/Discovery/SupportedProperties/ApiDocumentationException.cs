@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Hydra.Core;
 
 namespace Hydra.Discovery.SupportedProperties
@@ -11,7 +11,8 @@ namespace Hydra.Discovery.SupportedProperties
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiDocumentationException"/> class.
         /// </summary>
-        public ApiDocumentationException(string message) : base(message)
+        public ApiDocumentationException(string message)
+            : base(message)
         {
         }
     }

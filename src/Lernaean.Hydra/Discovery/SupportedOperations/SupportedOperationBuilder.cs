@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using JsonLD.Entities;
 
@@ -10,14 +10,14 @@ namespace Hydra.Discovery.SupportedOperations
     public class SupportedOperationBuilder
     {
         [Obsolete("use set?")]
-        private readonly IList<OperationMeta> _operations;
+        private readonly IList<OperationMeta> operations;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SupportedOperationBuilder"/> class.
         /// </summary>
         public SupportedOperationBuilder(IList<OperationMeta> operations)
         {
-            _operations = operations;
+            this.operations = operations;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Hydra.Discovery.SupportedOperations
             string title = null,
             string description = null)
         {
-            return Supports(HttpMethod.Get, title, description);
+            return this.Supports(HttpMethod.Get, title, description);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Hydra.Discovery.SupportedOperations
             string description = null,
             IriRef? expects = null)
         {
-            return Supports(HttpMethod.Put, title, description, expects);
+            return this.Supports(HttpMethod.Put, title, description, expects);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Hydra.Discovery.SupportedOperations
             IriRef? expects = null,
             IriRef? returns = null)
         {
-            return Supports(HttpMethod.Post, title, description, expects, returns);
+            return this.Supports(HttpMethod.Post, title, description, expects, returns);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Hydra.Discovery.SupportedOperations
             string description = null,
             IriRef? returns = null)
         {
-            return Supports(HttpMethod.Delete, title, description, returns: returns);
+            return this.Supports(HttpMethod.Delete, title, description, returns: returns);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Hydra.Discovery.SupportedOperations
             IriRef? expects = null,
             IriRef? returns = null)
         {
-            return Supports(HttpMethod.Patch, title, description, expects, returns);
+            return this.Supports(HttpMethod.Patch, title, description, expects, returns);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Hydra.Discovery.SupportedOperations
             IriRef? expects = null,
             IriRef? returns = null)
         {
-            _operations.Add(new OperationMeta
+            this.operations.Add(new OperationMeta
             {
                 Method = method,
                 Expects = expects,
