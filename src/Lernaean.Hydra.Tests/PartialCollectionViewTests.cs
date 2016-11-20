@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FluentAssertions;
 using Hydra.Resources;
 using JsonLD.Entities;
@@ -94,6 +95,28 @@ namespace Lernaean.Hydra.Tests
             view.Last.Should().Be((IriRef)new Uri("/some/collection?page=9", UriKind.Relative));
             view.Next.Should().Be((IriRef)new Uri("/some/collection?page=2", UriKind.Relative));
             view.Previous.Should().BeNull();
+        }
+
+        [Fact]
+        public void Should_allow_filling_template_with_additional_parameters()
+        {
+            // given
+            var template = new UriTemplate("/some{;subfilter}/collection{/page}{?filter}");
+            long totalItems = 86;
+            int page = 1;
+            int pageSize = 10;
+            string pageVariable = "page";
+            var routeParams = new Dictionary<string, object>
+            {
+                { "subfilter", "people" },
+                { "filter", "Tomasz" }
+            };
+
+            // when
+            var view = new TemplatedPartialCollectionView(template, pageVariable, totalItems, page, pageSize, routeParams);
+
+            // then
+            view.Id.Should().Be(new Uri("/some;subfilter=people/collection/1?filter=Tomasz", UriKind.Relative));
         }
     }
 }

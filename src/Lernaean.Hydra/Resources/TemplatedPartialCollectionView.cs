@@ -14,6 +14,7 @@ namespace Hydra.Resources
     {
         private readonly UriTemplate template;
         private readonly string pageVariable;
+        private readonly IDictionary<string, object> templateParams;
         private readonly int totalPages;
 
         /// <summary>
@@ -27,10 +28,18 @@ namespace Hydra.Resources
         /// <remarks>1-based</remarks>
         /// </param>
         /// <param name="pageSize">page size, used to calculate last page index</param>
-        public TemplatedPartialCollectionView(UriTemplate template, string pageVariable, long totalItems, int page, int pageSize)
+        /// <param name="templateParams">additional template parameters</param>
+        public TemplatedPartialCollectionView(
+            UriTemplate template,
+            string pageVariable,
+            long totalItems,
+            int page,
+            int pageSize,
+            IDictionary<string, object> templateParams = null)
         {
             this.template = template;
             this.pageVariable = pageVariable;
+            this.templateParams = templateParams;
             this.totalPages = (int)(totalItems / pageSize) + 1;
 
             this.Id = this.BindPageUri(page);
@@ -48,10 +57,8 @@ namespace Hydra.Resources
                 return null;
             }
 
-            return this.template.BindByName(new Dictionary<string, object>
-            {
-                { this.pageVariable, actualPage }
-            });
+            this.templateParams[this.pageVariable] = actualPage;
+            return this.template.BindByName(this.templateParams);
         }
 
         private IriRef? BindPageRef(int page)
