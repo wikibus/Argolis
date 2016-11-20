@@ -39,7 +39,7 @@ namespace Hydra.Resources
         {
             this.template = template;
             this.pageVariable = pageVariable;
-            this.templateParams = templateParams;
+            this.templateParams = templateParams ?? new Dictionary<string, object>();
             this.totalPages = (int)(totalItems / pageSize) + 1;
 
             this.Id = this.BindPageUri(page);
