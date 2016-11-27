@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FakeItEasy;
 using FluentAssertions;
 using Hydra;
@@ -50,7 +51,7 @@ namespace Lernaean.Hydra.Tests
 
             // then
             response.Headers.Should().ContainKey("Link");
-            response.Headers["Link"].Should().Be(ExpectedLinkHeader);
+            response.Headers["Link"].Should().Match(ExpectedLinkHeader);
         }
 
         [Fact]
@@ -61,7 +62,19 @@ namespace Lernaean.Hydra.Tests
 
             // then
             response.Headers.Should().ContainKey("Link");
-            response.Headers["Link"].Should().Be(ExpectedLinkHeader);
+            response.Headers["Link"].Should().Match(ExpectedLinkHeader);
+        }
+
+        [Fact]
+        public async void Should_not_replace_other_links_with_doc_link()
+        {
+            // when
+            var response = await this.browser.Get("has-link");
+
+            // then
+            response.Headers.Should().ContainKey("Link");
+            response.Headers["Link"].Should().MatchRegex(ExpectedLinkHeader);
+            response.Headers["Link"].Should().MatchRegex("<http://test.com/canonical>; rel=\"canonical\"");
         }
 
         private class TestModule : NancyModule
@@ -70,6 +83,13 @@ namespace Lernaean.Hydra.Tests
             {
                 this.Get("test", _ => "GET test");
                 this.Post("test", _ => "POST test");
+                this.Get("has-link", _ => new Response
+                {
+                    Headers = new Dictionary<string, string>
+                    {
+                        { "Link", "<http://test.com/canonical>; rel=\"canonical\"" }
+                    }
+                });
             }
         }
 
