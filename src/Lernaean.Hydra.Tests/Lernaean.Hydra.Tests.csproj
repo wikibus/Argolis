@@ -60,6 +60,7 @@
     <Compile Include="ApiDocumentation\SupportedOperationsTests.cs" />
     <Compile Include="AutoContextTests.cs" />
     <Compile Include="ContextExtensionsTests.cs" />
+    <Compile Include="Templates\AttributeModelTemplateProviderTests.cs" />
     <Compile Include="TestExtension.cs" />
     <Compile Include="Serialization\ApiDocumentationSerializationTests.cs" />
     <Compile Include="Serialization\ClassSerializationTests.cs" />
@@ -73,6 +74,10 @@
     <None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Argolis.Models\Argolis.Models.csproj">
+      <Project>{3FADEBA7-BEA0-4864-B3FD-C17EAC737B35}</Project>
+      <Name>Argolis.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Examples\TestHydraApi\TestHydraApi.csproj">
       <Project>{378ae219-5cef-41ed-839a-1e8343754056}</Project>
       <Name>TestHydraApi</Name>
