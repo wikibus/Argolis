@@ -1,6 +1,6 @@
 using System;
 using System.Runtime.Serialization;
-using Hydra.Annotations;
+using Argolis.Hydra.Annotations;
 using JsonLD.Entities.Context;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

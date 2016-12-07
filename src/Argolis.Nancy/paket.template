@@ -1,0 +1,14 @@
+type file
+id Argolis.Nancy
+excludeddependencies
+  GitVersionTask
+iconUrl
+  https://raw.githubusercontent.com/wikibus/Argolis/master/assets/logo.png
+tags
+  rdf rest hydra nancy semantic web json-ld
+copyright 
+  Copyright 2016 Tomasz Pluskiewicz
+licenseUrl
+  http://www.opensource.org/licenses/mit-license.php
+projectUrl
+  http://github.org/wikibus/Argolis

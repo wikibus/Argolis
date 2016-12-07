@@ -1,4 +1,4 @@
-using Hydra.Annotations;
+using Argolis.Hydra.Annotations;
 
 namespace TestHydraApi
 {

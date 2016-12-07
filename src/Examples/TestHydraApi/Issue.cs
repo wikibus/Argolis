@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Hydra.Annotations;
+using Argolis.Hydra.Annotations;
 using JsonLD.Entities;
 using JsonLD.Entities.Context;
 using Newtonsoft.Json;
@@ -30,7 +30,7 @@ namespace TestHydraApi
 
         public User Submitter { get; set; }
 
-        [Hydra.Annotations.Range("http://example.api/o#project")]
+        [Argolis.Hydra.Annotations.Range("http://example.api/o#project")]
         public IriRef ProjectId { get; set; }
 
         public UndocumentedClass UndocumentedClassProperty { get; set; }

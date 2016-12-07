@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="..\Common.props" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F8B427F1-AEEB-481B-8D51-A53AF4EF0813}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Argolis.Hydra</RootNamespace>
+    <AssemblyName>Argolis.Hydra</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Debug\Argolis.Hydra.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\..\paket-files\tpluscode\a285267d2543466fc35c3a168c846f9f\Library.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Release\Argolis.Hydra.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Content Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Annotations\SupportedClassAttribute.cs" />
+    <Compile Include="Annotations\RangeAttribute.cs" />
+    <Compile Include="Annotations\WriteOnlyAttribute.cs" />
+    <Compile Include="ContextHelpers.cs" />
+    <Compile Include="Core\Class.cs" />
+    <Compile Include="Core\Operation.cs" />
+    <Compile Include="Core\Property.cs" />
+    <Compile Include="Core\Resource.cs" />
+    <Compile Include="Core\SupportedProperty.cs" />
+    <Compile Include="Discovery\IApiDocumentationFactory.cs" />
+    <Compile Include="Discovery\SupportedClasses\DefaultSupportedClassFactory.cs" />
+    <Compile Include="Discovery\SupportedClasses\ISupportedClassFactory.cs" />
+    <Compile Include="Discovery\SupportedClasses\ISupportedPropertyFactory.cs" />
+    <Compile Include="Discovery\SupportedOperations\DefaultSupportedOperationFactory.cs" />
+    <Compile Include="Discovery\SupportedOperations\HttpMethod.cs" />
+    <Compile Include="Discovery\SupportedOperations\ISupportedOperationFactory.cs" />
+    <Compile Include="Discovery\SupportedOperations\ISupportedOperations.cs" />
+    <Compile Include="Discovery\SupportedOperations\OperationMeta.cs" />
+    <Compile Include="Discovery\SupportedOperations\SupportedOperationBuilder.cs" />
+    <Compile Include="Discovery\SupportedOperations\SupportedOperations.cs" />
+    <Compile Include="Discovery\SupportedOperations\SupportedOperationsOfT.cs" />
+    <Compile Include="Discovery\SupportedProperties\ApiDocumentationException.cs" />
+    <Compile Include="Discovery\SupportedProperties\DefaultPropertiesSelectionPolicy.cs" />
+    <Compile Include="Discovery\ApiDocumentationFactory.cs" />
+    <Compile Include="Discovery\SupportedClasses\AssemblyAnnotatedTypeSelector.cs" />
+    <Compile Include="Discovery\SupportedClasses\AttributeRdfTypeProviderPolicy.cs" />
+    <Compile Include="Discovery\ReflectionExtensions.cs" />
+    <Compile Include="Discovery\SupportedClasses\DefaultSupportedClassMetaProvider.cs" />
+    <Compile Include="Discovery\SupportedProperties\DefaultPropertyIdPolicy.cs" />
+    <Compile Include="Discovery\SupportedProperties\DefaultPropertyRangeRetrievalPolicy.cs" />
+    <Compile Include="Discovery\SupportedProperties\DefaultSupportedPropertyFactory.cs" />
+    <Compile Include="Discovery\SupportedProperties\DefaultSupportedPropertyMetaProvider.cs" />
+    <Compile Include="Discovery\SupportedProperties\IPropertyPredicateIdPolicy.cs" />
+    <Compile Include="Discovery\SupportedClasses\IRdfTypeProviderPolicy.cs" />
+    <Compile Include="Discovery\SupportedClasses\IDocumentedTypeSelector.cs" />
+    <Compile Include="Discovery\SupportedClasses\ISupportedClassMetaProvider.cs" />
+    <Compile Include="Discovery\SupportedClasses\ISupportedPropertyMetaProvider.cs" />
+    <Compile Include="Discovery\SupportedClasses\SupportedClassMeta.cs" />
+    <Compile Include="Discovery\SupportedProperties\IPropertyRangeMappingPolicy.cs" />
+    <Compile Include="Discovery\SupportedProperties\IPropertyRangeRetrievalPolicy.cs" />
+    <Compile Include="Discovery\SupportedProperties\ISupportedPropertySelectionPolicy.cs" />
+    <Compile Include="Discovery\SupportedProperties\SupportedPropertyMeta.cs" />
+    <Compile Include="HydraVocabulary.cs" />
+    <Compile Include="IHydraDocumentationSettings.cs" />
+    <Compile Include="Resources\Collection.cs" />
+    <Compile Include="Resources\IResourceWithViews.cs" />
+    <Compile Include="Resources\IView.cs" />
+    <Compile Include="Resources\PartialCollectionView.cs" />
+    <Compile Include="Resources\Resource.cs" />
+    <Compile Include="Resources\TemplatedPartialCollectionView.cs" />
+    <Compile Include="Discovery\SupportedProperties\SupportedClassRangeMappingPolicy.cs" />
+    <Compile Include="Discovery\SupportedProperties\XsdDatatypesMappingPolicy.cs" />
+    <Compile Include="Discovery\SupportedProperties\XsdDatatypesNullablesMappingPolicy.cs" />
+    <Compile Include="Core\ApiDocumentation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ViewTemplate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FodyWeavers.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\paket-files\raw.githubusercontent.com\core.jsonld">
+      <Link>context.jsonld</Link>
+    </EmbeddedResource>
+    <None Include="paket.references" />
+    <None Include="paket.template" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5.2'">
+      <PropertyGroup>
+        <__paket__GitVersionTask_targets>portable-net+sl+win+wpa+wp\GitVersionTask</__paket__GitVersionTask_targets>
+      </PropertyGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5.2'">
+      <PropertyGroup>
+        <__paket__Fody_targets>portable-net+sl+win+wpa+wp\Fody</__paket__Fody_targets>
+      </PropertyGroup>
+    </When>
+  </Choose>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5.2'">
+      <ItemGroup>
+        <Reference Include="JetBrains.Annotations">
+          <HintPath>..\..\packages\JetBrainsAnnotations.Fody\Lib\JetBrains.Annotations.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5.2'">
+      <ItemGroup>
+        <Reference Include="json-ld.net">
+          <HintPath>..\..\packages\json-ld.net\lib\net40-client\json-ld.net.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5.2'">
+      <ItemGroup>
+        <Reference Include="JsonLD.Entities">
+          <HintPath>..\..\packages\JsonLd.Entities\lib\net40\JsonLD.Entities.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5.2'">
+      <ItemGroup>
+        <Reference Include="Newtonsoft.Json">
+          <HintPath>..\..\packages\Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5.2'">
+      <ItemGroup>
+        <Reference Include="NullGuard">
+          <HintPath>..\..\packages\NullGuard.Fody\Lib\portable-net4+sl5+wpa81+wp8+win8+MonoAndroid16+MonoTouch40\NullGuard.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5.2'">
+      <ItemGroup>
+        <Reference Include="Rdf.Vocabularies">
+          <HintPath>..\..\packages\Rdf.Vocabularies\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Rdf.Vocabularies.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5.2'">
+      <ItemGroup>
+        <Reference Include="Resourcer">
+          <HintPath>..\..\packages\Resourcer.Fody\Lib\portable-net45+netcore45+wpa81+wp8\Resourcer.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="..\..\packages\Fody\build\$(__paket__Fody_targets).targets" Condition="Exists('..\..\packages\Fody\build\$(__paket__Fody_targets).targets')" Label="Paket" />
+  <Import Project="..\..\packages\GitVersionTask\build\$(__paket__GitVersionTask_targets).targets" Condition="Exists('..\..\packages\GitVersionTask\build\$(__paket__GitVersionTask_targets).targets')" Label="Paket" />
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers\analyzers\dotnet\cs\Newtonsoft.Json.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers\analyzers\dotnet\cs\StyleCop.Analyzers.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+  </ItemGroup>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5.2'">
+      <ItemGroup>
+        <Reference Include="TunnelVisionLabs.Net.UriTemplate">
+          <HintPath>..\..\packages\TunnelVisionLabs.Net.UriTemplate\lib\net20\TunnelVisionLabs.Net.UriTemplate.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+</Project>

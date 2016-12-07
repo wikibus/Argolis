@@ -18,7 +18,7 @@ NUGET
     ImpromptuInterface (6.2.2)
     JetBrainsAnnotations.Fody (1.0.5)
       Fody (>= 1.29.2)
-    JsonLD.Entities (0.3.4)
+    JsonLd.Entities (0.3.4)
       json-ld.net (>= 1.0.5)
       Newtonsoft.Json (>= 9.0)
     json-ld.net (1.0.5)
@@ -46,7 +46,7 @@ NUGET
       Owin (>= 1.0)
     Nancy.Rdf (0.3.0-beta0001)
       dotNetRDF
-      JsonLD.Entities (>= 0.3.3)
+      JsonLd.Entities (>= 0.3.3)
       Nancy (>= 0.0.0-prerelease)
       Rdf.Vocabularies
     Nancy.Testing (2.0.0-barneyrubble)
@@ -58,7 +58,7 @@ NUGET
       Fody (>= 1.29.2)
     OpenCover (4.6.519)
     Owin (1.0)
-    Rdf.Vocabularies (1.1.1)
+    Rdf.Vocabularies (1.2)
     Resourcer.Fody (1.4.2)
       Fody (>= 1.29.2)
     StyleCop.Analyzers (1.0)
@@ -77,12 +77,10 @@ NUGET
     xunit.extensibility.execution (2.1)
       xunit.extensibility.core (2.1)
 HTTP
-  remote: https://gist.githubusercontent.com
-    vocabulary.tt (/tpluscode/5d9c6983004c1c9ec91f/raw/2a5f0785c2686635f1b8ab21af1751d276d02727/vocabulary.tt)
   remote: https://raw.githubusercontent.com
     core.jsonld (/HydraCG/Specifications/master/spec/latest/core/core.jsonld)
   remote: http://rdf-translator.appspot.com
     hydra.rdf (/convert/json-ld/xml/https%3A%2F%2Fraw.githubusercontent.com%2FHydraCG%2FSpecifications%2Fmaster%2Fspec%2Flatest%2Fcore%2Fcore.jsonld)
 GIST
   remote: tpluscode/a285267d2543466fc35c3a168c846f9f
-    FULLPROJECT (afcf079a05c2d8dccca3c007ffe8ad829ffc60c4)
+    FULLPROJECT (c9b7a831e53e929f2ecce09b14a61e28007b669f)

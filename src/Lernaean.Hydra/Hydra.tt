@@ -1,6 +1,0 @@
-﻿<#@ assembly name="System.Core" #>
-<#@ assembly name="System.Xml" #>
-<#@ import namespace="System.Xml" #>
-<#@ include file="..\..\paket-files\gist.github.com\5d9c6983004c1c9ec91f\vocabulary.tt" #><#
-    CreateVocabulary();
-#>
