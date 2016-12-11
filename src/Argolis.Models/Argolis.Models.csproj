@@ -52,9 +52,12 @@
     <Compile Include="IBaseUriProvider.cs" />
     <Compile Include="IdentifierTemplateAttribute.cs" />
     <Compile Include="IModelTemplateProvider.cs" />
+    <Compile Include="IUriTemplateMatcher.cs" />
     <Compile Include="MissingTemplateException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemplateAttributeBase.cs" />
+    <Compile Include="TunnelVisionLabsUriTemplateMatcher.cs" />
+    <Compile Include="UriTemplateMatches.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="paket.references" />
@@ -85,6 +88,12 @@
     <Content Include="FodyWeavers.xml">
       <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Argolis.Hydra\Argolis.Hydra.csproj">
+      <Project>{f8b427f1-aeeb-481b-8d51-a53af4ef0813}</Project>
+      <Name>Argolis.Hydra</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
@@ -121,10 +130,15 @@
       <Paket>True</Paket>
     </Analyzer>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Argolis.Hydra\Argolis.Hydra.csproj">
-      <Project>{f8b427f1-aeeb-481b-8d51-a53af4ef0813}</Project>
-      <Name>Argolis.Hydra</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
+      <ItemGroup>
+        <Reference Include="TunnelVisionLabs.Net.UriTemplate">
+          <HintPath>..\..\packages\TunnelVisionLabs.Net.UriTemplate\lib\net20\TunnelVisionLabs.Net.UriTemplate.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
 </Project>

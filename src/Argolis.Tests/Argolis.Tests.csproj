@@ -61,6 +61,8 @@
     <Compile Include="AutoContextTests.cs" />
     <Compile Include="ContextExtensionsTests.cs" />
     <Compile Include="Models\AttributeModelTemplateProviderTests.cs" />
+    <Compile Include="Models\TunnelVisionLabsUriTemplateMatcherTests.cs" />
+    <Compile Include="Models\UriTemplateMatchesTests.cs" />
     <Compile Include="TestExtension.cs" />
     <Compile Include="Serialization\ApiDocumentationSerializationTests.cs" />
     <Compile Include="Serialization\ClassSerializationTests.cs" />

@@ -2,3 +2,4 @@ NullGuard.Fody
 GitVersionTask
 StyleCop.Analyzers
 JetBrainsAnnotations.Fody
+TunnelVisionLabs.Net.UriTemplate
