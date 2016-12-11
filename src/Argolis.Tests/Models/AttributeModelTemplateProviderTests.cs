@@ -1,5 +1,6 @@
 ﻿using Argolis.Hydra.Resources;
 using Argolis.Models;
+using FakeItEasy;
 using FluentAssertions;
 using Xunit;
 
@@ -61,6 +62,17 @@ namespace Argolis.Tests.Models
 
             // then
             template.Should().Be("multiple/models");
+        }
+
+        [Fact]
+        public void Getting_absoulte_template_should_throw_wen_there_is_no_base_URI()
+        {
+            // given
+            var type = typeof(Collection<ModelWithTemplate>);
+            var provider = new AttributeModelTemplateProvider();
+
+            // then
+            Assert.Throws<MissingTemplateException>(() => provider.GetAbsoluteTemplate(type));
         }
 
         [IdentifierTemplate("model/with/template")]

@@ -43,7 +43,12 @@ namespace Argolis.Models
         /// <exception cref="MissingTemplateException">when the attribute is not found</exception>
         public string GetAbsoluteTemplate(Type type)
         {
-            return this.baseUriProvider.BaseResourceUri + this.GetIdentifierTemplate(type);
+            if (this.baseUriProvider != null)
+            {
+                return this.baseUriProvider.BaseResourceUri + this.GetIdentifierTemplate(type);
+            }
+
+            throw new MissingTemplateException(type, new Exception($"No {typeof(IBaseUriProvider).Name} was provided"));
         }
 
         /// <summary>
