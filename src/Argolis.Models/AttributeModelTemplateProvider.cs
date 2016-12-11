@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Reflection;
+using Argolis.Hydra.Resources;
+using NullGuard;
 
 namespace Argolis.Models
 {
@@ -32,7 +34,7 @@ namespace Argolis.Models
         /// <exception cref="MissingTemplateException">when the attribute is not found</exception>
         public string GetTemplate(Type type)
         {
-            return GetIdentifierTemplateAttribute(type).Template;
+            return this.GetIdentifierTemplate(type);
         }
 
         /// <summary>
@@ -41,18 +43,32 @@ namespace Argolis.Models
         /// <exception cref="MissingTemplateException">when the attribute is not found</exception>
         public string GetAbsoluteTemplate(Type type)
         {
-            return this.baseUriProvider.BaseResourceUri + GetIdentifierTemplateAttribute(type).Template;
+            return this.baseUriProvider.BaseResourceUri + this.GetIdentifierTemplate(type);
         }
 
-        private static IdentifierTemplateAttribute GetIdentifierTemplateAttribute(Type type)
+        /// <summary>
+        /// Gets the template attribute for given <paramref name="type"/>.
+        /// </summary>
+        [return: AllowNull]
+        protected virtual TemplateAttributeBase GetTemplateAttribute(Type type)
         {
-            var templateAttribute = type.GetCustomAttribute<IdentifierTemplateAttribute>();
+            if (type.IsConstructedGenericType && type.GetGenericTypeDefinition() == typeof(Collection<>))
+            {
+                return type.GetGenericArguments()[0].GetCustomAttribute<CollectionIdentifierTemplateAttribute>();
+            }
+
+            return type.GetCustomAttribute<IdentifierTemplateAttribute>();
+        }
+
+        private string GetIdentifierTemplate(Type type)
+        {
+            var templateAttribute = this.GetTemplateAttribute(type);
             if (templateAttribute == null)
             {
                 throw new MissingTemplateException(type);
             }
 
-            return templateAttribute;
+            return templateAttribute.Template;
         }
     }
 }

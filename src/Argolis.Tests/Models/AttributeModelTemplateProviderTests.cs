@@ -1,8 +1,9 @@
-﻿using Argolis.Models;
+﻿using Argolis.Hydra.Resources;
+using Argolis.Models;
 using FluentAssertions;
 using Xunit;
 
-namespace Argolis.Tests.Templates
+namespace Argolis.Tests.Models
 {
     public class AttributeModelTemplateProviderTests
     {
@@ -48,7 +49,22 @@ namespace Argolis.Tests.Templates
             template.Should().Be("http://example.com/model/with/template");
         }
 
+        [Fact]
+        public void Getting_template_for_Hydra_collection_should_retrieve_it_from_attribute()
+        {
+            // given
+            var type = typeof(Collection<ModelWithTemplate>);
+            var provider = new AttributeModelTemplateProvider();
+
+            // when
+            var template = provider.GetTemplate(type);
+
+            // then
+            template.Should().Be("multiple/models");
+        }
+
         [IdentifierTemplate("model/with/template")]
+        [CollectionIdentifierTemplate("multiple/models")]
         public class ModelWithTemplate
         {
         }

@@ -1,6 +1,6 @@
 source https://www.nuget.org/api/v2
 
-framework: net452
+framework: >= net45
 content: none
 redirects: on
 copy_local: true
