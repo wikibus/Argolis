@@ -52,11 +52,13 @@
     <Compile Include="IBaseUriProvider.cs" />
     <Compile Include="IdentifierTemplateAttribute.cs" />
     <Compile Include="IModelTemplateProvider.cs" />
+    <Compile Include="IUriTemplateExpander.cs" />
     <Compile Include="IUriTemplateMatcher.cs" />
     <Compile Include="MissingTemplateException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemplateAttributeBase.cs" />
     <Compile Include="TunnelVisionLabsUriTemplateMatcher.cs" />
+    <Compile Include="TunnelVisionLabsUriTemplateExpander.cs" />
     <Compile Include="UriTemplateMatches.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +97,17 @@
       <Name>Argolis.Hydra</Name>
     </ProjectReference>
   </ItemGroup>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
+      <ItemGroup>
+        <Reference Include="Dictionary">
+          <HintPath>..\..\packages\Dictionary\lib\Dictionary.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
       <ItemGroup>

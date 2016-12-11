@@ -28,6 +28,8 @@ nuget nancy.rdf >= 0.3 prerelease
 nuget OpenCover
 nuget ImpromptuInterface
 nuget Nancy.Authentication.Basic >= 2 prerelease
+nuget Dictionary
+nuget Costura.Fody
 
 http https://raw.githubusercontent.com/HydraCG/Specifications/master/spec/latest/core/core.jsonld
 http http://rdf-translator.appspot.com/convert/json-ld/xml/https%3A%2F%2Fraw.githubusercontent.com%2FHydraCG%2FSpecifications%2Fmaster%2Fspec%2Flatest%2Fcore%2Fcore.jsonld hydra.rdf
