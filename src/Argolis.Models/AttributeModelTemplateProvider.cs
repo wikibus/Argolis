@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Reflection;
-using Argolis.Hydra.Resources;
 using NullGuard;
 
 namespace Argolis.Models
@@ -29,7 +30,7 @@ namespace Argolis.Models
         }
 
         /// <summary>
-        /// Gets the template just as declared by the <see cref="IdentifierTemplateAttribute"/>.
+        /// Gets the template just as declared by the <see cref="IdentifierAttribute"/>.
         /// </summary>
         /// <exception cref="MissingTemplateException">when the attribute is not found</exception>
         public string GetTemplate(Type type)
@@ -38,7 +39,7 @@ namespace Argolis.Models
         }
 
         /// <summary>
-        /// Gets the template as declared by the <see cref="IdentifierTemplateAttribute"/>, prefixed with a base URI.
+        /// Gets the template as declared by the <see cref="IdentifierAttribute"/>, prefixed with a base URI.
         /// </summary>
         /// <exception cref="MissingTemplateException">when the attribute is not found</exception>
         public string GetAbsoluteTemplate(Type type)
@@ -57,12 +58,14 @@ namespace Argolis.Models
         [return: AllowNull]
         protected virtual TemplateAttributeBase GetTemplateAttribute(Type type)
         {
-            if (type.IsConstructedGenericType && type.GetGenericTypeDefinition() == typeof(Collection<>))
+            if (type.IsConstructedGenericType)
             {
-                return type.GetGenericArguments()[0].GetCustomAttribute<CollectionIdentifierTemplateAttribute>();
+                var genericTypeAttributes = type.GetGenericArguments()[0].GetCustomAttributes<GenericResourceIdentifierTemplateAttribute>();
+
+                return genericTypeAttributes.First(attr => attr.ContainerType.TypeHandle.Equals(type.GetGenericTypeDefinition().TypeHandle));
             }
 
-            return type.GetCustomAttribute<IdentifierTemplateAttribute>();
+            return type.GetCustomAttribute<IdentifierAttribute>();
         }
 
         private string GetIdentifierTemplate(Type type)

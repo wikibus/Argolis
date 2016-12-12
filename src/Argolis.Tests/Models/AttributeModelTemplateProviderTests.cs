@@ -1,4 +1,5 @@
-﻿using Argolis.Hydra.Resources;
+﻿using Argolis.Hydra.Models;
+using Argolis.Hydra.Resources;
 using Argolis.Models;
 using FakeItEasy;
 using FluentAssertions;
@@ -75,8 +76,8 @@ namespace Argolis.Tests.Models
             Assert.Throws<MissingTemplateException>(() => provider.GetAbsoluteTemplate(type));
         }
 
-        [IdentifierTemplate("model/with/template")]
-        [CollectionIdentifierTemplate("multiple/models")]
+        [Identifier("model/with/template")]
+        [CollectionIdentifier("multiple/models")]
         public class ModelWithTemplate
         {
         }

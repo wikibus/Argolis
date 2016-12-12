@@ -7,13 +7,13 @@ namespace Argolis.Models
     /// </summary>
     /// <seealso cref="System.Attribute" />
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
-    public class IdentifierTemplateAttribute : TemplateAttributeBase
+    public class IdentifierAttribute : TemplateAttributeBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="IdentifierTemplateAttribute"/> class.
+        /// Initializes a new instance of the <see cref="IdentifierAttribute"/> class.
         /// </summary>
         /// <param name="template">The URI template string.</param>
-        public IdentifierTemplateAttribute(string template)
+        public IdentifierAttribute(string template)
             : base(template)
         {
         }

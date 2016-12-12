@@ -99,6 +99,7 @@
     <Compile Include="Discovery\SupportedProperties\SupportedPropertyMeta.cs" />
     <Compile Include="HydraVocabulary.cs" />
     <Compile Include="IHydraDocumentationSettings.cs" />
+    <Compile Include="Models\CollectionIdentifierAttribute.cs" />
     <Compile Include="Resources\Collection.cs" />
     <Compile Include="Resources\IResourceWithViews.cs" />
     <Compile Include="Resources\IView.cs" />
@@ -238,6 +239,12 @@
     <Analyzer Include="..\..\packages\StyleCop.Analyzers\analyzers\dotnet\cs\StyleCop.Analyzers.dll">
       <Paket>True</Paket>
     </Analyzer>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Argolis.Models\Argolis.Models.csproj">
+      <Project>{3FADEBA7-BEA0-4864-B3FD-C17EAC737B35}</Project>
+      <Name>Argolis.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">

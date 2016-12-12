@@ -50,9 +50,9 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AttributeModelTemplateProvider.cs" />
-    <Compile Include="CollectionIdentifierTemplateAttribute.cs" />
+    <Compile Include="GenericResourceIdentifierTemplateAttribute.cs" />
     <Compile Include="IBaseUriProvider.cs" />
-    <Compile Include="IdentifierTemplateAttribute.cs" />
+    <Compile Include="IdentifierAttribute.cs" />
     <Compile Include="IModelTemplateProvider.cs" />
     <Compile Include="IUriTemplateExpander.cs" />
     <Compile Include="IUriTemplateMatcher.cs" />
@@ -93,12 +93,6 @@
     <Content Include="FodyWeavers.xml">
       <SubType>Designer</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Argolis.Hydra\Argolis.Hydra.csproj">
-      <Project>{f8b427f1-aeeb-481b-8d51-a53af4ef0813}</Project>
-      <Name>Argolis.Hydra</Name>
-    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
