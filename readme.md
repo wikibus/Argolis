@@ -1,6 +1,6 @@
 ![graph icon](https://raw.githubusercontent.com/wikibus/Argolis/master/assets/logo.png)
 
-# Argolis [![Build status][av-badge]][build] [![NuGet version][nancy-badge]][nancy-link] [![codecov.io][cov-badge]][cov-link]
+# Argolis [![Build status][av-badge]][build] [![NuGet version][nancy-badge]][nancy-link] [![codecov.io][cov-badge]][cov-link] [![codefactor][codefactor-badge]][codefactor-link]
 
 [Hydra hypermedia controls][hydra] for .NET Web applications written in [Nancy][nancy].
 
@@ -220,3 +220,5 @@ Link: <http://localhost:61186/api>; rel="http://www.w3.org/ns/hydra/core#apiDocu
 [Registrations]: #
 [cov-badge]: https://codecov.io/gh/wikibus/Argolis/branch/master/graph/badge.svg
 [cov-link]: https://codecov.io/gh/wikibus/Argolis
+[codefactor-badge]: https://www.codefactor.io/repository/github/wikibus/Argolis/badge/master
+[codefactor-link]: https://www.codefactor.io/repository/github/wikibus/Argolis/overview/master
