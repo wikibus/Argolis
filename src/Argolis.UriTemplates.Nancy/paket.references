@@ -1,0 +1,5 @@
+NullGuard.Fody
+GitVersionTask
+StyleCop.Analyzers
+JetBrainsAnnotations.Fody
+Nancy.Routing.UriTemplates

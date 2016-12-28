@@ -75,6 +75,7 @@
     <Compile Include="PartialCollectionViewTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\CollectionSerializationTests.cs" />
+    <Compile Include="UriTemplates\ArgolisModuleTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="paket.references" />
@@ -87,6 +88,10 @@
     <ProjectReference Include="..\Argolis.Nancy\Argolis.Nancy.csproj">
       <Project>{4EC11162-751B-4E73-A3C6-435BD7CAE9BA}</Project>
       <Name>Argolis.Nancy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Argolis.UriTemplates.Nancy\Argolis.UriTemplates.Nancy.csproj">
+      <Project>{4298A696-B620-45FE-94B0-687177757622}</Project>
+      <Name>Argolis.UriTemplates.Nancy</Name>
     </ProjectReference>
     <ProjectReference Include="..\Examples\TestHydraApi\TestHydraApi.csproj">
       <Project>{378ae219-5cef-41ed-839a-1e8343754056}</Project>
@@ -272,6 +277,17 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
       <ItemGroup>
+        <Reference Include="Nancy.Routing.UriTemplates">
+          <HintPath>..\..\packages\Nancy.Routing.UriTemplates\lib\net452\Nancy.Routing.UriTemplates.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
+      <ItemGroup>
         <Reference Include="Nancy.Testing">
           <HintPath>..\..\packages\Nancy.Testing\lib\net452\Nancy.Testing.dll</HintPath>
           <Private>True</Private>
@@ -342,6 +358,17 @@
       <ItemGroup>
         <Reference Include="TunnelVisionLabs.Net.UriTemplate">
           <HintPath>..\..\packages\TunnelVisionLabs.Net.UriTemplate\lib\net20\TunnelVisionLabs.Net.UriTemplate.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
+      <ItemGroup>
+        <Reference Include="UriTemplateString">
+          <HintPath>..\..\packages\UriTemplateString\lib\net45\UriTemplateString.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>

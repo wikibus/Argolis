@@ -52,10 +52,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Argolis.Models\Argolis.Models.csproj">
-      <Project>{3fadeba7-bea0-4864-b3fd-c17eac737b35}</Project>
-      <Name>Argolis.Models</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Argolis.Hydra.Nancy\Argolis.Hydra.Nancy.csproj">
       <Project>{cbcac4dc-129d-4f36-96d5-19b14f18cf18}</Project>
       <Name>Argolis.Hydra.Nancy</Name>
@@ -63,6 +59,10 @@
     <ProjectReference Include="..\Argolis.Hydra\Argolis.Hydra.csproj">
       <Project>{f8b427f1-aeeb-481b-8d51-a53af4ef0813}</Project>
       <Name>Argolis.Hydra</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Argolis.UriTemplates.Nancy\Argolis.UriTemplates.Nancy.csproj">
+      <Project>{4298a696-b620-45fe-94b0-687177757622}</Project>
+      <Name>Argolis.UriTemplates.Nancy</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +91,11 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Content Include="FodyWeavers.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
       <ItemGroup>
@@ -158,10 +163,5 @@
     <Analyzer Include="..\..\packages\StyleCop.Analyzers\analyzers\dotnet\cs\StyleCop.Analyzers.dll">
       <Paket>True</Paket>
     </Analyzer>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="FodyWeavers.xml">
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
 </Project>

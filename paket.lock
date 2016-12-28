@@ -52,6 +52,10 @@ NUGET
       JsonLd.Entities (>= 0.3.3)
       Nancy (>= 2.0.0-barneyrubble)
       Rdf.Vocabularies
+    Nancy.Routing.UriTemplates (0.1.1)
+      Nancy (>= 2.0.0-barneyrubble)
+      TunnelVisionLabs.Net.UriTemplate (>= 1.0.0-beta004)
+      UriTemplateString
     Nancy.Testing (2.0.0-barneyrubble)
       AngleSharp (>= 0.9.5) - framework: >= net452
       Nancy (>= 2.0.0-barneyrubble) - framework: >= net452
@@ -66,6 +70,7 @@ NUGET
       Fody (>= 1.29.2)
     StyleCop.Analyzers (1.0)
     TunnelVisionLabs.Net.UriTemplate (1.0.0-beta004)
+    UriTemplateString (0.1.1)
     VDS.Common (1.6.4)
     xunit (2.1)
       xunit.assert (2.1)
