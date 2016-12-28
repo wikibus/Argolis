@@ -1,4 +1,4 @@
-type file
+type project
 id Argolis.Nancy
 excludeddependencies
   GitVersionTask
