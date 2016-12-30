@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Argolis.Models;
 using FluentAssertions;
 using Xunit;
@@ -60,6 +56,23 @@ namespace Argolis.Tests.Models
 
             // then
             actualValue.Should().BeSameAs(list);
+        }
+
+        [Fact]
+        public void Successful_match_should_allow_getting_nullable_types_from_matches()
+        {
+            // given
+            var matches = new Dictionary<string, object>
+            {
+                { "key", "5" }
+            };
+            var templateMatches = new UriTemplateMatches(matches);
+
+            // when
+            var actualValue = templateMatches.Get<int?>("key");
+
+            // then
+            actualValue.Should().Be(5);
         }
     }
 }

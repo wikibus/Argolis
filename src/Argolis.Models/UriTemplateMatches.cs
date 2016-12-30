@@ -59,7 +59,13 @@ namespace Argolis.Models
         /// <typeparam name="T">type to convert the variable value to</typeparam>
         public T Get<T>(string key)
         {
-            return (T)Convert.ChangeType(this[key], typeof(T));
+            var conversionType = typeof(T);
+            if (typeof(T).IsConstructedGenericType && typeof(T).GetGenericTypeDefinition() == typeof(Nullable<>))
+            {
+                conversionType = Nullable.GetUnderlyingType(typeof(T));
+            }
+
+            return (T)Convert.ChangeType(this[key], conversionType);
         }
 
 #pragma warning disable SA1600 // Elements must be documented
