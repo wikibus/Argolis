@@ -71,7 +71,7 @@ public class HydraDocumentationSettings : IHydraDocumentationSettings
 
 public class ArgolisRegistrations : Registrations
 {
-    public ArgolisRegistrations()
+    public ArgolisRegistrations(ITypeCatalog tc) : base(tc)
     {
         Register<IHydraDocumentationSettings>(new HydraDocumentationSettings());
     }
