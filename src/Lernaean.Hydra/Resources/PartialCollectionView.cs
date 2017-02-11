@@ -1,8 +1,10 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Hydra.Annotations;
 using JetBrains.Annotations;
 using JsonLD.Entities;
+using JsonLD.Entities.Context;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NullGuard;
 
 namespace Hydra.Resources
@@ -54,6 +56,18 @@ namespace Hydra.Resources
         public string Type
         {
             get { return Hydra.PartialCollectionView; }
+        }
+
+        /// <summary>
+        /// Gets the JSON-LD context.
+        /// </summary>
+        [UsedImplicitly]
+        protected static JObject Context
+        {
+            get
+            {
+                return new VocabContext<PartialCollectionView>(Hydra.BaseUri);
+            }
         }
     }
 }

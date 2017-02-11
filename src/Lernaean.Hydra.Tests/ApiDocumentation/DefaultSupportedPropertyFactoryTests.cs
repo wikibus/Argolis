@@ -4,6 +4,7 @@ using System.Reflection;
 using FakeItEasy;
 using FluentAssertions;
 using Hydra.Discovery.SupportedClasses;
+using Hydra.Discovery.SupportedOperations;
 using Hydra.Discovery.SupportedProperties;
 using JsonLD.Entities;
 using TestHydraApi;
@@ -15,11 +16,10 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
     {
         private static readonly PropertyInfo PropertyInfo;
         private static readonly Dictionary<Type, Uri> ClassIds;
-        private readonly DefaultSupportedPropertyFactory _factory;
-        private readonly IPropertyRangeMappingPolicy _propertyType;
-        private readonly ISupportedPropertyMetaProvider _metaProvider;
-        private readonly IPropertyRangeRetrievalPolicy _propertyRangeRetrievalPolicy;
-        private readonly IPropertyPredicateIdPolicy _propertyPredicateIdPolicy;
+        private readonly DefaultSupportedPropertyFactory factory;
+        private readonly ISupportedPropertyMetaProvider metaProvider;
+        private readonly IPropertyRangeRetrievalPolicy propertyRangeRetrievalPolicy;
+        private readonly IPropertyPredicateIdPolicy propertyPredicateIdPolicy;
 
         static DefaultSupportedPropertyFactoryTests()
         {
@@ -32,25 +32,25 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
 
         public DefaultSupportedPropertyFactoryTests()
         {
-            _propertyType = A.Fake<IPropertyRangeMappingPolicy>();
-            _metaProvider = A.Fake<ISupportedPropertyMetaProvider>();
-            _propertyRangeRetrievalPolicy = A.Fake<IPropertyRangeRetrievalPolicy>();
-            _propertyPredicateIdPolicy = A.Fake<IPropertyPredicateIdPolicy>();
-            _factory = new DefaultSupportedPropertyFactory(
-                _propertyRangeRetrievalPolicy,
-                _metaProvider,
-                _propertyPredicateIdPolicy);
+            this.metaProvider = A.Fake<ISupportedPropertyMetaProvider>();
+            this.propertyRangeRetrievalPolicy = A.Fake<IPropertyRangeRetrievalPolicy>();
+            this.propertyPredicateIdPolicy = A.Fake<IPropertyPredicateIdPolicy>();
+            this.factory = new DefaultSupportedPropertyFactory(
+                this.propertyRangeRetrievalPolicy,
+                this.metaProvider,
+                this.propertyPredicateIdPolicy,
+                A.Fake<ISupportedOperationFactory>());
         }
 
         [Fact]
         public void Should_copy_writeable_property_from_meta()
         {
             // given
-            A.CallTo(() => _metaProvider.GetMeta(PropertyInfo))
+            A.CallTo(() => this.metaProvider.GetMeta(PropertyInfo))
                 .Returns(new SupportedPropertyMeta { Writeable = true });
 
             // when
-            var property = _factory.Create(PropertyInfo, ClassIds);
+            var property = this.factory.Create(PropertyInfo, ClassIds);
 
             // then
             property.Writeable.Should().BeTrue();
@@ -60,14 +60,28 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         public void Should_copy_readble_property_from_meta()
         {
             // given
-            A.CallTo(() => _metaProvider.GetMeta(PropertyInfo))
+            A.CallTo(() => this.metaProvider.GetMeta(PropertyInfo))
                 .Returns(new SupportedPropertyMeta { Readable = true });
 
             // when
-            var property = _factory.Create(PropertyInfo, ClassIds);
+            var property = this.factory.Create(PropertyInfo, ClassIds);
 
             // then
             property.Readable.Should().BeTrue();
+        }
+
+        [Fact]
+        public void Should_copy_required_property_from_meta()
+        {
+            // given
+            A.CallTo(() => this.metaProvider.GetMeta(PropertyInfo))
+                .Returns(new SupportedPropertyMeta { Required = true });
+
+            // when
+            var property = this.factory.Create(PropertyInfo, ClassIds);
+
+            // then
+            property.Required.Should().BeTrue();
         }
 
         [Fact]
@@ -75,11 +89,11 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         {
             // given
             const string description = "dummy descr";
-            A.CallTo(() => _metaProvider.GetMeta(PropertyInfo))
+            A.CallTo(() => this.metaProvider.GetMeta(PropertyInfo))
                 .Returns(new SupportedPropertyMeta { Description = description });
 
             // when
-            var property = _factory.Create(PropertyInfo, ClassIds);
+            var property = this.factory.Create(PropertyInfo, ClassIds);
 
             // then
             property.Description.Should().Be(description);
@@ -90,11 +104,11 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         {
             // given
             const string title = "title";
-            A.CallTo(() => _metaProvider.GetMeta(PropertyInfo))
-                .Returns(new SupportedPropertyMeta { Title = title});
+            A.CallTo(() => this.metaProvider.GetMeta(PropertyInfo))
+                .Returns(new SupportedPropertyMeta { Title = title });
 
             // when
-            var property = _factory.Create(PropertyInfo, ClassIds);
+            var property = this.factory.Create(PropertyInfo, ClassIds);
 
             // then
             property.Title.Should().Be(title);
@@ -105,11 +119,11 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         {
             // given
             const string propertyId = "http://argolis.test/prop";
-            A.CallTo(() => _propertyPredicateIdPolicy.GetPropertyId(PropertyInfo, new Uri("http://argolis.test/Issue")))
+            A.CallTo(() => this.propertyPredicateIdPolicy.GetPropertyId(PropertyInfo))
                 .Returns(propertyId);
 
             // when
-            var property = _factory.Create(PropertyInfo, ClassIds);
+            var property = this.factory.Create(PropertyInfo, ClassIds);
 
             // then
             property.Property.Id.Should().Be(propertyId);
@@ -120,14 +134,24 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
         {
             // given
             const string expectedRange = "xsd:int";
-            A.CallTo(() => _propertyRangeRetrievalPolicy.GetRange(PropertyInfo, ClassIds))
+            A.CallTo(() => this.propertyRangeRetrievalPolicy.GetRange(PropertyInfo, ClassIds))
                 .Returns(new IriRef(expectedRange));
 
             // when
-            var property = _factory.Create(PropertyInfo, ClassIds);
+            var property = this.factory.Create(PropertyInfo, ClassIds);
 
             // then
             property.Property.Range.Should().Be((IriRef)expectedRange);
+        }
+
+        [Fact]
+        public void Should_throw_if_property_id_was_not_found()
+        {
+            // given
+            A.CallTo(() => this.propertyPredicateIdPolicy.GetPropertyId(PropertyInfo)).Returns(null);
+
+            // then
+            Assert.Throws<ApiDocumentationException>(() => this.factory.Create(PropertyInfo, ClassIds));
         }
     }
 }

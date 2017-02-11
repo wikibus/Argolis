@@ -1,8 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Hydra.Core;
 using Hydra.Discovery.SupportedClasses;
+using Hydra.Discovery.SupportedOperations;
 using JsonLD.Entities;
 
 namespace Hydra.Discovery.SupportedProperties
@@ -12,9 +14,10 @@ namespace Hydra.Discovery.SupportedProperties
     /// </summary>
     public class DefaultSupportedPropertyFactory : ISupportedPropertyFactory
     {
-        private readonly IPropertyRangeRetrievalPolicy _rangeRetrieval;
-        private readonly ISupportedPropertyMetaProvider _metaProvider;
-        private readonly IPropertyPredicateIdPolicy _propertyPredicateIdPolicy;
+        private readonly IPropertyRangeRetrievalPolicy rangeRetrieval;
+        private readonly ISupportedPropertyMetaProvider metaProvider;
+        private readonly IPropertyPredicateIdPolicy propertyPredicateIdPolicy;
+        private readonly ISupportedOperationFactory operationFactory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultSupportedPropertyFactory"/> class.
@@ -22,11 +25,13 @@ namespace Hydra.Discovery.SupportedProperties
         public DefaultSupportedPropertyFactory(
             IPropertyRangeRetrievalPolicy rangeRetrieval,
             ISupportedPropertyMetaProvider metaProvider,
-            IPropertyPredicateIdPolicy propertyPredicateIdPolicy)
+            IPropertyPredicateIdPolicy propertyPredicateIdPolicy,
+            ISupportedOperationFactory operationFactory)
         {
-            _rangeRetrieval = rangeRetrieval;
-            _metaProvider = metaProvider;
-            _propertyPredicateIdPolicy = propertyPredicateIdPolicy;
+            this.rangeRetrieval = rangeRetrieval;
+            this.metaProvider = metaProvider;
+            this.propertyPredicateIdPolicy = propertyPredicateIdPolicy;
+            this.operationFactory = operationFactory;
         }
 
         /// <summary>
@@ -35,9 +40,14 @@ namespace Hydra.Discovery.SupportedProperties
         /// </summary>
         public virtual SupportedProperty Create(PropertyInfo prop, IReadOnlyDictionary<Type, Uri> classIds)
         {
-            IriRef? mappedType = _rangeRetrieval.GetRange(prop, classIds);
-            var meta = _metaProvider.GetMeta(prop);
-            string propertyId = _propertyPredicateIdPolicy.GetPropertyId(prop, classIds[prop.ReflectedType]);
+            IriRef? mappedType = this.rangeRetrieval.GetRange(prop, classIds);
+            var meta = this.metaProvider.GetMeta(prop);
+            string propertyId = this.propertyPredicateIdPolicy.GetPropertyId(prop);
+
+            if (propertyId == null)
+            {
+                throw new ApiDocumentationException(string.Format("Property {0} is not included in the context", prop));
+            }
 
             var property = new SupportedProperty
             {
@@ -45,10 +55,12 @@ namespace Hydra.Discovery.SupportedProperties
                 Description = meta.Description,
                 Writeable = meta.Writeable,
                 Readable = meta.Readable,
+                Required = meta.Required,
                 Property =
                 {
                     Id = propertyId,
-                    Range = mappedType ?? (IriRef)Hydra.Resource
+                    Range = mappedType ?? (IriRef)Hydra.Resource,
+                    SupportedOperations = this.operationFactory.CreateOperations(prop, classIds).ToList()
                 }
             };
 

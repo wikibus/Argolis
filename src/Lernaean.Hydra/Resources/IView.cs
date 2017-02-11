@@ -1,4 +1,4 @@
-namespace Hydra.Resources
+﻿namespace Hydra.Resources
 {
     /// <summary>
     /// Marker interface for views

@@ -1,7 +1,7 @@
 ﻿using Hydra;
 using JsonLD.Entities;
 
-namespace TestNancyApp
+namespace TestNancyApp.Hydra
 {
     public class HydraDocumentationSettings : IHydraDocumentationSettings
     {

@@ -1,8 +1,9 @@
-using System;
-using FakeItEasy;
+﻿using FakeItEasy;
 using FluentAssertions;
 using Hydra.Discovery.SupportedProperties;
 using JsonLD.Entities;
+using JsonLD.Entities.Context;
+using Newtonsoft.Json.Linq;
 using TestHydraApi;
 using Vocab;
 using Xunit;
@@ -11,67 +12,65 @@ namespace Lernaean.Hydra.Tests.ApiDocumentation
 {
     public class DefaultPropertyIdPolicyTests
     {
-        private readonly DefaultPropertyIdPolicy _policy;
+        private readonly DefaultPropertyIdPolicy policy;
+        private readonly IContextProvider contextProvider;
 
         public DefaultPropertyIdPolicyTests()
         {
-            _policy = new DefaultPropertyIdPolicy(A.Fake<IContextProvider>());
+            this.contextProvider = A.Fake<IContextProvider>();
+            this.policy = new DefaultPropertyIdPolicy(this.contextProvider);
         }
-
-        [Theory]
-        [InlineData("http://example.org/ontolgy#Issue", "http://example.org/ontolgy#Issue/titel")]
-        [InlineData("http://example.org/ontolgy/Issue", "http://example.org/ontolgy/Issue#titel")]
-        public void Should_concatenate_with_separator_depending_on_class_id(string issueClassStr, string expectedPropertyId)
-        {
-            // given
-            Uri issueClassId = new Uri(issueClassStr);
-
-            // when
-            var propertyId = _policy.GetPropertyId(typeof(Issue).GetProperty("Title"), issueClassId);
-
-            // then
-            propertyId.Should().Be(expectedPropertyId);
-        } 
 
         [Fact]
         public void Should_use_actual_and_not_declaring_class()
         {
             // given
-            Uri issueClassId = new Uri("http://example.org/ontolgy#Issue");
+            const string expectedProperty = "http://example.org/o#Issue/dateCreated";
+            A.CallTo(() => this.contextProvider.GetContext(typeof(Issue)))
+                .Returns(new JObject
+                {
+                    "dateCreated".IsProperty(expectedProperty)
+                });
 
             // when
-            var propertyId = _policy.GetPropertyId(typeof(Issue).GetProperty("DateCreated"), issueClassId);
+            var propertyId = this.policy.GetPropertyId(typeof(Issue).GetProperty("DateCreated"));
 
             // then
-            propertyId.Should().Be("http://example.org/ontolgy#Issue/dateCreated");
+            propertyId.Should().Be(expectedProperty);
         }
 
         [Fact]
-        public void Should_use_value_set_to_JsonProperty_attribute_for_concatentation()
+        public void Should_use_property_mapped_in_jsonld_ontext()
         {
             // given
-            var classId = new Uri("http://example.org/ontolgy/User");
+            A.CallTo(() => this.contextProvider.GetContext(typeof(Issue)))
+                .Returns(new JObject
+                {
+                    "name".IsProperty(Foaf.givenName)
+                });
 
             // when
-            var propertyId = _policy.GetPropertyId(typeof(User).GetProperty("NotInContextWithAttribute"), classId);
+            var propertyId = this.policy.GetPropertyId(typeof(User).GetProperty("Name"));
 
             // then
-            propertyId.Should().Be("http://example.org/ontolgy/User#with_attribute");
-        }   
+            propertyId.Should().Be(Foaf.givenName);
+        }
 
-        [Theory]
-        [InlineData("Name", Foaf.givenName)]
-        [InlineData("LastName", Foaf.lastName)]
-        public void Should_use_property_mapped_in_jsonld_ontext(string property, string expectedPredicat)
+        [Fact]
+        public void Should_return_null_if_not_found_in_context()
         {
-            // given
-            var classId = new Uri("http://example.org/ontolgy/User");
+            var policy = new DefaultPropertyIdPolicy();
 
             // when
-            var propertyId = _policy.GetPropertyId(typeof(User).GetProperty(property), classId);
+            var propertyId = policy.GetPropertyId(typeof(NoContext).GetProperty("String"));
 
             // then
-            propertyId.Should().Be(expectedPredicat);
-        } 
+            propertyId.Should().BeNull();
+        }
+
+        private class NoContext
+        {
+            public string String { get; set; }
+        }
     }
 }

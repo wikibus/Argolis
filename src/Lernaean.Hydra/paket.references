@@ -4,5 +4,5 @@ JetBrainsAnnotations.Fody
 Resourcer.Fody
 GitVersionTask
 TunnelVisionLabs.Net.UriTemplate
-StyleCopPlus.MSBuild
+StyleCop.Analyzers
 Rdf.Vocabularies

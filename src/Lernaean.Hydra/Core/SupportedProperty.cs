@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using NullGuard;
@@ -16,8 +16,7 @@ namespace Hydra.Core
         /// </summary>
         public SupportedProperty()
         {
-            SupportedOperations = new System.Collections.ObjectModel.Collection<Operation>();
-            Property = new Property();
+            this.Property = new Property();
         }
 
         /// <summary>
@@ -37,12 +36,6 @@ namespace Hydra.Core
         /// </summary>
         [JsonProperty(Hydra.writeable)]
         public bool Writeable { get; set; }
-
-        /// <summary>
-        /// Gets the supported operations.
-        /// </summary>
-        [JsonProperty(Hydra.supportedOperation)]
-        public ICollection<Operation> SupportedOperations { get; private set; }
 
         /// <summary>
         /// Gets or sets the property.

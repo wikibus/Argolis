@@ -1,4 +1,4 @@
-namespace Hydra.Resources
+﻿namespace Hydra.Resources
 {
     /// <summary>
     /// Represents a resource, which can be "viewed" in different perspectives

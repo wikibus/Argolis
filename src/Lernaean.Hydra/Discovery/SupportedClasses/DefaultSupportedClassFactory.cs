@@ -1,7 +1,8 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Hydra.Core;
+using Hydra.Discovery.SupportedOperations;
 using Hydra.Discovery.SupportedProperties;
 
 namespace Hydra.Discovery.SupportedClasses
@@ -11,9 +12,10 @@ namespace Hydra.Discovery.SupportedClasses
     /// </summary>
     public class DefaultSupportedClassFactory : ISupportedClassFactory
     {
-        private readonly ISupportedPropertySelectionPolicy _propSelector;
-        private readonly ISupportedPropertyFactory _propFactory;
-        private readonly ISupportedClassMetaProvider _classMetaProvider;
+        private readonly ISupportedPropertySelectionPolicy propSelector;
+        private readonly ISupportedPropertyFactory propFactory;
+        private readonly ISupportedClassMetaProvider classMetaProvider;
+        private readonly ISupportedOperationFactory operationFactory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultSupportedClassFactory"/> class.
@@ -21,11 +23,13 @@ namespace Hydra.Discovery.SupportedClasses
         public DefaultSupportedClassFactory(
             ISupportedPropertySelectionPolicy propSelector,
             ISupportedPropertyFactory propFactory,
-            ISupportedClassMetaProvider classMetaProvider)
+            ISupportedClassMetaProvider classMetaProvider,
+            ISupportedOperationFactory operationFactory)
         {
-            _propSelector = propSelector;
-            _propFactory = propFactory;
-            _classMetaProvider = classMetaProvider;
+            this.propSelector = propSelector;
+            this.propFactory = propFactory;
+            this.classMetaProvider = classMetaProvider;
+            this.operationFactory = operationFactory;
         }
 
         /// <summary>
@@ -34,7 +38,7 @@ namespace Hydra.Discovery.SupportedClasses
         public Class Create(Type supportedClassType, IReadOnlyDictionary<Type, Uri> classIds)
         {
             var supportedClassId = classIds[supportedClassType];
-            var classMeta = _classMetaProvider.GetMeta(supportedClassType);
+            var classMeta = this.classMetaProvider.GetMeta(supportedClassType);
             var supportedClass = new Class(supportedClassId)
             {
                 Title = classMeta.Title,
@@ -43,9 +47,10 @@ namespace Hydra.Discovery.SupportedClasses
 
             var supportedProperties =
                 supportedClassType.GetProperties()
-                    .Where(_propSelector.ShouldIncludeProperty)
-                    .Select(sp => _propFactory.Create(sp, classIds));
+                    .Where(this.propSelector.ShouldIncludeProperty)
+                    .Select(sp => this.propFactory.Create(sp, classIds));
 
+            supportedClass.SupportedOperations = this.operationFactory.CreateOperations(supportedClassType, classIds).ToList();
             supportedClass.SupportedProperties = supportedProperties.ToList();
 
             return supportedClass;

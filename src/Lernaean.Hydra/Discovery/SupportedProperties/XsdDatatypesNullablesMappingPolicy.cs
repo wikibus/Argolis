@@ -10,6 +10,9 @@ namespace Hydra.Discovery.SupportedProperties
     /// </summary>
     public class XsdDatatypesNullablesMappingPolicy : XsdDatatypesMappingPolicy, IPropertyRangeMappingPolicy
     {
+        /// <summary>
+        /// Maps a <see cref="PropertyInfo.PropertyType" /> to predefined XSD data types.
+        /// </summary>
         [return: AllowNull]
         Uri IPropertyRangeMappingPolicy.MapType(PropertyInfo property, IReadOnlyDictionary<Type, Uri> classIds)
         {
@@ -19,7 +22,7 @@ namespace Hydra.Discovery.SupportedProperties
 
                 if (genericTypeDefinition == typeof(Nullable<>))
                 {
-                    return GetMappedXsdTypeUri(property.PropertyType.GenericTypeArguments[0]);
+                    return this.GetMappedXsdTypeUri(property.PropertyType.GenericTypeArguments[0]);
                 }
             }
 

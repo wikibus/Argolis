@@ -34,11 +34,11 @@ namespace Lernaean.Hydra.Tests.Integration
 
         public class GraphAssertions : ReferenceTypeAssertions<IGraph, GraphAssertions>
         {
-            private readonly IGraph _graph;
+            private readonly IGraph graph;
 
             public GraphAssertions(IGraph graph)
             {
-                _graph = graph;
+                this.graph = graph;
             }
 
             protected override string Context
@@ -50,17 +50,17 @@ namespace Lernaean.Hydra.Tests.Integration
             {
                 const string failFormat = "Actual triples were:{0}{0}{1}{0}The query was: {0}{0}{2}";
 
-                var queryProcessor = new LeviathanQueryProcessor(new InMemoryDataset(_graph));
-                var processQuery = (SparqlResultSet) queryProcessor.ProcessQuery(query);
+                var queryProcessor = new LeviathanQueryProcessor(new InMemoryDataset(this.graph));
+                var processQuery = (SparqlResultSet)queryProcessor.ProcessQuery(query);
 
-                processQuery.Result.Should().BeTrue(failFormat, Environment.NewLine, SerializeGraph(), query);
+                processQuery.Result.Should().BeTrue(failFormat, Environment.NewLine, this.SerializeGraph(), query);
             }
 
             private object SerializeGraph()
             {
                 var writer = new CompressingTurtleWriter();
                 TextWriter textWriter = new StringWriter();
-                writer.Save(_graph, textWriter);
+                writer.Save(this.graph, textWriter);
                 return textWriter.ToString();
             }
         }

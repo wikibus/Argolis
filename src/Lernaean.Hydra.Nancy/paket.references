@@ -2,5 +2,5 @@ Nancy
 NullGuard.Fody
 JetBrainsAnnotations.Fody
 GitVersionTask
-StyleCopPlus.MSBuild
+StyleCop.Analyzers
 JsonLD.Entities

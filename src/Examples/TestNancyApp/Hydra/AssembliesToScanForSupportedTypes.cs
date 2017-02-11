@@ -3,7 +3,7 @@ using System.Reflection;
 using Hydra.Discovery.SupportedClasses;
 using TestHydraApi;
 
-namespace TestNancyApp
+namespace TestNancyApp.Hydra
 {
     public class AssembliesToScanForSupportedTypes : AssemblyAnnotatedTypeSelector
     {

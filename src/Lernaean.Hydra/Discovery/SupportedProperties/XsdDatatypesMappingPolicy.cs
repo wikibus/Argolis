@@ -40,7 +40,7 @@ namespace Hydra.Discovery.SupportedProperties
         [return: AllowNull]
         public Uri MapType(PropertyInfo property, IReadOnlyDictionary<Type, Uri> classIds)
         {
-            return GetMappedXsdTypeUri(property.PropertyType);
+            return this.GetMappedXsdTypeUri(property.PropertyType);
         }
 
         /// <summary>

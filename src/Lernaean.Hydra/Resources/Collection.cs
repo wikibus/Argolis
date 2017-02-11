@@ -1,5 +1,4 @@
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Reflection;
 using Hydra.Annotations;
 using JetBrains.Annotations;
@@ -25,8 +24,8 @@ namespace Hydra.Resources
         /// </summary>
         public Collection()
         {
-            Views = new IView[0];
-            Members = new T[0];
+            this.Views = new IView[0];
+            this.Members = new T[0];
         }
 
         /// <summary>
@@ -62,8 +61,10 @@ namespace Hydra.Resources
             get { return Hydra.Collection; }
         }
 
-        [UsedImplicitly]
-        private static JToken Context
+        /// <summary>
+        /// Gets the JSON-LD context.
+        /// </summary>
+        protected static JToken Context
         {
             get
             {
@@ -75,12 +76,12 @@ namespace Hydra.Resources
                 var propertyInfo = typeof(T).GetProperty("Context", BindingFlags.Static | BindingFlags.NonPublic);
                 if (propertyInfo != null)
                 {
-                    var memberContext = propertyInfo.GetValue(null, null);
+                    var memberContext = (JToken)propertyInfo.GetValue(null, null);
 
-                    return new JArray(Hydra.Context, collectionContext, memberContext);
+                    return Hydra.Context.MergeWith(collectionContext, memberContext);
                 }
 
-                return new JArray(Hydra.Context, collectionContext);
+                return Hydra.Context.MergeWith(collectionContext);
             }
         }
     }
