@@ -1,0 +1,15 @@
+NullGuard.Fody
+GitVersionTask
+xunit
+fluentassertions
+TunnelVisionLabs.Net.UriTemplate
+Resourcer.Fody
+JsonLd.Entities
+Nancy.Testing
+Rdf.Vocabularies
+dotnetrdf
+json-ld.net
+fakeiteasy
+ImpromptuInterface
+StyleCop.Analyzers
+Nancy.Routing.UriTemplates

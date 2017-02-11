@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lernaean.Hydra", "src\Lernaean.Hydra\Lernaean.Hydra.csproj", "{F8B427F1-AEEB-481B-8D51-A53AF4EF0813}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Argolis.Hydra", "src\Argolis.Hydra\Argolis.Hydra.csproj", "{F8B427F1-AEEB-481B-8D51-A53AF4EF0813}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{00FB3ED0-0262-47E3-BC69-FC73C41746FA}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,12 +12,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		GitVersionConfig.yaml = GitVersionConfig.yaml
 		paket.dependencies = paket.dependencies
 		paket.lock = paket.lock
-		src\Settings.StyleCop = src\Settings.StyleCop
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lernaean.Hydra.Nancy", "src\Lernaean.Hydra.Nancy\Lernaean.Hydra.Nancy.csproj", "{CBCAC4DC-129D-4F36-96D5-19B14F18CF18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Argolis.Hydra.Nancy", "src\Argolis.Hydra.Nancy\Argolis.Hydra.Nancy.csproj", "{CBCAC4DC-129D-4F36-96D5-19B14F18CF18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lernaean.Hydra.Tests", "src\Lernaean.Hydra.Tests\Lernaean.Hydra.Tests.csproj", "{1167173B-16E1-4A0E-80D6-60A3E600E955}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Argolis.Tests", "src\Argolis.Tests\Argolis.Tests.csproj", "{1167173B-16E1-4A0E-80D6-60A3E600E955}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{23D3DC66-5EF3-40B4-82DA-F56906FE4249}"
 EndProject
@@ -25,7 +24,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHydraApi", "src\Example
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNancyApp", "src\Examples\TestNancyApp\TestNancyApp.csproj", "{1D2E686F-381D-4700-B062-67AC029C0DAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lernaean.Hydra.Tests.Integration", "src\Lernaean.Hydra.Tests.Integration\Lernaean.Hydra.Tests.Integration.csproj", "{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Argolis.Tests.Integration", "src\Argolis.Tests.Integration\Argolis.Tests.Integration.csproj", "{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Argolis.Models", "src\Argolis.Models\Argolis.Models.csproj", "{3FADEBA7-BEA0-4864-B3FD-C17EAC737B35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Argolis.Nancy", "src\Argolis.Nancy\Argolis.Nancy.csproj", "{4EC11162-751B-4E73-A3C6-435BD7CAE9BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Argolis.UriTemplates.Nancy", "src\Argolis.UriTemplates.Nancy\Argolis.UriTemplates.Nancy.csproj", "{4298A696-B620-45FE-94B0-687177757622}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +62,18 @@ Global
 		{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FADEBA7-BEA0-4864-B3FD-C17EAC737B35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FADEBA7-BEA0-4864-B3FD-C17EAC737B35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FADEBA7-BEA0-4864-B3FD-C17EAC737B35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FADEBA7-BEA0-4864-B3FD-C17EAC737B35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EC11162-751B-4E73-A3C6-435BD7CAE9BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EC11162-751B-4E73-A3C6-435BD7CAE9BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EC11162-751B-4E73-A3C6-435BD7CAE9BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EC11162-751B-4E73-A3C6-435BD7CAE9BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4298A696-B620-45FE-94B0-687177757622}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4298A696-B620-45FE-94B0-687177757622}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4298A696-B620-45FE-94B0-687177757622}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4298A696-B620-45FE-94B0-687177757622}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

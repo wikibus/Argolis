@@ -1,32 +1,35 @@
 REDIRECTS: ON
 COPY-LOCAL: TRUE
 CONTENT: NONE
-FRAMEWORK: NET452
+FRAMEWORK: >= NET45
 NUGET
   remote: https://www.nuget.org/api/v2
-    AngleSharp (0.9.9)
+    AngleSharp (0.9.9) - framework: >= net452
+    Costura.Fody (1.3.3)
+      Fody (>= 1.26.1)
+    Dictionary (2.1)
     dotNetRDF (1.0.12)
       HtmlAgilityPack (>= 1.4.9)
       Newtonsoft.Json (>= 8.0.3)
       VDS.Common (1.6.4)
     FakeItEasy (2.3.1)
-    FluentAssertions (4.17)
+    FluentAssertions (4.18)
     Fody (1.29.4)
     gitlink (2.3)
-    GitVersionTask (3.6.4)
+    GitVersionTask (3.6.5)
     HtmlAgilityPack (1.4.9.5)
     ImpromptuInterface (6.2.2)
     JetBrainsAnnotations.Fody (1.0.5)
       Fody (>= 1.29.2)
-    JsonLD.Entities (0.3.4)
+    JsonLd.Entities (0.3.4)
       json-ld.net (>= 1.0.5)
       Newtonsoft.Json (>= 9.0)
     json-ld.net (1.0.5)
       Newtonsoft.Json (>= 6.0.4)
-    Microsoft.DotNet.PlatformAbstractions (1.1)
-    Microsoft.Extensions.DependencyModel (1.1)
-      Microsoft.DotNet.PlatformAbstractions (>= 1.1)
-      Newtonsoft.Json (>= 9.0.1)
+    Microsoft.DotNet.PlatformAbstractions (1.1) - framework: >= net452
+    Microsoft.Extensions.DependencyModel (1.1) - framework: >= net452
+      Microsoft.DotNet.PlatformAbstractions (>= 1.1) - framework: >= net451
+      Newtonsoft.Json (>= 9.0.1) - framework: >= net451
     Microsoft.Owin (3.0.1)
       Owin (>= 1.0)
     Microsoft.Owin.Host.SystemWeb (3.0.1)
@@ -36,33 +39,38 @@ NUGET
       Microsoft.Owin (>= 3.0.1)
       Owin (>= 1.0)
     Nancy (2.0.0-barneyrubble)
-      Microsoft.Extensions.DependencyModel (>= 1.0)
+      Microsoft.Extensions.DependencyModel (>= 1.0) - framework: >= net452
     Nancy.Authentication.Basic (2.0.0-barneyrubble)
-      Nancy (>= 2.0.0-barneyrubble)
-    Nancy.Authentication.Forms (2.0.0-barneyrubble)
-      Nancy (>= 2.0.0-barneyrubble)
+      Nancy (>= 2.0.0-barneyrubble) - framework: >= net452
+    Nancy.Authentication.Forms (2.0.0-barneyrubble) - framework: >= net452
+      Nancy (>= 2.0.0-barneyrubble) - framework: >= net452
     Nancy.Owin (2.0.0-barneyrubble)
-      Nancy (>= 2.0.0-barneyrubble)
-      Owin (>= 1.0)
-    Nancy.Rdf (0.3.0-beta0001)
+      Nancy (>= 2.0.0-barneyrubble) - framework: >= net452
+      Owin (>= 1.0) - framework: >= net452
+    Nancy.Rdf (0.3)
       dotNetRDF
-      JsonLD.Entities (>= 0.3.3)
-      Nancy (>= 0.0.0-prerelease)
-      Rdf.Vocabularies
-    Nancy.Testing (2.0.0-barneyrubble)
-      AngleSharp (>= 0.9.5)
+      JsonLd.Entities (>= 0.3.3)
       Nancy (>= 2.0.0-barneyrubble)
-      Nancy.Authentication.Forms (>= 2.0.0-barneyrubble)
+      Rdf.Vocabularies
+    Nancy.Routing.UriTemplates (0.1.1)
+      Nancy (>= 2.0.0-barneyrubble)
+      TunnelVisionLabs.Net.UriTemplate (>= 1.0.0-beta004)
+      UriTemplateString
+    Nancy.Testing (2.0.0-barneyrubble)
+      AngleSharp (>= 0.9.5) - framework: >= net452
+      Nancy (>= 2.0.0-barneyrubble) - framework: >= net452
+      Nancy.Authentication.Forms (>= 2.0.0-barneyrubble) - framework: >= net452
     Newtonsoft.Json (9.0.1)
     NullGuard.Fody (1.4.6)
       Fody (>= 1.29.2)
     OpenCover (4.6.519)
     Owin (1.0)
-    Rdf.Vocabularies (1.1.1)
-    Resourcer.Fody (1.4.2)
+    Rdf.Vocabularies (1.2)
+    Resourcer.Fody (1.4.3)
       Fody (>= 1.29.2)
     StyleCop.Analyzers (1.0)
     TunnelVisionLabs.Net.UriTemplate (1.0.0-beta004)
+    UriTemplateString (0.1.1)
     VDS.Common (1.6.4)
     xunit (2.1)
       xunit.assert (2.1)
@@ -77,12 +85,10 @@ NUGET
     xunit.extensibility.execution (2.1)
       xunit.extensibility.core (2.1)
 HTTP
-  remote: https://gist.githubusercontent.com
-    vocabulary.tt (/tpluscode/5d9c6983004c1c9ec91f/raw/2a5f0785c2686635f1b8ab21af1751d276d02727/vocabulary.tt)
   remote: https://raw.githubusercontent.com
     core.jsonld (/HydraCG/Specifications/master/spec/latest/core/core.jsonld)
   remote: http://rdf-translator.appspot.com
     hydra.rdf (/convert/json-ld/xml/https%3A%2F%2Fraw.githubusercontent.com%2FHydraCG%2FSpecifications%2Fmaster%2Fspec%2Flatest%2Fcore%2Fcore.jsonld)
 GIST
   remote: tpluscode/a285267d2543466fc35c3a168c846f9f
-    FULLPROJECT (afcf079a05c2d8dccca3c007ffe8ad829ffc60c4)
+    FULLPROJECT (c9b7a831e53e929f2ecce09b14a61e28007b669f)

@@ -15,7 +15,7 @@ namespace TestNancyApp.Bootstrap
         public override void Configure(INancyEnvironment environment)
         {
             base.Configure(environment);
-            environment.Tracing(true, false);
+            environment.Tracing(true, true);
         }
 
         protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)

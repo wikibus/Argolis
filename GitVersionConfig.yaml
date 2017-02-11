@@ -1,2 +1,6 @@
 continuous-delivery-fallback-tag: pre
 next-version: 0.2
+mode: ContinuousDeployment
+branches:
+  master:
+    mode: ContinuousDelivery

@@ -15,7 +15,7 @@ after_build:
   - .paket\paket.exe pack output nugets include-referenced-projects version %GitVersion_NuGetVersion%
   
 after_test:
-  - .\packages\OpenCover\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:"src\Lernaean.Hydra.Tests\bin\Release\Lernaean.Hydra.Tests.dll src\Lernaean.Hydra.Tests.Integration\bin\Release\Lernaean.Hydra.Tests.Integration.dll -noshadow -appveyor" -returntargetcode -filter:"+[Lernaean.Hydra*]* -[Lernaean.Hydra.Tests*]* -[Test*]*" -hideskipped:All -output:.\Argolis_coverage.xml
+  - .\packages\OpenCover\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:"src\Argolis.Tests\bin\Release\Argolis.Tests.dll src\Argolis.Tests.Integration\bin\Release\Argolis.Tests.Integration.dll -noshadow -appveyor" -returntargetcode -filter:"+[Argolis*]* -[Argolis.Tests*]* -[Test*]*" -hideskipped:All -output:.\Argolis_coverage.xml
   - "SET PATH=C:\\Python34;C:\\Python34\\Scripts;%PATH%"
   - pip install codecov
   - codecov -f "Argolis_coverage.xml"

@@ -1,4 +1,4 @@
-﻿using Hydra;
+﻿using Argolis.Hydra;
 using JsonLD.Entities;
 
 namespace TestNancyApp.Hydra

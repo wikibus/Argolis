@@ -34,19 +34,15 @@ The name Argolis comes from the [ancient](https://en.wikipedia.org/wiki/Regions_
 monster [Hydra](https://en.wikipedia.org/wiki/Lernaean_Hydra) lived. The monster's full name is Lernaean Hydra after the lake
 of Lerna, where it had it's lair.
 
-And so the library exists in a specific state of [trichotomy](http://www.dictionary.com/browse/trichotomy):
-
-1. The package is called *Argolis*, becasue Hydra was already taken :rocket:
-1. The assemblies are called *Lernaean.Hydra.* after the mythical beast :dragon:
-1. The base namespace is simply *Hydra*, because Lernaean is hard to spell :wink:
-
 ## Getting started with Argolis
 
-To install add the Nuget package. 
+*TL;DR;* To install add the Nuget package.
 
 ```
 PM> Install-Package Argolis.Nancy
 ```
+
+It is a meta-package, which pulls all components from their respective NuGet packages.
 
 Currently only Nancy is supported, but the core library doesn't have a dependency and Web API
 or ServiceStack are definitely a possibility.
@@ -75,7 +71,7 @@ public class HydraDocumentationSettings : IHydraDocumentationSettings
 
 public class ArgolisRegistrations : Registrations
 {
-    public ArgolisRegistrations()
+    public ArgolisRegistrations(ITypeCatalog tc) : base(tc)
     {
         Register<IHydraDocumentationSettings>(new HydraDocumentationSettings());
     }

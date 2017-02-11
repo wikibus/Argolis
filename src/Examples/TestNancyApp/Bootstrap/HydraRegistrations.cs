@@ -1,5 +1,5 @@
-using Hydra;
-using Hydra.Discovery.SupportedOperations;
+using Argolis.Hydra;
+using Argolis.Hydra.Discovery.SupportedOperations;
 using Nancy;
 using Nancy.Bootstrapper;
 using TestNancyApp.Hydra;

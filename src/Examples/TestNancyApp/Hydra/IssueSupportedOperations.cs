@@ -1,4 +1,4 @@
-using Hydra.Discovery.SupportedOperations;
+using Argolis.Hydra.Discovery.SupportedOperations;
 using TestHydraApi;
 using TestNancyApp.Bootstrap;
 

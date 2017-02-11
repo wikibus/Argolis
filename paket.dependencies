@@ -1,6 +1,6 @@
 source https://www.nuget.org/api/v2
 
-framework: net452
+framework: >= net45
 content: none
 redirects: on
 copy_local: true
@@ -11,9 +11,9 @@ nuget JetBrainsAnnotations.Fody
 nuget JsonLd.Entities
 nuget Microsoft.Owin.Host.SystemWeb
 nuget Microsoft.Owin.Hosting
-nuget Nancy >= 2 prerelease
-nuget Nancy.Owin >= 2 prerelease
-nuget Nancy.Testing >= 2 prerelease
+nuget Nancy = 2.0.0-barneyrubble
+nuget Nancy.Owin = 2.0.0-barneyrubble
+nuget Nancy.Testing = 2.0.0-barneyrubble
 nuget NullGuard.Fody
 nuget Resourcer.Fody
 nuget StyleCop.Analyzers
@@ -24,14 +24,16 @@ nuget GitLink
 nuget Rdf.Vocabularies
 nuget dotnetrdf
 nuget json-ld.net
-nuget nancy.rdf >= 0.3 prerelease
+nuget nancy.rdf
 nuget OpenCover
 nuget ImpromptuInterface
-nuget Nancy.Authentication.Basic >= 2 prerelease
-
-http https://gist.githubusercontent.com/tpluscode/5d9c6983004c1c9ec91f/raw/2a5f0785c2686635f1b8ab21af1751d276d02727/vocabulary.tt
+nuget Nancy.Authentication.Basic = 2.0.0-barneyrubble
+nuget Dictionary
+nuget Costura.Fody
+nuget Nancy.Routing.UriTemplates = 0.1.1
+nuget UriTemplateString
 
 http https://raw.githubusercontent.com/HydraCG/Specifications/master/spec/latest/core/core.jsonld
 http http://rdf-translator.appspot.com/convert/json-ld/xml/https%3A%2F%2Fraw.githubusercontent.com%2FHydraCG%2FSpecifications%2Fmaster%2Fspec%2Flatest%2Fcore%2Fcore.jsonld hydra.rdf
 
-gist tpluscode/a285267d2543466fc35c3a168c846f9f
+gist tpluscode/a285267d2543466fc35c3a168c846f9f 
