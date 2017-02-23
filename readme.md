@@ -106,7 +106,7 @@ public class AssembliesToScanForSupportedTypes : AssemblyAnnotatedTypeSelector
 ``` c#
 [SupportedClass("http://example.api/o#Issue")]
 [Description("An issue reported by our users")]
-public class Issue : IssueBase
+public class Issue
 {
     public string Id { get; set; }
         
