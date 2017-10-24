@@ -33,5 +33,10 @@ namespace Hydra.Discovery.SupportedProperties
         /// Gets or sets a value indicating whether this <see cref="SupportedPropertyMeta"/> is required.
         /// </summary>
         public bool Required { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the underlying property is a hydra:Link.
+        /// </summary>
+        public bool IsLink { get; set; }
     }
 }

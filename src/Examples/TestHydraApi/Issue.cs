@@ -28,8 +28,9 @@ namespace TestHydraApi
 
         public bool IsResolved { get; set; }
 
+        [Link]
         public User Submitter { get; set; }
-
+        
         [Hydra.Annotations.Range("http://example.api/o#project")]
         public IriRef ProjectId { get; set; }
 
