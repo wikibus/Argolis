@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System.Collections.Generic;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using NullGuard;
 using TunnelVisionLabs.Net;
@@ -8,6 +9,7 @@ namespace Hydra.Resources
     /// <summary>
     /// Represents a Hydra IRI Template
     /// </summary>
+    [NullGuard(ValidationFlags.ReturnValues)]
     public class IriTemplate
     {
         /// <summary>
@@ -16,6 +18,7 @@ namespace Hydra.Resources
         public IriTemplate()
         {
             this.VariableRepresentation = VariableRepresentation.BasicRepresentation;
+            this.Mappings = new List<IriTemplateMapping>();
         }
 
         /// <summary>
@@ -28,7 +31,12 @@ namespace Hydra.Resources
         /// Gets or sets the template
         /// </summary>
         [JsonProperty(Hydra.template)]
-        public UriTemplate Template { [return: AllowNull] get; set; }
+        public UriTemplate Template { get; set; }
+
+        /// <summary>
+        /// Gets the IRI Template variable mappings
+        /// </summary>
+        public IList<IriTemplateMapping> Mappings { get; }
 
         [JsonProperty, UsedImplicitly]
         private string Type => Hydra.IriTemplate;

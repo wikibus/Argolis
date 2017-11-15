@@ -62,6 +62,7 @@
     <Compile Include="AutoContextTests.cs" />
     <Compile Include="ContextExtensionsTests.cs" />
     <Compile Include="IriTemplateTests.cs" />
+    <Compile Include="Serialization\IriTemplateMappingTests.cs" />
     <Compile Include="Serialization\IriTemplateTests.cs" />
     <Compile Include="TestExtension.cs" />
     <Compile Include="Serialization\ApiDocumentationSerializationTests.cs" />

@@ -106,6 +106,7 @@
     <Compile Include="Resources\Collection.cs" />
     <Compile Include="Resources\IResourceWithViews.cs" />
     <Compile Include="Resources\IriTemplate.cs" />
+    <Compile Include="Resources\IriTemplateMapping.cs" />
     <Compile Include="Resources\IView.cs" />
     <Compile Include="Resources\PartialCollectionView.cs" />
     <Compile Include="Resources\Resource.cs" />
