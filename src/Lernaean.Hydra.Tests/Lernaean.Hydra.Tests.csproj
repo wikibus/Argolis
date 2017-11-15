@@ -56,12 +56,11 @@
     <Compile Include="ApiDocumentation\DefaultSupportedOperationFactoryTests.cs" />
     <Compile Include="ApiDocumentation\DefaultSupportedPropertyFactoryTests.cs" />
     <Compile Include="ApiDocumentation\DefaultSupportedPropertyMetaProviderTests.cs" />
-    <Compile Include="ApiDocumentation\IriTemplateTests.cs" />
     <Compile Include="ApiDocumentation\SupportedOperationBuilderTests.cs" />
     <Compile Include="ApiDocumentation\SupportedOperationsTests.cs" />
     <Compile Include="AutoContextTests.cs" />
     <Compile Include="ContextExtensionsTests.cs" />
-    <Compile Include="IriTemplateTests.cs" />
+    <Compile Include="Core\IriTemplateTests.cs" />
     <Compile Include="Serialization\IriTemplateMappingTests.cs" />
     <Compile Include="Serialization\IriTemplateTests.cs" />
     <Compile Include="TestExtension.cs" />
@@ -69,7 +68,7 @@
     <Compile Include="Serialization\ClassSerializationTests.cs" />
     <Compile Include="Serialization\SerializationTestsBase.cs" />
     <Compile Include="ServingApiDocumentationTests.cs" />
-    <Compile Include="PartialCollectionViewTests.cs" />
+    <Compile Include="Resources\PartialCollectionViewTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\CollectionSerializationTests.cs" />
   </ItemGroup>

@@ -1,9 +1,8 @@
 ﻿using FluentAssertions;
 using Hydra.Core;
-using Hydra.Resources;
 using Xunit;
 
-namespace Lernaean.Hydra.Tests
+namespace Lernaean.Hydra.Tests.Core
 {
     public class IriTemplateTests
     {
