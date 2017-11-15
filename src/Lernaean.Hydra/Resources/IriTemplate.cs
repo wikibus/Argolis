@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using JetBrains.Annotations;
+using Newtonsoft.Json;
+using NullGuard;
+using TunnelVisionLabs.Net;
 
 namespace Hydra.Resources
 {
@@ -20,5 +23,14 @@ namespace Hydra.Resources
         /// </summary>
         [JsonProperty(Hydra.variableRepresentation)]
         public VariableRepresentation VariableRepresentation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the template
+        /// </summary>
+        [JsonProperty(Hydra.template)]
+        public UriTemplate Template { [return: AllowNull] get; set; }
+
+        [JsonProperty, UsedImplicitly]
+        private string Type => Hydra.IriTemplate;
     }
 }

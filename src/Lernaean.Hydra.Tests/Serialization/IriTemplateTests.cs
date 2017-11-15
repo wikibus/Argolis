@@ -1,4 +1,5 @@
 ﻿using Hydra.Resources;
+using JsonLD.Entities;
 using Xunit;
 
 namespace Lernaean.Hydra.Tests.Serialization
@@ -21,6 +22,19 @@ namespace Lernaean.Hydra.Tests.Serialization
 
             // then
             Assert.Equal(global::Hydra.Hydra.BaseUri + vr, jsonLd[global::Hydra.Hydra.variableRepresentation]["@id"].ToString());
+        }
+
+        [Fact]
+        public void Serializes_Correct_Type()
+        {
+            // given
+            var iriTemplate = new IriTemplate();
+
+            // when
+            var jsonLd = this.Serializer.Serialize(iriTemplate);
+
+            // then
+            Assert.Equal(global::Hydra.Hydra.IriTemplate, jsonLd[JsonLdKeywords.Type].ToString());
         }
     }
 }
