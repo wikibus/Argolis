@@ -1,7 +1,7 @@
 ﻿using Hydra.Serialization;
 using Newtonsoft.Json;
 
-namespace Hydra.Resources
+namespace Hydra.Core
 {
     /// <summary>
     /// A template syntax only details how to fill out simple string values, but not how to derive such string

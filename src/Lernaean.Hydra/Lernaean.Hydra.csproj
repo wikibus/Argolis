@@ -105,8 +105,8 @@
     <Compile Include="IHydraDocumentationSettings.cs" />
     <Compile Include="Resources\Collection.cs" />
     <Compile Include="Resources\IResourceWithViews.cs" />
-    <Compile Include="Resources\IriTemplate.cs" />
-    <Compile Include="Resources\IriTemplateMapping.cs" />
+    <Compile Include="Core\IriTemplate.cs" />
+    <Compile Include="Core\IriTemplateMapping.cs" />
     <Compile Include="Resources\IView.cs" />
     <Compile Include="Resources\PartialCollectionView.cs" />
     <Compile Include="Resources\Resource.cs" />
@@ -116,7 +116,7 @@
     <Compile Include="Discovery\SupportedProperties\XsdDatatypesNullablesMappingPolicy.cs" />
     <Compile Include="Core\ApiDocumentation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\VariableRepresentation.cs" />
+    <Compile Include="Core\VariableRepresentation.cs" />
     <Compile Include="Resources\ViewTemplate.cs" />
     <Compile Include="Serialization\VariableRepresentationConverter.cs" />
   </ItemGroup>

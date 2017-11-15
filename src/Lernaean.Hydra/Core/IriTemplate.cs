@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using NullGuard;
 using TunnelVisionLabs.Net;
 
-namespace Hydra.Resources
+namespace Hydra.Core
 {
     /// <summary>
     /// Represents a Hydra IRI Template

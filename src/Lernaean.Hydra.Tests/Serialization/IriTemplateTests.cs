@@ -1,4 +1,5 @@
-﻿using Hydra.Resources;
+﻿using Hydra.Core;
+using Hydra.Resources;
 using JsonLD.Entities;
 using Xunit;
 

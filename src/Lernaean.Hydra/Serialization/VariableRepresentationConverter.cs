@@ -1,4 +1,5 @@
 ﻿using System;
+using Hydra.Core;
 using Hydra.Resources;
 using JsonLD.Entities;
 using Newtonsoft.Json;

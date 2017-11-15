@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Hydra.Core;
 using Hydra.Resources;
 using Xunit;
 

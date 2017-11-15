@@ -3,7 +3,7 @@ using JsonLD.Entities;
 using Newtonsoft.Json;
 using NullGuard;
 
-namespace Hydra.Resources
+namespace Hydra.Core
 {
     /// <summary>
     /// Represents a Hydra IRI Template Mapping
