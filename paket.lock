@@ -12,7 +12,7 @@ NUGET
     FakeItEasy (4.2)
     FluentAssertions (4.19.4)
     Fody (2.2.1) - content: none
-    gitlink (3.1)
+    gitlink (2.4)
     GitVersionTask (3.6.5)
     HtmlAgilityPack (1.6.4)
     ImpromptuInterface (6.2.2)
