@@ -1,7 +1,7 @@
 source https://www.nuget.org/api/v2
+source https://www.myget.org/F/tpluscode/api/v3/index.json
 
 framework: net452
-content: none
 redirects: on
 copy_local: true
 
@@ -28,10 +28,12 @@ nuget nancy.rdf >= 0.3 prerelease
 nuget OpenCover
 nuget ImpromptuInterface
 nuget Nancy.Authentication.Basic >= 2 prerelease
+nuget fody content: none
+nuget tpluscode.UnitTests.Ruleset
+nuget tpluscode.NoDocumentation.Ruleset
+nuget tpluscode.Library.Ruleset
 
 http https://gist.githubusercontent.com/tpluscode/5d9c6983004c1c9ec91f/raw/2a5f0785c2686635f1b8ab21af1751d276d02727/vocabulary.tt
 
 http https://raw.githubusercontent.com/HydraCG/Specifications/master/spec/latest/core/core.jsonld
 http http://rdf-translator.appspot.com/convert/json-ld/xml/https%3A%2F%2Fraw.githubusercontent.com%2FHydraCG%2FSpecifications%2Fmaster%2Fspec%2Flatest%2Fcore%2Fcore.jsonld hydra.rdf
-
-gist tpluscode/a285267d2543466fc35c3a168c846f9f
