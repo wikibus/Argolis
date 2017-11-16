@@ -79,9 +79,9 @@ NUGET
     xunit.extensibility.execution (2.3.1)
       xunit.extensibility.core (2.3.1)
   remote: https://www.myget.org/F/tpluscode/api/v3/index.json
-    tpluscode.Library.Ruleset (1.0.0)
-    tpluscode.NoDocumentation.Ruleset (1.0.0)
-    tpluscode.UnitTests.Ruleset (1.0.0)
+    tpluscode.Library.Ruleset (1.0.1)
+    tpluscode.NoDocumentation.Ruleset (1.0.1)
+    tpluscode.UnitTests.Ruleset (1.0.1)
 HTTP
   remote: https://gist.githubusercontent.com
     vocabulary.tt (/tpluscode/5d9c6983004c1c9ec91f/raw/2a5f0785c2686635f1b8ab21af1751d276d02727/vocabulary.tt)

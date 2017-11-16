@@ -22,9 +22,9 @@ namespace Lernaean.Hydra.Tests.Serialization
             dynamic jsonLd = this.Serialize(collection);
 
             // then
-            Assert.Equal(((JArray)jsonLd[global::Hydra.Hydra.member]).Count, 5);
-            Assert.Equal((int)jsonLd[global::Hydra.Hydra.totalItems], 5);
-            Assert.Equal((string)jsonLd["@id"], "http://example.org/collection");
+            Assert.Equal(5, ((JArray)jsonLd[global::Hydra.Hydra.member]).Count);
+            Assert.Equal(5, (int)jsonLd[global::Hydra.Hydra.totalItems]);
+            Assert.Equal("http://example.org/collection", (string)jsonLd["@id"]);
         }
     }
 }

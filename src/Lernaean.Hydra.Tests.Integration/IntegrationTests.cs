@@ -27,7 +27,7 @@ namespace Lernaean.Hydra.Tests.Integration
         }
 
         [Fact]
-        public async void Should_include_supported_class_in_documentation_response()
+        public async Task Should_include_supported_class_in_documentation_response()
         {
             // when
             var documentation = await this.GetDocumentationGraph();
@@ -47,7 +47,7 @@ namespace Lernaean.Hydra.Tests.Integration
         [InlineData("dateCreated", Xsd.dateTime)]
         [InlineData("dateDeleted", Xsd.dateTime)]
         [InlineData("isResolved", Xsd.boolean)]
-        public async void Should_map_default_predicate_ranges_for_primitive_property_types(string title, string predicate)
+        public async Task Should_map_default_predicate_ranges_for_primitive_property_types(string title, string predicate)
         {
             // when
             var documentation = await this.GetDocumentationGraph();
@@ -64,7 +64,7 @@ namespace Lernaean.Hydra.Tests.Integration
         }
 
         [Fact]
-        public async void Should_map_predicate_range_for_property_with_supported_property_type()
+        public async Task Should_map_predicate_range_for_property_with_supported_property_type()
         {
             // given
             const string expectedRange = "http://example.api/o#User";
@@ -84,7 +84,7 @@ namespace Lernaean.Hydra.Tests.Integration
         }
 
         [Fact]
-        public async void Should_map_predicate_range_for_unknown_type_to_Thing()
+        public async Task Should_map_predicate_range_for_unknown_type_to_Thing()
         {
             // given
             var expectedRange = new Uri(HCore.Resource);
@@ -104,7 +104,7 @@ namespace Lernaean.Hydra.Tests.Integration
         }
 
         [Fact]
-        public async void Should_fill_class_description_from_DescriptionAttribute()
+        public async Task Should_fill_class_description_from_DescriptionAttribute()
         {
             // given
             string expectedDescription = "The number of people who liked this issue";
@@ -122,7 +122,7 @@ namespace Lernaean.Hydra.Tests.Integration
         }
 
         [Fact]
-        public async void Should_fill_property_description_from_DescriptionAttribute()
+        public async Task Should_fill_property_description_from_DescriptionAttribute()
         {
             // given
             string expectedDescription = "An issue reported by our users";
@@ -141,7 +141,7 @@ namespace Lernaean.Hydra.Tests.Integration
         [Theory]
         [InlineData(HCore.Collection)]
         [InlineData(HCore.Resource)]
-        public async void Should_include_hydra_base_types_as_supported_classes(string expectedType)
+        public async Task Should_include_hydra_base_types_as_supported_classes(string expectedType)
         {
             // when
             var documentation = await this.GetDocumentationGraph();
@@ -154,7 +154,7 @@ namespace Lernaean.Hydra.Tests.Integration
         }
 
         [Fact]
-        public async void Should_serve_API_doc_with_correct_Id()
+        public async Task Should_serve_API_doc_with_correct_Id()
         {
             // when
             var response = await this.browser.Get("api", context => context.Accept(new MediaRange("application/json")));
@@ -167,7 +167,7 @@ namespace Lernaean.Hydra.Tests.Integration
         }
 
         [Fact]
-        public async void Should_not_contain_duplicate_operations()
+        public async Task Should_not_contain_duplicate_operations()
         {
             var serialize = new JsonLD.Entities.EntitySerializer().Serialize(new Class(new Uri("http://ex.com/issue")));
 
