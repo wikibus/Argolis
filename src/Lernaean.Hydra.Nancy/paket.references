@@ -6,3 +6,4 @@ GitVersionTask
 StyleCop.Analyzers
 JsonLD.Entities
 tpluscode.Library.Ruleset
+gitlink
