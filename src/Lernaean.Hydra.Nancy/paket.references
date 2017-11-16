@@ -1,6 +1,7 @@
 Nancy
 NullGuard.Fody
 JetBrainsAnnotations.Fody
+JetBrains.Annotations
 GitVersionTask
 StyleCop.Analyzers
 JsonLD.Entities

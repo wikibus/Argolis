@@ -8,6 +8,7 @@ copy_local: true
 nuget fakeiteasy
 nuget GitVersionTask
 nuget JetBrainsAnnotations.Fody
+nuget JetBrains.Annotations
 nuget JsonLd.Entities
 nuget Microsoft.Owin.Host.SystemWeb
 nuget Microsoft.Owin.Hosting

@@ -1,6 +1,7 @@
 NullGuard.Fody
 JsonLd.Entities
 JetBrainsAnnotations.Fody
+JetBrains.Annotations
 Resourcer.Fody
 GitVersionTask
 TunnelVisionLabs.Net.UriTemplate
