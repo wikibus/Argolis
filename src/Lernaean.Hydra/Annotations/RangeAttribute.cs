@@ -3,7 +3,7 @@
 namespace Hydra.Annotations
 {
     /// <summary>
-    /// Marks a property available for invoking GET
+    /// Defines range of a property
     /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
     public class RangeAttribute : Attribute

@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Issue.cs" />
     <Compile Include="IssueBase.cs" />
+    <Compile Include="IssueCollection.cs" />
+    <Compile Include="IssueFilter.cs" />
     <Compile Include="UndocumentedClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
@@ -81,7 +83,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5.2'">
       <ItemGroup>
         <Reference Include="JsonLD.Entities">
-          <HintPath>..\..\..\packages\JsonLD.Entities\lib\net40\JsonLD.Entities.dll</HintPath>
+          <HintPath>..\..\..\packages\JsonLd.Entities\lib\net40\JsonLD.Entities.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -103,7 +105,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5.2'">
       <ItemGroup>
         <Reference Include="Rdf.Vocabularies">
-          <HintPath>..\..\..\packages\Rdf.Vocabularies\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Rdf.Vocabularies.dll</HintPath>
+          <HintPath>..\..\..\packages\Rdf.Vocabularies\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Rdf.Vocabularies.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>

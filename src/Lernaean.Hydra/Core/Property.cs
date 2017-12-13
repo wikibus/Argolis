@@ -8,7 +8,7 @@ using Vocab;
 namespace Hydra.Core
 {
     /// <summary>
-    /// Represents an RDF property for the purpose of documenting <see cref="SupportedProperty"/>
+    /// Represents an RDF property
     /// </summary>
     public class Property
     {

@@ -6,7 +6,7 @@ using JsonLD.Entities;
 using TunnelVisionLabs.Net;
 using Xunit;
 
-namespace Lernaean.Hydra.Tests
+namespace Lernaean.Hydra.Tests.Resources
 {
     public class PartialCollectionViewTests
     {

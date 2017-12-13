@@ -4,6 +4,8 @@ include-pdbs true
 excludeddependencies
   JsonLd.Entities
   GitVersionTask
+  tpluscode.Library.Ruleset
+  JetBrains.Annotations
   Nancy
 dependencies
   Nancy.Rdf >= LOCKEDVERSION
