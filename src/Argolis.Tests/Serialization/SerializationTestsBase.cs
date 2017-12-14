@@ -20,8 +20,8 @@ namespace Argolis.Tests.Serialization
 
         protected JObject Serialize(object obj)
         {
-            var jObject = this.serializer.Serialize(obj);
-            return JsonLdProcessor.Compact(jObject, new JObject(), new JsonLdOptions());
+            var jsonObject = this.serializer.Serialize(obj);
+            return JsonLdProcessor.Compact(jsonObject, new JObject(), new JsonLdOptions());
         }
     }
 }
