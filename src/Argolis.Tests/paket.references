@@ -12,4 +12,6 @@ json-ld.net
 fakeiteasy
 ImpromptuInterface
 StyleCop.Analyzers
+tpluscode.UnitTests.Ruleset
+UriTemplateString
 Nancy.Routing.UriTemplates

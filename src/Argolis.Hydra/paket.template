@@ -3,6 +3,8 @@ id Argolis.Hydra
 include-pdbs true
 excludeddependencies
   GitVersionTask
+  tpluscode.Library.Ruleset
+  JetBrains.Annotations
 dependencies
   JsonLd.Entities >= LOCKEDVERSION
   Rdf.Vocabularies >= LOCKEDVERSION

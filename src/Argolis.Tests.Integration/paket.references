@@ -7,3 +7,4 @@ dotnetrdf
 json-ld.net
 nancy.rdf
 StyleCop.Analyzers
+tpluscode.UnitTests.Ruleset

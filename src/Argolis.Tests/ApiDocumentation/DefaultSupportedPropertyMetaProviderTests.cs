@@ -125,6 +125,16 @@ namespace Argolis.Tests.ApiDocumentation
         }
 
         [Fact]
+        public void Should_discover_properties_marked_as_links()
+        {
+            // when
+            var meta = this.metaProvider.GetMeta(typeof(Issue).GetProperty("Submitter"));
+
+            // then
+            meta.IsLink.Should().BeTrue();
+        }
+
+        [Fact]
         public void Should_provide_some_default_title()
         {
             // when

@@ -102,7 +102,7 @@ public class AssembliesToScanForSupportedTypes : AssemblyAnnotatedTypeSelector
 ``` c#
 [SupportedClass("http://example.api/o#Issue")]
 [Description("An issue reported by our users")]
-public class Issue : IssueBase
+public class Issue
 {
     public string Id { get; set; }
         
@@ -120,10 +120,16 @@ public class Issue : IssueBase
 
     [Range("http://example.api/o#project")]
     public string ProjectId { get; set; }
+    
+    private JObject Context => new AutoContext<Issue>();
 }
 ```
 
-By default the only mandatory part is the `[SupportedClass]` attribute.
+Mandatory parts are the `[SupportedClass]` attribute and a `@context`. Here it is defined directly in the class
+but it can also be provided by implementing `IContextProvider` and registering it with the container.
+
+Please see the documentation of [JsonLd.Entities](https://github.com/wikibus/JsonLD.Entities/tree/master/src/Documentation/ResolvingContext)
+for more details of how the JSON-LD context can be created.
 
 #### Serve your ApiDocumentation
 

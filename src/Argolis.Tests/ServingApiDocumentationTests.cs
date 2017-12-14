@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Argolis.Hydra;
 using Argolis.Hydra.Discovery.SupportedClasses;
 using Argolis.Hydra.Discovery.SupportedOperations;
@@ -42,7 +43,7 @@ namespace Argolis.Tests
         }
 
         [Fact]
-        public async void Should_append_api_doc_header_to_GET_query()
+        public async Task Should_append_api_doc_header_to_GET_query()
         {
             // when
             var response = await this.browser.Post("test");
@@ -53,7 +54,7 @@ namespace Argolis.Tests
         }
 
         [Fact]
-        public async void Should_append_api_doc_header_to_POST_query()
+        public async Task Should_append_api_doc_header_to_POST_query()
         {
             // when
             var response = await this.browser.Get("test");
@@ -64,7 +65,7 @@ namespace Argolis.Tests
         }
 
         [Fact]
-        public async void Should_not_replace_other_links_with_doc_link()
+        public async Task Should_not_replace_other_links_with_doc_link()
         {
             // when
             var response = await this.browser.Get("has-link");

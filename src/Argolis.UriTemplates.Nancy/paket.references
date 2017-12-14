@@ -1,5 +1,8 @@
 NullGuard.Fody
+JetBrainsAnnotations.Fody
+JetBrains.Annotations
 GitVersionTask
 StyleCop.Analyzers
-JetBrainsAnnotations.Fody
+JsonLD.Entities
+tpluscode.Library.Ruleset
 Nancy.Routing.UriTemplates

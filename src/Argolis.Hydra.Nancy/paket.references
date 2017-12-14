@@ -5,3 +5,4 @@ GitVersionTask
 StyleCop.Analyzers
 JsonLD.Entities
 Rdf.Vocabularies
+tpluscode.Library.Ruleset

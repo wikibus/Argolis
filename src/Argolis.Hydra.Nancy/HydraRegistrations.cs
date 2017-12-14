@@ -30,6 +30,7 @@ namespace Argolis.Hydra.Nancy
             this.RegisterWithDefault<IPropertyRangeRetrievalPolicy>(typeof(DefaultPropertyRangeRetrievalPolicy), Lifetime.PerRequest);
             this.RegisterWithDefault<ISupportedOperationFactory>(typeof(DefaultSupportedOperationFactory), Lifetime.PerRequest);
             this.RegisterWithDefault<IContextProvider>(typeof(NullContextProvider));
+            this.RegisterWithDefault<IIriTemplateFactory>(typeof(IriTemplateFactory), Lifetime.PerRequest);
             this.RegisterWithUserThenDefault<IDocumentedTypeSelector>(new[]
             {
                 typeof(HydraBuiltInTypesSelector)

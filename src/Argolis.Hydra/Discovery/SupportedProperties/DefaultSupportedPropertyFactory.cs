@@ -49,6 +49,12 @@ namespace Argolis.Hydra.Discovery.SupportedProperties
                 throw new ApiDocumentationException(string.Format("Property {0} is not included in the context", prop));
             }
 
+            var propertyTypes = new List<string>();
+            if (meta.IsLink)
+            {
+                propertyTypes.Add(Vocab.Hydra.Link);
+            }
+
             var property = new SupportedProperty
             {
                 Title = meta.Title,
@@ -56,7 +62,7 @@ namespace Argolis.Hydra.Discovery.SupportedProperties
                 Writeable = meta.Writeable,
                 Readable = meta.Readable,
                 Required = meta.Required,
-                Property =
+                Property = new Property(propertyTypes)
                 {
                     Id = propertyId,
                     Range = mappedType ?? (IriRef)Vocab.Hydra.Resource,

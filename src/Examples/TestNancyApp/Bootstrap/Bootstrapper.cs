@@ -1,6 +1,9 @@
-﻿using Nancy;
+﻿using System;
+using System.Linq;
+using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Configuration;
+using Nancy.Routing.UriTemplates;
 using Nancy.TinyIoc;
 
 namespace TestNancyApp.Bootstrap
@@ -23,6 +26,17 @@ namespace TestNancyApp.Bootstrap
             base.RequestStartup(container, pipelines, context);
 
             container.Register(new NancyContextWrapper(context));
+        }
+
+        protected override Func<ITypeCatalog, NancyInternalConfiguration> InternalConfiguration
+        {
+            get
+            {
+                return NancyInternalConfiguration.WithOverrides(c =>
+                {
+                    c.RouteResolver = typeof(UriTemplateRouteResolver);
+                });
+            }
         }
     }
 }

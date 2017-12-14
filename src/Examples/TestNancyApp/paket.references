@@ -4,3 +4,5 @@ Microsoft.Owin.Hosting
 JsonLD.Entities
 nancy.rdf
 Nancy.Authentication.Basic
+Nancy.Routing.UriTemplates
+uritemplatestring

@@ -28,6 +28,7 @@ namespace Argolis.Hydra.Discovery.SupportedProperties
                               property.GetMethod.IsPrivate ||
                               property.GetCustomAttribute<WriteOnlyAttribute>() != null;
             var isRequired = property.GetCustomAttribute<RequiredAttribute>() != null;
+            var isLink = property.GetCustomAttribute<LinkAttribute>() != null;
 
             return new SupportedPropertyMeta
             {
@@ -35,7 +36,8 @@ namespace Argolis.Hydra.Discovery.SupportedProperties
                 Description = description,
                 Writeable = isReadonly == false,
                 Readable = isWriteOnly == false,
-                Required = isRequired
+                Required = isRequired,
+                IsLink = isLink
             };
         }
 

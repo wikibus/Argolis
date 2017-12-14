@@ -28,6 +28,7 @@ namespace TestHydraApi
 
         public bool IsResolved { get; set; }
 
+        [Link]
         public User Submitter { get; set; }
 
         [Argolis.Hydra.Annotations.Range("http://example.api/o#project")]

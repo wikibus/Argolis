@@ -153,5 +153,19 @@ namespace Argolis.Tests.ApiDocumentation
             // then
             Assert.Throws<ApiDocumentationException>(() => this.factory.Create(PropertyInfo, ClassIds));
         }
+
+        [Fact]
+        public void Should_add_hydra_Link_type_When_property_is_marked_as_link()
+        {
+            // given
+            A.CallTo(() => this.metaProvider.GetMeta(PropertyInfo))
+                .Returns(new SupportedPropertyMeta { IsLink = true });
+
+            // when
+            var property = this.factory.Create(PropertyInfo, ClassIds);
+
+            // then
+            property.Property.Types.Should().Contain(Vocab.Hydra.Link);
+        }
     }
 }

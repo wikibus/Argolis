@@ -8,16 +8,30 @@ using Vocab;
 namespace Argolis.Hydra.Core
 {
     /// <summary>
-    /// Represents an RDF property for the purpose of documenting <see cref="SupportedProperty"/>
+    /// Represents an RDF property
     /// </summary>
     public class Property
     {
+        private readonly ISet<string> types = new HashSet<string>();
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Property"/> class.
         /// </summary>
         public Property()
         {
             this.SupportedOperations = new List<Operation>();
+
+            this.types.Add(Rdf.Property);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Property"/> class.
+        /// </summary>
+        /// <param name="extraTypes">Types in addition to rdf:Property</param>
+        public Property(IEnumerable<string> extraTypes)
+            : this()
+        {
+            this.types.UnionWith(extraTypes);
         }
 
         /// <summary>
@@ -37,10 +51,9 @@ namespace Argolis.Hydra.Core
         [JsonProperty(Vocab.Hydra.supportedOperation)]
         public ICollection<Operation> SupportedOperations { get; set; }
 
-        [JsonProperty, UsedImplicitly]
-        private string Type
-        {
-            get { return Rdf.Property; }
-        }
+        /// <summary>
+        /// Gets the property types
+        /// </summary>
+        public IEnumerable<string> Types => this.types;
     }
 }
