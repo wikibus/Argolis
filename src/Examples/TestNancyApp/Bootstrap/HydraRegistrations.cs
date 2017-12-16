@@ -1,8 +1,10 @@
 using Argolis.Hydra;
 using Argolis.Hydra.Discovery.SupportedOperations;
+using Argolis.Models;
 using Nancy;
 using Nancy.Bootstrapper;
 using TestNancyApp.Hydra;
+using TestNancyApp.Modules;
 
 namespace TestNancyApp.Bootstrap
 {
@@ -15,6 +17,7 @@ namespace TestNancyApp.Bootstrap
 
             // todo: move to Lernaean.Hydra.Nancy when bug NancyFx/Nancy#2384 is fixed
             RegisterAll<ISupportedOperations>(Lifetime.PerRequest);
+            Register<IBaseUriProvider>(new BaseProvider());
         }
     }
 }

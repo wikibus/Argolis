@@ -1,4 +1,5 @@
 ﻿using Argolis.Hydra.Core;
+using Argolis.Models;
 
 namespace Argolis.Hydra
 {
@@ -8,9 +9,11 @@ namespace Argolis.Hydra
     public interface IIriTemplateFactory
     {
         /// <summary>
-        /// Creates an <see cref="IriTemplate"/>
+        /// Creates an <see cref="IriTemplate"/> by extending template for <typeparamref name="TModel"/>
         /// </summary>
-        /// <typeparam name="T">the model to be bound from the request</typeparam>
-        IriTemplate CreateIriTemplate<T>(string path);
+        /// <typeparam name="TExtension">the model to be bound from the request</typeparam>
+        /// <typeparam name="TModel">model which receives additional paramters</typeparam>
+        IriTemplate CreateIriTemplate<TExtension, TModel>()
+            where TExtension : ITemplateParameters<TModel>;
     }
 }

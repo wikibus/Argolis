@@ -5,7 +5,7 @@ using Argolis.Models;
 namespace Argolis.Hydra.Models
 {
     /// <summary>
-    /// Allws defining an identifier template for Hydra:Collection resources
+    /// Allows defining an identifier template for Hydra:Collection resources
     /// </summary>
     /// <seealso cref="GenericResourceIdentifierTemplateAttribute" />
     public class CollectionIdentifierAttribute : GenericResourceIdentifierTemplateAttribute

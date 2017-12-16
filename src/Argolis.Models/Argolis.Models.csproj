@@ -54,6 +54,7 @@
     <Compile Include="IBaseUriProvider.cs" />
     <Compile Include="IdentifierAttribute.cs" />
     <Compile Include="IModelTemplateProvider.cs" />
+    <Compile Include="ITemplateParameters.cs" />
     <Compile Include="IUriTemplateExpander.cs" />
     <Compile Include="IUriTemplateMatcher.cs" />
     <Compile Include="MissingTemplateException.cs" />

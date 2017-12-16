@@ -6,6 +6,7 @@ using System.Reflection;
 using Argolis.Hydra.Annotations;
 using Argolis.Hydra.Core;
 using Argolis.Hydra.Discovery.SupportedProperties;
+using Argolis.Models;
 using UriTemplateString.Spec;
 
 namespace Argolis.Hydra
@@ -14,19 +15,25 @@ namespace Argolis.Hydra
     public class IriTemplateFactory : IIriTemplateFactory
     {
         private readonly IPropertyRangeRetrievalPolicy propertyRange;
+        private readonly IModelTemplateProvider modelTemplateProvider;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IriTemplateFactory"/> class.
         /// </summary>
-        public IriTemplateFactory(IPropertyRangeRetrievalPolicy propertyRange)
+        public IriTemplateFactory(
+            IPropertyRangeRetrievalPolicy propertyRange,
+            IModelTemplateProvider modelTemplateProvider)
         {
             this.propertyRange = propertyRange;
+            this.modelTemplateProvider = modelTemplateProvider;
         }
 
         /// <inheritdoc />
-        public IriTemplate CreateIriTemplate<T>(string path)
+        public IriTemplate CreateIriTemplate<T, T2>()
+            where T : ITemplateParameters<T2>
         {
             var mappings = typeof(T).GetProperties().Select(this.CreateMapping).ToList();
+            var path = this.modelTemplateProvider.GetAbsoluteTemplate(typeof(T2));
             var template = this.BuildTemplate(path, mappings);
 
             return new IriTemplate

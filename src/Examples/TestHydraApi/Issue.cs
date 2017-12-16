@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Argolis.Hydra.Annotations;
+using Argolis.Hydra.Models;
+using Argolis.Models;
 using JsonLD.Entities;
 using JsonLD.Entities.Context;
 using Newtonsoft.Json;
@@ -11,6 +13,8 @@ namespace TestHydraApi
 {
     [SupportedClass(IssueType)]
     [Description("An issue reported by our users")]
+    [Identifier("issue{/id}")]
+    [CollectionIdentifier("issues")]
     public class Issue : IssueBase
     {
         private const string IssueType = "http://example.api/o#Issue";

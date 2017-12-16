@@ -1,9 +1,10 @@
 ﻿using Argolis.Hydra.Annotations;
+using Argolis.Models;
 using Vocab;
 
 namespace TestHydraApi
 {
-    public class IssueFilter
+    public class IssueFilter : ITemplateParameters<Issue>
     {
         [Property(Schema.title)]
         public string Title { get; set; }

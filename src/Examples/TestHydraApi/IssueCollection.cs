@@ -1,4 +1,5 @@
 ﻿using Argolis.Hydra.Core;
+using Argolis.Hydra.Models;
 using Argolis.Hydra.Resources;
 using Newtonsoft.Json;
 

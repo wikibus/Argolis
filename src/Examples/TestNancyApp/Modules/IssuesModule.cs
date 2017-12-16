@@ -1,36 +1,41 @@
 ﻿using System;
 using System.Linq;
 using Argolis.Hydra;
+using Argolis.Hydra.Resources;
+using Argolis.Models;
+using Argolis.UriTemplates.Nancy;
 using JsonLD.Entities;
-using Nancy.Routing.UriTemplates;
 using TestHydraApi;
 using Nancy.ModelBinding;
 
 namespace TestNancyApp.Modules
 {
-    public sealed class IssuesModule : UriTemplateModule
+    public sealed class IssuesModule : ArgolisModule
     {
-        private const string Base = "http://localhost:61186";
         private readonly IIriTemplateFactory templateFactory;
 
-        public IssuesModule(IIriTemplateFactory templateFactory) : base("issues")
+        public IssuesModule(IIriTemplateFactory templateFactory, IModelTemplateProvider provider)
+            : base(provider)
         {
             this.templateFactory = templateFactory;
-            Get("{id}", _ => new Issue
+            using (Templates)
             {
-                Id = Request.Url,
-                Content = "This Hydra library is not yet complete",
-                DateCreated = new DateTime(2016,3,21),
-                IsResolved = _.id % 2 == 0,
-                ProjectId = (IriRef)"/project/argolis",
-                Submitter = new User { Name = "Tomasz", LastName = "Pluskiewicz" },
-                Title = "Complete implementation"
-            });
+                Get(_ => new Issue
+                {
+                    Id = Request.Url,
+                    Content = "This Hydra library is not yet complete",
+                    DateCreated = new DateTime(2016, 3, 21),
+                    IsResolved = _.id % 2 == 0,
+                    ProjectId = (IriRef) "/project/argolis",
+                    Submitter = new User {Name = "Tomasz", LastName = "Pluskiewicz"},
+                    Title = "Complete implementation"
+                });
 
-            Get("", _ => StubCollection(this.Bind<IssueFilter>()));
+                Get(_ => StubCollection(this.Bind<IssueFilter>()));
+            }
         }
 
-        private IssueCollection StubCollection(IssueFilter filter)
+        private Collection<Issue> StubCollection(IssueFilter filter)
         {
             var random = new Random();
 
@@ -44,9 +49,9 @@ namespace TestNancyApp.Modules
             return new IssueCollection
             {
                 Id = Request.Url,
-                Members = members.ToArray(),    
+                Members = members.ToArray(),
                 TotalItems = 10,
-                Search = this.templateFactory.CreateIriTemplate<IssueFilter>($"{Base}/issues")
+                Search = this.templateFactory.CreateIriTemplate<IssueFilter, Issue>()
             };
         }
     }
