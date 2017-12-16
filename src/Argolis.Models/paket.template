@@ -3,10 +3,6 @@ id Argolis.Models
 include-pdbs true
 excludeddependencies
   GitVersionTask
-  Dictionary
-  Costura.Fody
-dependencies
-  TunnelVisionLabs.Net.UriTemplate >= LOCKEDVERSION
 iconUrl
   https://raw.githubusercontent.com/wikibus/Argolis/master/assets/logo.png
 tags

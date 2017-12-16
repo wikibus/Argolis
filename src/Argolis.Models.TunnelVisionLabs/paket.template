@@ -3,6 +3,8 @@ id Argolis.Models.TunnelVisionLabs
 include-pdbs true
 excludeddependencies
   GitVersionTask
+  Dictionary
+  Costura.Fody
 dependencies
   TunnelVisionLabs.Net.UriTemplate >= LOCKEDVERSION
 iconUrl
