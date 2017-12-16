@@ -22,9 +22,9 @@ namespace Argolis.Tests.Serialization
             dynamic jsonLd = this.Serialize(collection);
 
             // then
-            Assert.Equal(((JArray)jsonLd[Vocab.Hydra.member]).Count, 5);
-            Assert.Equal((int)jsonLd[Vocab.Hydra.totalItems], 5);
-            Assert.Equal((string)jsonLd["@id"], "http://example.org/collection");
+            Assert.Equal(5, ((JArray)jsonLd[Vocab.Hydra.member]).Count);
+            Assert.Equal(5, (int)jsonLd[Vocab.Hydra.totalItems]);
+            Assert.Equal("http://example.org/collection", (string)jsonLd["@id"]);
         }
     }
 }

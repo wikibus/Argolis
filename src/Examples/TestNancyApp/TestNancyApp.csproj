@@ -43,10 +43,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
@@ -88,12 +84,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Argolis.Hydra.Nancy\Argolis.Hydra.Nancy.csproj">
-      <Project>{cbcac4dc-129d-4f36-96d5-19b14f18cf18}</Project>
-      <Name>Argolis.Hydra.Nancy</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Argolis.Hydra\Argolis.Hydra.csproj">
-      <Project>{f8b427f1-aeeb-481b-8d51-a53af4ef0813}</Project>
+      <Project>{F8B427F1-AEEB-481B-8D51-A53AF4EF0813}</Project>
       <Name>Argolis.Hydra</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Argolis.Models\Argolis.Models.csproj">

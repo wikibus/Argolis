@@ -140,7 +140,7 @@ namespace Argolis.Tests.Integration
         [Theory]
         [InlineData(Vocab.Hydra.Collection)]
         [InlineData(Vocab.Hydra.Resource)]
-        public async void Should_include_hydra_base_types_as_supported_classes(string expectedType)
+        public async Task Should_include_hydra_base_types_as_supported_classes(string expectedType)
         {
             // when
             var documentation = await this.GetDocumentationGraph();
