@@ -75,7 +75,7 @@
     <Compile Include="Hydra\AssembliesToScanForSupportedTypes.cs" />
     <Compile Include="Hydra\HydraDocumentationSettings.cs" />
     <Compile Include="Hydra\UserSupportedOperations.cs" />
-    <Compile Include="Modules\BaseProvider.cs" />
+    <Compile Include="Hydra\BaseProvider.cs" />
     <Compile Include="Modules\IssuesModule.cs" />
     <Compile Include="Bootstrap\NancyContextWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

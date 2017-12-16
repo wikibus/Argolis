@@ -1,6 +1,6 @@
 ﻿using Argolis.Models;
 
-namespace TestNancyApp.Modules
+namespace TestNancyApp.Hydra
 {
     public class BaseProvider : IBaseUriProvider
     {
