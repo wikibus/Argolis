@@ -2,7 +2,7 @@
 using Nancy;
 using Nancy.Bootstrapper;
 
-namespace Argolis.UriTemplates.Nancy
+namespace Argolis.Nancy
 {
     /// <summary>
     /// Registers defaults with Nancy's container
@@ -16,8 +16,6 @@ namespace Argolis.UriTemplates.Nancy
             : base(catalog)
         {
             this.RegisterWithDefault<IModelTemplateProvider>(typeof(AttributeModelTemplateProvider));
-            this.RegisterWithDefault<IUriTemplateMatcher>(typeof(TunnelVisionLabsUriTemplateMatcher));
-            this.RegisterWithDefault<IUriTemplateExpander>(typeof(TunnelVisionLabsUriTemplateExpander));
         }
     }
 }

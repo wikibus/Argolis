@@ -2,7 +2,4 @@ NullGuard.Fody
 GitVersionTask
 StyleCop.Analyzers
 JetBrainsAnnotations.Fody
-TunnelVisionLabs.Net.UriTemplate
-Dictionary
-Costura.Fody
 tpluscode.Library.Ruleset

@@ -3,7 +3,7 @@ using System.Linq;
 using Argolis.Hydra;
 using Argolis.Hydra.Resources;
 using Argolis.Models;
-using Argolis.UriTemplates.Nancy;
+using Argolis.Nancy;
 using JsonLD.Entities;
 using TestHydraApi;
 using Nancy.ModelBinding;

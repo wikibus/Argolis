@@ -2,9 +2,4 @@
 <Weavers>
   <NullGuard IncludeDebugAssert="false" />
   <JetBrainsAnnotations />
-  <Costura>
-    <IncludeAssemblies>
-      Dictionary
-    </IncludeAssemblies>
-  </Costura>
 </Weavers>

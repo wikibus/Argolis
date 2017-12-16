@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Argolis.Models;
+using Argolis.Models.TunnelVisionLabs;
 using FakeItEasy;
 using FluentAssertions;
 using Xunit;

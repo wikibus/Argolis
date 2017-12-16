@@ -2,7 +2,7 @@
 using System.Linq;
 using TunnelVisionLabs.Net;
 
-namespace Argolis.Models
+namespace Argolis.Models.TunnelVisionLabs
 {
     /// <summary>
     /// Implements <see cref="IUriTemplateMatcher"/> with TunnelVisionLabs.Net.UriTemplate package

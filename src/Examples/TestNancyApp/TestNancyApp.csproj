@@ -100,9 +100,9 @@
       <Project>{3FADEBA7-BEA0-4864-B3FD-C17EAC737B35}</Project>
       <Name>Argolis.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Argolis.UriTemplates.Nancy\Argolis.UriTemplates.Nancy.csproj">
-      <Project>{4298A696-B620-45FE-94B0-687177757622}</Project>
-      <Name>Argolis.UriTemplates.Nancy</Name>
+    <ProjectReference Include="..\..\Argolis.Nancy\Argolis.Nancy.csproj">
+      <Project>{4EC11162-751B-4E73-A3C6-435BD7CAE9BA}</Project>
+      <Name>Argolis.Nancy</Name>
     </ProjectReference>
     <ProjectReference Include="..\TestHydraApi\TestHydraApi.csproj">
       <Project>{378ae219-5cef-41ed-839a-1e8343754056}</Project>

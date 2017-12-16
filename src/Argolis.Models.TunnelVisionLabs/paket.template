@@ -1,13 +1,14 @@
 type project
-id Argolis.UriTemplates.Nancy
+id Argolis.Models.TunnelVisionLabs
+include-pdbs true
 excludeddependencies
   GitVersionTask
 dependencies
-  Nancy.Routing.UriTemplates >= LOCKEDVERSION
+  TunnelVisionLabs.Net.UriTemplate >= LOCKEDVERSION
 iconUrl
   https://raw.githubusercontent.com/wikibus/Argolis/master/assets/logo.png
 tags
-  argolis rfc6570 uritempates
+  rdf rest nancy semantic web
 copyright 
   Copyright 2016 Tomasz Pluskiewicz
 licenseUrl

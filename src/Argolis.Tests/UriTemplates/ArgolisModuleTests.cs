@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Argolis.Models;
-using Argolis.UriTemplates.Nancy;
+using Argolis.Nancy;
 using FakeItEasy;
 using FluentAssertions;
 using Xunit;

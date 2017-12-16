@@ -2,3 +2,4 @@ NullGuard.Fody
 GitVersionTask
 StyleCop.Analyzers
 Nancy
+Nancy.Routing.UriTemplates

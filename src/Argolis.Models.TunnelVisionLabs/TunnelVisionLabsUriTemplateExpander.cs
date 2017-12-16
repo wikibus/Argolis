@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DictionaryLibrary;
 using TunnelVisionLabs.Net;
 
-namespace Argolis.Models
+namespace Argolis.Models.TunnelVisionLabs
 {
     /// <summary>
     /// URI Template expander implemented with TunnelVisionLabs.Net.UriTemplate package
