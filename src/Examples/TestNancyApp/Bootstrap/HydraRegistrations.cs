@@ -1,6 +1,7 @@
 using Argolis.Hydra;
 using Argolis.Hydra.Discovery.SupportedOperations;
 using Argolis.Models;
+using Argolis.Models.TunnelVisionLabs;
 using Nancy;
 using Nancy.Bootstrapper;
 using TestNancyApp.Hydra;
@@ -18,6 +19,9 @@ namespace TestNancyApp.Bootstrap
             // todo: move to Lernaean.Hydra.Nancy when bug NancyFx/Nancy#2384 is fixed
             RegisterAll<ISupportedOperations>(Lifetime.PerRequest);
             Register<IBaseUriProvider>(new BaseProvider());
+
+            Register<IUriTemplateExpander>(typeof(TunnelVisionLabsUriTemplateExpander));
+            Register<IUriTemplateMatcher>(typeof(TunnelVisionLabsUriTemplateMatcher));
         }
     }
 }

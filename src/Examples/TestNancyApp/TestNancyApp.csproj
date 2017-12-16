@@ -84,9 +84,17 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Argolis.Hydra.Nancy\Argolis.Hydra.Nancy.csproj">
+      <Project>{cbcac4dc-129d-4f36-96d5-19b14f18cf18}</Project>
+      <Name>Argolis.Hydra.Nancy</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Argolis.Hydra\Argolis.Hydra.csproj">
       <Project>{F8B427F1-AEEB-481B-8D51-A53AF4EF0813}</Project>
       <Name>Argolis.Hydra</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Argolis.Models.TunnelVisionLabs\Argolis.Models.TunnelVisionLabs.csproj">
+      <Project>{6ac20d75-35cf-4385-912e-bc7e381ad3a0}</Project>
+      <Name>Argolis.Models.TunnelVisionLabs</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Argolis.Models\Argolis.Models.csproj">
       <Project>{3FADEBA7-BEA0-4864-B3FD-C17EAC737B35}</Project>
