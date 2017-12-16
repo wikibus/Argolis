@@ -41,7 +41,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Get<T>(Func<dynamic, object> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterSync(this.Get, action, condition, name);
+            this.RegisterSync<T>(this.Get, action, condition, name);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Get<T>(Func<dynamic, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterAsync(this.Get, action, condition, name);
+            this.RegisterAsync<T>(this.Get, action, condition, name);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Get<T>(Func<dynamic, CancellationToken, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterCancellable(this.Get, action, condition, name);
+            this.RegisterCancellable<T>(this.Get, action, condition, name);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Put<T>(Func<dynamic, object> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterSync(this.Put, action, condition, name);
+            this.RegisterSync<T>(this.Put, action, condition, name);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Put<T>(Func<dynamic, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterAsync(this.Put, action, condition, name);
+            this.RegisterAsync<T>(this.Put, action, condition, name);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Put<T>(Func<dynamic, CancellationToken, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterCancellable(this.Put, action, condition, name);
+            this.RegisterCancellable<T>(this.Put, action, condition, name);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Post<T>(Func<dynamic, object> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterSync(this.Post, action, condition, name);
+            this.RegisterSync<T>(this.Post, action, condition, name);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Post<T>(Func<dynamic, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterAsync(this.Post, action, condition, name);
+            this.RegisterAsync<T>(this.Post, action, condition, name);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Post<T>(Func<dynamic, CancellationToken, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterCancellable(this.Post, action, condition, name);
+            this.RegisterCancellable<T>(this.Post, action, condition, name);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Delete<T>(Func<dynamic, object> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterSync(this.Delete, action, condition, name);
+            this.RegisterSync<T>(this.Delete, action, condition, name);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Delete<T>(Func<dynamic, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterAsync(this.Delete, action, condition, name);
+            this.RegisterAsync<T>(this.Delete, action, condition, name);
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Delete<T>(Func<dynamic, CancellationToken, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterCancellable(this.Delete, action, condition, name);
+            this.RegisterCancellable<T>(this.Delete, action, condition, name);
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Patch<T>(Func<dynamic, object> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterSync(this.Patch, action, condition, name);
+            this.RegisterSync<T>(this.Patch, action, condition, name);
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Patch<T>(Func<dynamic, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterAsync(this.Patch, action, condition, name);
+            this.RegisterAsync<T>(this.Patch, action, condition, name);
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Patch<T>(Func<dynamic, CancellationToken, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterCancellable(this.Patch, action, condition, name);
+            this.RegisterCancellable<T>(this.Patch, action, condition, name);
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Options<T>(Func<dynamic, object> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterSync(this.Options, action, condition, name);
+            this.RegisterSync<T>(this.Options, action, condition, name);
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Options<T>(Func<dynamic, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterAsync(this.Options, action, condition, name);
+            this.RegisterAsync<T>(this.Options, action, condition, name);
         }
 
         /// <summary>
@@ -245,7 +245,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Options<T>(Func<dynamic, CancellationToken, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterCancellable(this.Options, action, condition, name);
+            this.RegisterCancellable<T>(this.Options, action, condition, name);
         }
 
         /// <summary>
@@ -257,7 +257,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Head<T>(Func<dynamic, object> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterSync(this.Head, action, condition, name);
+            this.RegisterSync<T>(this.Head, action, condition, name);
         }
 
         /// <summary>
@@ -269,7 +269,7 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Head<T>(Func<dynamic, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterAsync(this.Head, action, condition, name);
+            this.RegisterAsync<T>(this.Head, action, condition, name);
         }
 
         /// <summary>
@@ -281,12 +281,12 @@ namespace Argolis.Nancy
         /// <param name="name">Name of the route</param>
         public virtual void Head<T>(Func<dynamic, CancellationToken, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
-            this.RegisterCancellable(this.Head, action, condition, name);
+            this.RegisterCancellable<T>(this.Head, action, condition, name);
         }
 
         private void RegisterCancellable<T>(
             Action<string, Func<dynamic, CancellationToken, Task<object>>, Func<NancyContext, bool>, string> addRoute,
-            Func<dynamic, CancellationToken, Task<T>> action,
+            Func<dynamic, CancellationToken, Task<object>> action,
             Func<NancyContext, bool> condition,
             string name)
         {
@@ -296,7 +296,7 @@ namespace Argolis.Nancy
 
         private void RegisterAsync<T>(
             Action<string, Func<dynamic, Task<object>>, Func<NancyContext, bool>, string> addRoute,
-            Func<dynamic, Task<T>> action,
+            Func<dynamic, Task<object>> action,
             Func<NancyContext, bool> condition,
             string name)
         {
@@ -306,7 +306,7 @@ namespace Argolis.Nancy
 
         private void RegisterSync<T>(
             Action<string, Func<dynamic, object>, Func<NancyContext, bool>, string> addRoute,
-            Func<dynamic, T> action,
+            Func<dynamic, object> action,
             Func<NancyContext, bool> condition,
             string name)
         {
