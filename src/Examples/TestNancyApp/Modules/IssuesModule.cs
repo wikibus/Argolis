@@ -20,7 +20,7 @@ namespace TestNancyApp.Modules
             this.templateFactory = templateFactory;
             using (Templates)
             {
-                Get(_ => new Issue
+                Get<Issue>(_ => new Issue
                 {
                     Id = Request.Url,
                     Content = "This Hydra library is not yet complete",
@@ -31,7 +31,7 @@ namespace TestNancyApp.Modules
                     Title = "Complete implementation"
                 });
 
-                Get(_ => StubCollection(this.Bind<IssueFilter>()));
+                Get<Collection<Issue>>(_ => StubCollection(this.Bind<IssueFilter>()));
             }
         }
 

@@ -39,7 +39,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Get<T>(Func<dynamic, T> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Get<T>(Func<dynamic, object> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterSync(this.Get, action, condition, name);
         }
@@ -51,7 +51,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Get<T>(Func<dynamic, Task<T>> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Get<T>(Func<dynamic, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterAsync(this.Get, action, condition, name);
         }
@@ -63,7 +63,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Get<T>(Func<dynamic, CancellationToken, Task<T>> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Get<T>(Func<dynamic, CancellationToken, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterCancellable(this.Get, action, condition, name);
         }
@@ -75,7 +75,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Put<T>(Func<dynamic, T> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Put<T>(Func<dynamic, object> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterSync(this.Put, action, condition, name);
         }
@@ -87,7 +87,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Put<T>(Func<dynamic, Task<T>> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Put<T>(Func<dynamic, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterAsync(this.Put, action, condition, name);
         }
@@ -99,7 +99,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Put<T>(Func<dynamic, CancellationToken, Task<T>> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Put<T>(Func<dynamic, CancellationToken, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterCancellable(this.Put, action, condition, name);
         }
@@ -111,7 +111,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Post<T>(Func<dynamic, T> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Post<T>(Func<dynamic, object> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterSync(this.Post, action, condition, name);
         }
@@ -123,7 +123,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Post<T>(Func<dynamic, Task<T>> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Post<T>(Func<dynamic, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterAsync(this.Post, action, condition, name);
         }
@@ -147,7 +147,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Delete<T>(Func<dynamic, T> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Delete<T>(Func<dynamic, object> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterSync(this.Delete, action, condition, name);
         }
@@ -159,7 +159,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Delete<T>(Func<dynamic, Task<T>> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Delete<T>(Func<dynamic, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterAsync(this.Delete, action, condition, name);
         }
@@ -171,7 +171,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Delete<T>(Func<dynamic, CancellationToken, Task<T>> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Delete<T>(Func<dynamic, CancellationToken, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterCancellable(this.Delete, action, condition, name);
         }
@@ -183,7 +183,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Patch<T>(Func<dynamic, T> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Patch<T>(Func<dynamic, object> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterSync(this.Patch, action, condition, name);
         }
@@ -195,7 +195,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Patch<T>(Func<dynamic, Task<T>> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Patch<T>(Func<dynamic, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterAsync(this.Patch, action, condition, name);
         }
@@ -207,7 +207,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Patch<T>(Func<dynamic, CancellationToken, Task<T>> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Patch<T>(Func<dynamic, CancellationToken, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterCancellable(this.Patch, action, condition, name);
         }
@@ -219,7 +219,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Options<T>(Func<dynamic, T> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Options<T>(Func<dynamic, object> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterSync(this.Options, action, condition, name);
         }
@@ -231,7 +231,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Options<T>(Func<dynamic, Task<T>> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Options<T>(Func<dynamic, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterAsync(this.Options, action, condition, name);
         }
@@ -243,7 +243,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Options<T>(Func<dynamic, CancellationToken, Task<T>> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Options<T>(Func<dynamic, CancellationToken, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterCancellable(this.Options, action, condition, name);
         }
@@ -255,7 +255,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Head<T>(Func<dynamic, T> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Head<T>(Func<dynamic, object> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterSync(this.Head, action, condition, name);
         }
@@ -267,7 +267,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Head<T>(Func<dynamic, Task<T>> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Head<T>(Func<dynamic, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterAsync(this.Head, action, condition, name);
         }
@@ -279,7 +279,7 @@ namespace Argolis.Nancy
         /// <param name="action">Action that will be invoked when handling the resource</param>
         /// <param name="condition">A condition to determine if the route can be hit</param>
         /// <param name="name">Name of the route</param>
-        public virtual void Head<T>(Func<dynamic, CancellationToken, Task<T>> action, Func<NancyContext, bool> condition = null, string name = null)
+        public virtual void Head<T>(Func<dynamic, CancellationToken, Task<object>> action, Func<NancyContext, bool> condition = null, string name = null)
         {
             this.RegisterCancellable(this.Head, action, condition, name);
         }
