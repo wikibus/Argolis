@@ -1,6 +1,6 @@
 ![graph icon](https://raw.githubusercontent.com/wikibus/Argolis/master/assets/logo.png)
 
-# Argolis [![Build status][av-badge]][build] [![NuGet version][nancy-badge]][nancy-link] [![codecov.io][cov-badge]][cov-link] [![codefactor][codefactor-badge]][codefactor-link]
+# Argolis [![Build status][av-badge]][build] [![NuGet version][nuget-badge]][nuget-link] [![codecov.io][cov-badge]][cov-link] [![codefactor][codefactor-badge]][codefactor-link]
 
 [Hydra hypermedia controls][hydra] for .NET Web applications written in [Nancy][nancy].
 
@@ -211,8 +211,8 @@ Link: <http://localhost:61186/api>; rel="http://www.w3.org/ns/hydra/core#apiDocu
 [build]: https://ci.appveyor.com/project/tpluscode78631/argolis
 [core-badge]: https://badge.fury.io/nu/argolis.svg
 [core-link]: https://badge.fury.io/nu/argolis
-[nancy-badge]: https://badge.fury.io/nu/argolis.nancy.svg
-[nancy-link]: https://badge.fury.io/nu/argolis.nancy
+[nuget-badge]: https://badge.fury.io/nu/argolis.nancy.svg
+[nuget-link]: https://badge.fury.io/nu/argolis.nancy
 [hydra]: http://hydra-cg.com
 [sdhp]: https://github.com/NancyFx/Nancy/wiki/Introduction#the-super-duper-happy-path
 [sp]: https://en.wikipedia.org/wiki/Strategy_pattern
