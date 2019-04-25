@@ -66,7 +66,7 @@ namespace Argolis.Tests.Models
         }
 
         [Fact]
-        public void Getting_absoulte_template_should_throw_wen_there_is_no_base_URI()
+        public void Getting_absoulte_template_should_throw_when_there_is_no_base_URI()
         {
             // given
             var type = typeof(Collection<ModelWithTemplate>);
@@ -79,6 +79,10 @@ namespace Argolis.Tests.Models
         [Identifier("model/with/template")]
         [CollectionIdentifier("multiple/models")]
         public class ModelWithTemplate
+        {
+        }
+
+        public class MyClass
         {
         }
 

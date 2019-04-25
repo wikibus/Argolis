@@ -2,6 +2,8 @@
 using Argolis.Hydra.Discovery.SupportedClasses;
 using Argolis.Hydra.Discovery.SupportedOperations;
 using Argolis.Hydra.Discovery.SupportedProperties;
+using Argolis.Hydra.Models;
+using Argolis.Models;
 using JsonLD.Entities;
 using Nancy;
 using Nancy.Bootstrapper;
@@ -30,6 +32,8 @@ namespace Argolis.Hydra.Nancy
             this.RegisterWithDefault<IPropertyRangeRetrievalPolicy>(typeof(DefaultPropertyRangeRetrievalPolicy), Lifetime.PerRequest);
             this.RegisterWithDefault<ISupportedOperationFactory>(typeof(DefaultSupportedOperationFactory), Lifetime.PerRequest);
             this.RegisterWithDefault<IContextProvider>(typeof(NullContextProvider));
+            this.RegisterWithDefault<IUriTemplateExpander>(typeof(DefaultUriTemplateExpander));
+            this.RegisterWithDefault<IUriTemplateMatcher>(typeof(DefaultUriTemplateMatcher));
             this.RegisterWithDefault<IIriTemplateFactory>(typeof(IriTemplateFactory), Lifetime.PerRequest);
             this.RegisterWithUserThenDefault<IDocumentedTypeSelector>(new[]
             {

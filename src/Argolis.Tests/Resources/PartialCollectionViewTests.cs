@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Argolis.Hydra.Resources;
 using FluentAssertions;
 using JsonLD.Entities;
-using TunnelVisionLabs.Net;
 using Xunit;
 
 namespace Argolis.Tests.Resources
@@ -38,7 +37,7 @@ namespace Argolis.Tests.Resources
         public void Should_calculate_page_URIs_given_item_count_and_template()
         {
             // given
-            var template = new UriTemplate("/some/collection{?page}");
+            var template = new UriTemplate.Core.UriTemplate("/some/collection{?page}");
             long totalItems = 86;
             int page = 5;
             int pageSize = 10;
@@ -59,7 +58,7 @@ namespace Argolis.Tests.Resources
         public void Should_calculate_page_URIs_given_last_page()
         {
             // given
-            var template = new UriTemplate("/some/collection{?page}");
+            var template = new UriTemplate.Core.UriTemplate("/some/collection{?page}");
             long totalItems = 86;
             int page = 9;
             int pageSize = 10;
@@ -80,7 +79,7 @@ namespace Argolis.Tests.Resources
         public void Should_calculate_page_URIs_given_first_page()
         {
             // given
-            var template = new UriTemplate("/some/collection{?page}");
+            var template = new UriTemplate.Core.UriTemplate("/some/collection{?page}");
             long totalItems = 86;
             int page = 1;
             int pageSize = 10;
@@ -101,7 +100,7 @@ namespace Argolis.Tests.Resources
         public void Should_allow_filling_template_with_additional_parameters()
         {
             // given
-            var template = new UriTemplate("/some{;subfilter}/collection{/page}{?filter}");
+            var template = new UriTemplate.Core.UriTemplate("/some{;subfilter}/collection{/page}{?filter}");
             long totalItems = 86;
             int page = 1;
             int pageSize = 10;

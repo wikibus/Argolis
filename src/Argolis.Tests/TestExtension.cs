@@ -38,7 +38,7 @@ namespace Argolis.Tests
                 this.graph = graph;
             }
 
-            protected override string Context
+            protected override string Identifier
             {
                 get { return "Graph"; }
             }

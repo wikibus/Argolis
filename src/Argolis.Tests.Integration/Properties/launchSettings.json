@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Argolis.Tests.Integration": {
+      "commandName": "Executable",
+      "executablePath": "dotnet",
+      "commandLineArgs": "test"
+    }
+  }
+}

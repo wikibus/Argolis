@@ -1,4 +1,4 @@
-using Argolis.Hydra.Annotations;
+﻿using Argolis.Hydra.Annotations;
 
 namespace TestHydraApi
 {
@@ -18,7 +18,10 @@ namespace TestHydraApi
             get { return "some test"; }
         }
 
-        public string NoGetter { set {} }
+        public string NoGetter
+        {
+            set { }
+        }
 
         [WriteOnly]
         public string WriteOnly { get; set; }

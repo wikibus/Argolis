@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using JsonLD.Entities;
 using NullGuard;
-using TunnelVisionLabs.Net;
 
 namespace Argolis.Hydra.Resources
 {
@@ -12,7 +11,7 @@ namespace Argolis.Hydra.Resources
     [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
     public class TemplatedPartialCollectionView : PartialCollectionView
     {
-        private readonly UriTemplate template;
+        private readonly UriTemplate.Core.UriTemplate template;
         private readonly string pageVariable;
         private readonly IDictionary<string, object> templateParams;
         private readonly int totalPages;
@@ -30,7 +29,7 @@ namespace Argolis.Hydra.Resources
         /// <param name="pageSize">page size, used to calculate last page index</param>
         /// <param name="templateParams">additional template parameters</param>
         public TemplatedPartialCollectionView(
-            UriTemplate template,
+            UriTemplate.Core.UriTemplate template,
             string pageVariable,
             long totalItems,
             int page,

@@ -1,30 +1,8 @@
-image: Visual Studio 2017
-
-install:
-  - choco install gitversion.portable -pre -y
-  
-before_build:  
-  - .paket\paket.bootstrapper.exe prerelease
-  - .paket\paket.exe restore
-  - ps: gitversion /l console /output buildserver
-
-build:
-  project: Argolis.sln
-
-configuration: Release
-
-after_build:
-  - .paket\paket.exe pack output nugets include-referenced-projects version %GitVersion_NuGetVersion%
-  
-after_test:
-  - .\packages\OpenCover\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:"src\Argolis.Tests\bin\Release\Argolis.Tests.dll src\Argolis.Tests.Integration\bin\Release\Argolis.Tests.Integration.dll -noshadow -appveyor" -returntargetcode -filter:"+[Argolis*]* -[Argolis.Tests*]* -[Test*]*" -hideskipped:All -output:.\Argolis_coverage.xml
-  - "SET PATH=C:\\Python34;C:\\Python34\\Scripts;%PATH%"
-  - pip install codecov
-  - codecov -f "Argolis_coverage.xml"
+build_script:
+  - ps: .\build.ps1 -Target CI -verbosity Verbose -configuration Release
 
 artifacts:
   - path: 'nugets\*.nupkg'
-  - path: Argolis_coverage.xml
 
 cache:
   - packages -> paket.lock

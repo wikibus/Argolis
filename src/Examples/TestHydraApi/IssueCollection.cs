@@ -7,7 +7,7 @@ namespace TestHydraApi
 {
     public class IssueCollection : Collection<Issue>
     {
-        [JsonProperty(Vocab.Hydra.BaseUri + "search")]
+        [JsonProperty(Vocab.Hydra.search)]
         public IriTemplate Search { get; set; }
     }
 }

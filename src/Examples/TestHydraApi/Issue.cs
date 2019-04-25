@@ -20,13 +20,13 @@ namespace TestHydraApi
         private const string IssueType = "http://example.api/o#Issue";
 
         public string Id { get; set; }
-        
+
         [JsonProperty("titel")]
         public string Title { get; set; }
-        
+
         [Required]
         public string Content { get; set; }
-        
+
         [Description("The number of people who liked this issue")]
         public int LikesCount { get; private set; }
 
@@ -40,9 +40,15 @@ namespace TestHydraApi
 
         public UndocumentedClass UndocumentedClassProperty { get; set; }
 
-        public string Method()
+        private static JToken Context
         {
-            return null;
+            get
+            {
+                return new JArray(
+                    new AutoContext<Issue>(new Uri(IssueType))
+                        .Property(i => i.ProjectId, builder => builder.Type().Id()),
+                    User.Context);
+            }
         }
 
         [JsonProperty]
@@ -51,16 +57,9 @@ namespace TestHydraApi
             get { return IssueType; }
         }
 
-        private static JToken Context
+        public string Method()
         {
-            get
-            {
-                return new JArray(
-                    new AutoContext<Issue>(new Uri(IssueType))
-                        .Property(i => i.ProjectId, builder => builder.Type().Id()),
-                    User.Context
-                    );
-            }
+            return null;
         }
     }
 }

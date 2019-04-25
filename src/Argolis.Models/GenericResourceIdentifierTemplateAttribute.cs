@@ -17,7 +17,7 @@ namespace Argolis.Models
         protected GenericResourceIdentifierTemplateAttribute(string template, Type containerType)
             : base(template)
         {
-            if (containerType.IsGenericTypeDefinition == false)
+            if (containerType.GetTypeInfo().IsGenericTypeDefinition == false)
             {
                 throw new ArgumentException("Container type must be a generic type", nameof(containerType));
             }

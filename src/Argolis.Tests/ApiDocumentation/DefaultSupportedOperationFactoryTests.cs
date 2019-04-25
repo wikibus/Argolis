@@ -148,7 +148,7 @@ namespace Argolis.Tests.ApiDocumentation
             A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
             A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
-                new OperationMeta { Method = HttpMethod.Put, Expects = (IriRef)Foaf.Agent }
+                new OperationMeta { Method = HttpMethod.Put, Expects = (IriRef)Foaf.Person }
             });
 
             // when

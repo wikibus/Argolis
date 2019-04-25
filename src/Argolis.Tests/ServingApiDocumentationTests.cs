@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Argolis.Hydra;
+using Argolis.Hydra.Discovery;
 using Argolis.Hydra.Discovery.SupportedClasses;
 using Argolis.Hydra.Discovery.SupportedOperations;
 using Argolis.Hydra.Nancy;
@@ -27,6 +29,7 @@ namespace Argolis.Tests
             A.CallTo(() => rdfTypeProviderPolicy.Create(A<Type>._))
                 .ReturnsLazily(call => new Uri("http://example.com/class"));
 
+            Debugger.Break();
             this.browser = new Browser(
                 configurator =>
                 {
@@ -37,6 +40,7 @@ namespace Argolis.Tests
                     configurator.Dependency(A.Fake<ISupportedPropertyFactory>());
                     configurator.Dependency(A.Fake<ISupportedClassMetaProvider>());
                     configurator.Dependency(A.Fake<ISupportedOperationFactory>());
+                    configurator.Dependency(A.Fake<IApiDocumentationFactory>());
                     configurator.ApplicationStartupTask<HydraDocumentationStartup>();
                 },
                 context => context.HostName("hydra.guru"));

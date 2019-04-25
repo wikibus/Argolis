@@ -59,12 +59,12 @@ namespace Argolis.Models
         {
             if (type.IsConstructedGenericType)
             {
-                var genericTypeAttributes = type.GetGenericArguments()[0].GetCustomAttributes<GenericResourceIdentifierTemplateAttribute>();
+                var genericTypeAttributes = type.GetTypeInfo().GetGenericArguments()[0].GetTypeInfo().GetCustomAttributes<GenericResourceIdentifierTemplateAttribute>();
 
                 return genericTypeAttributes.First(attr => attr.ContainerType.TypeHandle.Equals(type.GetGenericTypeDefinition().TypeHandle));
             }
 
-            return type.GetCustomAttribute<IdentifierAttribute>();
+            return type.GetTypeInfo().GetCustomAttribute<IdentifierAttribute>();
         }
 
         private string GetIdentifierTemplate(Type type)

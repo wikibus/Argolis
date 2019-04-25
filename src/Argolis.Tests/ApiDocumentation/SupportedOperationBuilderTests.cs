@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Argolis.Hydra.Discovery.SupportedOperations;
+using Dynamitey;
 using FluentAssertions;
-using ImpromptuInterface;
 using JsonLD.Entities;
 using Vocab;
 using Xunit;
@@ -28,7 +28,7 @@ namespace Argolis.Tests.ApiDocumentation
         public void Should_store_operation_meta_with_correct_method(string operationMethodName, string expectedMethod)
         {
             // when
-            Impromptu.InvokeMember(this.builder, operationMethodName);
+            Dynamic.InvokeMember(this.builder, operationMethodName);
 
             // then
             this.operations.Should().Contain(meta => meta.Method == expectedMethod);

@@ -1,45 +1,28 @@
 source https://www.nuget.org/api/v2
-source https://www.myget.org/F/tpluscode/api/v3/index.json
 
-framework: >= net45
+storage: none
 redirects: on
 copy_local: true
-
-nuget fakeiteasy
-nuget GitVersionTask
-nuget JetBrainsAnnotations.Fody
-nuget JetBrains.Annotations
-nuget JsonLd.Entities
-nuget Microsoft.Owin.Host.SystemWeb
-nuget Microsoft.Owin.Hosting
-nuget Nancy >= 2 prerelease
-nuget Nancy.Owin >= 2 prerelease
-nuget Nancy.Testing >= 2 prerelease
-nuget NullGuard.Fody
-nuget Resourcer.Fody
-nuget StyleCop.Analyzers
-nuget xunit
-nuget fluentassertions
-nuget TunnelVisionLabs.Net.UriTemplate prerelease
-nuget GitLink < 3
-nuget Rdf.Vocabularies
-nuget dotnetrdf
-nuget json-ld.net
-nuget nancy.rdf
-nuget OpenCover
-nuget ImpromptuInterface
-nuget Dictionary
-nuget Costura.Fody
-nuget Nancy.Authentication.Basic >= 2 prerelease
-nuget fody content: none
-nuget tpluscode.UnitTests.Ruleset
-nuget tpluscode.NoDocumentation.Ruleset
-nuget tpluscode.Library.Ruleset
-nuget Nancy.Routing.UriTemplates
-nuget newtonsoft.json < 10
-nuget UriTemplateString
 
 http https://gist.githubusercontent.com/tpluscode/5d9c6983004c1c9ec91f/raw/2a5f0785c2686635f1b8ab21af1751d276d02727/vocabulary.tt
 
 http https://raw.githubusercontent.com/HydraCG/Specifications/master/spec/latest/core/core.jsonld
 http http://rdf-translator.appspot.com/convert/json-ld/xml/https%3A%2F%2Fraw.githubusercontent.com%2FHydraCG%2FSpecifications%2Fmaster%2Fspec%2Flatest%2Fcore%2Fcore.jsonld hydra.rdf
+
+group tools
+    source https://nuget.org/api/v2
+    nuget Cake
+    nuget opencover
+    nuget codecov
+    nuget gitversion.commandline
+    nuget JetBrains.dotCover.CommandLineTools
+    nuget ReportGenerator
+
+group addins
+    source https://nuget.org/api/v2
+    nuget cake.paket
+    nuget cake.codecov
+
+group modules
+    source https://nuget.org/api/v2
+    nuget Cake.Paket.Module

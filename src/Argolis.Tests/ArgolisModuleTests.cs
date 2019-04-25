@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using System.Threading;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Argolis.Models;
 using Argolis.Nancy;
@@ -11,15 +11,16 @@ namespace Argolis.Tests
 {
     public class ArgolisModuleTests
     {
-        private const string TestPath = "some/path{?s,p,q,r}";
-        private readonly ArgolisModule module;
+        private const string TestPath = "/some/path{?s,p,q,r}";
+        private static readonly Func<dynamic, object> Action = _ => new object();
+        private readonly ArgolisModuleTestable module;
 
         public ArgolisModuleTests()
         {
             var templates = A.Fake<IModelTemplateProvider>();
             A.CallTo(() => templates.GetTemplate(typeof(object))).Returns(TestPath);
 
-            this.module = new ArgolisModule(templates);
+            this.module = new ArgolisModuleTestable(templates);
         }
 
         [Fact]
@@ -176,14 +177,22 @@ namespace Argolis.Tests
             this.module.Routes.Should().HaveCount(1);
         }
 
-        private static object Action(object p)
-        {
-            return new object();
-        }
-
-        private static Task<object> AsyncAction(object p)
+        private static Task<object> AsyncAction(dynamic p)
         {
             return Task.FromResult(new object());
+        }
+
+        private class ArgolisModuleTestable : ArgolisModule
+        {
+            public ArgolisModuleTestable(IModelTemplateProvider provider)
+                : base(provider)
+            {
+            }
+
+            public ArgolisModuleTestable(IModelTemplateProvider provider, string modulePath)
+                : base(provider, modulePath)
+            {
+            }
         }
     }
 }

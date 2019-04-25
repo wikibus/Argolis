@@ -1,103 +1,6 @@
 REDIRECTS: ON
+STORAGE: NONE
 COPY-LOCAL: TRUE
-RESTRICTION: >= net45
-NUGET
-  remote: https://www.nuget.org/api/v2
-    AngleSharp (0.9.9) - restriction: || (&& (>= net45) (>= netstandard1.6)) (>= net452)
-    AsyncUsageAnalyzers (1.0.0-alpha003) - restriction: || (&& (>= net45) (>= netstandard1.6)) (>= net452)
-    Costura.Fody (1.6.2)
-      Fody (>= 2.0 < 3.0)
-    Dictionary (2.1)
-    dotNetRDF (1.0.12)
-      HtmlAgilityPack (>= 1.4.9)
-      Newtonsoft.Json (>= 8.0.3)
-      VDS.Common (1.6.4)
-    FakeItEasy (4.3)
-    FluentAssertions (4.19.4)
-    Fody (2.2.1) - content: none
-    gitlink (2.4)
-    GitVersionTask (3.6.5)
-    HtmlAgilityPack (1.6.7)
-    ImpromptuInterface (6.2.2)
-    JetBrains.Annotations (11.1)
-    JetBrainsAnnotations.Fody (2.0)
-      Fody (>= 2.1.2)
-    json-ld.net (1.0.5)
-      Newtonsoft.Json (>= 6.0.4)
-    JsonLd.Entities (0.3.4)
-      json-ld.net (>= 1.0.5)
-      Newtonsoft.Json (>= 9.0)
-    Microsoft.NETCore.Platforms (2.0.1) - restriction: || (&& (>= monoandroid) (>= net45) (< netstandard1.0)) (&& (>= monotouch) (>= net45)) (&& (>= net45) (>= netcoreapp2.0)) (&& (>= net45) (< netstandard1.0) (>= portable-net451+win81+wpa81)) (&& (>= net45) (< netstandard1.3) (>= wpa81)) (&& (>= net45) (< portable-net45+win8+wpa81)) (&& (>= net45) (< portable-net451+win81+wpa81)) (&& (>= net45) (>= uap10.0)) (&& (>= net45) (>= xamarinios)) (&& (>= net45) (>= xamarinmac)) (&& (>= net45) (>= xamarintvos)) (&& (>= net45) (>= xamarinwatchos)) (&& (>= net451) (< net452) (< netstandard1.3)) (&& (< net452) (>= net46) (< netstandard1.4)) (&& (< net452) (>= net461))
-    Microsoft.Owin (3.1)
-      Owin (>= 1.0)
-    Microsoft.Owin.Host.SystemWeb (3.1)
-      Microsoft.Owin (>= 3.1)
-      Owin (>= 1.0)
-    Microsoft.Owin.Hosting (3.1)
-      Microsoft.Owin (>= 3.1)
-      Owin (>= 1.0)
-    Nancy (2.0.0-clinteastwood)
-    Nancy.Authentication.Basic (2.0.0-clinteastwood)
-      AsyncUsageAnalyzers (>= 1.0.0-alpha003) - restriction: || (&& (>= net45) (>= netstandard1.6)) (>= net452)
-      Nancy (>= 2.0.0-clinteastwood) - restriction: || (&& (>= net45) (>= netstandard1.6)) (>= net452)
-    Nancy.Authentication.Forms (2.0.0-clinteastwood) - restriction: || (&& (>= net45) (>= netstandard1.6)) (>= net452)
-      AsyncUsageAnalyzers (>= 1.0.0-alpha003) - restriction: || (&& (>= net45) (>= netstandard1.6)) (>= net452)
-      Nancy (>= 2.0.0-clinteastwood) - restriction: || (&& (>= net45) (>= netstandard1.6)) (>= net452)
-    Nancy.Owin (2.0.0-clinteastwood)
-      AsyncUsageAnalyzers (>= 1.0.0-alpha003) - restriction: >= net452
-      Nancy (>= 2.0.0-clinteastwood) - restriction: >= net452
-      Owin (>= 1.0) - restriction: >= net452
-    Nancy.Rdf (0.3)
-      dotNetRDF
-      JsonLd.Entities (>= 0.3.3)
-      Nancy (>= 2.0.0-barneyrubble)
-      Rdf.Vocabularies
-    Nancy.Routing.UriTemplates (0.1.1)
-      Nancy (>= 2.0.0-barneyrubble)
-      TunnelVisionLabs.Net.UriTemplate (>= 1.0.0-beta004)
-      UriTemplateString
-    Nancy.Testing (2.0.0-clinteastwood)
-      AngleSharp (>= 0.9.8.1) - restriction: || (&& (>= net45) (>= netstandard1.6)) (>= net452)
-      AsyncUsageAnalyzers (>= 1.0.0-alpha003) - restriction: || (&& (>= net45) (>= netstandard1.6)) (>= net452)
-      Nancy (>= 2.0.0-clinteastwood) - restriction: || (&& (>= net45) (>= netstandard1.6)) (>= net452)
-      Nancy.Authentication.Forms (>= 2.0.0-clinteastwood) - restriction: || (&& (>= net45) (>= netstandard1.6)) (>= net452)
-    NETStandard.Library (2.0.1) - restriction: && (>= net45) (< net452)
-      Microsoft.NETCore.Platforms (>= 1.1)
-      System.Runtime.InteropServices.RuntimeInformation (>= 4.3) - restriction: || (&& (>= net45) (< netstandard1.0) (>= portable-net451+win81+wpa81)) (&& (>= net45) (< netstandard1.3) (>= wpa81)) (&& (>= net45) (< portable-net451+win81+wpa81)) (&& (>= net45) (>= uap10.0)) (&& (>= net451) (< netstandard1.3)) (&& (>= net46) (< netstandard1.4))
-    Newtonsoft.Json (9.0.1)
-    NullGuard.Fody (1.6.3)
-      Fody (>= 2.1.2)
-    OpenCover (4.6.519)
-    Owin (1.0)
-    Rdf.Vocabularies (1.2)
-    Resourcer.Fody (1.6.1)
-      Fody (>= 2.2.1)
-    StyleCop.Analyzers (1.0.2)
-    System.Runtime.InteropServices.RuntimeInformation (4.3) - restriction: || (&& (>= net45) (< netstandard1.0) (>= portable-net451+win81+wpa81)) (&& (>= net45) (< netstandard1.3) (>= wpa81)) (&& (>= net45) (< portable-net451+win81+wpa81)) (&& (>= net45) (>= uap10.0)) (&& (>= net451) (< net452) (< netstandard1.3)) (&& (< net452) (>= net46) (< netstandard1.4))
-    TunnelVisionLabs.Net.UriTemplate (1.0.0-beta004)
-    UriTemplateString (0.2)
-    VDS.Common (1.6.4)
-    xunit (2.3.1)
-      xunit.analyzers (>= 0.7)
-      xunit.assert (2.3.1)
-      xunit.core (2.3.1)
-    xunit.abstractions (2.0.1)
-    xunit.analyzers (0.8)
-    xunit.assert (2.3.1)
-      NETStandard.Library (>= 1.6.1) - restriction: && (>= net45) (< net452)
-    xunit.core (2.3.1)
-      xunit.extensibility.core (2.3.1)
-      xunit.extensibility.execution (2.3.1)
-    xunit.extensibility.core (2.3.1)
-      NETStandard.Library (>= 1.6.1) - restriction: && (>= net45) (< net452)
-      xunit.abstractions (>= 2.0.1)
-    xunit.extensibility.execution (2.3.1)
-      NETStandard.Library (>= 1.6.1) - restriction: && (>= net45) (< net452)
-      xunit.extensibility.core (2.3.1)
-  remote: https://www.myget.org/F/tpluscode/api/v3/index.json
-    tpluscode.Library.Ruleset (1.1.0)
-    tpluscode.NoDocumentation.Ruleset (1.1.0)
-    tpluscode.UnitTests.Ruleset (1.1.0)
 HTTP
   remote: https://gist.githubusercontent.com
     vocabulary.tt (/tpluscode/5d9c6983004c1c9ec91f/raw/2a5f0785c2686635f1b8ab21af1751d276d02727/vocabulary.tt)
@@ -105,3 +8,23 @@ HTTP
     core.jsonld (/HydraCG/Specifications/master/spec/latest/core/core.jsonld)
   remote: http://rdf-translator.appspot.com
     hydra.rdf (/convert/json-ld/xml/https%3A%2F%2Fraw.githubusercontent.com%2FHydraCG%2FSpecifications%2Fmaster%2Fspec%2Flatest%2Fcore%2Fcore.jsonld)
+GROUP addins
+NUGET
+  remote: https://www.nuget.org/api/v2
+    Cake.Codecov (0.5)
+    Cake.Paket (4.0)
+
+GROUP modules
+NUGET
+  remote: https://www.nuget.org/api/v2
+    Cake.Paket.Module (4.0)
+
+GROUP tools
+NUGET
+  remote: https://www.nuget.org/api/v2
+    Cake (0.33)
+    Codecov (1.4)
+    GitVersion.CommandLine (4.0)
+    JetBrains.dotCover.CommandLineTools (2018.3.4)
+    OpenCover (4.7.922)
+    ReportGenerator (4.1.4)

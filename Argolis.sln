@@ -3,33 +3,32 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Argolis.Hydra", "src\Argolis.Hydra\Argolis.Hydra.csproj", "{F8B427F1-AEEB-481B-8D51-A53AF4EF0813}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Argolis.Hydra", "src\Argolis.Hydra\Argolis.Hydra.csproj", "{F8B427F1-AEEB-481B-8D51-A53AF4EF0813}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{00FB3ED0-0262-47E3-BC69-FC73C41746FA}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		appveyor.yml = appveyor.yml
-		src\Common.props = src\Common.props
+		build.cake = build.cake
 		paket.dependencies = paket.dependencies
 		paket.lock = paket.lock
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Argolis.Hydra.Nancy", "src\Argolis.Hydra.Nancy\Argolis.Hydra.Nancy.csproj", "{CBCAC4DC-129D-4F36-96D5-19B14F18CF18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Argolis.Hydra.Nancy", "src\Argolis.Hydra.Nancy\Argolis.Hydra.Nancy.csproj", "{CBCAC4DC-129D-4F36-96D5-19B14F18CF18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Argolis.Tests", "src\Argolis.Tests\Argolis.Tests.csproj", "{1167173B-16E1-4A0E-80D6-60A3E600E955}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Argolis.Tests", "src\Argolis.Tests\Argolis.Tests.csproj", "{1167173B-16E1-4A0E-80D6-60A3E600E955}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{23D3DC66-5EF3-40B4-82DA-F56906FE4249}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHydraApi", "src\Examples\TestHydraApi\TestHydraApi.csproj", "{378AE219-5CEF-41ED-839A-1E8343754056}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Argolis.Tests.Integration", "src\Argolis.Tests.Integration\Argolis.Tests.Integration.csproj", "{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNancyApp", "src\Examples\TestNancyApp\TestNancyApp.csproj", "{1D2E686F-381D-4700-B062-67AC029C0DAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Argolis.Models", "src\Argolis.Models\Argolis.Models.csproj", "{3FADEBA7-BEA0-4864-B3FD-C17EAC737B35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Argolis.Tests.Integration", "src\Argolis.Tests.Integration\Argolis.Tests.Integration.csproj", "{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Argolis.Nancy", "src\Argolis.Nancy\Argolis.Nancy.csproj", "{4EC11162-751B-4E73-A3C6-435BD7CAE9BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Argolis.Models", "src\Argolis.Models\Argolis.Models.csproj", "{3FADEBA7-BEA0-4864-B3FD-C17EAC737B35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestHydraApi", "src\Examples\TestHydraApi\TestHydraApi.csproj", "{B8B077FD-EC9C-4F28-90A9-C513DCAE4B57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Argolis.Nancy", "src\Argolis.Nancy\Argolis.Nancy.csproj", "{4EC11162-751B-4E73-A3C6-435BD7CAE9BA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Argolis.Models.TunnelVisionLabs", "src\Argolis.Models.TunnelVisionLabs\Argolis.Models.TunnelVisionLabs.csproj", "{6AC20D75-35CF-4385-912E-BC7E381AD3A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestHydraApp", "src\Examples\TestHydraApp\TestHydraApp.csproj", "{0BA22B8A-AB30-4DBD-9E8F-36AD6D266691}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,14 +48,6 @@ Global
 		{1167173B-16E1-4A0E-80D6-60A3E600E955}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1167173B-16E1-4A0E-80D6-60A3E600E955}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1167173B-16E1-4A0E-80D6-60A3E600E955}.Release|Any CPU.Build.0 = Release|Any CPU
-		{378AE219-5CEF-41ED-839A-1E8343754056}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{378AE219-5CEF-41ED-839A-1E8343754056}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{378AE219-5CEF-41ED-839A-1E8343754056}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{378AE219-5CEF-41ED-839A-1E8343754056}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1D2E686F-381D-4700-B062-67AC029C0DAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D2E686F-381D-4700-B062-67AC029C0DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D2E686F-381D-4700-B062-67AC029C0DAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D2E686F-381D-4700-B062-67AC029C0DAF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41F8C2F5-8B83-430B-9AFE-21DCFD84AF54}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,17 +60,21 @@ Global
 		{4EC11162-751B-4E73-A3C6-435BD7CAE9BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EC11162-751B-4E73-A3C6-435BD7CAE9BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EC11162-751B-4E73-A3C6-435BD7CAE9BA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6AC20D75-35CF-4385-912E-BC7E381AD3A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6AC20D75-35CF-4385-912E-BC7E381AD3A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6AC20D75-35CF-4385-912E-BC7E381AD3A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6AC20D75-35CF-4385-912E-BC7E381AD3A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8B077FD-EC9C-4F28-90A9-C513DCAE4B57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B077FD-EC9C-4F28-90A9-C513DCAE4B57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B077FD-EC9C-4F28-90A9-C513DCAE4B57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B077FD-EC9C-4F28-90A9-C513DCAE4B57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BA22B8A-AB30-4DBD-9E8F-36AD6D266691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BA22B8A-AB30-4DBD-9E8F-36AD6D266691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BA22B8A-AB30-4DBD-9E8F-36AD6D266691}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BA22B8A-AB30-4DBD-9E8F-36AD6D266691}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{378AE219-5CEF-41ED-839A-1E8343754056} = {23D3DC66-5EF3-40B4-82DA-F56906FE4249}
-		{1D2E686F-381D-4700-B062-67AC029C0DAF} = {23D3DC66-5EF3-40B4-82DA-F56906FE4249}
+		{B8B077FD-EC9C-4F28-90A9-C513DCAE4B57} = {23D3DC66-5EF3-40B4-82DA-F56906FE4249}
+		{0BA22B8A-AB30-4DBD-9E8F-36AD6D266691} = {23D3DC66-5EF3-40B4-82DA-F56906FE4249}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0E1EF9F5-9AD6-459A-8A90-589223A23014}

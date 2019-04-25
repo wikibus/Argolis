@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<assembly name="Argolis.Hydra">
+  <member name="M:Argolis.Hydra.Core.ApiDocumentation.GetContext(Argolis.Hydra.Core.ApiDocumentation)">
+    <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor" />
+  </member>
+  <member name="P:Argolis.Hydra.Resources.Collection`1.Type">
+    <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor" />
+  </member>
+  <member name="P:Argolis.Hydra.Resources.PartialCollectionView.Context">
+    <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor" />
+  </member>
+  <member name="P:Argolis.Hydra.Resources.PartialCollectionView.Type">
+    <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor" />
+  </member>
+</assembly>

@@ -2,7 +2,6 @@
 using System.IO;
 using FluentAssertions;
 using FluentAssertions.Primitives;
-using Nancy.Testing;
 using VDS.RDF;
 using VDS.RDF.Query;
 using VDS.RDF.Query.Datasets;
@@ -13,13 +12,13 @@ namespace Argolis.Tests.Integration
 {
     public static class TestExtension
     {
-        public static IGraph AsRdf(this BrowserResponseBodyWrapper body)
+        public static IGraph AsRdf(this Stream body)
         {
             IGraph graph = new Graph();
             graph.NamespaceMap.AddNamespace("hydra", new Uri(Vocab.Hydra.BaseUri));
             graph.NamespaceMap.AddNamespace("ex", new Uri("http://example.api/o#"));
 
-            using (var reader = new StreamReader(body.AsStream()))
+            using (var reader = new StreamReader(body))
             {
                 new VDS.RDF.Parsing.TurtleParser().Load(graph, reader);
             }
@@ -41,7 +40,7 @@ namespace Argolis.Tests.Integration
                 this.graph = graph;
             }
 
-            protected override string Context
+            protected override string Identifier
             {
                 get { return "Graph"; }
             }

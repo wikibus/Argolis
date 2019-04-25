@@ -12,13 +12,11 @@ namespace Argolis.Hydra.Serialization
         /// <inheritdoc />
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if (value is VariableRepresentation variableRepresentation)
+            if (value is VariableRepresentation)
             {
-                var uri = Vocab.Hydra.BaseUri + variableRepresentation;
-
                 writer.WriteStartObject();
                 writer.WritePropertyName(JsonLdKeywords.Id);
-                writer.WriteValue(uri);
+                writer.WriteValue(Vocab.Hydra.BaseUri + value);
                 writer.WriteEndObject();
             }
             else

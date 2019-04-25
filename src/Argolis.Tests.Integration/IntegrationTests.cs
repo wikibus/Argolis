@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Argolis.Hydra.Core;
 using FluentAssertions;
-using Nancy;
-using Nancy.Responses.Negotiation;
-using Nancy.Testing;
+using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
-using TestNancyApp.Bootstrap;
+using TestHydraApp;
 using VDS.RDF;
 using VDS.RDF.Parsing;
 using VDS.RDF.Query.Builder;
@@ -18,11 +18,14 @@ namespace Argolis.Tests.Integration
     public class IntegrationTests
     {
         private const string ExpectedApiDocPath = "http://hydra.guru/api";
-        private readonly Browser browser;
+        private readonly HttpClient browser;
 
         public IntegrationTests()
         {
-            this.browser = new Browser(new Bootstrapper(), context => context.HostName("hydra.guru"));
+            this.browser = new WebApplicationFactory<Startup>().CreateClient(new WebApplicationFactoryClientOptions
+            {
+                BaseAddress = new Uri("http://hydra.guru")
+            });
         }
 
         [Fact]
@@ -30,6 +33,8 @@ namespace Argolis.Tests.Integration
         {
             // when
             var documentation = await this.GetDocumentationGraph();
+
+            Console.WriteLine(documentation.Triples.Count);
 
             // then
             var query = QueryBuilder.Ask()
@@ -156,10 +161,16 @@ namespace Argolis.Tests.Integration
         public async Task Should_serve_API_doc_with_correct_Id()
         {
             // when
-            var response = await this.browser.Get("api", context => context.Accept(new MediaRange("application/json")));
+            var response = await this.browser.SendAsync(new HttpRequestMessage(HttpMethod.Get, "api")
+            {
+                Headers =
+                {
+                    { "Accept", "application/json" }
+                }
+            });
 
             // then
-            var asString = response.Body.AsString();
+            var asString = await response.Content.ReadAsStringAsync();
             dynamic apiDoc = JsonConvert.DeserializeObject(asString);
 
             ((string)apiDoc.id).Should().Be(ExpectedApiDocPath);
@@ -194,11 +205,17 @@ WHERE
 
         private async Task<IGraph> GetDocumentationGraph()
         {
-            var response = await this.browser.Get("api", context => { context.Accept("text/turtle"); });
+            var response = await this.browser.SendAsync(new HttpRequestMessage(HttpMethod.Get, "api")
+            {
+                Headers =
+                {
+                    { "Accept", "text/turtle" }
+                }
+            });
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
-            return response.Body.AsRdf();
+            return (await response.Content.ReadAsStreamAsync()).AsRdf();
         }
     }
 }
