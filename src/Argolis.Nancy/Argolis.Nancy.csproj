@@ -30,7 +30,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Argolis.Models\Argolis.Models.csproj" />
+    <ProjectReference Include="..\Argolis.Hydra.Nancy\Argolis.Hydra.Nancy.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Fody" Version="4.2.1">
