@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Nancy;
 
 namespace Argolis.Hydra.Nancy
@@ -45,6 +46,11 @@ namespace Argolis.Hydra.Nancy
             {
                 Path = request.Url.BasePath + documentationPath
             };
+
+            if (request.Headers["X-Forwarded-Proto"].Contains("https", StringComparer.OrdinalIgnoreCase))
+            {
+                uriBuilder.Scheme = "https";
+            }
 
             string apiDocPath = uriBuilder.Uri.ToString();
             if (uriBuilder.Port == 80)
