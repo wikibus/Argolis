@@ -1,16 +1,16 @@
 ﻿using Argolis.Hydra.Discovery.SupportedOperations;
+using Argolis.Hydra.Nancy;
 using TestHydraApi;
-using TestHydraApp.Bootstrap;
 
 namespace TestHydraApp.Hydra
 {
     public class IssueSupportedOperations : SupportedOperations<Issue>
     {
-        public IssueSupportedOperations(NancyContextWrapper current)
+        public IssueSupportedOperations(NancyContextWrapper context)
         {
             this.Class.SupportsGet();
 
-            if (current.Context.CurrentUser?.IsInRole("Admin") == true)
+            if (context.Current.CurrentUser?.IsInRole("Admin") == true)
             {
                 this.Class.SupportsDelete();
             }

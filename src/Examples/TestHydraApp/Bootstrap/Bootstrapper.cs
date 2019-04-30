@@ -30,12 +30,5 @@ namespace TestHydraApp.Bootstrap
         {
             // don't call base to disable automatic registration
         }
-
-        protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
-        {
-            base.RequestStartup(container, pipelines, context);
-
-            container.Register(new NancyContextWrapper(context));
-        }
     }
 }
