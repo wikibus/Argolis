@@ -11,5 +11,5 @@ deploy:
   - provider: Environment
     name: NuGet
     on:
-      branch: /v\d\.\d(\.\d)?/
+      branch: master
       appveyor_repo_tag: true
