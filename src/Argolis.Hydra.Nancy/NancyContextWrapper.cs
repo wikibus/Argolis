@@ -1,4 +1,5 @@
 ﻿﻿using Nancy;
+ using NullGuard;
 
  namespace Argolis.Hydra.Nancy
 {
@@ -13,7 +14,7 @@
         /// <summary>
         /// Gets the current context
         /// </summary>
-        public NancyContext Current { get; private set; }
+        public NancyContext Current { [return: AllowNull] get; private set; }
 
         /// <summary>
         /// Sets the current context. This will be called at request startup
