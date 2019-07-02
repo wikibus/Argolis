@@ -230,8 +230,8 @@ Link: <http://localhost:61186/api>; rel="http://www.w3.org/ns/hydra/core#apiDocu
 
 ### On Windows
 
-To manage packages, Argolis uses [Paket](). To restore them, either install the [VS
-extension]() or run Cake from PowerShell command line:
+To manage packages, Argolis uses [Paket](https://fsprojects.github.io/Paket/). To restore them, either install the [VS
+extension](https://marketplace.visualstudio.com/items?itemName=SteffenForkmann.PaketforVisualStudio) or run Cake from PowerShell command line:
 
 ```
 .\build.ps1 -Target Restore
@@ -251,19 +251,10 @@ paket restore
 
 ## Releasing
 
-Before publishing a release, make sure to update the changelog. First, install
-`standard-changelog`:
+Use [`standard-version`](https://github.com/conventional-changelog/standard-version) to
+tag the next release.
 
 ```
-npm i -g standard-changelog
-```
-
-And then use it to update the changelog, commit and tag
-
-```
-standard-changelog
-git add CHANGELOG.md
-git ci -m"vX.Z.Y"
-git tag vX.Y.Z
-git push --tags
+npx standard-version --generate-notes
+git push --follow-tags origin master
 ```
