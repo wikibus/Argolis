@@ -11,6 +11,15 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
+### [0.4.3](https://github.com/wikibus/Argolis/compare/v0.4.2...v0.4.3) (2019-07-02)
+
+
+### Bug Fixes
+
+* don't throw from NancyContextWrapper when NancyContext is null ([ed20ae5](https://github.com/wikibus/Argolis/commit/ed20ae5))
+
+
+
 ### [0.4.2](https://github.com/wikibus/Argolis/compare/v0.4.1...v0.4.2) (2019-04-30)
 
 ### Bug Fixes
