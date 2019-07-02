@@ -8,7 +8,7 @@
 
 ### Hydra
 
-From Hydra hompage
+From Hydra homepage
 
 > Hydra simplifies the development of interoperable, hypermedia-driven Web APIs
 
@@ -224,3 +224,46 @@ Link: <http://localhost:61186/api>; rel="http://www.w3.org/ns/hydra/core#apiDocu
 [cov-link]: https://codecov.io/github/wikibus/Argolis?branch=master
 [codefactor-badge]: https://www.codefactor.io/repository/github/wikibus/Argolis/badge/master
 [codefactor-link]: https://www.codefactor.io/repository/github/wikibus/Argolis/overview/master
+
+
+## Building
+
+### On Windows
+
+To manage packages, Argolis uses [Paket](). To restore them, either install the [VS
+extension]() or run Cake from PowerShell command line:
+
+```
+.\build.ps1 -Target Restore
+```
+
+### On Mac (And Linux, presumably)
+
+Argolis develops perfectly fine on Mac using `dotnet` and JetBrains Rider. However,
+the Cake script runner is PowerShell, which may or may not work great. 
+
+To restore packages install `Paket` from homebrew and run the native binary:
+
+```
+brew install paket
+paket restore
+```
+
+## Releasing
+
+Before publishing a release, make sure to update the changelog. First, install
+`standard-changelog`:
+
+```
+npm i -g standard-changelog
+```
+
+And then use it to update the changelog, commit and tag
+
+```
+standard-changelog
+git add CHANGELOG.md
+git ci -m"vX.Z.Y"
+git tag vX.Y.Z
+git push --tags
+```
