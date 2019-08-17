@@ -23,8 +23,6 @@ Task("Pack")
             MSBuildSettings = new DotNetCoreMSBuildSettings()
         };
 
-        settings.MSBuildSettings.Properties["version"] = new [] { version.NuGetVersion };
-
         DotNetCorePack(path.FullPath, settings);
     });
 
@@ -34,7 +32,7 @@ Task("GitVersion")
             UpdateAssemblyInfo = true,
         });
 
-        if (BuildSystem.IsLocalBuild == false) 
+        if (BuildSystem.IsLocalBuild == false)
         {
             GitVersion(new GitVersionSettings {
                 OutputType = GitVersionOutput.BuildServer
@@ -49,11 +47,10 @@ Task("Restore")
                 "https://api.nuget.org/v3/index.json",
                 "https://www.myget.org/F/tpluscode/api/v3/index.json"
             },
-        });    
+        });
     });
 
 Task("Build")
-    .IsDependentOn("GitVersion")
     .IsDependentOn("Restore")
     .Does(() => {
         DotNetCoreBuild("Argolis.sln", new DotNetCoreBuildSettings {
@@ -63,6 +60,7 @@ Task("Build")
 
 Task("Codecov")
     .IsDependentOn("Test")
+    .IsDependentOn("GitVersion")
     .Does(() => {
        var buildVersion = string.Format("{0}.build.{1}",
             version.FullSemVer,
@@ -82,7 +80,7 @@ Task("Test")
     .Does(() => {
         DotCoverMerge(GetFiles("coverage\\*.dcvr"), "coverage\\merged.dcvr");
     })
-    .Does(() => {        
+    .Does(() => {
         DotCoverReport(
           "./coverage/merged.dcvr",
           "./coverage/dotcover.xml",
