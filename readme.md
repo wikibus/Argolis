@@ -251,10 +251,11 @@ paket restore
 
 ## Releasing
 
-Use [`standard-version`](https://github.com/conventional-changelog/standard-version) to
+Use [`versionize`](https://github.com/saintedlama/versionize) to
 tag the next release.
 
 ```
-npx standard-version --generate-notes
+dotnet tool install --global Versionize
+versionize
 git push --follow-tags origin master
 ```
