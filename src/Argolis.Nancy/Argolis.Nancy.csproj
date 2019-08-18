@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Version>0.4.3</Version>
@@ -44,8 +44,8 @@
     <PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
-    <PackageReference Include="Nancy.Routing.UriTemplates" Version="1.2.0" />
+    <PackageReference Include="Nancy" Version="2.0.0" />
+    <PackageReference Include="Nancy.Routing.UriTemplates" Version="2.0" />
     <Packagereference Include="Microsoft.CSharp" Versio="4.5" Version="4.5.0" />
     <PackageReference Include="tpluscode.Library.Ruleset" Version="1.2">
       <PrivateAssets>all</PrivateAssets>
