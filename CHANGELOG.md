@@ -1,6 +1,13 @@
-# Changelog
+# Change Log
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [versionize](https://github.com/saintedlama/versionize) for commit guidelines.
+
+<a name="0.5.0"></a>
+## 0.5.0 (2019-8-18)
+
+### Features
+
+* update to nancy 2.0
 
 ### [0.4.3](https://github.com/wikibus/Argolis/compare/v0.4.2...v0.4.3) (2019-07-02)
 
