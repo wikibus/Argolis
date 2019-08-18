@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <Version>0.4.3</Version>
     <RootNamespace>Argolis.Nancy</RootNamespace>
     <AssemblyName>Argolis.Nancy</AssemblyName>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
@@ -34,19 +35,19 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" >
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="NullGuard.Fody" Version="1.8.7" >
+    <PackageReference Include="NullGuard.Fody" Version="1.8.7">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" >
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
-    <PackageReference Include="Nancy.Routing.UriTemplates" Version="1.2.0" />
+    <PackageReference Include="Nancy" Version="2.0.0" />
+    <PackageReference Include="Nancy.Routing.UriTemplates" Version="2.0" />
     <Packagereference Include="Microsoft.CSharp" Versio="4.5" Version="4.5.0" />
-    <PackageReference Include="tpluscode.Library.Ruleset" Version="1.2" >
+    <PackageReference Include="tpluscode.Library.Ruleset" Version="1.2">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>

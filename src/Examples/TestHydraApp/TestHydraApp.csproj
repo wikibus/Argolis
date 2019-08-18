@@ -16,12 +16,12 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="json-ld.net" Version="1.0.6" />
-    <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
+    <PackageReference Include="Nancy" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Owin" Version="2.2" />
     <PackageReference Include="JsonLD.Entities" Version="0.3.5" />
-    <PackageReference Include="nancy.rdf" Version="0.4.0" />
-    <PackageReference Include="Nancy.Authentication.Basic" Version="2.0.0-clinteastwood" />
+    <PackageReference Include="nancy.rdf" Version="0.5.0" />
+    <PackageReference Include="Nancy.Authentication.Basic" Version="2.0.0" />
     <PackageReference Include="Nancy.Routing.UriTemplates" Version="1.2" />
     <PackageReference Include="uritemplatestring" Version="0.2.1" />
     <PackageReference Include="tpluscode.NoDocumentation.Ruleset" Version="1.2" />

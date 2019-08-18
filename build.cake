@@ -1,13 +1,10 @@
 #tool paket:?package=OpenCover
 #tool paket:?package=codecov
-#tool paket:?package=GitVersion.CommandLine
 #addin paket:?package=Cake.Paket
 #addin paket:?package=Cake.Codecov
 
 var target = Argument("target", "Build");
 var configuration = Argument("Configuration", "Debug");
-
-GitVersion version;
 
 Task("CI")
     .IsDependentOn("Pack")
@@ -23,23 +20,7 @@ Task("Pack")
             MSBuildSettings = new DotNetCoreMSBuildSettings()
         };
 
-        settings.MSBuildSettings.Properties["version"] = new [] { version.NuGetVersion };
-
         DotNetCorePack(path.FullPath, settings);
-    });
-
-Task("GitVersion")
-    .Does(() => {
-        version = GitVersion(new GitVersionSettings {
-            UpdateAssemblyInfo = true,
-        });
-
-        if (BuildSystem.IsLocalBuild == false) 
-        {
-            GitVersion(new GitVersionSettings {
-                OutputType = GitVersionOutput.BuildServer
-            });
-        }
     });
 
 Task("Restore")
@@ -49,11 +30,10 @@ Task("Restore")
                 "https://api.nuget.org/v3/index.json",
                 "https://www.myget.org/F/tpluscode/api/v3/index.json"
             },
-        });    
+        });
     });
 
 Task("Build")
-    .IsDependentOn("GitVersion")
     .IsDependentOn("Restore")
     .Does(() => {
         DotNetCoreBuild("Argolis.sln", new DotNetCoreBuildSettings {
@@ -64,15 +44,7 @@ Task("Build")
 Task("Codecov")
     .IsDependentOn("Test")
     .Does(() => {
-       var buildVersion = string.Format("{0}.build.{1}",
-            version.FullSemVer,
-            BuildSystem.AppVeyor.Environment.Build.Number
-        );
-        var settings = new CodecovSettings {
-            Files = new[] { "./coverage/cobertura.xml" },
-            EnvironmentVariables = new Dictionary<string,string> { { "APPVEYOR_BUILD_VERSION", buildVersion } }
-        };
-        Codecov(settings);
+        Codecov("coverage\\cobertura.xml");
     });
 
 Task("Test")
@@ -82,7 +54,7 @@ Task("Test")
     .Does(() => {
         DotCoverMerge(GetFiles("coverage\\*.dcvr"), "coverage\\merged.dcvr");
     })
-    .Does(() => {        
+    .Does(() => {
         DotCoverReport(
           "./coverage/merged.dcvr",
           "./coverage/dotcover.xml",

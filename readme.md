@@ -1,4 +1,4 @@
-![graph icon](https://raw.githubusercontent.com/wikibus/Argolis/master/assets/logo.png)
+![graph icon](/assets/logo.png)
 
 # Argolis [![Build status][av-badge]][build] [![NuGet version][nuget-badge]][nuget-link] [![codecov.io][cov-badge]][cov-link] [![codefactor][codefactor-badge]][codefactor-link]
 
@@ -251,10 +251,11 @@ paket restore
 
 ## Releasing
 
-Use [`standard-version`](https://github.com/conventional-changelog/standard-version) to
+Use [`versionize`](https://github.com/saintedlama/versionize) to
 tag the next release.
 
 ```
-npx standard-version --generate-notes
+dotnet tool install --global Versionize
+versionize
 git push --follow-tags origin master
 ```
