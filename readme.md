@@ -1,4 +1,4 @@
-![graph icon](https://raw.githubusercontent.com/wikibus/Argolis/master/assets/logo.png)
+![graph icon](/assets/logo.png)
 
 # Argolis [![Build status][av-badge]][build] [![NuGet version][nuget-badge]][nuget-link] [![codecov.io][cov-badge]][cov-link] [![codefactor][codefactor-badge]][codefactor-link]
 
