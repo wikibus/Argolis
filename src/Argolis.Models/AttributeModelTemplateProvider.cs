@@ -6,7 +6,7 @@ using NullGuard;
 namespace Argolis.Models
 {
     /// <summary>
-    /// Retrieves resource idenftifier templates from attributes
+    /// Retrieves resource identifier templates from attributes
     /// </summary>
     /// <seealso cref="Argolis.Models.IModelTemplateProvider" />
     public class AttributeModelTemplateProvider : IModelTemplateProvider
