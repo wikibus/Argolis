@@ -52,7 +52,7 @@ namespace TestHydraApi
         }
 
         [JsonProperty]
-        private string Type
+        private static string Type
         {
             get { return IssueType; }
         }

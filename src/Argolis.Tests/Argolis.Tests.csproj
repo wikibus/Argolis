@@ -32,7 +32,7 @@
     <PackageReference Include="Resourcer.Fody" Version="1.7.3" />
     <PackageReference Include="JsonLd.Entities" Version="0.3.5" />
     <PackageReference Include="Nancy.Testing" Version="2.0.0" />
-    <PackageReference Include="Rdf.Vocabularies" Version="1.3.1" />
+    <PackageReference Include="Rdf.Vocabularies" Version="1.4" />
     <PackageReference Include="dotnetrdf" Version="2.2" />
     <PackageReference Include="json-ld.net" Version="1.0.6" />
     <PackageReference Include="fakeiteasy" Version="5.*" />

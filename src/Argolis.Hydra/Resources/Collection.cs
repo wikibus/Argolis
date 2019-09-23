@@ -1,7 +1,10 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Reflection;
 using Argolis.Hydra.Annotations;
+using Argolis.Hydra.Core;
 using JetBrains.Annotations;
+using JsonLD.Entities;
 using JsonLD.Entities.Context;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -26,6 +29,15 @@ namespace Argolis.Hydra.Resources
         {
             this.Views = new IView[0];
             this.Members = new T[0];
+            this.Manages = new List<ManagesBlock>();
+
+            var memberRdfType = this.GetMemberRdfType();
+            if (memberRdfType != null)
+            {
+                this.Manages.Add(new ManagesBlock(
+                    property: (IriRef)Rdf.type,
+                    obj: (IriRef)memberRdfType));
+            }
         }
 
         /// <summary>
@@ -62,6 +74,12 @@ namespace Argolis.Hydra.Resources
         }
 
         /// <summary>
+        /// Gets the collection's manages blocks
+        /// </summary>
+        [JsonProperty("manages")]
+        public ICollection<ManagesBlock> Manages { get; private set; }
+
+        /// <summary>
         /// Gets the JSON-LD context.
         /// </summary>
         protected static JToken Context
@@ -71,6 +89,10 @@ namespace Argolis.Hydra.Resources
                 var collectionContext = new JObject(
                     "hydra".IsPrefixOf(Vocab.Hydra.BaseUri),
                     "member".IsProperty(Vocab.Hydra.member).Container().Set(),
+                    "manages".IsProperty(Vocab.Hydra.manages).Container().Set(),
+                    "property".IsProperty(Vocab.Hydra.property),
+                    "subject".IsProperty(Vocab.Hydra.subject),
+                    "object".IsProperty(Vocab.Hydra.@object),
                     "totalItems".IsProperty(Vocab.Hydra.totalItems));
 
                 var propertyInfo = typeof(T).GetProperty("Context", BindingFlags.Static | BindingFlags.NonPublic);

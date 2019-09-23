@@ -48,7 +48,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="JsonLd.Entities" Version="0.3.5" />
-    <PackageReference Include="Rdf.Vocabularies" Version="1.3.1" />
+    <PackageReference Include="Rdf.Vocabularies" Version="1.4" />
     <PackageReference Include="tpluscode.Library.Ruleset" Version="1.2">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

@@ -203,9 +203,34 @@ WHERE
             documentation.Should().MatchAsk(new SparqlQueryParser().ParseFromString(query));
         }
 
-        private async Task<IGraph> GetDocumentationGraph()
+        [Fact]
+        public async Task Collection_Should_include_manages_block()
         {
-            var response = await this.browser.SendAsync(new HttpRequestMessage(HttpMethod.Get, "api")
+            // given
+            var collection = await this.GetResourceGraph("issues");
+
+            // then
+            var query = QueryBuilder.Ask();
+            query.Prefixes.AddNamespace("hydra", new Uri(Vocab.Hydra.BaseUri));
+            query.Prefixes.AddNamespace("rdf", new Uri(Rdf.BaseUri));
+
+            query = query.Where(tpb =>
+                tpb.Subject("collection").PredicateUri("rdf:type").Object<IUriNode>("hydra:Collection")
+                    .Subject("collection").PredicateUri("hydra:manages").Object("manages")
+                    .Subject("manages").PredicateUri("hydra:property").Object<IUriNode>("rdf:type")
+                    .Subject("manages").PredicateUri("hydra:object").Object(new Uri("http://example.api/o#Issue")));
+
+            collection.Should().MatchAsk(query.BuildQuery());
+        }
+
+        private Task<IGraph> GetDocumentationGraph()
+        {
+            return this.GetResourceGraph("api");
+        }
+
+        private async Task<IGraph> GetResourceGraph(string uri)
+        {
+            var response = await this.browser.SendAsync(new HttpRequestMessage(HttpMethod.Get, uri)
             {
                 Headers =
                 {
