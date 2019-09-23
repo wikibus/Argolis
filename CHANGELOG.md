@@ -14,17 +14,6 @@ All notable changes to this project will be documented in this file. See [versio
 * manages block
 * update to nancy 2.0
 
-## 0.5.0 (2019-9-23)
-
-### Bug Fixes
-
-* don't throw from NancyContextWrapper when NancyContext is null
-
-### Features
-
-* manages block
-* update to nancy 2.0
-
 ## 0.5.0 (2019-8-18)
 
 ### Features
