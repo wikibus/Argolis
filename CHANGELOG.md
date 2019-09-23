@@ -2,7 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/saintedlama/versionize) for commit guidelines.
 
-<a name="0.5.0"></a>
+<a name="0.6.0"></a>
+## 0.6.0 (2019-9-23)
+
+### Bug Fixes
+
+* don't throw from NancyContextWrapper when NancyContext is null
+
+### Features
+
+* manages block
+* update to nancy 2.0
+
 ## 0.5.0 (2019-9-23)
 
 ### Bug Fixes
