@@ -9,6 +9,7 @@ namespace Argolis.Hydra.Annotations
     /// not be <see cref="Vocab.Hydra.readable"/>
     /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
+    [Obsolete("Use Writeable and Readable instead")]
     public class WriteOnlyAttribute : Attribute
     {
     }

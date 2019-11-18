@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using Argolis.Hydra.Annotations;
 
 namespace TestHydraApi
 {
@@ -8,6 +9,7 @@ namespace TestHydraApi
         [ReadOnly(true)]
         public DateTime DateCreated { get; set; }
 
+        [Writeable(false)]
         public DateTime? DateDeleted { get; set; }
     }
 }

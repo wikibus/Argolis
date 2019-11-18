@@ -35,6 +35,16 @@ namespace Argolis.Tests.ApiDocumentation
         }
 
         [Fact]
+        public void Should_set_writeable_to_false_when_explicitly_disallowed()
+        {
+            // when
+            var meta = this.metaProvider.GetMeta(typeof(Issue).GetProperty("DateDeleted"));
+
+            // then
+            meta.Writeable.Should().BeFalse();
+        }
+
+        [Fact]
         public void Should_set_readable_to_true_by_default()
         {
             // when
@@ -42,6 +52,16 @@ namespace Argolis.Tests.ApiDocumentation
 
             // then
             meta.Readable.Should().BeTrue();
+        }
+
+        [Fact]
+        public void Should_set_readable_to_false_when_explicitly_disallowed()
+        {
+            // when
+            var meta = this.metaProvider.GetMeta(typeof(Issue).GetProperty("Submitter"));
+
+            // then
+            meta.Readable.Should().BeFalse();
         }
 
         [Fact]

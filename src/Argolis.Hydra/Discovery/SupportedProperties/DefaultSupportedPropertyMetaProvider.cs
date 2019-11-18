@@ -29,13 +29,15 @@ namespace Argolis.Hydra.Discovery.SupportedProperties
                               property.GetCustomAttribute<WriteOnlyAttribute>() != null;
             var isRequired = property.GetCustomAttribute<RequiredAttribute>() != null;
             var isLink = property.GetCustomAttribute<LinkAttribute>() != null;
+            var writeableAttribute = property.GetCustomAttribute<WriteableAttribute>();
+            var readableAttribute = property.GetCustomAttribute<ReadableAttribute>();
 
             return new SupportedPropertyMeta
             {
                 Title = title,
                 Description = description,
-                Writeable = isReadonly == false,
-                Readable = isWriteOnly == false,
+                Writeable = (writeableAttribute?.Writeable).GetValueOrDefault(true) && !isReadonly,
+                Readable = (readableAttribute?.Readable).GetValueOrDefault(true) && !isWriteOnly,
                 Required = isRequired,
                 IsLink = isLink
             };
