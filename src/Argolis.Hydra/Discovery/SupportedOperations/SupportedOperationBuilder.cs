@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using JsonLD.Entities;
+using NullGuard;
 
 namespace Argolis.Hydra.Discovery.SupportedOperations
 {
@@ -22,8 +23,8 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
         /// Includes the GET operation in the supported property's supported operations
         /// </summary>
         public SupportedOperationBuilder SupportsGet(
-            string title = null,
-            string description = null)
+            string title = "GET",
+            string description = "")
         {
             return this.Supports(HttpMethod.Get, title, description);
         }
@@ -32,9 +33,9 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
         /// Includes the PUT operation in the supported property's supported operations
         /// </summary>
         public SupportedOperationBuilder SupportsPut(
-            string title = null,
-            string description = null,
-            IriRef? expects = null)
+            string title = "PUT",
+            string description = "",
+            [AllowNull] IriRef? expects = null)
         {
             return this.Supports(HttpMethod.Put, title, description, expects);
         }
@@ -43,10 +44,10 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
         /// Includes the POST operation in the supported property's supported operations
         /// </summary>
         public SupportedOperationBuilder SupportsPost(
-            string title = null,
-            string description = null,
-            IriRef? expects = null,
-            IriRef? returns = null)
+            string title = "POST",
+            string description = "",
+            [AllowNull] IriRef? expects = null,
+            [AllowNull] IriRef? returns = null)
         {
             return this.Supports(HttpMethod.Post, title, description, expects, returns);
         }
@@ -55,9 +56,9 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
         /// Includes the DELETE operation in the supported property's supported operations
         /// </summary>
         public SupportedOperationBuilder SupportsDelete(
-            string title = null,
-            string description = null,
-            IriRef? returns = null)
+            string title = "DELETE",
+            string description = "",
+            [AllowNull] IriRef? returns = null)
         {
             return this.Supports(HttpMethod.Delete, title, description, returns: returns);
         }
@@ -66,10 +67,10 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
         /// Includes the PATCH operation in the supported property's supported operations
         /// </summary>
         public SupportedOperationBuilder SupportsPatch(
-            string title = null,
-            string description = null,
-            IriRef? expects = null,
-            IriRef? returns = null)
+            string title = "PATCH",
+            string description = "",
+            [AllowNull] IriRef? expects = null,
+            [AllowNull] IriRef? returns = null)
         {
             return this.Supports(HttpMethod.Patch, title, description, expects, returns);
         }
@@ -79,12 +80,12 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
         /// </summary>
         public SupportedOperationBuilder Supports(
             string method,
-            string title = "",
+            [AllowNull] string title = null,
             string description = "",
-            IriRef? expects = null,
-            IriRef? returns = null)
+            [AllowNull] IriRef? expects = null,
+            [AllowNull] IriRef? returns = null)
         {
-            this.operations.Add(new OperationMeta(method, title, description, expects, returns));
+            this.operations.Add(new OperationMeta(method, title ?? method, description, expects, returns));
 
             return this;
         }
