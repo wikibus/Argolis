@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using JsonLD.Entities;
 
 namespace Argolis.Hydra.Discovery.SupportedOperations
@@ -9,7 +8,6 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
     /// </summary>
     public class SupportedOperationBuilder
     {
-        [Obsolete("use set?")]
         private readonly IList<OperationMeta> operations;
 
         /// <summary>
@@ -81,19 +79,12 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
         /// </summary>
         public SupportedOperationBuilder Supports(
             string method,
-            string title = null,
-            string description = null,
+            string title = "",
+            string description = "",
             IriRef? expects = null,
             IriRef? returns = null)
         {
-            this.operations.Add(new OperationMeta
-            {
-                Method = method,
-                Expects = expects,
-                Returns = returns,
-                Title = title,
-                Description = description
-            });
+            this.operations.Add(new OperationMeta(method, title, description, expects, returns));
 
             return this;
         }

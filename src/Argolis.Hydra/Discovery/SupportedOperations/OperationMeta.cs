@@ -11,28 +11,45 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
     public class OperationMeta
     {
         /// <summary>
-        /// Gets or sets the HTTP method.
+        /// Initializes a new instance of the <see cref="OperationMeta"/> class.
         /// </summary>
-        public string Method { get; set; }
+        public OperationMeta(
+            string method,
+            string title = "",
+            string description = "",
+            IriRef? expects = null,
+            IriRef? returns = null)
+        {
+            this.Method = method;
+            this.Expects = expects;
+            this.Returns = returns;
+            this.Title = title;
+            this.Description = description;
+        }
 
         /// <summary>
-        /// Gets or sets the operation request model type identifier.
+        /// Gets the HTTP method.
         /// </summary>
-        public IriRef? Expects { get; set; }
+        public string Method { get; }
 
         /// <summary>
-        /// Gets or sets the operation response type identifier.
+        /// Gets the operation request model type identifier.
         /// </summary>
-        public IriRef? Returns { get; set; }
+        public IriRef? Expects { get; }
 
         /// <summary>
-        /// Gets or sets the operation title.
+        /// Gets the operation response type identifier.
         /// </summary>
-        public string Title { get; set; }
+        public IriRef? Returns { get; }
 
         /// <summary>
-        /// Gets or sets the operation description.
+        /// Gets the operation title.
         /// </summary>
-        public string Description { get; set; }
+        public string Title { get; }
+
+        /// <summary>
+        /// Gets the operation description.
+        /// </summary>
+        public string Description { get; }
     }
 }

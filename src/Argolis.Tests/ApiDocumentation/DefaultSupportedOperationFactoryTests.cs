@@ -46,7 +46,7 @@ namespace Argolis.Tests.ApiDocumentation
             A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
             A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
-                new OperationMeta { Method = method, Expects = (IriRef)Rdfs.Resource }
+                new OperationMeta(method, expects: (IriRef)Rdfs.Resource)
             });
 
             // when
@@ -63,7 +63,7 @@ namespace Argolis.Tests.ApiDocumentation
             A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
             A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
-                new OperationMeta { Method = HttpMethod.Put, Expects = (IriRef)Rdfs.Resource }
+                new OperationMeta(HttpMethod.Put, expects: (IriRef)Rdfs.Resource)
             });
 
             // when
@@ -80,7 +80,7 @@ namespace Argolis.Tests.ApiDocumentation
             A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
             A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
-                new OperationMeta { Method = HttpMethod.Get, Returns = (IriRef)Schema.Person }
+                new OperationMeta(HttpMethod.Get, returns: (IriRef)Schema.Person)
             });
 
             // when
@@ -97,7 +97,7 @@ namespace Argolis.Tests.ApiDocumentation
             A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
             A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
-                new OperationMeta { Method = HttpMethod.Delete }
+                new OperationMeta(HttpMethod.Delete)
             });
 
             // when
@@ -114,7 +114,7 @@ namespace Argolis.Tests.ApiDocumentation
             A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
             A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
-                new OperationMeta { Method = "SELECT", Returns = (IriRef)Schema.Person }
+                new OperationMeta("SELECT", returns: (IriRef)Schema.Person)
             });
 
             // when
@@ -131,7 +131,7 @@ namespace Argolis.Tests.ApiDocumentation
             A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
             A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
-                new OperationMeta { Method = HttpMethod.Post, Returns = (IriRef)Schema.Person }
+                new OperationMeta(HttpMethod.Post, returns: (IriRef)Schema.Person)
             });
 
             // when
@@ -148,7 +148,7 @@ namespace Argolis.Tests.ApiDocumentation
             A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
             A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
-                new OperationMeta { Method = HttpMethod.Put, Expects = (IriRef)Foaf.Person }
+                new OperationMeta(HttpMethod.Put, expects: (IriRef)Foaf.Person)
             });
 
             // when
@@ -166,7 +166,7 @@ namespace Argolis.Tests.ApiDocumentation
             A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
             A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
-                new OperationMeta { Method = HttpMethod.Post, Title = asExpected }
+                new OperationMeta(HttpMethod.Post, title: asExpected)
             });
 
             // when
@@ -184,7 +184,7 @@ namespace Argolis.Tests.ApiDocumentation
             A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
             A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
             {
-                new OperationMeta { Method = HttpMethod.Post, Description = asExpected }
+                new OperationMeta(HttpMethod.Post, description: asExpected)
             });
 
             // when

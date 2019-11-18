@@ -60,21 +60,24 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
         /// </example>
         protected virtual Operation CreateOperation(OperationMeta meta, IriRef modelOrPropertyType)
         {
+            var expects = meta.Expects;
+            var returns = meta.Returns;
+
             switch (meta.Method)
             {
                 case HttpMethod.Delete:
-                    meta.Returns = meta.Returns ?? (IriRef)Owl.Nothing;
+                    returns = meta.Returns ?? (IriRef)Owl.Nothing;
                     goto case HttpMethod.Head;
                 case HttpMethod.Get:
-                    meta.Returns = modelOrPropertyType;
+                    returns = modelOrPropertyType;
                     goto case HttpMethod.Head;
                 case HttpMethod.Head:
                 case HttpMethod.Trace:
-                    meta.Expects = (IriRef)Owl.Nothing;
+                    expects = (IriRef)Owl.Nothing;
                     break;
                 case HttpMethod.Put:
-                    meta.Expects = modelOrPropertyType;
-                    meta.Returns = (IriRef?)Owl.Nothing;
+                    expects = modelOrPropertyType;
+                    returns = (IriRef?)Owl.Nothing;
                     break;
             }
 
@@ -82,8 +85,8 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
             {
                 Title = meta.Title,
                 Description = meta.Description,
-                Returns = meta.Returns.GetValueOrDefault(modelOrPropertyType),
-                Expects = meta.Expects.GetValueOrDefault((IriRef)Owl.Nothing)
+                Returns = returns.GetValueOrDefault(modelOrPropertyType),
+                Expects = expects.GetValueOrDefault((IriRef)Owl.Nothing)
             };
         }
     }
