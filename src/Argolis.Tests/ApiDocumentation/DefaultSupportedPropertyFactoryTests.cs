@@ -57,7 +57,7 @@ namespace Argolis.Tests.ApiDocumentation
         }
 
         [Fact]
-        public void Should_copy_readble_property_from_meta()
+        public void Should_copy_readable_property_from_meta()
         {
             // given
             A.CallTo(() => this.metaProvider.GetMeta(PropertyInfo))

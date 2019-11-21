@@ -1,0 +1,4 @@
+ignore:
+  - src/Argolis.Tests/**/*
+  - src/Argolis.Tests.Integration/**/*
+  - src/Examples/**/*

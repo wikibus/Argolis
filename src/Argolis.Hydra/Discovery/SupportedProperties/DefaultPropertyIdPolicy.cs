@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using JsonLD.Entities;
 using JsonLD.Entities.Context;
 using NullGuard;
@@ -36,11 +37,17 @@ namespace Argolis.Hydra.Discovery.SupportedProperties
         [return: AllowNull]
         public string GetPropertyId(PropertyInfo property)
         {
+            var propertyName = property.GetProperty();
+            if (Uri.IsWellFormedUriString(propertyName, UriKind.Absolute))
+            {
+                return propertyName;
+            }
+
             var context = this.contextResolver.GetContext(property.ReflectedType);
 
             if (context != null)
             {
-                return ContextHelpers.GetExpandedIri(context, property.GetJsonPropertyName());
+                return ContextHelpers.GetExpandedIri(context, propertyName);
             }
 
             return null;

@@ -1,8 +1,10 @@
-﻿using Argolis.Hydra.Discovery.SupportedProperties;
+﻿using Argolis.Hydra.Annotations;
+using Argolis.Hydra.Discovery.SupportedProperties;
 using FakeItEasy;
 using FluentAssertions;
 using JsonLD.Entities;
 using JsonLD.Entities.Context;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using TestHydraApi;
 using Vocab;
@@ -57,7 +59,7 @@ namespace Argolis.Tests.ApiDocumentation
         }
 
         [Fact]
-        public void Should_return_null_if_not_found_in_context()
+        public void Should_return_annotated_JSON_property_if_absolute_URI()
         {
             var policy = new DefaultPropertyIdPolicy();
 
@@ -68,9 +70,29 @@ namespace Argolis.Tests.ApiDocumentation
             propertyId.Should().BeNull();
         }
 
+        [Theory]
+        [InlineData("ArgolisPropAnnotated")]
+        [InlineData("JsonPropImage")]
+        public void Should_return_null_if_not_found_in_context(string property)
+        {
+            var policy = new DefaultPropertyIdPolicy();
+
+            // when
+            var propertyId = policy.GetPropertyId(typeof(NoContext).GetProperty(property));
+
+            // then
+            propertyId.Should().Be(Schema.image);
+        }
+
         private class NoContext
         {
             public string String { get; set; }
+
+            [Property(Schema.image)]
+            public string ArgolisPropAnnotated { get; set; }
+
+            [JsonProperty(Schema.image)]
+            public string JsonPropImage { get; set; }
         }
     }
 }
