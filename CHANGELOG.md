@@ -2,7 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/saintedlama/versionize) for commit guidelines.
 
-<a name="0.6.0"></a>
+<a name="0.7.0"></a>
+## 0.7.0 (2019-11-21)
+
+### Bug Fixes
+
+* use property annotation as predicate if absolute URI (#26)
+* more relaxed null guards on supported operation builder
+
+### Features
+
+* attributes for readable/writable properties (#25)
+* attributes for readable/writable
+
 ## 0.6.0 (2019-9-23)
 
 ### Bug Fixes
