@@ -1,92 +1,55 @@
-﻿using System.Collections.Generic;
-using JsonLD.Entities;
-using NullGuard;
+﻿using JsonLD.Entities;
 
 namespace Argolis.Hydra.Discovery.SupportedOperations
 {
     /// <summary>
-    /// Fluent interface to simplify creating of supported operations
+    /// Builder to set up a supported operations
     /// </summary>
     public class SupportedOperationBuilder
     {
-        private readonly IList<OperationMeta> operations;
+        private readonly OperationMeta meta;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SupportedOperationBuilder"/> class.
         /// </summary>
-        public SupportedOperationBuilder(IList<OperationMeta> operations)
+        public SupportedOperationBuilder(OperationMeta meta)
         {
-            this.operations = operations;
+            this.meta = meta;
         }
 
         /// <summary>
-        /// Includes the GET operation in the supported property's supported operations
+        /// Sets operation's hydra:title
         /// </summary>
-        public SupportedOperationBuilder SupportsGet(
-            string title = "GET",
-            string description = "")
+        public SupportedOperationBuilder Title(string title)
         {
-            return this.Supports(HttpMethod.Get, title, description);
+            this.meta.Title = title;
+            return this;
         }
 
         /// <summary>
-        /// Includes the PUT operation in the supported property's supported operations
+        /// Sets operation hydra:description
         /// </summary>
-        public SupportedOperationBuilder SupportsPut(
-            string title = "PUT",
-            string description = "",
-            [AllowNull] IriRef? expects = null)
+        public SupportedOperationBuilder Description(string description)
         {
-            return this.Supports(HttpMethod.Put, title, description, expects);
+            this.meta.Description = description;
+            return this;
         }
 
         /// <summary>
-        /// Includes the POST operation in the supported property's supported operations
+        /// Sets operation's hydra:expects
         /// </summary>
-        public SupportedOperationBuilder SupportsPost(
-            string title = "POST",
-            string description = "",
-            [AllowNull] IriRef? expects = null,
-            [AllowNull] IriRef? returns = null)
+        public SupportedOperationBuilder Expects(IriRef payloadType)
         {
-            return this.Supports(HttpMethod.Post, title, description, expects, returns);
+            this.meta.Expects = payloadType;
+            return this;
         }
 
         /// <summary>
-        /// Includes the DELETE operation in the supported property's supported operations
+        /// Sets operation's hydra:returns
         /// </summary>
-        public SupportedOperationBuilder SupportsDelete(
-            string title = "DELETE",
-            string description = "",
-            [AllowNull] IriRef? returns = null)
+        public SupportedOperationBuilder Returns(IriRef returned)
         {
-            return this.Supports(HttpMethod.Delete, title, description, returns: returns);
-        }
-
-        /// <summary>
-        /// Includes the PATCH operation in the supported property's supported operations
-        /// </summary>
-        public SupportedOperationBuilder SupportsPatch(
-            string title = "PATCH",
-            string description = "",
-            [AllowNull] IriRef? expects = null,
-            [AllowNull] IriRef? returns = null)
-        {
-            return this.Supports(HttpMethod.Patch, title, description, expects, returns);
-        }
-
-        /// <summary>
-        /// Includes an operation in the supported property's supported operations
-        /// </summary>
-        public SupportedOperationBuilder Supports(
-            string method,
-            [AllowNull] string title = null,
-            string description = "",
-            [AllowNull] IriRef? expects = null,
-            [AllowNull] IriRef? returns = null)
-        {
-            this.operations.Add(new OperationMeta(method, title ?? method, description, expects, returns));
-
+            this.meta.Returns = returned;
             return this;
         }
     }

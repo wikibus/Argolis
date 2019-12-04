@@ -50,7 +50,7 @@ namespace Argolis.Tests.ApiDocumentation
 
         private class TestOperations : SupportedOperations<Issue>
         {
-            public SupportedOperationBuilder Prop(Expression<Func<Issue, string>> propertyExpression)
+            public SupportedOperationCollection Prop(Expression<Func<Issue, string>> propertyExpression)
             {
                 return this.Property(propertyExpression);
             }

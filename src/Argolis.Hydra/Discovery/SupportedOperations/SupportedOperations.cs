@@ -19,7 +19,7 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
         {
             this.Type = type;
             this.typeOperations = new List<OperationMeta>();
-            this.Class = new SupportedOperationBuilder(this.typeOperations);
+            this.Class = new SupportedOperationCollection(this.typeOperations);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
         /// <summary>
         /// Gets a builder, which sets up operations supported by the supported class
         /// </summary>
-        public SupportedOperationBuilder Class { get; }
+        public SupportedOperationCollection Class { get; }
 
         /// <summary>
         /// Gets the supported operations for a supported class.

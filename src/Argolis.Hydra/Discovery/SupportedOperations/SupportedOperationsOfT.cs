@@ -44,7 +44,7 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
         /// Allows the setup of an operation supported by a property
         /// </summary>
         /// <typeparam name="TReturn">Property return type.</typeparam>
-        protected SupportedOperationBuilder Property<TReturn>(Expression<Func<T, TReturn>> propertyExpression)
+        protected SupportedOperationCollection Property<TReturn>(Expression<Func<T, TReturn>> propertyExpression)
         {
             var propertyInfo = propertyExpression.GetProperty();
 
@@ -53,7 +53,7 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
                 this.propertyOperations[propertyInfo] = new List<OperationMeta>();
             }
 
-            return new SupportedOperationBuilder(this.propertyOperations[propertyInfo]);
+            return new SupportedOperationCollection(this.propertyOperations[propertyInfo]);
         }
     }
 }

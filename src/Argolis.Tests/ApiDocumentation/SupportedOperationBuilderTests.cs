@@ -10,13 +10,13 @@ namespace Argolis.Tests.ApiDocumentation
 {
     public class SupportedOperationBuilderTests
     {
-        private readonly SupportedOperationBuilder builder;
+        private readonly SupportedOperationCollection builder;
         private readonly List<OperationMeta> operations;
 
         public SupportedOperationBuilderTests()
         {
             this.operations = new List<OperationMeta>();
-            this.builder = new SupportedOperationBuilder(this.operations);
+            this.builder = new SupportedOperationCollection(this.operations);
         }
 
         [Theory]
@@ -58,12 +58,11 @@ namespace Argolis.Tests.ApiDocumentation
             var returns = (IriRef)Foaf.Project;
 
             // when
-            this.builder.Supports(
-                method,
-                title,
-                description,
-                expects,
-                returns);
+            this.builder.Supports(method)
+                .Title(title)
+                .Description(description)
+                .Expects(expects)
+                .Returns(returns);
 
             // then
             this.operations.Should()
