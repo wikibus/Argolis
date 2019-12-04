@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Argolis.Hydra.Discovery.SupportedOperations;
 using Dynamitey;
 using FluentAssertions;
@@ -56,20 +57,26 @@ namespace Argolis.Tests.ApiDocumentation
             const string description = "Used to create a new reservation";
             var expects = (IriRef)Foaf.Document;
             var returns = (IriRef)Foaf.Project;
+            var types = new[]
+            {
+                (IriRef)Schema.CreateAction, (IriRef)Schema.UpdateAction
+            };
 
             // when
             this.builder.Supports(method)
                 .Title(title)
                 .Description(description)
                 .Expects(expects)
-                .Returns(returns);
+                .Returns(returns)
+                .TypedAs((IriRef)Schema.CreateAction, (IriRef)Schema.UpdateAction);
 
             // then
             this.operations.Should()
                 .Contain(meta => meta.Title == title &&
                                  meta.Description == description &&
                                  meta.Expects == expects &&
-                                 meta.Returns == returns);
+                                 meta.Returns == returns &&
+                                 meta.Types.Intersect(types).Count() == 2);
         }
     }
 }

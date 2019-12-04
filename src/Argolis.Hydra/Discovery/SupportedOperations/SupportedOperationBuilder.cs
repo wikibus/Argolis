@@ -1,4 +1,5 @@
-﻿using JsonLD.Entities;
+﻿using System.Linq;
+using JsonLD.Entities;
 
 namespace Argolis.Hydra.Discovery.SupportedOperations
 {
@@ -50,6 +51,17 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
         public SupportedOperationBuilder Returns(IriRef returned)
         {
             this.meta.Returns = returned;
+            return this;
+        }
+
+        /// <summary>
+        /// Set's the operations rdf:types (for example schema:CreateAction)
+        /// </summary>
+        public SupportedOperationBuilder TypedAs(IriRef type, params IriRef[] moreTypes)
+        {
+            var types = moreTypes.Concat(new[] { type });
+
+            this.meta.Types = types.ToArray();
             return this;
         }
     }

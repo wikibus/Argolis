@@ -1,4 +1,6 @@
-﻿using JetBrains.Annotations;
+﻿using System.Collections.Generic;
+using System.Linq;
+using JetBrains.Annotations;
 using JsonLD.Entities;
 using Newtonsoft.Json;
 using NullGuard;
@@ -12,6 +14,11 @@ namespace Argolis.Hydra.Core
     [NullGuard(ValidationFlags.AllPublic ^ ValidationFlags.Properties)]
     public class Operation : Resource
     {
+        private IEnumerable<string> types = new[]
+        {
+            Vocab.Hydra.Operation
+        };
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Operation"/> class.
         /// </summary>
@@ -48,10 +55,20 @@ namespace Argolis.Hydra.Core
         [JsonProperty(Vocab.Hydra.expects)]
         public IriRef Expects { get; set; }
 
+        /// <summary>
+        /// Gets or sets operation's types
+        /// </summary>
         [JsonProperty, UsedImplicitly]
-        private string Type
+        public IEnumerable<string> Types
         {
-            get { return Vocab.Hydra.Operation; }
+            get => this.types;
+            set
+            {
+                this.types = new[]
+                {
+                    Vocab.Hydra.Operation
+                }.Concat(value);
+            }
         }
     }
 }

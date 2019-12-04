@@ -62,7 +62,7 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
         /// </summary>
         public SupportedOperationBuilder Supports(string method)
         {
-            var meta = new OperationMeta(HttpMethod.Get);
+            var meta = new OperationMeta(method);
             this.Supports(meta);
             return new SupportedOperationBuilder(meta);
         }

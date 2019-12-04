@@ -3,6 +3,9 @@
   <member name="M:Argolis.Hydra.Core.ApiDocumentation.GetContext(Argolis.Hydra.Core.ApiDocumentation)">
     <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor" />
   </member>
+  <member name="P:Argolis.Hydra.Core.Operation.Types">
+    <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor" />
+  </member>
   <member name="P:Argolis.Hydra.Resources.Collection`1.Type">
     <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor" />
   </member>

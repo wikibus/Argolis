@@ -86,7 +86,8 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
                 Title = meta.Title,
                 Description = meta.Description,
                 Returns = returns.GetValueOrDefault(modelOrPropertyType),
-                Expects = expects.GetValueOrDefault((IriRef)Owl.Nothing)
+                Expects = expects.GetValueOrDefault((IriRef)Owl.Nothing),
+                Types = meta.Types.Select(iriRef => iriRef.Value)
             };
         }
     }

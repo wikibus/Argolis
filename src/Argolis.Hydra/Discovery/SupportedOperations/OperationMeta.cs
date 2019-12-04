@@ -1,4 +1,4 @@
-using Argolis.Hydra.Core;
+﻿using Argolis.Hydra.Core;
 using JsonLD.Entities;
 using NullGuard;
 
@@ -33,23 +33,28 @@ namespace Argolis.Hydra.Discovery.SupportedOperations
         public string Method { get; }
 
         /// <summary>
-        /// Gets the operation request model type identifier.
+        /// Gets or sets the operation request model type identifier.
         /// </summary>
-        public IriRef? Expects { get; internal set; }
+        public IriRef? Expects { get; set; }
 
         /// <summary>
-        /// Gets the operation response type identifier.
+        /// Gets or sets the operation response type identifier.
         /// </summary>
-        public IriRef? Returns { get; internal set; }
+        public IriRef? Returns { get; set; }
 
         /// <summary>
-        /// Gets the operation title.
+        /// Gets or sets the operation title.
         /// </summary>
-        public string Title { get; internal set; }
+        public string Title { get; set; }
 
         /// <summary>
-        /// Gets the operation description.
+        /// Gets or sets the operation description.
         /// </summary>
-        public string Description { get; internal set; }
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the types of the operation.
+        /// </summary>
+        public IriRef[] Types { get; set; } = new IriRef[0];
     }
 }

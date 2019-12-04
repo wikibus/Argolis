@@ -1,6 +1,8 @@
 ﻿using Argolis.Hydra.Discovery.SupportedOperations;
 using Argolis.Hydra.Nancy;
+using JsonLD.Entities;
 using TestHydraApi;
+using Vocab;
 
 namespace TestHydraApp.Hydra
 {
@@ -8,7 +10,7 @@ namespace TestHydraApp.Hydra
     {
         public IssueSupportedOperations(NancyContextWrapper context)
         {
-            this.Class.SupportsGet();
+            this.Class.SupportsGet().TypedAs((IriRef)Schema.DiscoverAction);
 
             if (context.Current.CurrentUser?.IsInRole("Admin") == true)
             {

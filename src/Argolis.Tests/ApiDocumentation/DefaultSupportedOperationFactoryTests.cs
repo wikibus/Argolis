@@ -193,5 +193,49 @@ namespace Argolis.Tests.ApiDocumentation
             // then
             operation.Description.Should().Be(asExpected);
         }
+
+        [Fact]
+        public void Operation_should_have_types_as_configured_along_with_hydra_type()
+        {
+            // given
+            A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
+            A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
+            {
+                new OperationMeta(HttpMethod.Post)
+                {
+                    Types = new[]
+                    {
+                        (IriRef)Schema.CreateAction,
+                        (IriRef)Schema.UpdateAction,
+                    }
+                }
+            });
+
+            // when
+            var operation = this.factory.CreateOperations(typeof(Issue), ClassIds).Single();
+
+            // then
+            operation.Types.Should().Contain(Vocab.Hydra.Operation);
+            operation.Types.Should().Contain(Schema.UpdateAction);
+            operation.Types.Should().Contain(Schema.UpdateAction);
+        }
+
+        [Fact]
+        public void Operation_should_have_hydra_types_by_default()
+        {
+            // given
+            A.CallTo(() => this.operations.Type).Returns(typeof(Issue));
+            A.CallTo(() => this.operations.GetSupportedClassOperations()).Returns(new[]
+            {
+                new OperationMeta(HttpMethod.Post)
+            });
+
+            // when
+            var operation = this.factory.CreateOperations(typeof(Issue), ClassIds).Single();
+
+            // then
+            operation.Types.Should().HaveCount(1);
+            operation.Types.Should().Contain(Vocab.Hydra.Operation);
+        }
     }
 }
