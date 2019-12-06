@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Version>0.7.0</Version>
+    <Version>0.8.0</Version>
     <RootNamespace>Argolis.Hydra</RootNamespace>
     <AssemblyName>Argolis.Hydra</AssemblyName>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>

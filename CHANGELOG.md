@@ -2,7 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/saintedlama/versionize) for commit guidelines.
 
-<a name="0.7.0"></a>
+<a name="0.8.0"></a>
+## 0.8.0 (2019-12-6)
+
+### Features
+
+* add ability to @type operations
+
+### Breaking Changes
+
+* change the API of supported operation to allow easy extensions
+
 ## 0.7.0 (2019-11-21)
 
 ### Bug Fixes
